@@ -36,7 +36,7 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li>
+            <li class="@yield('buyer')">
                 <a href="{{route('supplier.buyer.index')}}">
                     <i class="material-icons">control_point</i>
                     <span>Buyer</span>
