@@ -1,9 +1,9 @@
-@extends('layouts.admin-app')
+@extends('layouts.seller-app')
 
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
-        <h2>DASHBOARD</h2>
+        <h2>Seller</h2>
     </div>
 
     <!-- Widgets -->

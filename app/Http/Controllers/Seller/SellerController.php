@@ -9,6 +9,6 @@ class SellerController extends Controller
 {
    
     public function index(){
-        return "Seller";
+        return view('seller.index');
     }
 }
