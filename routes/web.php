@@ -28,16 +28,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //admin route
 Route::prefix('admin')->middleware('admin')->group(function(){
-    Route::get('/admin','Admin\AdminController@index')->name('admin.index');
+    Route::get('/','Admin\AdminController@index')->name('admin.index');
 });
 
 
 
 //supplier route
 Route::prefix('supplier')->middleware('supplier')->group(function(){
-    Route::get('/supplier','Supplier\SupplierController@index')->name('supplier.index');
+    Route::get('/','Supplier\SupplierController@index')->name('supplier.index');
 
-    //all admin route will gose here
+
+//    Supplier Buyer Route
+
+Route::get('/buyer/index','Supplier\BuyerController@index')->name('supplier.buyer.index');
+
+    //all Supplier route will gose here
 
 
 });
@@ -45,20 +50,20 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
 
 //buyer route
 Route::prefix('buyer')->middleware('buyer')->group(function(){
-    Route::get('/buyer','Buyer\BuyerController@index')->name('buyer.index');
+    Route::get('/','Buyer\BuyerController@index')->name('buyer.index');
 
 
-    //all supplier route will gose here
+    //all Buyer route will gose here
 
 });
 
 //seller route
 Route::prefix('seller')->middleware('seller')->group(function(){
-    Route::get('/seller','Seller\SellerController@index')->name('seller.index');
+    Route::get('/','Seller\SellerController@index')->name('seller.index');
 
 
-    //all supplier route will gose here
-    
+    //all Seller route will gose here
+
 });
 
 
