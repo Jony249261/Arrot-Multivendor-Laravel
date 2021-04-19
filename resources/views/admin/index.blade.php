@@ -1,5 +1,5 @@
 @extends('layouts.admin-app')
-
+@section('dashboard','active')
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
@@ -309,5 +309,5 @@
         </div>
         <!-- #END# Browser Usage -->
     </div>
-</div>    
+</div>
 @endsection
