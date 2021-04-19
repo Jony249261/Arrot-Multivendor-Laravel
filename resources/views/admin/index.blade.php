@@ -1,5 +1,5 @@
 @extends('layouts.admin-app')
-
+@section('title','Admin DashBoard')
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
