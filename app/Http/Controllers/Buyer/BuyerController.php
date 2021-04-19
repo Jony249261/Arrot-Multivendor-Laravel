@@ -9,6 +9,6 @@ class BuyerController extends Controller
 {
     
     public function index(){
-        return "Buyer";
+        return view('buyer.index');
     }
 }

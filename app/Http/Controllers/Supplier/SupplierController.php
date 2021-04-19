@@ -9,6 +9,6 @@ class SupplierController extends Controller
 {
     
     public function index(){
-        return "Supplier";
+        return view('supplier.index');
     }
 }

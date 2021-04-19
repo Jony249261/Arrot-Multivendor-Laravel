@@ -68,11 +68,11 @@
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    @include('includes.admin.navbar')
+    @include('includes.buyer.navbar')
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
-       @include('includes.admin.sidebar')
+       @include('includes.buyer.sidebar')
         <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
         <aside id="rightsidebar" class="right-sidebar">
