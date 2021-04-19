@@ -1,11 +1,11 @@
 @extends('layouts.supplier-app')
 
-@section('dashboard','active')
+@section('buyer','active')
 
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
-        <h2>Dashboard</h2>
+        <h2>Buyer </h2>
     </div>
 
     <!-- Widgets -->
