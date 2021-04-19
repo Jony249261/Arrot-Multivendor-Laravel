@@ -43,13 +43,13 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">widgets</i>
-                    <span>Widgets</span>
+                <a href="@yield('buyer')" class="menu-toggle">
+                    <i class="material-icons">Products</i>
+                    <span>Products</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <a href="@yield('buyer')" class="menu-toggle">
                             <span>Cards</span>
                         </a>
                         <ul class="ml-menu">
