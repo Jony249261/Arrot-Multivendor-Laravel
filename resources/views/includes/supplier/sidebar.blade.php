@@ -37,7 +37,7 @@
                 </a>
             </li>
 
-            <li>
+            <li class="@yield('buyer')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">control_point</i>
                     <span>Buyer</span>
