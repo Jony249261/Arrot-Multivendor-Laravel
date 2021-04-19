@@ -36,21 +36,22 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li class="@yield('buyer')">
-                <a href="{{route('supplier.buyer.index')}}">
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">control_point</i>
                     <span>Buyer</span>
                 </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{route('supplier.buyer.index')}}">Create Buyer</a>
+                    </li>
+                    <li>
+                        <a href="pages/medias/carousel.html">All Buyer</a>
+                    </li>
+                </ul>
             </li>
 
-            <ul class="ml-menu">
-                <li>
-                    <a href="pages/medias/image-gallery.html">Image Gallery</a>
-                </li>
-                <li>
-                    <a href="pages/medias/carousel.html">Carousel</a>
-                </li>
-            </ul>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">widgets</i>
