@@ -26,6 +26,7 @@ Route::get('/buyer','Buyer\BuyerController@index')->name('buyer.index')->middlew
 Route::get('/seller','Seller\SellerController@index')->name('seller.index')->middleware('seller');
 Route::get('/supplier','Supplier\SupplierController@index')->name('supplier.index')->middleware('supplier');
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 
