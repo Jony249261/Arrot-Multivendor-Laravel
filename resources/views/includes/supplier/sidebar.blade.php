@@ -52,14 +52,14 @@
                 </ul>
             </li>
 
-            <li>
+            <li class="@yield('product')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">control_point</i>
                     <span>Product</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="">Product List</a>
+                        <a href="{{ route('products.index') }}">Product List</a>
                     </li>
                     <li>
                         <a href="{{ route('products.create') }}">Create</a>
