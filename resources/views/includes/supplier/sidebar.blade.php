@@ -30,22 +30,16 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
+            <li class="@yield('dashboard')">
                 <a href="{{route('supplier.index')}}">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
             </li>
             <li>
-                <a href="pages/typography.html">
-                    <i class="material-icons">text_fields</i>
-                    <span>Typography</span>
-                </a>
-            </li>
-            <li>
-                <a href="pages/helper-classes.html">
-                    <i class="material-icons">layers</i>
-                    <span>Helper Classes</span>
+                <a href="{{route('supplier.buyer.index')}}">
+                    <i class="material-icons">control_point</i>
+                    <span>Buyer</span>
                 </a>
             </li>
             <li>

@@ -1,9 +1,11 @@
 @extends('layouts.supplier-app')
 
+@section('dashboard','active')
+
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
-        <h2>Supplier</h2>
+        <h2>Dashboard</h2>
     </div>
 
     <!-- Widgets -->
@@ -309,5 +311,5 @@
         </div>
         <!-- #END# Browser Usage -->
     </div>
-</div>    
+</div>
 @endsection
