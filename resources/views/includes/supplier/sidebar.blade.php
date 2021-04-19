@@ -42,6 +42,15 @@
                     <span>Buyer</span>
                 </a>
             </li>
+
+            <ul class="ml-menu">
+                <li>
+                    <a href="pages/medias/image-gallery.html">Image Gallery</a>
+                </li>
+                <li>
+                    <a href="pages/medias/carousel.html">Carousel</a>
+                </li>
+            </ul>
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">widgets</i>
