@@ -35,14 +35,16 @@ Route::prefix('admin')->middleware('admin')->group(function(){
 
 //supplier route
 Route::prefix('supplier')->middleware('supplier')->group(function(){
+    //all Supplier route will gose here
     Route::get('/','Supplier\SupplierController@index')->name('supplier.index');
 
+    //    Supplier Buyer Route
+    Route::get('/buyer/index','Supplier\BuyerController@index')->name('supplier.buyer.index');
 
-//    Supplier Buyer Route
 
-Route::get('/buyer/index','Supplier\BuyerController@index')->name('supplier.buyer.index');
+    //products route
+    Route::resource('/products','Supplier\ProductController');
 
-    //all Supplier route will gose here
 
 
 });
