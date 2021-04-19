@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 //new laravel project
 
 Route::get('/', function () {
-    return view('layouts.admin-app');
+    return view('welcome');
 });
 
 Auth::routes();
