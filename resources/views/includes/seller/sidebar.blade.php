@@ -31,8 +31,8 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="@yield('dashboard')">
-                <a href="{{route('admin.index')}}">
+            <li class="active">
+                <a href="{{route('seller.index')}}">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>

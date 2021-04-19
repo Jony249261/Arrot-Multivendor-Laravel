@@ -31,8 +31,6 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('backend/css/themes/all-themes.css') }}" rel="stylesheet" />
-    <!-- toster js setup  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     @yield('page-styles')
 </head>
@@ -70,11 +68,11 @@
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    @include('includes.supplier.navbar')
+    @include('includes.seller.navbar')
     <!-- #Top Bar -->
     <section>
         <!-- Left Sidebar -->
-       @include('includes.supplier.sidebar')
+       @include('includes.seller.sidebar')
         <!-- #END# Left Sidebar -->
         <!-- Right Sidebar -->
         <aside id="rightsidebar" class="right-sidebar">
@@ -266,18 +264,7 @@
 
     <!-- Demo Js -->
     <script src="{{ asset('backend/js/demo.js') }}"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" ></script>
-    <script>
-        @if (Session::has('success'))
-        toastr.success("{{Session::get('success')}}")
-        @endif
-        @if (Session::has('info'))
-        toastr.info("{{Session::get('info')}}")
-
-        @endif
-    </script>
     @yield('page-scripts')
 </body>
 
-</html>
+</seller

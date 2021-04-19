@@ -1,9 +1,9 @@
-@extends('layouts.admin-app')
-@section('title','Admin DashBoard')
+@extends('layouts.buyer-app')
+
 @section('content')
 <div class="container-fluid">
     <div class="block-header">
-        <h2>DASHBOARD</h2>
+        <h2>Buyer</h2>
     </div>
 
     <!-- Widgets -->
@@ -309,5 +309,5 @@
         </div>
         <!-- #END# Browser Usage -->
     </div>
-</div>
+</div>    
 @endsection

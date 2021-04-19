@@ -12,6 +12,7 @@
                 <ul class="dropdown-menu pull-right">
                     <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                     <li role="seperator" class="divider"></li>
+
                     <li>  <a  href="{{ route('logout') }}"
                               onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -22,7 +23,7 @@
                             </form>
                         </a>
                     </li>
-                </ul>
+                      </ul>
             </div>
         </div>
     </div>
@@ -31,8 +32,8 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="@yield('dashboard')">
-                <a href="{{route('admin.index')}}">
+            <li class="active">
+                <a href="{{route('buyer.index')}}">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
