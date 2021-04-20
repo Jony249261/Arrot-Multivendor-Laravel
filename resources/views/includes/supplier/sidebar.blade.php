@@ -43,7 +43,7 @@
                     <span>Buyer</span>
                 </a>
                 <ul class="ml-menu">
-                    <li>
+                    <li class="@yield('create')">
                         <a href="{{route('supplier.buyer.create')}}">Create Buyer</a>
                     </li>
                     <li>

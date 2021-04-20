@@ -41,7 +41,7 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     //    Supplier Buyer Route
     Route::get('/buyer/index','Supplier\BuyerController@index')->name('supplier.buyer.index');
     Route::get('/buyer/create','Supplier\BuyerController@create')->name('supplier.buyer.create');
-
+    Route::post('/buyer/store','Supplier\BuyerController@store')->name('supplier.buyer.store');
 
     //products route
     Route::resource('/products','Supplier\ProductController');
