@@ -1,10 +1,14 @@
 @extends('layouts.supplier-app')
 @section('page-styles')
+  
 
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{{ asset('backend/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
 
-    <!-- JQuery DataTable Css -->
-    <link href="{{asset('backend/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
+    <!-- Custom Css -->
+    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
 
+    
 @endsection
 @section('seller','active')
 @section('create','active')
