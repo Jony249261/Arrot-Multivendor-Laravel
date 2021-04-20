@@ -45,6 +45,7 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
 
     //products route
     Route::resource('/products','Supplier\ProductController');
+    //Supplier seller route 
 
 
 
