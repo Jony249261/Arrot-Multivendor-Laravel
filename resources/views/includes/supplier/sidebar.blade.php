@@ -44,10 +44,10 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="{{route('supplier.buyer.index')}}">Create Buyer</a>
+                        <a href="{{route('supplier.buyer.create')}}">Create Buyer</a>
                     </li>
                     <li>
-                        <a href="pages/medias/carousel.html">All Buyer</a>
+                        <a href="{{route('supplier.buyer.index')}}">All Buyer</a>
                     </li>
                 </ul>
             </li>

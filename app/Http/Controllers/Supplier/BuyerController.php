@@ -10,4 +10,7 @@ class BuyerController extends Controller
     public  function index(){
         return view('supplier.buyer.index');
     }
+    public  function  create(){
+        return view('supplier.buyer.create');
+    }
 }
