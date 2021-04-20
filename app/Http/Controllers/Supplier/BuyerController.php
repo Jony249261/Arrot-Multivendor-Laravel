@@ -15,7 +15,8 @@ use Image;
 class BuyerController extends Controller
 {
     public  function index(){
-        return view('supplier.buyer.index');
+        $users=User::where('role','buyer')->get();
+        return view('supplier.buyer.index',compact('users'));
     }
     public  function  create(){
         return view('supplier.buyer.create');
@@ -76,6 +77,9 @@ class BuyerController extends Controller
         $user->image=$img_url;
         $user->password=bcrypt($request->password);
 
+        $user->save();
+
+
         $buyer = new Buyer();
         $buyer->buyer_id=$buyer_id;
         $buyer->buyer_name=$request->name;
@@ -89,11 +93,14 @@ class BuyerController extends Controller
         $buyer->buyer_type=$request->buyer_type;
         $buyer->expire_date=$request->expire_date;
         $buyer->tagline=$request->tagline;
-        $buyer->user_id=Auth::user()->id;
+        $buyer->user_id=$user->id;
         $buyer->trade_license=$img_url2;
         $buyer->buyer_logo=$img_url3;
         $buyer->br_image=$img_url4;
-        $user->save();
+        $buyer->br_name=$request->br_name;
+        $buyer->br_phone=$request->br_phone;
+        $buyer->br_email=$request->br_email;
+
         $buyer->save();
 
         Session::flash('success','Buyer Created  successfully!!');

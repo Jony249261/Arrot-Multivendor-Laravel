@@ -46,7 +46,7 @@
                     <li class="@yield('create')">
                         <a href="{{route('supplier.buyer.create')}}">Create Buyer</a>
                     </li>
-                    <li>
+                    <li class="@yield('buyer-index')">
                         <a href="{{route('supplier.buyer.index')}}">All Buyer</a>
                     </li>
                 </ul>
@@ -73,7 +73,7 @@
                     <span>Seller</span>
                 </a>
                 <ul class="ml-menu">
-                    
+
                     <li class="@yield('create')">
                         <a href="{{route('supplier.seller.create')}}">Create Seller</a>
                     </li>
