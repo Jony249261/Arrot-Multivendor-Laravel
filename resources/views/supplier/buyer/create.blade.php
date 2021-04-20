@@ -2,18 +2,6 @@
 
 @section('buyer','active')
 @section('create','active')
-
-@section('page-styles')
-
-
-    <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="{{ asset('backend/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
-
-{{--    <!-- Custom Css -->--}}
-{{--    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">--}}
-
-
-@endsection
 @section('content')
     <div class="container-fluid">
 
@@ -169,7 +157,7 @@
                                     <div class="form-group from-float">
                                         <div class="">
                                             <label class="form-label">Enter Passport Expire Date</label>
-                                            <input type="text" class="datepicker form-control @error('passport_expire_date') is-invalid @enderror" name="passport_expire_date" value="{{old('passport_expire_date')}}" placeholder="Please choose a date...">
+                                            <input type="date" class=" form-control @error('passport_expire_date') is-invalid @enderror" name="passport_expire_date" value="{{old('passport_expire_date')}}" placeholder="Please choose a date...">
                                             @error('passport_expire_date')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -216,7 +204,7 @@
                                 <div class="form-group form-float">
 
                                     <div class="form-line">
-                                        <input type="date" class="datepicker form-control @error('expire_date') is-invalid @enderror" value="{{old('expire_date')}}" name="expire_date"  required>
+                                        <input type="date" class=" form-control @error('expire_date') is-invalid @enderror" value="{{old('expire_date')}}" name="expire_date"  required>
 
                                         @error('expire_date')
                                         <span class="invalid-feedback" role="alert">
@@ -279,6 +267,7 @@
 @endsection
 
 
+<<<<<<< HEAD
 @section('page-scripts')
         <!-- Jquery Core Js -->
     <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
@@ -293,3 +282,5 @@
 
 @endsection
 
+=======
+>>>>>>> 01d3b275aafb1158063e723173b1bf9dd01c86c0

@@ -1,6 +1,5 @@
 @extends('layouts.supplier-app')
-@section('page-styles')
-@endsection
+
 @section('buyer','active')
 @section('buyer-index','active')
 @section('content')
