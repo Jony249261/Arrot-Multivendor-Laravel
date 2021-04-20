@@ -25,14 +25,17 @@
 
     <!-- Morris Chart Css-->
     <link href="{{ asset('backend/plugins/morrisjs/morris.css') }}" rel="stylesheet" />
+    @yield('page-styles')
 
     <!-- Custom Css -->
     <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
+    <!-- toster js setup  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('backend/css/themes/all-themes.css') }}" rel="stylesheet" />
 
-    @yield('page-styles')
+
 </head>
 
 <body class="theme-red">
@@ -258,13 +261,26 @@
     <!-- Sparkline Chart Plugin Js -->
     <script src="{{ asset('backend/plugins/jquery-sparkline/jquery.sparkline.js') }}"></script>
 
+    @yield('page-scripts')
     <!-- Custom Js -->
     <script src="{{ asset('backend/js/admin.js') }}"></script>
     <script src="{{ asset('backend/js/pages/index.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" ></script>
+    <script>
+        @if (Session::has('success'))
+        toastr.success("{{Session::get('success')}}")
+        {{-- expr --}}
+        @endif
+        @if (Session::has('info'))
+        toastr.info("{{Session::get('info')}}")
+        {{-- expr --}}
+        @endif
+    </script>
+
 
     <!-- Demo Js -->
     <script src="{{ asset('backend/js/demo.js') }}"></script>
-    @yield('page-scripts')
+
 </body>
 
 </html>
