@@ -1,5 +1,15 @@
 @extends('layouts.supplier-app')
+@section('page-styles')
+  
 
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{{ asset('backend/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
+
+    
+@endsection
 @section('seller','active')
 @section('create','active')
 
@@ -15,45 +25,39 @@
 
                 </div>
                 <div class="body">
-                    <div class="row">
-                        <form id="form_validation"  method="POST" enctype="multipart/form-data">
+                    
+                        <form id="form_validation"  method="POST" enctype="multipart/form-data" action="{{route('supplier.seller.store')}}">
                             @csrf
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text"  class="form-control @error('seller_name') is-invalid @enderror" name="seller_name" required>
-                                        @error('seller_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                       </span>
-                                        @enderror
-                                        <label class="form-label">Enter Name</label>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text"  class="form-control @error('seller_name') is-invalid @enderror" name="seller_name" required>
+                                            @error('seller_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
+                                            <label class="form-label">Enter Name</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text"  class="form-control @error('seller_id') is-invalid @enderror" name="seller_name" required>
-                                        @error('seller_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                       </span>
-                                        @enderror
-                                        <label class="form-label">ID</label>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="number"  class="form-control @error('seller_telephone') is-invalid @enderror" name="seller_telephone" required>
+                                            @error('seller_telephone')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
+                                            <label class="form-label">Enter Phone Number</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number"  class="form-control @error('seller_telephone') is-invalid @enderror" name="seller_telephone" required>
-                                        @error('seller_telephone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                       </span>
-                                        @enderror
-                                        <label class="form-label">Enter Phone Number</label>
-                                    </div>
-                                </div>
-                                <div class="form-group form-float">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('seller_email') is-invalid @enderror" name="seller_email" required>
                                         @error('seller_email')
@@ -64,72 +68,111 @@
                                         <label class="form-label">Enter Email</label>
                                     </div>
                                 </div>
-
-                                <div class="form-group form-float">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control" name="seller_address" required>
 
                                         <label class="form-label">Enter Seller Address</label>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control" name="seller_website" required>
                                         <label class="form-label">Enter Seller Website</label>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="">
-                                        <input type="date" class="form-control" name="passport_expire_date" required >
-                                        <label class="form-label">Enter Passport Expire Date</label>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group from-float">
+                                        <div class="">
+                                            <label class="form-label">Enter Passport Expire Date</label>
+                                            <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
+                                            
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="header bg-red">
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="header bg-red">
 
                                     <h2 class="text-center">Representative Information</h2>
 
                                 </div>
-</div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                
-                                <div class="form-group form-float">
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-6">
+                                        <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control" name="sr_name" required>
                                         <label class="form-label">Seller Representive Name</label>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                     <div class="form-line">
                                         <input type="email" class="form-control" name="sr_email" required>
                                         <label class="form-label">Seller Representive  Email</label>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                     <div class="form-line">
                                         <input type="number" class="form-control" name="sr_phone" required>
                                         <label class="form-label">Seller Phone Number</label>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                     <div class="">
                                         <input type="file" class="form-control" name="sr_image" required>
                                         <label class="form-label">Seller Representive Image</label>
                                     </div>
                                 </div>
-
-                                <button class="btn btn-success waves-effect" type="submit">SUBMIT</button>
-
+                                </div>
+                                
                             </div>
+
+
+
+
+                            
+                                
+                                
+
+                                
+                                
+                                
+                                <button class="btn btn-success waves-effect" type="submit">Create Seller</button>
+                            
+                            
                         </form>
-                    </div>
+                    
 
                 </div>
 
             </div>
 
         </div>
+@endsection
+@section('page-scripts')
+        <!-- Jquery Core Js -->
+    <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Autosize Plugin Js -->
+    <script src="{{ asset('backend/plugins/autosize/autosize.js') }}"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="{{ asset('backend/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
+    <!-- Custom Js -->
+    <script src="{{ asset('backend/js/admin.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/forms/basic-form-elements.js') }}"></script>
+
+    
 @endsection

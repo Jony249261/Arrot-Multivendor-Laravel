@@ -13,4 +13,7 @@ class SellerController extends Controller
     public  function  create(){
         return view('supplier.seller.create');
     }
+    public  function  store(Request $request){
+        dd($request->all());
+    }
 }
