@@ -1,12 +1,10 @@
 @extends('layouts.supplier-app')
 
-
-
 @section('buyer','active')
 @section('buyer-index','active')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" xmlns="">
 
         <!-- Widgets -->
 
@@ -67,7 +65,13 @@
 
                                                 <td>
                                                     <a href="" class="btn btn-success"> <i class="material-icons">edit</i></a>
-                                                    <a href="{{route('supplier.buyer.delete',$user->id)}}" class="btn btn-danger" onClick="confirm('Are You Sure to delete ?')" > <i class="material-icons">delete</i></a>
+
+
+                                                    <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
+                                                        @csrf
+                                                        <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
+                                                    </form>
+
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -87,6 +91,12 @@
 
 
 @endsection
+
+
+
+
+
+   
 
 
 
