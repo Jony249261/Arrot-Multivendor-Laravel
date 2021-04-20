@@ -33,10 +33,7 @@ class CreateBuyersTable extends Migration
             $table->date('expire_date');
             $table->string('buyer_logo')->nullable();//done
             $table->string('tagline');//done
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
