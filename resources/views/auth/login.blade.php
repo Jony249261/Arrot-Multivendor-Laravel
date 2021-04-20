@@ -44,7 +44,12 @@
                                 
                             </label>
                         </div>
-                        <span class="check_1">Forget Password</span>
+                        
+                        @if (Route::has('password.request'))
+                                    <a class="btn btn-link check_1" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
                     </form>
                 
             </div>

@@ -89,6 +89,31 @@ body{
     color: #fff;
 }
 
+.buttonpr{
+    margin-top: 10px;
+    width: 140px;
+    border-radius: 25px;
+    background-image: linear-gradient(to right, red, purple);
+    color: #fff;
+    font-weight: 700px;
+    cursor: pointer;
+}
+.buttonpr:focus{
+    border: none;
+    outline: none;
+    color: #fff;
+}
+.invalid-feedback{
+    display: block !important;
+        /* display: none; */
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: red;
+    text-align: center;
+    justify-content: center;
+}
+
 .myInput{
     width: 280px;
     padding: 10px;
