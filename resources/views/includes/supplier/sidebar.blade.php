@@ -62,7 +62,7 @@
                         <a href="{{ route('products.index') }}">Product List</a>
                     </li>
                     <li>
-                        <a href="{{ route('products.create') }}">Create</a>
+                        <a href="{{ route('products.create') }}">Product create</a>
                     </li>
                 </ul>
             </li>
