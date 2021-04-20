@@ -456,3 +456,8 @@ $(function () {
 
     setTimeout(function () { $('.page-loader-wrapper').fadeOut(); }, 50);
 });
+
+
+var today = new Date();
+var date = today.getFullYear();
+document.getElementById("date").innerHTML = date; 
