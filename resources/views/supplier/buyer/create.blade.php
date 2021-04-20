@@ -4,15 +4,15 @@
 @section('create','active')
 
 @section('page-styles')
-  
+
 
     <!-- Bootstrap Material Datetime Picker Css -->
     <link href="{{ asset('backend/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
 
-    <!-- Custom Css -->
-    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
+{{--    <!-- Custom Css -->--}}
+{{--    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">--}}
 
-    
+
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -164,8 +164,8 @@
 
 
 
-                                
-                                
+
+
                                     <div class="form-group from-float">
                                         <div class="">
                                             <label class="form-label">Enter Passport Expire Date</label>
@@ -177,7 +177,7 @@
                                         @enderror
                                         </div>
                                     </div>
-                                
+
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number"  class=" form-control @error('buyer_nid') is-invalid @enderror"  value="{{old('buyer_nid')}}" name="buyer_nid" required>
@@ -290,6 +290,6 @@
     <script src="{{ asset('backend/js/admin.js') }}"></script>
     <script src="{{ asset('backend/js/pages/forms/basic-form-elements.js') }}"></script>
 
-    
+
 @endsection
 

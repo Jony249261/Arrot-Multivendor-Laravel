@@ -1,6 +1,6 @@
 @extends('layouts.supplier-app')
 @section('page-styles')
-  
+
 
     <!-- Bootstrap Material Datetime Picker Css -->
     <link href="{{ asset('backend/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
@@ -8,10 +8,10 @@
     <!-- Custom Css -->
     <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
 
-    
+
 @endsection
 @section('seller','active')
-@section('create','active')
+@section('seller-create','active')
 
 @section('content')
     <div class="container-fluid">
@@ -25,7 +25,7 @@
 
                 </div>
                 <div class="body">
-                    
+
                         <form id="form_validation"  method="POST" enctype="multipart/form-data" action="{{route('supplier.seller.store')}}">
                             @csrf
 
@@ -91,7 +91,7 @@
                                         <div class="">
                                             <label class="form-label">Enter Passport Expire Date</label>
                                             <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -138,24 +138,24 @@
                                     </div>
                                 </div>
                                 </div>
-                                
+
                             </div>
 
 
 
 
-                            
-                                
-                                
 
-                                
-                                
-                                
+
+
+
+
+
+
                                 <button class="btn btn-success waves-effect" type="submit">Create Seller</button>
-                            
-                            
+
+
                         </form>
-                    
+
 
                 </div>
 
@@ -174,5 +174,5 @@
     <script src="{{ asset('backend/js/admin.js') }}"></script>
     <script src="{{ asset('backend/js/pages/forms/basic-form-elements.js') }}"></script>
 
-    
+
 @endsection

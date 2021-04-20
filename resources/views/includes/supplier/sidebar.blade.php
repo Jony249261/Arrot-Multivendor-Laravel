@@ -74,7 +74,7 @@
                 </a>
                 <ul class="ml-menu">
 
-                    <li class="@yield('create')">
+                    <li class="@yield('seller-create')">
                         <a href="{{route('supplier.seller.create')}}">Create Seller</a>
                     </li>
                     <li class="@yield('all-seller')">
