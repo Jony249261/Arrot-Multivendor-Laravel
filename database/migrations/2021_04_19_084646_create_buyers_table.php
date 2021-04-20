@@ -21,6 +21,8 @@ class CreateBuyersTable extends Migration
             $table->string('buyer_website');//done
             $table->string('buyer_telephone');//done
             $table->string('buyer_email');//buyer
+            $table->string('buyer_passport');//buyer
+            $table->string('buyer_nid');//buyer
             $table->string('br_name');
             $table->string('br_email');
             $table->string('br_phone');

@@ -1,6 +1,6 @@
 @extends('layouts.supplier-app')
 
-@section('buyer','active')
+@section('dashboard','active')
 
 @section('content')
 <div class="container-fluid">
