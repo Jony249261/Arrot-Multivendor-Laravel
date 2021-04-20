@@ -15,7 +15,8 @@ use Image;
 class BuyerController extends Controller
 {
     public  function index(){
-        return view('supplier.buyer.index');
+        $users=User::where('role','buyer')->get();
+        return view('supplier.buyer.index',compact('users'));
     }
     public  function  create(){
         return view('supplier.buyer.create');
@@ -25,16 +26,16 @@ class BuyerController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'required|numeric',
             'email' => 'required|email|max:255|unique:users',
-            'role' => 'sometimes|nullable|required|numeric',
+            'role' => 'sometimes|nullable|required|string',
             'status_id' => 'sometimes|nullable',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'buyer_address'=>'required|string|max:255',
-            'buyer_website	'=>'required|string|max:255',
-            'buyer_passport	'=>'sometimes|nullable|string|max:255',
-            'buyer_nid	'=>'required|string|max:255',
-            'passport_expire_date	'=>'sometimes|nullable|string|max:255',
-            'buyer_type	'=>'required|string|max:255',
-            'expire_date	'=>'sometimes|nullable|string|max:255',
+            'buyer_website'=>'required|string|max:255',
+            'buyer_passport'=>'sometimes|nullable|string|max:255',
+            'buyer_nid'=>'required|string|max:255',
+            'passport_expire_date'=>'sometimes|nullable|string|max:255',
+            'buyer_type'=>'required|string|max:255',
+            'expire_date'=>'sometimes|nullable|string|max:255',
             'trade_license' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'buyer_logo' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'tagline' => 'required|string|max:255',
@@ -75,8 +76,11 @@ class BuyerController extends Controller
         $user->role = 'buyer';
         $user->image=$img_url;
         $user->password=bcrypt($request->password);
+
         $user->save();
-        $buyer=new Buyer();
+
+
+        $buyer = new Buyer();
         $buyer->buyer_id=$buyer_id;
         $buyer->buyer_name=$request->name;
         $buyer->buyer_address=$request->buyer_address;
@@ -89,16 +93,18 @@ class BuyerController extends Controller
         $buyer->buyer_type=$request->buyer_type;
         $buyer->expire_date=$request->expire_date;
         $buyer->tagline=$request->tagline;
-        $buyer->user_id=Auth::user()->id;
+        $buyer->user_id=$user->id;
         $buyer->trade_license=$img_url2;
         $buyer->buyer_logo=$img_url3;
-        $buyer->br_iamge=$img_url4;
+        $buyer->br_image=$img_url4;
+        $buyer->br_name=$request->br_name;
+        $buyer->br_phone=$request->br_phone;
+        $buyer->br_email=$request->br_email;
+
         $buyer->save();
+
         Session::flash('success','Buyer Created  successfully!!');
         return redirect()->back();
-
-
-
 
 
 

@@ -46,7 +46,7 @@
                     <li class="@yield('create')">
                         <a href="{{route('supplier.buyer.create')}}">Create Buyer</a>
                     </li>
-                    <li>
+                    <li class="@yield('buyer-index')">
                         <a href="{{route('supplier.buyer.index')}}">All Buyer</a>
                     </li>
                 </ul>
@@ -73,7 +73,7 @@
                     <span>Seller</span>
                 </a>
                 <ul class="ml-menu">
-                    
+
                     <li class="@yield('create')">
                         <a href="{{route('supplier.seller.create')}}">Create Seller</a>
                     </li>
@@ -356,10 +356,10 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+            &#169; <span id="date"></span> <a href="https://www.selevenit.com/">S11Limited</a>.
         </div>
         <div class="version">
-            <b>Version: </b> 1.0.5
+            <a href="https://www.selevenit.com/">www.selevenit.com</a>
         </div>
     </div>
     <!-- #Footer -->

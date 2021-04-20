@@ -139,7 +139,7 @@
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Image</label>
-                                    <input type="file"class=" @error('image') is-invalid @enderror" value="{{old('image')}}" name="image"  required>
+                                    <input type="file" class=" @error('image') is-invalid @enderror" value="{{old('image')}}" name="image"  required>
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -194,7 +194,7 @@
                                 <div class="form-group form-float">
 
                                         <label class="form-label">Enter Buyer Trade License</label>
-                                        <input type="file"class=" @error('trade_license') is-invalid @enderror" value="{{old('trade_license')}}" name="trade_license"  required>
+                                        <input type="file" class=" @error('trade_license') is-invalid @enderror" value="{{old('trade_license')}}" name="trade_license"  required>
                                         @error('trade_license')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -233,13 +233,13 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="email" class="form-control @error('br_email') is-invalid @enderror" value="{{ old('br_email') }}" name="br_name" >
+                                        <input type="email" class="form-control @error('br_email') is-invalid @enderror" value="{{ old('br_email') }}" name="br_email" >
                                         <label class="form-label">Buyer Representative Email</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="number" class="form-control @error('br_phone') is-invalid @enderror" value="{{ old('br_phone') }}" name="br_name">
+                                        <input type="number" class="form-control @error('br_phone') is-invalid @enderror" value="{{ old('br_phone') }}" name="br_phone">
                                         <label class="form-label">Buyer Representative Phone</label>
                                     </div>
                                 </div>
@@ -268,7 +268,9 @@
         </div>
 @endsection
 
+
 @section('page-scripts')
     <!-- Bootstrap Material Datetime Picker Plugin Js -->
         <script src="{{asset('backend/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
     @endsection
+
