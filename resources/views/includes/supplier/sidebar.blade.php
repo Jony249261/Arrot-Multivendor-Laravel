@@ -62,7 +62,22 @@
                         <a href="{{ route('products.index') }}">Product List</a>
                     </li>
                     <li>
-                        <a href="{{ route('products.create') }}">Create</a>
+                        <a href="{{ route('products.create') }}">Product create</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <li class="@yield('seller')">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">control_point</i>
+                    <span>Seller</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="">Seller List</a>
+                    </li>
+                    <li>
+                        <a href="">Seller create</a>
                     </li>
                 </ul>
             </li>
