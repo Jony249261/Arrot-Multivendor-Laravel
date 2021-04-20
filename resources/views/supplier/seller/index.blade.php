@@ -4,6 +4,7 @@
 
 
 @section('seller','active')
+@section('all-seller','active')
 
 @section('content')
     <div class="container-fluid">

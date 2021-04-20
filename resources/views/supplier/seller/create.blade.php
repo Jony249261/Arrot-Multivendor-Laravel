@@ -1,6 +1,7 @@
 @extends('layouts.supplier-app')
 
 @section('seller','active')
+@section('create','active')
 
 @section('content')
     <div class="container-fluid">
@@ -8,7 +9,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-orange">
+                 <div class="header bg-red">
 
                     <h2 class="text-center">Create Seller</h2>
 
@@ -85,9 +86,16 @@
                                 </div>
 
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="header bg-red">
+
+                                    <h2 class="text-center">Representative Information</h2>
+
+                                </div>
+</div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
+                                
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control" name="sr_name" required>

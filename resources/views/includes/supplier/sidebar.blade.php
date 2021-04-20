@@ -73,11 +73,12 @@
                     <span>Seller</span>
                 </a>
                 <ul class="ml-menu">
-                    <li>
-                        <a href="{{route('supplier.seller.index')}}">Seller List</a>
+                    
+                    <li class="@yield('create')">
+                        <a href="{{route('supplier.seller.create')}}">Create Seller</a>
                     </li>
-                    <li>
-                        <a href="{{route('supplier.seller.create')}}">Seller create</a>
+                    <li class="@yield('all-seller')">
+                        <a href="{{route('supplier.seller.index')}}">All Seller</a>
                     </li>
                 </ul>
             </li>
