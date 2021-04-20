@@ -233,13 +233,13 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="email" class="form-control @error('br_email') is-invalid @enderror" value="{{ old('br_email') }}" name="br_name" >
+                                        <input type="email" class="form-control @error('br_email') is-invalid @enderror" value="{{ old('br_email') }}" name="br_email" >
                                         <label class="form-label">Buyer Representative Email</label>
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="number" class="form-control @error('br_phone') is-invalid @enderror" value="{{ old('br_phone') }}" name="br_name">
+                                        <input type="number" class="form-control @error('br_phone') is-invalid @enderror" value="{{ old('br_phone') }}" name="br_phone">
                                         <label class="form-label">Buyer Representative Phone</label>
                                     </div>
                                 </div>
