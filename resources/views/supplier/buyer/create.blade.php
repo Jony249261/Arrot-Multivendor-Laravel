@@ -139,7 +139,7 @@
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Image</label>
-                                    <input type="file"class=" @error('image') is-invalid @enderror" value="{{old('image')}}" name="image"  required>
+                                    <input type="file" class=" @error('image') is-invalid @enderror" value="{{old('image')}}" name="image"  required>
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -194,7 +194,7 @@
                                 <div class="form-group form-float">
 
                                         <label class="form-label">Enter Buyer Trade License</label>
-                                        <input type="file"class=" @error('trade_license') is-invalid @enderror" value="{{old('trade_license')}}" name="trade_license"  required>
+                                        <input type="file" class=" @error('trade_license') is-invalid @enderror" value="{{old('trade_license')}}" name="trade_license"  required>
                                         @error('trade_license')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
