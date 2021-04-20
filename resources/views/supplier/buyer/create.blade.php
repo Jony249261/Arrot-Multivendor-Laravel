@@ -2,6 +2,10 @@
 
 @section('buyer','active')
 @section('create','active')
+@section('page-styles')
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="{{asset('backend/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet" />
+  @endsection
 
 @section('content')
     <div class="container-fluid">
@@ -132,6 +136,18 @@
                                         <label class="form-label">Enter Confirm Password</label>
                                     </div>
                                 </div>
+                                <div class="form-group form-float">
+
+                                    <label class="form-label">Enter Buyer Image</label>
+                                    <input type="file"class=" @error('image') is-invalid @enderror" value="{{old('image')}}" name="image"  required>
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+
+
+                                </div>
 
 
                             </div>
@@ -190,13 +206,15 @@
                                 <div class="form-group form-float">
 
                                     <div class="form-line">
-                                        <input type="date"  class=" form-control @error('expire_date') is-invalid @enderror"  value="{{old('expire_date')}}" name="expire_date" required>
+                                        <input type="date" class="datepicker form-control @error('expire_date') is-invalid @enderror" value="{{old('expire_date')}}" name="expire_date"  required>
+
                                         @error('expire_date')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <label class="form-label">Trade Expire Date</label>
+                                        <label class="form-label">Trade Licence Expire date</label>
+
                                     </div>
 
 
@@ -225,6 +243,18 @@
                                         <label class="form-label">Buyer Representative Phone</label>
                                     </div>
                                 </div>
+                                <div class="form-group form-float">
+
+                                    <label class="form-label">Enter Buyer Representative Image</label>
+                                    <input type="file" class=" @error('br_image') is-invalid @enderror" value="{{old('br_image')}}" name="br_image" >
+                                    @error('br_image')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+
+
+                                </div>
                                 <button class="btn btn-success waves-effect" type="submit">Create Buyer</button>
 
                             </div>
@@ -237,3 +267,8 @@
 
         </div>
 @endsection
+
+@section('page-scripts')
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+        <script src="{{asset('backend/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+    @endsection

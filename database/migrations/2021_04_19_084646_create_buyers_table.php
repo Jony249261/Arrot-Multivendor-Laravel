@@ -23,11 +23,11 @@ class CreateBuyersTable extends Migration
             $table->string('buyer_email');//buyer
             $table->string('buyer_passport');//buyer
             $table->string('buyer_nid');//buyer
-            $table->string('br_name');
-            $table->string('br_email');
-            $table->string('br_phone');
+            $table->string('br_name')->nullable();
+            $table->string('br_email')->nullable();
+            $table->string('br_phone')->nullable();
             $table->date('passport_expire_date')->nullable();
-            $table->string('br_image');
+            $table->string('br_image')->nullable();
             $table->string('buyer_type');
             $table->string('trade_license')->nullable();
             $table->date('expire_date');
