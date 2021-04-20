@@ -74,10 +74,10 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="">Seller List</a>
+                        <a href="{{route('supplier.seller.index')}}">Seller List</a>
                     </li>
                     <li>
-                        <a href="">Seller create</a>
+                        <a href="{{route('supplier.seller.create')}}">Seller create</a>
                     </li>
                 </ul>
             </li>

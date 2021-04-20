@@ -17,6 +17,7 @@
     <!-- Bootstrap Core Css -->
     <link href="{{ asset('backend/plugins/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
+   
     <!-- Waves Effect Css -->
     <link href="{{ asset('backend/plugins/node-waves/waves.css') }}" rel="stylesheet" />
 
@@ -226,7 +227,11 @@
     <section class="content">
       @yield('content')
     </section>
+    <!-- Moment Plugin Js -->
+    <script src="{{ asset('backend/plugins/momentjs/moment.js') }}"></script>
 
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="{{ asset('backend/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
     <!-- Jquery Core Js -->
     <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
 

@@ -15,16 +15,16 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
-            $table->string('seller_id');
-            $table->string('seller_name');
-            $table->string('seller_address');
-            $table->string('seller_website');
-            $table->string('seller_telephone');
-            $table->string('seller_email');
-            $table->string('sr_name');
-            $table->string('sr_email');
-            $table->string('sr_phone');
-            $table->date('passport_expire_date')->nullable();
+            $table->string('seller_id');//
+            $table->string('seller_name');//
+            $table->string('seller_address');//
+            $table->string('seller_website');//
+            $table->string('seller_telephone');//
+            $table->string('seller_email');//
+            $table->string('sr_name');//
+            $table->string('sr_email');//
+            $table->string('sr_phone');//
+            $table->date('passport_expire_date')->nullable();//
             $table->string('sr_image');
             $table->timestamps();
         });
