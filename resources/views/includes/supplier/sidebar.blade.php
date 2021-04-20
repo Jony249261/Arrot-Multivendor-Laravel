@@ -67,6 +67,21 @@
                 </ul>
             </li>
             <li>
+                <li class="@yield('seller')">
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">control_point</i>
+                    <span>Seller</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="">Seller List</a>
+                    </li>
+                    <li>
+                        <a href="">Seller create</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">swap_calls</i>
                     <span>User Interface (UI)</span>
