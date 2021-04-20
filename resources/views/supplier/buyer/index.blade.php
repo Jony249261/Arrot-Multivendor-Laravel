@@ -1,13 +1,11 @@
 @extends('layouts.supplier-app')
 @section('page-styles')
-   @endsection
-
-
+@endsection
 @section('buyer','active')
 @section('buyer-index','active')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" xmlns="">
 
         <!-- Widgets -->
 
@@ -68,7 +66,13 @@
 
                                                 <td>
                                                     <a href="" class="btn btn-success"> <i class="material-icons">edit</i></a>
-                                                    <a href="{{route('supplier.buyer.delete',$user->id)}}" class="btn btn-danger" onClick="confirm('Are You Sure to delete ?')" > <i class="material-icons">delete</i></a>
+
+
+                                                    <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
+                                                        @csrf
+                                                        <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
+                                                    </form>
+
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -101,6 +105,31 @@
             <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
 
             <script src="{{asset('backend/js/pages/tables/jquery-datatable.js')}}"></script>
+
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+    <script>
+            $('.delete-confirm').click(function(event) {
+            var form =  $(this).closest("form");
+            var id = $(this).data("name");
+            event.preventDefault();
+            swal({
+            title: `Are you sure you want to delete ${name}?`,
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+            form.submit();
+            }
+            });
+            });
+    </script>
 
 @endsection
 

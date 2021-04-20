@@ -42,11 +42,11 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/buyer/index','Supplier\BuyerController@index')->name('supplier.buyer.index');
     Route::get('/buyer/create','Supplier\BuyerController@create')->name('supplier.buyer.create');
     Route::post('/buyer/store','Supplier\BuyerController@store')->name('supplier.buyer.store');
-
+    Route::post('/buyer/delete/{id}','Supplier\BuyerController@delete')->name('supplier.buyer.delete');
     //products route
     Route::resource('/products','Supplier\ProductController');
 
-    //Supplier seller route 
+    //Supplier seller route
 
     Route::get('/seller/index','Supplier\SellerController@index')->name('supplier.seller.index');
     Route::get('/seller/create','Supplier\SellerController@create')->name('supplier.seller.create');
