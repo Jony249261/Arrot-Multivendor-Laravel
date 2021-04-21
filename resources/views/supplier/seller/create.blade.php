@@ -1,4 +1,11 @@
 @extends('layouts.supplier-app')
+
+@section('page-styles')
+
+
+
+@endsection
+
 @section('seller','active')
 @section('seller-create','active')
 
@@ -42,7 +49,7 @@
                                                 <strong>{{ $message }}</strong>
                                         </span>
                                             @enderror
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -79,8 +86,10 @@
                                 <div class="col-sm-6">
                                     <div class="form-group form-float">
                                         <div class="">
+
                                             <label class="form-label">Enter Passport Expire Date</label>
                                             <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
+
 
                                         </div>
                                     </div>
@@ -117,7 +126,7 @@
                                     <div class="form-line">
                                         <label class="form-label">Seller Phone Number</label>
                                         <input type="number" class="form-control" name="sr_phone" required>
-                                        
+
                                     </div>
                                 </div>
                                 </div>
@@ -126,7 +135,7 @@
                                     <div class="">
                                         <label class="form-label">Seller Representive Image</label>
                                         <input type="file" class="form-control" name="sr_image" required>
-                                        
+
                                     </div>
                                 </div>
                                 </div>
@@ -155,4 +164,4 @@
 
         </div>
     </div>
-@endsection
+
