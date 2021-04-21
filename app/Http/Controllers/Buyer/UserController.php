@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Supplier;
+namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Image;
 
-class Usercontroller extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class Usercontroller extends Controller
      */
     public function index()
     {
-        $users = User::where('role','support')->latest()->paginate(10);
-        return view('supplier.user.index',compact('users'));
+        $users = User::where('parent_id',auth()->user()->id)->latest()->paginate(15);
+        return view('buyer.user.index',compact('users'));
     }
 
     /**
@@ -29,7 +29,7 @@ class Usercontroller extends Controller
      */
     public function create()
     {
-        return view('supplier.user.create');
+        return view('buyer.user.create');
     }
 
     /**
@@ -45,10 +45,11 @@ class Usercontroller extends Controller
             'email' => 'required|string|email|unique:users',
             'phone' => 'sometimes|nullable',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'role' => 'required|string'
         ]);
-        $data['role'] = 'support';
         $data['password'] = Hash::make($data['password']);
+        $data['parent_id'] = auth()->user()->id;
         if($request->has('image')){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -57,9 +58,8 @@ class Usercontroller extends Controller
         }
         User::create($data);
 
-        Session::flash('success','Suport user created successfully!');
-        return redirect()->route('users.index');
-
+        Session::flash('success','Buyer user created successfully!');
+        return redirect()->route('buyer-users.index');
     }
 
     /**
@@ -91,7 +91,7 @@ class Usercontroller extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('supplier.user.edit',compact('user'));
+        return view('buyer.user.edit',compact('user'));
     }
 
     /**
@@ -109,9 +109,10 @@ class Usercontroller extends Controller
             'email' => 'required|string|email|unique:users,email,'.$user->id,
             'phone' => 'sometimes|nullable',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
-            'password' => 'sometimes|nullable|confirmed|min:6'
+            'password' => 'sometimes|nullable|confirmed|min:6',
+            'role' => 'required|string'
         ]);
-        $data['role'] = 'support';
+        $data['parent_id'] = auth()->user()->id;
         if($request->has('password')) $data['password'] = Hash::make($data['password']);
 
         $path = 'users/'.$user->image;
@@ -127,13 +128,7 @@ class Usercontroller extends Controller
         $user->update($data);
 
         Session::flash('success','Suport user created successfully!');
-        return redirect()->route('users.index');
-    }
-
-    public function active($id)
-    {
-        $user = User::findOrFail($id);
-        dd($user);
+        return redirect()->route('buyer-users.index');
     }
 
     /**

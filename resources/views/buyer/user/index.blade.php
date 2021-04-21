@@ -1,6 +1,7 @@
-@extends('layouts.supplier-app')
+@extends('layouts.buyer-app')
 
-@section('user', 'active')
+@section('buyer-user', 'active')
+@section('buyer-user-index', 'active')
 @section('title', 'Support user')
 
 @section('content')
@@ -8,7 +9,7 @@
     <div class="container-fluid">
         <div class="block-header">
             <h2>
-                Support user
+                Buyer user
 
             </h2>
             
@@ -37,6 +38,7 @@
                                         <th>{{ __('Image') }}</th>
                                         <th>{{ __('Email') }}</th>
                                         <th>{{ __('Phone') }}</th>
+                                        <th>{{ __('Role') }}</th>
                                         <th>{{ __('Status') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
@@ -52,6 +54,9 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>
+                                                <span class="badge badge-info">{{ ucfirst($user->role) }}</span>
+                                            </td>
+                                            <td>
                                                 @if($user->is_verified == 1) 
                                                 <span class="badge badge-primary">Active</span>
                                                 @else
@@ -61,23 +66,23 @@
                                             
                                            
                                             <td>
-                                                @if(auth()->user()->role != 'support')
+                                                
                                                 <div class="icon-button-demo">
-                                                    <a href="{{ route('users.edit',$user->id) }}" class="btn btn-info waves-effect" style="float: left">
+                                                    <a href="{{ route('buyer-users.edit',$user->id) }}" class="btn btn-info waves-effect" style="float: left">
                                                         <i class="material-icons">edit</i>
                                                     </a>
                                                     @if($user->is_verified == 1)
-                                                    <a href="{{ route('users.show',$user->id) }}" class="btn btn-danger waves-effect" title="Inactive" style="float: left">
+                                                    <a href="{{ route('buyer-users.show',$user->id) }}" class="btn btn-danger waves-effect" title="Inactive" style="float: left">
                                                         <i class="material-icons">visibility_off</i>
                                                     </a>
                                                     @else
-                                                    <a href="{{ route('users.show',$user->id) }}" class="btn btn-success waves-effect" title="Active" style="float: left">
+                                                    <a href="{{ route('buyer-users.show',$user->id) }}" class="btn btn-success waves-effect" title="Active" style="float: left">
                                                         <i class="material-icons">visibility</i>
                                                     </a>
                                                     @endif
 
                                                 </div>
-                                                @endif
+                                               
                                               
                                             </td>
                                         </tr>

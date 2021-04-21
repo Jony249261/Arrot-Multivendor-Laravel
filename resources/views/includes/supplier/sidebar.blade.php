@@ -89,7 +89,7 @@
             <li class="@yield('user')">
                 <a href="{{route('users.index')}}">
                     <i class="material-icons">group_add</i>
-                    <span>User</span>
+                    <span>Support User</span>
                 </a>
             </li>
         </ul>

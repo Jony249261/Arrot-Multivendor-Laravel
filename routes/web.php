@@ -70,10 +70,15 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
 
 //buyer route
 Route::prefix('buyer')->middleware('buyer')->group(function(){
+    //all Buyer route will gose here
     Route::get('/','Buyer\BuyerController@index')->name('buyer.index');
 
+    //order
+    Route::resource('/orders', 'Buyer\OrderController');
 
-    //all Buyer route will gose here
+    //buyer user
+    Route::resource('/buyer-users', 'Buyer\UserController');
+
 
 });
 
