@@ -78,27 +78,6 @@
                                         <label class="form-label">Enter Seller Website</label>
                                     </div>
                                 </div>
-
-<<<<<<< HEAD
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text"  class=" form-control @error('Seller_passport') is-invalid @enderror" value="{{old('Seller_passport')}}" name="Seller_passport" required>
-                                        @error('Seller_passport')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <label class="form-label"> Seller Passport Number</label>
-=======
-                                            <label class="form-label">Enter Passport Expire Date</label>
-                                            <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
-
-
-                                        </div>
->>>>>>> c8ac1737108f7d72333e4434d1a046195ff3caab
-                                    </div>
-                                </div>
-
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
@@ -133,7 +112,31 @@
 
                             </div>
 
+
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number"  class=" form-control @error('seller_nid') is-invalid @enderror"  value="{{old('seller_nid')}}" name="seller_nid" required>
+                                        @error('seller_nid')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <label class="form-label">Enter Seller NID Number</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text"  class=" form-control @error('seller_passport') is-invalid @enderror"  value="{{old('seller_passport')}}" name="seller_passport" >
+                                        @error('seller_passport')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <label class="form-label">Enter Seller passport </label>
+                                    </div>
+                                </div>
                                 <div class="form-group from-float">
                                     <div class="">
                                         <label class="form-label">Enter Passport Expire Date</label>
@@ -145,35 +148,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number"  class=" form-control @error('seller_nid') is-invalid @enderror"  value="{{old('seller_nid')}}" name="seller_nid" required>
-                                        @error('seller_nid')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <label class="form-label">Enter Buyer NID Number</label>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group form-float">
-
-                                    <div class="form-line">
-                                        <input type="date" class=" form-control @error('expire_date') is-invalid @enderror" value="{{old('expire_date')}}" name="expire_date"  required>
-
-                                        @error('expire_date')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <label class="form-label">Trade Licence Expire date</label>
-
-                                    </div>
-
-
-                                </div>
                                 <div class="header bg-red">
 
                                     <h2 class="text-center">Representative Information</h2>
@@ -182,7 +156,7 @@
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('sr_name') is-invalid @enderror" value="{{ old('br_name') }}" name="br_name" >
+                                        <input type="text" class="form-control @error('sr_name') is-invalid @enderror" value="{{ old('sr_name') }}" name="sr_name" >
                                         <label class="form-label">Seller Representative name</label>
                                     </div>
                                 </div>
@@ -194,7 +168,7 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="number" class="form-control @error('sr_phone') is-invalid @enderror" value="{{ old('br_phone') }}" name="br_phone">
+                                        <input type="number" class="form-control @error('sr_phone') is-invalid @enderror" value="{{ old('sr_phone') }}" name="sr_phone">
                                         <label class="form-label">Seller Representative Phone</label>
                                     </div>
                                 </div>
@@ -221,12 +195,7 @@
             </div>
 
         </div>
-<<<<<<< HEAD
-@endsection
-=======
 
-        
-    </div>
-    @endsection
->>>>>>> c8ac1737108f7d72333e4434d1a046195ff3caab
+@endsection
+
 

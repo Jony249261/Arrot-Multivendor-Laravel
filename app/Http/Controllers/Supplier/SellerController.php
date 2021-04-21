@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Supplier;
 
 use App\Buyer;
+use App\Seller;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
-use App\Http\Middleware\Seller;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Image;
 
 class SellerController extends Controller
 {
     public  function index(){
-        return view('supplier.seller.index');
+        $users=User::where('role','seller')->get();
+        return view('supplier.seller.index',compact('users'));
     }
     public  function  create(){
         return view('supplier.seller.create');
@@ -23,7 +25,7 @@ class SellerController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'required|numeric',
             'email' => 'required|email|max:255|unique:users',
-            'role' => 'required|nullable|required|string',
+            'role' => 'sometimes|nullable|required|string',
             'status_id' => 'sometimes|nullable',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'seller_address'=>'required|string|max:255',
@@ -38,6 +40,8 @@ class SellerController extends Controller
             'sr_image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
 
+//        dd($request->all());
+
         $image=$request->file('image');
         $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(270,270)->save('image_seller/user/'.$name_gen);
@@ -51,14 +55,17 @@ class SellerController extends Controller
         $user=new User();
         $seller_id=Helper::IDGenerator(new User,'seller_id',3,'SELLER');
         $user->seller_id =$seller_id;
-        $user -> name = $request -> name;
+        $user -> name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->role = 'seller';
         $user->image = $img_url;
         $user->password=bcrypt($request->password);
+
         $user->save();
-        $seller=new Seller();
+
+
+        $seller = new Seller();
         $seller->seller_id=$seller_id;
         $seller->seller_name=$request->name;
         $seller->seller_address=$request->seller_address;
@@ -69,17 +76,30 @@ class SellerController extends Controller
         $seller->seller_nid=$request->seller_nid;
         $seller->passport_expire_date=$request->passport_expire_date;
         $seller->user_id=$user->id;
-        $seller->image=$img_url;
+
         $seller->sr_image=$img_url2;
-        $seller->br_name=$request->br_name;
-        $seller->br_phone=$request->br_phone;
-        $seller->br_email=$request->br_email;
+        $seller->sr_name=$request->sr_name;
+        $seller->sr_phone=$request->sr_phone;
+        $seller->sr_email=$request->sr_email;
         $seller->save();
-        Session::flash('success','Seller Created  successfully!!');
-        return redirect()->route('supplier.buyer.index');
+        Session::flash('success','Buyer Created  successfully!!');
+        return redirect()->route('supplier.seller.index');
 
 
 
+    }
+    public  function  delete($id){
+        $user=User::findOrFail($id);
+        $seller=Seller::where('user_id',$id)->first();
+        $image='image_seller/user/'.$user->image;
+        $sr_image='image_seller/user/'.$seller->sr_image;
+        unlink($image);
+        unlink($sr_image);
+
+        $user->delete();
+        $seller->delete();
+        Session::flash('success','Buyer Deleted successfully!!');
+        return redirect()->back();
 
     }
 }

@@ -52,6 +52,7 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/seller/index','Supplier\SellerController@index')->name('supplier.seller.index');
     Route::get('/seller/create','Supplier\SellerController@create')->name('supplier.seller.create');
     Route::post('/seller/store','Supplier\SellerController@store')->name('supplier.seller.store');
+    Route::post('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
 
 
 
