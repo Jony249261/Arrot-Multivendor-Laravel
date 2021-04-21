@@ -1,6 +1,8 @@
 @extends('layouts.supplier-app')
+
 @section('page-styles')
 @endsection
+
 @section('seller','active')
 @section('seller-create','active')
 
@@ -77,6 +79,7 @@
                                     </div>
                                 </div>
 
+<<<<<<< HEAD
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text"  class=" form-control @error('Seller_passport') is-invalid @enderror" value="{{old('Seller_passport')}}" name="Seller_passport" required>
@@ -86,6 +89,13 @@
                                             </span>
                                         @enderror
                                         <label class="form-label"> Seller Passport Number</label>
+=======
+                                            <label class="form-label">Enter Passport Expire Date</label>
+                                            <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
+
+
+                                        </div>
+>>>>>>> c8ac1737108f7d72333e4434d1a046195ff3caab
                                     </div>
                                 </div>
 
@@ -211,5 +221,12 @@
             </div>
 
         </div>
+<<<<<<< HEAD
 @endsection
+=======
+
+        
+    </div>
+    @endsection
+>>>>>>> c8ac1737108f7d72333e4434d1a046195ff3caab
 

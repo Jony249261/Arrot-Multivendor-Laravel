@@ -1,8 +1,4 @@
 @extends('layouts.supplier-app')
-
-
-
-
 @section('seller','active')
 @section('all-seller','active')
 
