@@ -37,8 +37,9 @@
                                         <th>{{ __('Product Name') }}</th>
                                         <th>{{ __('Unit') }}</th>
                                         <th>{{ __('Type') }}</th>
-                                        <th>{{ __('Purchase Rate') }}</th>
-                                        <th>{{ __('Sales Rate') }}</th>
+                                        {{-- <th>{{ __('Purchase Rate') }}</th>
+                                        <th>{{ __('Today Price') }}</th>
+                                        <th>{{ __('Previous Price') }}</th> --}}
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
@@ -53,15 +54,42 @@
                                             <td>{{ $product->product_name }}</td>
                                             <td>{{ ucfirst($product->unit->name) }}</td>
                                             <td>{{ ucfirst($product->product_type) }}</td>
-                                            {{-- @foreach ($product->productPrices->latest('updated_at')->get() as $price)
+                                            
+                                            {{-- @foreach (App\ProductPrice::where('updated_date',date('Y-m-d'))->where('product_id',$product->id)->get() as $price)
                                             <td>{{ number_format($price->purchase_rate,2) }}</td>
-                                            <td>{{ number_format($price->sales_rate,2) }}</td>
-                                            @endforeach --}}
                                             <td>
-                                                <div class="btn-group">
-                                                    <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info">Edit</a>
-                                                    <a href="" class="btn btn-danger">Delete</a>
+                                                @php
+                                                    $today_price = App\ProductPrice::where('updated_date',date('Y-m-d'))->where('product_id',$product->id)->first();
+                                                    dd($today_price->sales_rate);
+                                                @endphp 
+                                                 {{ $today_price->sales_rate }}
+                                            </td> 
+                                             @endforeach --}}
+                                            <td>
+                                                <div class="icon-button-demo">
+                                                    <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info waves-effect" style="float: left">
+                                                        <i class="material-icons">edit</i>
+                                                    </a>
+                                                    @if(auth()->user()->role != 'support')
+                                                    <form action="{{ route('products.destroy',$product->id) }}" onsubmit="return confirm('Are you sure?')" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+    
+                                                        <button type="submit" class="btn btn-danger waves-effect" style="float: left;margin-left:5px">
+                                                            <i class="material-icons">delete_forever</i>
+                                                        </button>
+                                                    </form>
+                                                    @endif
                                                 </div>
+                                                {{-- <div class="btn-group">
+                                                    <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info">Edit</a>
+                                                    <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-danger float-left">Delete</button>
+                                                    </form>
+                                                </div> --}}
                                             </td>
                                         </tr>
                                     @empty
