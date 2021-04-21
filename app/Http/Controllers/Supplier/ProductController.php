@@ -9,6 +9,7 @@ use App\Unit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use App\Helpers\Helper;
 use Image;
 
 class ProductController extends Controller
@@ -55,9 +56,9 @@ class ProductController extends Controller
             'unit_id' => 'required|numeric',
             'product_type' => 'required|string',
         ]);
-        $data['product_id'] = '0001';
         $product = new Product();
-        $product->product_id = $data['product_id'];
+        $product_id = Helper::IDGenerator(new Product,'product_id',3,$data['product_type']);
+        $product->product_id = $product_id;
         $product->product_name = $data['product_name'];
         $product->product_description = $data['description'];
         $product->unit_id = $data['unit_id'];
@@ -130,7 +131,11 @@ class ProductController extends Controller
         $product->product_description = $data['description'];
         $product->unit_id = $data['unit_id'];
         $product->product_type = $data['product_type'];
+        $path = 'products/'.$product->image;
         if($request->has('image')){
+            if(file_exists(public_path($path))){
+                unlink($path);
+            }
             $image = $request->file('image');
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(270,270)->save('products/'.$name_gen);
