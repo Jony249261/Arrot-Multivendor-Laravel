@@ -38,5 +38,11 @@ class Supplier
             return $next($request);
 
         }
+
+         //        role 4==supplier
+        if (Auth::user()->role=='supplier'){
+            return $next($request);
+
+        }
     }
 }
