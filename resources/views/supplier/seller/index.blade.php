@@ -34,18 +34,7 @@
                                         <th>Action</th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Image</th>
-                                        <th>Phone</th>
-                                        <th>Action</th>
-                                    </tr>
-
-                                    </tfoot>
+                                    
                                     <tbody>
                                     @foreach($users as $key=>$user)
                                         <tr>
@@ -57,10 +46,12 @@
 
                                             <td>
                                                 <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
+                                                @if(auth()->user()->role != 'support')
                                                 <form action="{{ route('supplier.seller.delete',$user->id) }}" method="post">
                                                     @csrf
                                                     <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
                                                 </form>
+                                                @endif
 
                                             </td>
                                         </tr>

@@ -70,7 +70,7 @@
                                                     <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info waves-effect" style="float: left">
                                                         <i class="material-icons">edit</i>
                                                     </a>
-
+                                                    @if(auth()->user()->role != 'support')
                                                     <form action="{{ route('products.destroy',$product->id) }}" onsubmit="return confirm('Are you sure?')" method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -79,7 +79,7 @@
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
                                                     </form>
-
+                                                    @endif
                                                 </div>
                                                 {{-- <div class="btn-group">
                                                     <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info">Edit</a>
