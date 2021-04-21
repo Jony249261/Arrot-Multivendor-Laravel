@@ -1,258 +1,112 @@
 @extends('layouts.supplier-app')
 
-@section('page-styles')
-
-
-    <!-- JQuery DataTable Css -->
-    <link href="{{asset('backend/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
-
-@endsection
-
-
-@section('seller','active')
-@section('all-seller','active')
-
+@section('buyer','active')
+@section('buyer-index','active')
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" xmlns="">
 
         <!-- Widgets -->
 
-                <div class="body">
-                    <div class="row clearfix">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="card">
-                                <div class="header">
-                                    <h2>
-                                        BASIC EXAMPLE
-                                    </h2>
-                                    <ul class="header-dropdown m-r--5">
-                                        <li class="dropdown">
-                                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                                <i class="material-icons">more_vert</i>
-                                            </a>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li><a href="javascript:void(0);">Action</a></li>
-                                                <li><a href="javascript:void(0);">Another action</a></li>
-                                                <li><a href="javascript:void(0);">Something else here</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                            <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                            </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                            </tfoot>
-                                            <tbody>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td>$320,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Garrett Winters</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>63</td>
-                                                <td>2011/07/25</td>
-                                                <td>$170,750</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ashton Cox</td>
-                                                <td>Junior Technical Author</td>
-                                                <td>San Francisco</td>
-                                                <td>66</td>
-                                                <td>2009/01/12</td>
-                                                <td>$86,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Cedric Kelly</td>
-                                                <td>Senior Javascript Developer</td>
-                                                <td>Edinburgh</td>
-                                                <td>22</td>
-                                                <td>2012/03/29</td>
-                                                <td>$433,060</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Airi Satou</td>
-                                                <td>Accountant</td>
-                                                <td>Tokyo</td>
-                                                <td>33</td>
-                                                <td>2008/11/28</td>
-                                                <td>$162,700</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Brielle Williamson</td>
-                                                <td>Integration Specialist</td>
-                                                <td>New York</td>
-                                                <td>61</td>
-                                                <td>2012/12/02</td>
-                                                <td>$372,000</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Herrod Chandler</td>
-                                                <td>Sales Assistant</td>
-                                                <td>San Francisco</td>
-                                                <td>59</td>
-                                                <td>2012/08/06</td>
-                                                <td>$137,500</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Rhona Davidson</td>
-                                                <td>Integration Specialist</td>
-                                                <td>Tokyo</td>
-                                                <td>55</td>
-                                                <td>2010/10/14</td>
-                                                <td>$327,900</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Colleen Hurst</td>
-                                                <td>Javascript Developer</td>
-                                                <td>San Francisco</td>
-                                                <td>39</td>
-                                                <td>2009/09/15</td>
-                                                <td>$205,500</td>
-                                            </tr>
+        <div class="body">
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header bg-red ">
+                            <h2>
+                                All Buyer List
+
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <a href="{{ route('products.create') }}" class="btn btn-success"><i class="material-icons">local_hospital
+                                    </i></a>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Image</th>
+                                        <th>Phone</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Image</th>
+                                        <th>Phone</th>
+                                        <th>Action</th>
+                                    </tr>
+
+                                    </tfoot>
+                                    <tbody>
+                                    @foreach($users as $key=>$user)
+                                        <tr>
+                                            <td>{{$user->seller_id}}</td>
+                                            <td>{{$user->name}}</td>
+                                            <td>{{$user->email}}</td>
+                                            <td><img src="{{asset('image_seller/user/'.$user->image)}}" alt="" height="75px" width="75px"></td>
+                                            <td>{{$user->phone}}</td>
+
+                                            <td>
+                                                <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
+                                                <form action="{{ route('supplier.seller.delete',$user->id) }}" method="post">
+                                                    @csrf
+                                                    <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    @endforeach
 
 
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-
                 </div>
+            </div>
+
+        </div>
 
 
-@endsection
+        @endsection
 
-@section('page-scripts')
-               <!-- Jquery Core Js -->
-    <script src="{{asset('backend')}}/plugins/jquery/jquery.min.js"></script>
+        @section('page-scripts')
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+            <script>
+                $('.delete-confirm').click(function(event) {
+                    var form =  $(this).closest("form");
+                    var id = $(this).data("name");
+                    event.preventDefault();
+                    swal({
+                        title: `Are you sure you want to delete ${name}?`,
+                        text: "If you delete this, it will be gone forever.",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                form.submit();
+                            }
+                        });
+                });
+            </script>
 
 
-
-    <!-- Jquery DataTable Plugin Js -->
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="{{asset('backend')}}/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
-    <!-- Custom Js -->
-    <script src="{{asset('backend')}}/js/admin.js"></script>
-    <script src="{{asset('backend')}}/js/pages/tables/jquery-datatable.js"></script>
-
-
-            
 @endsection
 
 

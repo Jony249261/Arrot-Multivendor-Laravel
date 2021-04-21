@@ -18,9 +18,12 @@ class BuyerController extends Controller
         $users=User::where('role','buyer')->get();
         return view('supplier.buyer.index',compact('users'));
     }
+    //Buyer Created Code
     public  function  create(){
         return view('supplier.buyer.create');
     }
+
+    //Buyer Store Code
     public  function  store(Request $request){
         $request->validate([
             'name' => 'required|string|max:255',
@@ -100,13 +103,39 @@ class BuyerController extends Controller
         $buyer->br_name=$request->br_name;
         $buyer->br_phone=$request->br_phone;
         $buyer->br_email=$request->br_email;
-
         $buyer->save();
-
         Session::flash('success','Buyer Created  successfully!!');
+        return redirect()->route('supplier.buyer.index');
+
+
+
+    }
+
+//    Buyer deleted Code
+    public  function  delete($id){
+        $user=User::findOrFail($id);
+
+
+        $buyer=Buyer::where('user_id',$id)->first();
+        $image='image_buyer/user/'.$user->image;
+        $br_image='image_buyer/user/'.$buyer->br_image;
+        $trade_license='image_buyer/user/'.$buyer->trade_license;
+        $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
+        unlink($image);
+        unlink($br_image);
+        unlink($buyer_logo);
+        unlink($trade_license);
+        $user->delete();
+        $buyer->delete();
+        Session::flash('success','Buyer Deleted successfully!!');
         return redirect()->back();
+    }
 
+    public function edit($id){
+        $user = User::find($id);
 
-
+        $buyer=Buyer::where('user_id',$id)->first();
+        
+            return view('supplier.buyer.edit',compact('buyer','user'));
     }
 }

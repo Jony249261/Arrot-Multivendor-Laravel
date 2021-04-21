@@ -42,7 +42,8 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/buyer/index','Supplier\BuyerController@index')->name('supplier.buyer.index');
     Route::get('/buyer/create','Supplier\BuyerController@create')->name('supplier.buyer.create');
     Route::post('/buyer/store','Supplier\BuyerController@store')->name('supplier.buyer.store');
-
+    Route::post('/buyer/delete/{id}','Supplier\BuyerController@delete')->name('supplier.buyer.delete');
+    Route::get('/buyer/edit/{id}','Supplier\BuyerController@edit')->name('supplier.buyer.edit');
     //products route
     Route::resource('/products','Supplier\ProductController');
 
@@ -50,10 +51,12 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::resource('/users', 'Supplier\UserController');
 
     //Supplier seller route 
+    //Supplier seller route
 
     Route::get('/seller/index','Supplier\SellerController@index')->name('supplier.seller.index');
     Route::get('/seller/create','Supplier\SellerController@create')->name('supplier.seller.create');
     Route::post('/seller/store','Supplier\SellerController@store')->name('supplier.seller.store');
+    Route::post('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
 
 
 
