@@ -64,6 +64,9 @@
                     <li>
                         <a href="{{ route('products.create') }}">Product create</a>
                     </li>
+                    <li class="@yield('unit')">
+                        <a href="{{ route('unit.index') }}">Product Unit</a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -82,7 +85,7 @@
                     </li>
                 </ul>
             </li>
-            
+
             <li class="@yield('user')">
                 <a href="{{route('users.index')}}">
                     <i class="material-icons">group_add</i>
