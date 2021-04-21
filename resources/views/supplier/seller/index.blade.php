@@ -16,9 +16,15 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="card">
                                 <div class="header">
-                                    <h2>
-                                        BASIC EXAMPLE
-                                    </h2>
+                                    <div class="header bg-orange text-center">
+                                        <h2>
+                                            ALL PRODUCT
+
+                                        </h2>
+                                        <ul class="header-dropdown m-r--5">
+                                            <a href="{{ route('products.create') }}" class="btn btn-default">Create</a>
+                                        </ul>
+                                    </div>
                                     <ul class="header-dropdown m-r--5">
                                         <li class="dropdown">
                                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
