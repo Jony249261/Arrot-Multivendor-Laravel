@@ -36,10 +36,7 @@ class Admin
         if (Auth::user()->role=='supplier'){
             return redirect()->route('supplier.index');
         }
-        //role =support
-        if(Auth::user()->role == 'support'){
-            return redirect()->route('supplier.index');
-        }
+        
         //        role 2==buyer
         if (Auth::user()->role=='procurement'){
             return redirect()->route('buyer.index');

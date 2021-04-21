@@ -34,7 +34,7 @@ class Supplier
         }
 
         //        role 4==supplier
-        if (Auth::user()->role=='supplier' || auth()->user()->role == 'support'){
+        if (Auth::user()->role=='supplier'){
             return $next($request);
 
         }
