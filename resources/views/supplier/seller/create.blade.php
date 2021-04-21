@@ -1,8 +1,5 @@
 @extends('layouts.supplier-app')
 @section('page-styles')
-
-
-
 @endsection
 @section('seller','active')
 @section('seller-create','active')
@@ -13,150 +10,206 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                 <div class="header bg-red">
+                <div class="header bg-red">
 
                     <h2 class="text-center">Create Seller</h2>
 
                 </div>
                 <div class="body">
-
-                        <form id="form_validation"  method="POST" enctype="multipart/form-data" action="{{route('supplier.seller.store')}}">
+                    <div class="row">
+                        <form id="form_validation" action="{{route('supplier.seller.store')}}"  method="POST" enctype="multipart/form-data">
                             @csrf
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
-                            <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <input type="text"  class="form-control @error('seller_name') is-invalid @enderror" name="seller_name" required>
-                                            @error('seller_name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                        </span>
-                                            @enderror
-                                            <label class="form-label">Enter Name</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="form-line">
-                                            <label class="form-label">Enter Phone Number</label>
-                                            <input type="number"  class="form-control @error('seller_telephone') is-invalid @enderror" name="seller_telephone" required>
-                                            @error('seller_telephone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                        </span>
-                                            @enderror
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
+                                <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="email" class="form-control @error('seller_email') is-invalid @enderror" name="seller_email" required>
-                                        @error('seller_email')
+                                        <input type="text"  class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"  name="name" required>
+                                        @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                        </span>
                                         @enderror
-                                        <label class="form-label">Enter Email</label>
+                                        <label class="form-label">Enter Name</label>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="seller_address" required>
-
+                                        <input type="number"  class="form-control @error('phone') is-invalid @enderror"  value="{{ old('phone') }}" name="phone" required>
+                                        @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                       </span>
+                                        @enderror
+                                        <label class="form-label">Enter Phone Number</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"  value="{{ old('email') }}" name="email" required>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                       </span>
+                                        @enderror
+                                        <label class="form-label">Enter Seller Email</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control @error('seller_address') is-invalid @enderror"  value="{{ old('seller_address') }}" name="seller_address" required>
+                                        @error('seller_address')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                       </span>
+                                        @enderror
                                         <label class="form-label">Enter Seller Address</label>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
+                                <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="seller_website" required>
+                                        <input type="text" class="form-control @error('seller_website') is-invalid @enderror" value="{{old('seller_website')}}" name="seller_website" required>
+                                        @error('seller_website')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <label class="form-label">Enter Seller Website</label>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                        <div class="">
 
-                                        </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text"  class=" form-control @error('Seller_passport') is-invalid @enderror" value="{{old('Seller_passport')}}" name="Seller_passport" required>
+                                        @error('Seller_passport')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <label class="form-label"> Seller Passport Number</label>
                                     </div>
                                 </div>
+
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                       </span>
+                                        @enderror
+                                        <label class="form-label">Password</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <label class="form-label">Enter Confirm Password</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+
+                                    <label class="form-label">Enter Seller Image</label>
+                                    <input type="file" class=" @error('image') is-invalid @enderror" value="{{old('image')}}" name="image"  required>
+                                    @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+
+
+                                </div>
+
+
                             </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <div class="header bg-red">
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group from-float">
+                                    <div class="">
+                                        <label class="form-label">Enter Passport Expire Date</label>
+                                        <input type="date" class=" form-control @error('passport_expire_date') is-invalid @enderror" name="passport_expire_date" value="{{old('passport_expire_date')}}" placeholder="Please choose a date...">
+                                        @error('passport_expire_date')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number"  class=" form-control @error('seller_nid') is-invalid @enderror"  value="{{old('seller_nid')}}" name="seller_nid" required>
+                                        @error('seller_nid')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <label class="form-label">Enter Buyer NID Number</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group form-float">
+
+                                    <div class="form-line">
+                                        <input type="date" class=" form-control @error('expire_date') is-invalid @enderror" value="{{old('expire_date')}}" name="expire_date"  required>
+
+                                        @error('expire_date')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        <label class="form-label">Trade Licence Expire date</label>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="header bg-red">
 
                                     <h2 class="text-center">Representative Information</h2>
 
                                 </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-sm-6">
-                                        <div class="form-group form-float">
+
+                                <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="sr_name" required>
-                                        <label class="form-label">Seller Representive Name</label>
+                                        <input type="text" class="form-control @error('sr_name') is-invalid @enderror" value="{{ old('br_name') }}" name="br_name" >
+                                        <label class="form-label">Seller Representative name</label>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
+                                <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="email" class="form-control" name="sr_email" required>
-                                        <label class="form-label">Seller Representive  Email</label>
+                                        <input type="email" class="form-control @error('sr_email') is-invalid @enderror" value="{{ old('sr_email') }}" name="sr_email" >
+                                        <label class="form-label">Seller Representative Email</label>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
+                                <div class="form-group form-float">
                                     <div class="form-line">
-                                        <label class="form-label">Seller Phone Number</label>
-                                        <input type="number" class="form-control" name="sr_phone" required>
-
+                                        <input type="number" class="form-control @error('sr_phone') is-invalid @enderror" value="{{ old('br_phone') }}" name="br_phone">
+                                        <label class="form-label">Seller Representative Phone</label>
                                     </div>
                                 </div>
+                                <div class="form-group form-float">
+
+                                    <label class="form-label">Enter Seller Representative Image</label>
+                                    <input type="file" class=" @error('sr_image') is-invalid @enderror" value="{{old('sr_image')}}" name="sr_image" >
+                                    @error('sr_image')
+                                    <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                    @enderror
+
+
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group form-float">
-                                    <div class="">
-                                        <label class="form-label">Seller Representive Image</label>
-                                        <input type="file" class="form-control" name="sr_image" required>
-
-                                    </div>
-                                </div>
-                                </div>
-
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
                                 <button class="btn btn-success waves-effect" type="submit">Create Seller</button>
 
-
+                            </div>
                         </form>
-
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-    </div>
 @endsection
 
