@@ -45,7 +45,7 @@ class LoginController extends Controller
                 $this->redirectTo='/seller';
                 return $this->redirectTo;
                 break;
-            case 'supplier':
+            case 'supplier': case  'support':
                 $this->redirectTo='/supplier';
                 return $this->redirectTo;
                 break;
