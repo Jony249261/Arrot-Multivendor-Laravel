@@ -267,20 +267,4 @@
 @endsection
 
 
-<<<<<<< HEAD
-@section('page-scripts')
-        <!-- Jquery Core Js -->
-    <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Autosize Plugin Js -->
-    <script src="{{ asset('backend/plugins/autosize/autosize.js') }}"></script>
-    <!-- Bootstrap Material Datetime Picker Plugin Js -->
-    <script src="{{ asset('backend/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
-    <!-- Custom Js -->
-    <script src="{{ asset('backend/js/admin.js') }}"></script>
-    <script src="{{ asset('backend/js/pages/forms/basic-form-elements.js') }}"></script>
 
-
-@endsection
-
-=======
->>>>>>> 01d3b275aafb1158063e723173b1bf9dd01c86c0

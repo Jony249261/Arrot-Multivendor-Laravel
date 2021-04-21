@@ -21,11 +21,15 @@ class CreateSellersTable extends Migration
             $table->string('seller_website');//
             $table->string('seller_telephone');//
             $table->string('seller_email');//
+            $table->string('Seller_passport')->nullable();//
+            $table->string('seller_nid');//
+            $table->string('image');//
             $table->string('sr_name');//
             $table->string('sr_email');//
             $table->string('sr_phone');//
             $table->date('passport_expire_date')->nullable();//
             $table->string('sr_image');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
