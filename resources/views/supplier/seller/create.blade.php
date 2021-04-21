@@ -1,15 +1,4 @@
 @extends('layouts.supplier-app')
-@section('page-styles')
-
-
-    <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="{{ asset('backend/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
-
-    <!-- Custom Css -->
-    <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
-
-
-@endsection
 @section('seller','active')
 @section('seller-create','active')
 
@@ -91,13 +80,8 @@
                                     <div class="form-group form-float">
                                         <div class="">
                                             <label class="form-label">Enter Passport Expire Date</label>
-<<<<<<< HEAD
                                             <input type="text" class="datepicker form-control" placeholder="Please choose a date...">
 
-=======
-                                            <input type="date" class=" form-control" placeholder="Please choose a date...">
-                                            
->>>>>>> 01d3b275aafb1158063e723173b1bf9dd01c86c0
                                         </div>
                                     </div>
                                 </div>
@@ -171,17 +155,4 @@
 
         </div>
     </div>
-@endsection
-@section('page-scripts')
-        <!-- Jquery Core Js -->
-    <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- Autosize Plugin Js -->
-    <script src="{{ asset('backend/plugins/autosize/autosize.js') }}"></script>
-    <!-- Bootstrap Material Datetime Picker Plugin Js -->
-    <script src="{{ asset('backend/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}"></script>
-    <!-- Custom Js -->
-    <script src="{{ asset('backend/js/admin.js') }}"></script>
-    <script src="{{ asset('backend/js/pages/forms/basic-form-elements.js') }}"></script>
-
-
 @endsection

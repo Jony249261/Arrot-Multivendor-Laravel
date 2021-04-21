@@ -63,7 +63,7 @@
                                                 <td>{{$user->phone}}</td>
 
                                                 <td>
-                                                    <a href="" class="btn btn-success"> <i class="material-icons">edit</i></a>
+                                                    <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
 
 
                                                     <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">

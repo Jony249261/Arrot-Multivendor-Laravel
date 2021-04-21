@@ -130,4 +130,12 @@ class BuyerController extends Controller
         Session::flash('success','Buyer Deleted successfully!!');
         return redirect()->back();
     }
+
+    public function edit($id){
+        $user = User::find($id);
+
+        $buyer=Buyer::where('user_id',$id)->first();
+        
+            return view('supplier.buyer.edit',compact('buyer','user'));
+    }
 }
