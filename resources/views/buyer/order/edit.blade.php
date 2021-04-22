@@ -1,9 +1,9 @@
 @extends('layouts.buyer-app')
-@section('title','Create order')
+@section('title','Edit order')
 
 
 @section('order', 'active')
-@section('create-order', 'active')
+@section('edit-order', 'active')
 
 @section('page-styles')
 
@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="header bg-orange text-center">
 
-                    <h2 class="text-center">Create order</h2>
+                    <h2 class="text-center">Edit order</h2>
 
                 </div>
                 <div class="body">
@@ -34,34 +34,31 @@
                                         <th>{{ __('Total Price') }}</th>
                                     </tr>
                                 </thead>
-                                <form action="{{ route('orders.store') }}" method="post">
+                                <form action="{{ route('orders.update',$order->id) }}" method="post">
+                                    @csrf
+                                    @method('PUT')
                                     <tbody>
-                                        @csrf
-                                        @forelse ($products as $i => $product)
-                                            <tr role="row" class="odd">
-                                                <td>{{ $i + 1 }}</td>
-                                                <td><img src="{{ asset('products/' . $product->image) }}"
-                                                        width="60" height="60" alt=""></td>
-                                                <td>{{ $product->product_name }}</td>
-                                                <td>{{ $product->unit->name }}</td>
-                                                <td >{{ number_format($product->price, 2) }}
+                                        @forelse ($order->items as $i => $item)
+                                        <tr role="row" class="odd">
+                                            <td>{{ $i + 1 }}</td>
+                                            <td><img src="{{ asset('products/' . $item->product->image) }}"
+                                                    width="60" height="60" alt=""></td>
+                                            <td>{{ $item->product->product_name }}</td>
+                                            <td>{{ ucfirst($item->product->unit->name) }}</td>
+                                            <td>{{ number_format($item->product->price, 2) }}</td>
+                                            <td>
+                                                <input type="number" name="quantites[]" style="width: 70px" value="{{ $item->qty }}" id="">
+                                                <input type="hidden" name="products[]" value="{{ $item->product->id }}" >
+                                            </td>
 
-                                                </td>
-                                                <td>
-                                                    <input type="hidden" name="products[]" value="{{ $product->id }}" id="">
-                                                    <input type="hidden" min="0" name="prices[]"  value="{{ $product->price }}" id="price">
-                                                    <input type="number" min="0" name="quantites[]" data-id="{{ $product->id }}" placeholder="00.00" id="qty">
+                                            <td>--</td>
 
-
-                                                </td>
-                                                <td >--</td>
-
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <td colspan="5" class="text-center">No data found!</td>
-                                            </tr>
-                                        @endforelse
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-center">No data found!</td>
+                                        </tr>
+                                    @endforelse
 
                                     </tbody>
                                     <tfoot>
@@ -73,12 +70,12 @@
                                         </tr>
                                     </tfoot>
                             </table>
-                            <button class="btn btn-sm btn-info" style="float: right">Create order</button>
+                            <button class="btn btn-sm btn-info" style="float: right">Update order</button>
                             </form>
 
                             </table>
                         </div>
-                        {{ $products->links() }}
+                        {{-- {{ $order->links() }} --}}
                 </div>
 
             </div>

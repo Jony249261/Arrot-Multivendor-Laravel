@@ -12,14 +12,14 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red">
+                <div class="header bg-orange text center">
 
                     <h2 class="text-center">Create Buyer user</h2>
 
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="{{ route('buyer-users.store') }}" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="row clearfix">

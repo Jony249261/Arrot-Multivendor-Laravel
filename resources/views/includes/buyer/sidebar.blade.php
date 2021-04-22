@@ -38,8 +38,8 @@
                     <span>Home</span>
                 </a>
             </li>
-            
-            <li class="@yield('Order')">
+           
+            <li class="@yield('order')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">production_quantity_limits</i>
                     <span>Order</span>
@@ -48,7 +48,7 @@
                     <li class="@yield('all-order')">
                         <a href="{{ route('orders.index') }}">Order List</a>
                     </li>
-                    <li class="@yield('order-create')">
+                    <li class="@yield('create-order')">
                         <a href="{{ route('orders.create') }}">Order create</a>
                     </li>
                 </ul>
