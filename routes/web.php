@@ -66,6 +66,11 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::post('/seller/store','Supplier\SellerController@store')->name('supplier.seller.store');
     Route::post('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
 
+    //order
+    Route::get('/orders','Supplier\OrderController@index')->name('order.index');
+    Route::get('/order/show/{id}','Supplier\OrderController@show')->name('order.show');
+    Route::put('/order/status/{id}','Supplier\OrderController@status')->name('supplier.order.status');
+
 
 
 });
