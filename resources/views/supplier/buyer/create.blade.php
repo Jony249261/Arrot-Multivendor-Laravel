@@ -222,6 +222,8 @@
                                     <h2 class="text-center">Representative Information</h2>
 
                                 </div>
+                                <br>
+                                <br>
 
                                 <div class="form-group form-float">
                                     <div class="form-line">

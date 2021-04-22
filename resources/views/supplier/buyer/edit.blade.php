@@ -1,7 +1,7 @@
 @extends('layouts.supplier-app')
 
 @section('buyer','active')
-@section('create','active')
+@section('buyer-index','active')
 @section('content')
     <div class="container-fluid">
 
@@ -15,14 +15,14 @@
                 </div>
                 <div class="body">
                     <div class="row">
-                        
-                        <form id="form_validation" action="{{route('supplier.buyer.store')}}"  method="POST" enctype="multipart/form-data">
+
+                        <form id="form_validation" action="{{route('supplier.buyer.update',$user->id)}}"  method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text"  class="form-control @error('name') is-invalid @enderror" value="{{$buyer->buyer_name}}"  name="name" required>
+                                        <input type="text"  class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}"  name="name" required>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="number"  class="form-control @error('phone') is-invalid @enderror"  value="{{$buyer->buyer_telephone}}" name="phone" required>
+                                        <input type="number"  class="form-control @error('phone') is-invalid @enderror"  value="{{$user->phone}}" name="phone" required>
                                         @error('phone')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror"  value="{{$buyer->buyer_email}}" name="email" required>
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"  value="{{$user->email}}" name="email" required>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('buyer_website') is-invalid @enderror" value="{{$buyer->buyer_website}}"name="buyer_website" required>
+                                        <input type="text" class="form-control @error('buyer_website') is-invalid @enderror" value="{{$buyer->buyer_website}}" name="buyer_website" required>
                                         @error('buyer_website')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -101,16 +101,16 @@
                                     <label for="">Enter Buyer Type</label>
                                     <br>
 
-                                    <input type="radio" name="buyer_type" id="non_profit" value="{{$buyer->buyer_type}}" class="with-gap">
+                                    <input type="radio" name="buyer_type" id="non_profit" value="non_profit" class="with-gap" {{$buyer->buyer_type=='non_profit'?'checked':''}}>
                                     <label for="non_profit">Non Profit</label>
 
-                                    <input type="radio" name="buyer_type" id="govt" value="govt" class="with-gap">
+                                    <input type="radio" name="buyer_type" id="govt" value="govt" class="with-gap" {{$buyer->buyer_type=='govt'?'checked':''}} >
                                     <label for="govt" class="m-l-20">Govt</label>
 
-                                    <input type="radio" name="buyer_type" id="limited" value="limited" class="with-gap">
+                                    <input type="radio" name="buyer_type" id="limited" value="limited" class="with-gap" {{$buyer->buyer_type=='limited'?'checked':''}}  >
                                     <label for="limited" class="m-l-20">Limited</label>
 
-                                    <input type="radio" name="buyer_type" id="proprietorship" value="proprietorship" class="with-gap">
+                                    <input type="radio" name="buyer_type" id="proprietorship" value="proprietorship" class="with-gap" {{$buyer->buyer_type=='proprietorship'?'checked':''}} >
                                     <label for="proprietorship" class="m-l-20">Proprietorship</label>
                                 </div>
 
@@ -136,7 +136,7 @@
 
                                     <label class="form-label">Enter Buyer Image</label>
                                     <img src="{{asset('image_buyer/user/'.$user->image)}}" alt="" height="75px" width="75px">
-                                    <input type="file" class=" @error('image') is-invalid @enderror" value="{{$user->image}}" name="image"  required>
+                                    <input type="file" class=" @error('image') is-invalid @enderror" value="{{$user->image}}" name="image" >
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -176,7 +176,7 @@
                                 <div class="form-group form-float">
 
                                         <label class="form-label">Enter Buyer Logo</label><img src="{{asset('image_buyer/user/'.$buyer->buyer_logo)}}" alt="" height="75px" width="75px">
-                                        <input type="file"class=" @error('buyer_logo') is-invalid @enderror" value="{{$buyer->buyer_logo}}" name="buyer_logo"  required>
+                                        <input type="file"class=" @error('buyer_logo') is-invalid @enderror" value="{{$buyer->buyer_logo}}" name="buyer_logo">
                                         @error('buyer_logo')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -189,7 +189,7 @@
 
                                         <label class="form-label">Enter Buyer Trade License</label>
                                         <img src="{{asset('image_buyer/user/'.$buyer->trade_license)}}" alt="" height="75px" width="75px">
-                                        <input type="file" class=" @error('trade_license') is-invalid @enderror" value="{{$buyer->trade_license}}" name="trade_license"  required>
+                                        <input type="file" class=" @error('trade_license') is-invalid @enderror" value="{{$buyer->trade_license}}" name="trade_license"  >
                                         @error('trade_license')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -219,6 +219,7 @@
                                     <h2 class="text-center">Representative Information</h2>
 
                                 </div>
+                                <br>
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -251,7 +252,7 @@
 
 
                                 </div>
-                                <button class="btn btn-success waves-effect" type="submit">Create Buyer</button>
+                                <button class="btn btn-success waves-effect" type="submit">Update Buyer</button>
 
                             </div>
                         </form>

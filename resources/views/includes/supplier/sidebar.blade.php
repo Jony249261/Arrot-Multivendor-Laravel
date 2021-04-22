@@ -64,12 +64,15 @@
                     <li>
                         <a href="{{ route('products.create') }}">Product create</a>
                     </li>
+                    <li class="@yield('unit')">
+                        <a href="{{ route('unit.index') }}">Product Unit</a>
+                    </li>
                 </ul>
             </li>
             <li>
                 <li class="@yield('seller')">
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">group_add</i>
+                    <i class="material-icons">queue</i>
                     <span>Seller</span>
                 </a>
                 <ul class="ml-menu">
@@ -82,10 +85,10 @@
                     </li>
                 </ul>
             </li>
-            
+
             <li class="@yield('user')">
                 <a href="{{route('users.index')}}">
-                    <i class="material-icons">group_add</i>
+                    <i class="material-icons">forum</i>
                     <span>Support User</span>
                 </a>
             </li>
