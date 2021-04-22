@@ -17,8 +17,7 @@
 
                                     </h2>
                                     <ul class="header-dropdown m-r--5">
-                                        <a href="{{ route('products.create') }}" class="btn btn-success"><i class="material-icons">local_hospital
-                                            </i></a>
+                                        <a href="{{ route('supplier.buyer.create') }}" class="btn btn-success"><i class="material-icons">add</i> Add Buyer</a>
                                     </ul>
                                 </div>
                                 <div class="body">
@@ -34,7 +33,7 @@
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
-                                           
+
                                             <tbody>
                                             @foreach($users as $key=>$user)
                                             <tr>

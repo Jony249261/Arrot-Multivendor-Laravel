@@ -44,7 +44,9 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::post('/buyer/store','Supplier\BuyerController@store')->name('supplier.buyer.store');
     Route::post('/buyer/delete/{id}','Supplier\BuyerController@delete')->name('supplier.buyer.delete');
     Route::get('/buyer/edit/{id}','Supplier\BuyerController@edit')->name('supplier.buyer.edit');
-// unite route
+    Route::post('/buyer/update/{id}','Supplier\BuyerController@update')->name('supplier.buyer.update');
+
+    // unite route
     Route::get('/unit/index','Supplier\UnitController@index')->name('unit.index');
     Route::post('/unit/store','Supplier\UnitController@store')->name('supplier.unit.store');
     Route::get('/unit/delete/{id}','Supplier\UnitController@delete')->name('supplier.unit.delete');

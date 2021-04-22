@@ -72,7 +72,7 @@
             <li>
                 <li class="@yield('seller')">
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">group_add</i>
+                    <i class="material-icons">queue</i>
                     <span>Seller</span>
                 </a>
                 <ul class="ml-menu">
@@ -88,7 +88,7 @@
 
             <li class="@yield('user')">
                 <a href="{{route('users.index')}}">
-                    <i class="material-icons">group_add</i>
+                    <i class="material-icons">forum</i>
                     <span>Support User</span>
                 </a>
             </li>
