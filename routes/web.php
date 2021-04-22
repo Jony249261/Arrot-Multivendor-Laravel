@@ -71,6 +71,8 @@ Route::prefix('buyer')->middleware('buyer')->group(function(){
     //order
     Route::resource('/orders', 'Buyer\OrderController');
 
+    Route::post('/orders/payment','Buyer\OrderController@payment')->name('buyer.order.payment');
+
     //buyer user
     Route::resource('/buyer-users', 'Buyer\UserController');
 
