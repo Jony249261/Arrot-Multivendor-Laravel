@@ -44,6 +44,7 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::post('/buyer/store','Supplier\BuyerController@store')->name('supplier.buyer.store');
     Route::post('/buyer/delete/{id}','Supplier\BuyerController@delete')->name('supplier.buyer.delete');
     Route::get('/buyer/edit/{id}','Supplier\BuyerController@edit')->name('supplier.buyer.edit');
+    Route::get('/buyer/profile/{id}','Supplier\BuyerController@profile')->name('supplier.buyer.profile');
     //products route
     Route::resource('/products','Supplier\ProductController');
 

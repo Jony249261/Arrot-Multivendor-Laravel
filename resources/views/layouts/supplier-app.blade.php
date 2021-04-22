@@ -283,6 +283,7 @@
 
         @endif
     </script>
+    
     @yield('page-scripts')
 </body>
 

@@ -56,13 +56,17 @@
                                                 <td>{{$user->phone}}</td>
 
                                                 <td>
+                                                <div class="d-flex justify-content-between">
                                                     <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
+                                                    <a href="{{ route('supplier.buyer.profile',$user->id) }}" class="btn btn-primary @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
+                                            
 
 
                                                     <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
                                                         @csrf
                                                         <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
                                                     </form>
+                                                </div>
 
                                                 </td>
                                             </tr>

@@ -131,6 +131,7 @@ class BuyerController extends Controller
         return redirect()->back();
     }
 
+    //Buyer Edit view 
     public function edit($id){
         $user = User::find($id);
 
@@ -138,4 +139,15 @@ class BuyerController extends Controller
         
             return view('supplier.buyer.edit',compact('buyer','user'));
     }
+
+
+    //Buyer profile view
+        public function profile($id){
+        $user = User::find($id);
+
+        $buyer=Buyer::where('user_id',$id)->first();
+        
+            return view('supplier.buyer.profile',compact('buyer','user'));
+    }
+
 }
