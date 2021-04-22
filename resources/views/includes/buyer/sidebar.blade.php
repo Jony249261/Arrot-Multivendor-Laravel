@@ -10,7 +10,7 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                    <li><a href="{{route('profile.index')}}"><i class="material-icons">person</i>Profile</a></li>
                     <li role="seperator" class="divider"></li>
 
                     <li>  <a  href="{{ route('logout') }}"
@@ -38,21 +38,40 @@
                     <span>Home</span>
                 </a>
             </li>
-            
-            <li class="@yield('Order')">
+
+{{--            <li class="@yield('buyer_order')">--}}
+{{--                <a href="javascript:void(0);" class="menu-toggle">--}}
+{{--                    <i class="material-icons">production_quantity_limits</i>--}}
+{{--                    <span>Order</span>--}}
+{{--                </a>--}}
+{{--                <ul class="ml-menu">--}}
+{{--                    <li class="@yield('all-order')">--}}
+{{--                        <a href="{{ route('orders.index') }}">Order List</a>--}}
+{{--                    </li>--}}
+{{--                    <li class="@yield('order_create')">--}}
+{{--                        <a href="{{ route('orders.create') }}">Order create</a>--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--            change--}}
+            <li class="@yield('buyer_order')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">production_quantity_limits</i>
                     <span>Order</span>
                 </a>
                 <ul class="ml-menu">
-                    <li class="@yield('all-order')">
-                        <a href="{{ route('orders.index') }}">Order List</a>
+                    <li class="@yield('order_create')">
+                        <a href="{{ route('orders.create') }}">Create Order</a>
                     </li>
-                    <li class="@yield('order-create')">
-                        <a href="{{ route('orders.create') }}">Order create</a>
+                    <li class="@yield('buyer-index')">
+                        <a href="{{route('supplier.buyer.index')}}">All Order</a>
                     </li>
                 </ul>
             </li>
+
+{{--            end Chasnge--}}
+
+
             <li class="@yield('buyer-user')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">group_add</i>
@@ -67,6 +86,7 @@
                     </li>
                 </ul>
             </li>
+
         </ul>
     </div>
     <!-- #Menu -->

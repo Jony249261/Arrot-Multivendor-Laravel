@@ -1,13 +1,8 @@
-@extends('layouts.supplier-app')
-@section('title','Create order')
 
-@section('order', 'active')
-@section('order-create', 'active')
+@extends('layouts.buyer-app')
 
-@section('page-styles')
-
-@endsection
-
+@section('buyer_order','active')
+@section('order_create','active')
 @section('content')
     <div class="container-fluid">
 
@@ -24,8 +19,6 @@
                     <form id="form_validation" method="POST" action="{{ route('orders.store') }}" enctype="multipart/form-data" >
                         @csrf
 
-                        
-
 
                     </form>
 
@@ -35,8 +28,4 @@
             </div>
 
         </div>
-    @endsection
-    @section('page-scripts')
-
-
     @endsection
