@@ -67,7 +67,7 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('buyer_website') is-invalid @enderror" value="{{old('buyer_website')}}" name="buyer_website" required>
                                         @error('buyer_website')
-                                            <span class="invalid-feedback" role="alert">
+                                        <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
@@ -154,17 +154,17 @@
 
 
 
-                                    <div class="form-group from-float">
-                                        <div class="">
-                                            <label class="form-label">Enter Passport Expire Date</label>
-                                            <input type="date" class=" form-control @error('passport_expire_date') is-invalid @enderror" name="passport_expire_date" value="{{old('passport_expire_date')}}" placeholder="Please choose a date...">
-                                            @error('passport_expire_date')
+                                <div class="form-group from-float">
+                                    <div class="">
+                                        <label class="form-label">Enter Passport Expire Date</label>
+                                        <input type="date" class=" form-control @error('passport_expire_date') is-invalid @enderror" name="passport_expire_date" value="{{old('passport_expire_date')}}" placeholder="Please choose a date...">
+                                        @error('passport_expire_date')
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        </div>
                                     </div>
+                                </div>
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -179,25 +179,25 @@
                                 </div>
                                 <div class="form-group form-float">
 
-                                        <label class="form-label">Enter Buyer Logo</label>
-                                        <input type="file"class=" @error('buyer_logo') is-invalid @enderror" value="{{old('buyer_logo')}}" name="buyer_logo"  required>
-                                        @error('buyer_logo')
-                                        <span class="invalid-feedback" role="alert">
+                                    <label class="form-label">Enter Buyer Logo</label>
+                                    <input type="file"class=" @error('buyer_logo') is-invalid @enderror" value="{{old('buyer_logo')}}" name="buyer_logo"  required>
+                                    @error('buyer_logo')
+                                    <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror
+                                    @enderror
 
 
                                 </div>
                                 <div class="form-group form-float">
 
-                                        <label class="form-label">Enter Buyer Trade License</label>
-                                        <input type="file" class=" @error('trade_license') is-invalid @enderror" value="{{old('trade_license')}}" name="trade_license"  required>
-                                        @error('trade_license')
-                                        <span class="invalid-feedback" role="alert">
+                                    <label class="form-label">Enter Buyer Trade License</label>
+                                    <input type="file" class=" @error('trade_license') is-invalid @enderror" value="{{old('trade_license')}}" name="trade_license"  required>
+                                    @error('trade_license')
+                                    <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                        @enderror
+                                    @enderror
 
 
                                 </div>
@@ -222,6 +222,8 @@
                                     <h2 class="text-center">Representative Information</h2>
 
                                 </div>
+                                <br>
+                                <br>
 
                                 <div class="form-group form-float">
                                     <div class="form-line">

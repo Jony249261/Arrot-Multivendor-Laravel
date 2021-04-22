@@ -17,8 +17,7 @@
 
                                     </h2>
                                     <ul class="header-dropdown m-r--5">
-                                        <a href="{{ route('products.create') }}" class="btn btn-success"><i class="material-icons">local_hospital
-                                            </i></a>
+                                        <a href="{{ route('supplier.buyer.create') }}" class="btn btn-success"><i class="material-icons">add</i> Add Buyer</a>
                                     </ul>
                                 </div>
                                 <div class="body">
@@ -34,18 +33,7 @@
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
-                                            <tfoot>
 
-                                            <tr>
-                                                <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Image</th>
-                                                <th>Phone</th>
-                                                <th>Action</th>
-                                            </tr>
-
-                                            </tfoot>
                                             <tbody>
                                             @foreach($users as $key=>$user)
                                             <tr>
@@ -61,12 +49,13 @@
                                                     <a href="{{ route('supplier.buyer.profile',$user->id) }}" class="btn btn-primary @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
                                             
 
-
+                                                    @if(auth()->user()->role != 'support')
                                                     <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
                                                         @csrf
                                                         <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
                                                     </form>
                                                 </div>
+                                                    @endif
 
                                                 </td>
                                             </tr>

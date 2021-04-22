@@ -45,14 +45,26 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::post('/buyer/delete/{id}','Supplier\BuyerController@delete')->name('supplier.buyer.delete');
     Route::get('/buyer/edit/{id}','Supplier\BuyerController@edit')->name('supplier.buyer.edit');
     Route::get('/buyer/profile/{id}','Supplier\BuyerController@profile')->name('supplier.buyer.profile');
+    Route::post('/buyer/update/{id}','Supplier\BuyerController@update')->name('supplier.buyer.update');
+
+    // unite route
+    Route::get('/unit/index','Supplier\UnitController@index')->name('unit.index');
+    Route::post('/unit/store','Supplier\UnitController@store')->name('supplier.unit.store');
+    Route::get('/unit/delete/{id}','Supplier\UnitController@delete')->name('supplier.unit.delete');
+    Route::post('/unit/update/{id}','Supplier\UnitController@update')->name('supplier.unit.update');
+
     //products route
     Route::resource('/products','Supplier\ProductController');
+
+    //support user
+    Route::resource('/users', 'Supplier\UserController');
 
     //Supplier seller route
 
     Route::get('/seller/index','Supplier\SellerController@index')->name('supplier.seller.index');
     Route::get('/seller/create','Supplier\SellerController@create')->name('supplier.seller.create');
     Route::post('/seller/store','Supplier\SellerController@store')->name('supplier.seller.store');
+    Route::post('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
 
 
 
@@ -61,10 +73,15 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
 
 //buyer route
 Route::prefix('buyer')->middleware('buyer')->group(function(){
+    //all Buyer route will gose here
     Route::get('/','Buyer\BuyerController@index')->name('buyer.index');
 
+    //order
+    Route::resource('/orders', 'Buyer\OrderController');
 
-    //all Buyer route will gose here
+    //buyer user
+    Route::resource('/buyer-users', 'Buyer\UserController');
+
 
 });
 
