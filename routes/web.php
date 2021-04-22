@@ -67,6 +67,7 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::post('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
     Route::get('/seller/edit/{id}','Supplier\SellerController@edit')->name('supplier.seller.edit');
     Route::post('/seller/update/{id}','Supplier\SellerController@update')->name('supplier.seller.update');
+    Route::get('/seller/profile/{id}','Supplier\SellerController@profile')->name('supplier.seller.profile');
 
 
 

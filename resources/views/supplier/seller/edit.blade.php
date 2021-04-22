@@ -1,7 +1,5 @@
 @extends('layouts.supplier-app')
 
-@section('page-styles')
-@endsection
 
 @section('seller','active')
 @section('seller-create','active')
