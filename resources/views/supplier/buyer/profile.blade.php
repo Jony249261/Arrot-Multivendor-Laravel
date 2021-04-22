@@ -7,14 +7,14 @@
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #e2e8f0;    
+    background-color: #e2e8f0;
 }
 .main-body {
     padding: 15px;
 }
 .card {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-    
+
 }
 .profilein{
     padding-left:5px;
@@ -90,13 +90,13 @@ h4{
 .cardbody{
   padding:10px;
   padding-left:20px;
-  
+
 
 }
 .cardbody1{
   padding-left:20px;
   padding-bottom:10px;
-  
+
 
 }
 .cardbody img{
@@ -124,7 +124,7 @@ h4{
                       <h4>{{$buyer->buyer_name}}</h4>
                       <p class="text-secondary mb-1">{{$buyer->tagline}}</p>
                       <p class="text-muted font-size-sm">{{$buyer->buyer_address}}</p>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -224,7 +224,7 @@ h4{
                       <h6 class="mb-0 profilen"></h6>
                     </div>
                     <div class="col-sm-6 text-secondary">
-                     <img src="{{asset('image_buyer/user/'.$buyer->trade_license)}}" alt="Admin" class="img-thumbnail" width="150px">
+                     <img src="{{asset('image_buyer/user/'.$buyer->trade_license)}}" alt="Admin" class="img-thumbnail" >
                     </div>
                   </div>
                   <hr>
@@ -236,7 +236,7 @@ h4{
                        {{$buyer->expire_date}}
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
