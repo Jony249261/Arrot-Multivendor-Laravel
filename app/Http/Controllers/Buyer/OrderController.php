@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Buyer;
 
+use App\Billing;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\OrderProduct;
@@ -81,7 +82,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('buyer.order.show',compact('order'));
+        $billings = Billing::where('order_id',$order->id)->get();
+        return view('buyer.order.show',compact('order','billings'));
     }
 
     /**
@@ -123,11 +125,6 @@ class OrderController extends Controller
         }
         Session::flash('info','Order has been updated successfully!!');
         return redirect()->route('orders.index');
-    }
-
-    public function payment(Request $request, $id)
-    {
-        dd($request->all());
     }
 
     /**

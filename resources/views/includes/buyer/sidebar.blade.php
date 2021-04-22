@@ -56,7 +56,7 @@
             <li class="@yield('buyer-user')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">group_add</i>
-                    <span>Buyer user</span>
+                    <span>Users</span>
                 </a>
                 <ul class="ml-menu">
                     <li class="@yield('buyer-user-index')">

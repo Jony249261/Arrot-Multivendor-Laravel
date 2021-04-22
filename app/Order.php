@@ -20,10 +20,16 @@ class Order extends Model
         return $this->hasMany(OrderProduct::class);
     }
 
-    public function transactions()
+    public function billings()
     {
-        return $this->morphMany(Transaction::class,'transactionable');
+        return $this->belongsToMany(Billing::class);
     }
+
+    // public function transactions()
+    // {
+    //     return $this->morphMany(Transaction::class,'transactionable');
+    // }
+
 
 
     public function getShowIdAttribute()
