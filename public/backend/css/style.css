@@ -73,7 +73,7 @@
 .navbar-header{
     width:22.5%;
 
-    background: url("../images/image1.jpg");
+    background: url("../images/image1.jpg") no-repeat no-repeat;
 
     
 }
@@ -81,6 +81,9 @@
     margin-top: -15px;
 
   }
+  .card{
+        margin-left:10px;
+    }
 
 .ls-closed .bars:before {
   content: '\E5D2';
