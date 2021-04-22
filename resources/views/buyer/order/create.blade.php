@@ -1,14 +1,8 @@
+
 @extends('layouts.buyer-app')
-@section('title','Create order')
 
-
-@section('order', 'active')
-@section('create-order', 'active')
-
-@section('page-styles')
-
-@endsection
-
+@section('buyer_order','active')
+@section('order_create','active')
 @section('content')
     <div class="container-fluid">
 
@@ -85,8 +79,4 @@
 
         </div>
     </div>
-    @endsection
-    @section('page-scripts')
-
-
     @endsection

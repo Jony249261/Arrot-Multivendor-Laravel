@@ -7,25 +7,19 @@
 @section('content')
 
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>
-                Buyer user
 
-            </h2>
-            
-        </div>
         <!-- Basic Examples -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header bg-orange text-center">
                         <h2>
-                            ALL User
-                            
+                            Buyer User
+
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <a href="{{ route('users.create') }}" class="btn btn-default">Create</a>
-                           
+
                         </ul>
                     </div>
                     <div class="body">
@@ -57,16 +51,16 @@
                                                 <span class="badge badge-info">{{ ucfirst($user->role) }}</span>
                                             </td>
                                             <td>
-                                                @if($user->is_verified == 1) 
+                                                @if($user->is_verified == 1)
                                                 <span class="badge badge-primary">Active</span>
                                                 @else
                                                 <span class="badge bg-warning">Inactive</span>
                                                 @endif
                                             </td>
-                                            
-                                           
+
+
                                             <td>
-                                                
+
                                                 <div class="icon-button-demo">
                                                     <a href="{{ route('buyer-users.edit',$user->id) }}" class="btn btn-info waves-effect" style="float: left">
                                                         <i class="material-icons">edit</i>
@@ -82,8 +76,8 @@
                                                     @endif
 
                                                 </div>
-                                               
-                                              
+
+
                                             </td>
                                         </tr>
                                     @empty
@@ -92,7 +86,7 @@
                                         </tr>
                                     @endforelse
                                 </tbody>
-                                
+
                             </table>
                         </div>
                         {{ $users->links() }}
@@ -103,7 +97,7 @@
         <!-- #END# Exportable Table -->
     </div>
 
-    
-    
-    
+
+
+
 @endsection

@@ -2,9 +2,6 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="block-header">
-        <h2>Buyer</h2>
-    </div>
 
     <!-- Widgets -->
     <div class="row clearfix">
@@ -309,5 +306,5 @@
         </div>
         <!-- #END# Browser Usage -->
     </div>
-</div>    
+</div>
 @endsection
