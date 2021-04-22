@@ -58,19 +58,9 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-<<<<<<< Updated upstream
-                                        <input type="text" class="form-control @error('seller_address') is-invalid @enderror"  value="{{ old('seller_address') }}" name="seller_address" required>
-                                        @error('seller_address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                       </span>
-                                        @enderror
-                                        <label class="form-label">Enter Seller Address</label>
-=======
                                         <input type="text" class="form-control" name="seller_address" required>
 
                                          <label class="form-label">Enter Seller Address</label>
->>>>>>> Stashed changes
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
