@@ -65,6 +65,10 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/seller/create','Supplier\SellerController@create')->name('supplier.seller.create');
     Route::post('/seller/store','Supplier\SellerController@store')->name('supplier.seller.store');
     Route::post('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
+    Route::get('/seller/edit/{id}','Supplier\SellerController@edit')->name('supplier.seller.edit');
+    Route::post('/seller/update/{id}','Supplier\SellerController@update')->name('supplier.seller.update');
+
+
 
 
 
