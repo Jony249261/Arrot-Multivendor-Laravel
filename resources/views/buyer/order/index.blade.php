@@ -51,21 +51,15 @@
                                             </td>
                                             <td>{{ number_format($order->amount, 2) }}</td>
                                             <td>
-                                                <a href="{{ route('buyer.order.show', $order->id) }}"
-                                                    class="btn btn-sm btn-primary ">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                @if (auth()->user()->role !== 7)
-                                                    <a href="{{ route('buyer.order.edit', $order->id) }}"
-                                                        class="btn btn-sm btn-info ">
-                                                        <i class="fa fa-pencil"></i>
+                                                <div class="icon-button-demo">
+                                                    <a href="{{ route('orders.edit',$order->id) }}" class="btn btn-info waves-effect" style="float: left">
+                                                        <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="{{ route('buyer.order.destroy', $order->id) }}"
-                                                        class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('Are you sure?')">
-                                                        <i class="fa fa-trash"></i>
+                                                    
+                                                    <a href="{{ route('orders.show',$order->id) }}" class="btn btn-success waves-effect" title="Active" style="float: left">
+                                                        <i class="material-icons">visibility</i>
                                                     </a>
-                                                @endif
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty

@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::latest()->paginate(15);
+        $orders = Order::where('user_id',auth()->user()->id)->latest()->paginate(15);
         return view('buyer.order.index',compact('orders'));
     }
 
@@ -41,6 +41,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $products = $request->input('products');
         $quantities = $request->input('quantites');
         $prices = $request->input('prices');
@@ -69,7 +70,7 @@ class OrderController extends Controller
 
         }
         Session::flash('success','Order created successfully!!');
-        return redirect()->route('buyer.order.index');
+        return redirect()->route('orders.index');
     }
 
     /**
@@ -80,7 +81,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('buyer.order.show',compact('order'));
     }
 
     /**
@@ -91,7 +92,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        //
+        return view('buyer.order.edit',compact('order'));
     }
 
     /**
@@ -103,7 +104,30 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        if($request->has('delivery_date') || $request->has('amount')){
+            $order->update($request->all());
+        }
+        $products = $request->input('products');
+        $quantities = $request->input('quantites');
+        foreach($quantities as $id => $qty){
+            $order_product = OrderProduct::where('order_id',$order->id)->where('product_id',$products[$id])->first();
+
+            if($products[$id] && $qty > 0 ){
+
+                $order_product->product_id = $products[$id];
+                $order_product->order_id = $order->id;
+                $order_product->qty = $qty;
+                $order_product->save();
+
+            }
+        }
+        Session::flash('info','Order has been updated successfully!!');
+        return redirect()->route('orders.index');
+    }
+
+    public function payment(Request $request, $id)
+    {
+        dd($request->all());
     }
 
     /**

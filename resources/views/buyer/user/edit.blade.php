@@ -11,7 +11,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red">
+                <div class="header bg-orange text-center">
 
                     <h2 class="text-center">Edit User</h2>
 
