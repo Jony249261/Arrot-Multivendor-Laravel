@@ -13,11 +13,11 @@
                     <div class="card">
                         <div class="header bg-red ">
                             <h2>
-                                All Buyer List
+                                All Seller List
 
                             </h2>
                             <ul class="header-dropdown m-r--5">
-                                <a href="{{ route('products.create') }}" class="btn btn-success"><i class="material-icons">local_hospital
+                                <a href="{{ route('supplier.seller.create') }}" class="btn btn-success"><i class="material-icons">local_hospital
                                     </i></a>
                             </ul>
                         </div>
@@ -45,7 +45,7 @@
                                             <td>{{$user->phone}}</td>
 
                                             <td>
-                                                <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
+                                                <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
                                                 @if(auth()->user()->role != 'support')
                                                 <form action="{{ route('supplier.seller.delete',$user->id) }}" method="post">
                                                     @csrf

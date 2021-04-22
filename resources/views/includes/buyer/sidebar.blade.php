@@ -38,23 +38,8 @@
                     <span>Home</span>
                 </a>
             </li>
-
-{{--            <li class="@yield('buyer_order')">--}}
-{{--                <a href="javascript:void(0);" class="menu-toggle">--}}
-{{--                    <i class="material-icons">production_quantity_limits</i>--}}
-{{--                    <span>Order</span>--}}
-{{--                </a>--}}
-{{--                <ul class="ml-menu">--}}
-{{--                    <li class="@yield('all-order')">--}}
-{{--                        <a href="{{ route('orders.index') }}">Order List</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="@yield('order_create')">--}}
-{{--                        <a href="{{ route('orders.create') }}">Order create</a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
-{{--            change--}}
-            <li class="@yield('buyer_order')">
+           
+            <li class="@yield('order')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">production_quantity_limits</i>
                     <span>Order</span>
@@ -63,13 +48,12 @@
                     <li class="@yield('order_create')">
                         <a href="{{ route('orders.create') }}">Create Order</a>
                     </li>
-                    <li class="@yield('buyer-index')">
-                        <a href="{{route('supplier.buyer.index')}}">All Order</a>
+                    <li class="@yield('create-order')">
+                        <a href="{{ route('orders.create') }}">Order create</a>
                     </li>
                 </ul>
             </li>
 
-{{--            end Chasnge--}}
 
 
             <li class="@yield('buyer-user')">

@@ -2,7 +2,7 @@
 
 @section('buyer-user', 'active')
 @section('buyer-user-index', 'active')
-@section('title', 'Support user')
+@section('title', 'Buyer user')
 
 @section('content')
 
