@@ -80,8 +80,11 @@
             </li>
 
         </ul>
+
+
+{{--            Menu For Procurment--}}
             @elseif(Auth::user()->role=='procurement')
-       
+
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="@yield('dashboard')">
@@ -95,6 +98,29 @@
                         <a href="{{route('profile.index')}}">
                             <i class="material-icons">person</i>
                             <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="@yield('order_create')">
+                        <a href="{{ route('orders.create') }}">
+                            <i class="material-icons">shopping_cart</i>
+                            <span>Create Order</span>
+                        </a>
+                    </li>
+                    <li class="@yield('all-order')">
+                        <a href="{{route('orders.index')}}">
+                            <i class="material-icons">production_quantity_limits</i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a  href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            <i class="material-icons">input</i> <span>Logout</span>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </a>
                     </li>
             </ul>

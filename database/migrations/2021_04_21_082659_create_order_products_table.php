@@ -18,7 +18,7 @@ class CreateOrderProductsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('order_id');
             $table->float('qty');
-            $table->float('unite_price');
+            $table->float('unite_price')->nullable();
             $table->float('delivered_qty')->nullable();
             $table->timestamps();
         });
