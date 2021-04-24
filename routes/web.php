@@ -29,7 +29,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //admin route
 Route::prefix('admin')->middleware('admin')->group(function(){
     Route::get('/','Admin\AdminController@index')->name('admin.index');
+    Route::get('/profile/index','Admin\ProfileController@index')->name('admin.profile.index');
+    Route::get('/profile/edit','Admin\ProfileController@edit')->name('admin.profile.edit');
+    Route::post('/profile/update','Admin\ProfileController@update')->name('admin.porfile-update');
 });
+
 
 
 
@@ -102,6 +106,7 @@ Route::post('/profile/user_update','Buyer\ProfileController@user_update')->name(
 
     //order
     Route::resource('/orders', 'Buyer\OrderController');
+    Route::put('/order/received/{id}', 'Buyer\OrderController@received')->name('orders.received');
 
     Route::post('/order/payment','Buyer\BillingController@store')->name('buyer.order.payment');
 

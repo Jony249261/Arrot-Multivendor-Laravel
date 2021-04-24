@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Buyer;
 
 use App\Billing;
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Image;
@@ -13,6 +14,7 @@ class BillingController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $order = Order::findOrFail($request->order_id);
         $data = $request->validate([
             'order_id' => 'required|numeric',
             'user_id' => 'required|numeric',
@@ -35,6 +37,16 @@ class BillingController extends Controller
         }
 
         Billing::create($data);
+        $billings = Billing::where('order_id',$order->id)->get();
+        $paid_amount = $billings->sum('payment_amount');
+        if($paid_amount == $order->amount){
+            $order->payment_status = 'paid';
+            $order->save();
+        }
+        elseif($paid_amount < $order->amount){
+            $order->payment_status = 'partials';
+            $order->save();
+        }   
         Session::flash('success','Order payment has been submitted!');
         return back();
     }
