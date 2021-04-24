@@ -138,6 +138,10 @@ span{
 }
 
 .card-user{
-            margin-left:25px;
+            margin-left:10px;
             margin-right:5px;
+        }
+
+        .user-img img{
+            margin-top: -5px !important;
         }
