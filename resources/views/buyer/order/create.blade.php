@@ -1,8 +1,11 @@
-
 @extends('layouts.buyer-app')
 
+@if(Auth::user()->role=='buyer')
 @section('buyer_order','active')
 @section('order_create','active')
+@else
+@section('order_create','active')
+@endif
 @section('content')
     <div class="container-fluid">
 

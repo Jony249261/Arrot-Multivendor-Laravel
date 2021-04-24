@@ -1,5 +1,5 @@
 @extends('layouts.buyer-app')
-
+@section('profile', 'active')
 @section('content')
     <div class="container-fluid">
 

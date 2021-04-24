@@ -1,9 +1,12 @@
 @extends('layouts.buyer-app')
 @section('title','Edit order')
 
-
-@section('order', 'active')
-@section('edit-order', 'active')
+@if(Auth::user()->role=='buyer')
+    @section('order', 'active')
+@section('all-order', 'active')
+@else
+    @section('all-order', 'active')
+@endif
 
 @section('page-styles')
 

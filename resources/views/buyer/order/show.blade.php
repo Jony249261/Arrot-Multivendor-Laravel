@@ -1,8 +1,11 @@
 @extends('layouts.buyer-app')
 @section('title', 'Order show')
-
-@section('order', 'active')
-@section('show-order', 'active')
+@if(Auth::user()->role=='buyer')
+    @section('order', 'active')
+@section('all-order', 'active')
+@else
+    @section('all-order', 'active')
+@endif
 
 @section('content')
 
@@ -35,7 +38,7 @@
                                     <td>Delivery Date</td>
                                     <td>{{ date('d-M-Y',strtotime($order->delivery_date)) }}</td>
                                 </tr>
-                               
+
                                 <tr>
                                     <td>Order Status</td>
                                     <td>
@@ -391,7 +394,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6">
                             <div class="form-group form-float">
                                 <div class="">

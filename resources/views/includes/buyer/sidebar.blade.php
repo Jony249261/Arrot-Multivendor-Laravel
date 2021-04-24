@@ -38,12 +38,38 @@
                     <span>Home</span>
                 </a>
             </li>
-            @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'accounts')
+            @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'accounts' || auth()->user()->role == 'procurement')
             <li><a href="{{route('profile.index')}}"><i class="material-icons">person</i><span>Profile</span></a></li>
             <li><a href="{{ route('orders.index') }}"><i class="material-icons">production_quantity_limits</i><span>Order List</span></a></li>
 
             @endif
-            @if(auth()->user()->role != 'warehouse' && auth()->user()->role != 'accounts')
+            @if(Auth::user()->role=='procurement')
+            <li class="@yield('order_create')">
+                <a href="{{ route('orders.create') }}">
+                    <i class="material-icons">shopping_cart</i>
+                    <span>Create Order</span>
+                </a>
+            </li>
+           
+            <li class="@yield('all-order')">
+                <a href="{{route('orders.index')}}">
+                    <i class="material-icons">forum</i>
+                    <span>Support User</span>
+                </a>
+            </li>
+            <li>
+                <a  href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                    <i class="material-icons">input</i> <span>Logout</span>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </a>
+            </li>
+            @endif
+            @if(auth()->user()->role != 'warehouse' && auth()->user()->role != 'accounts' && auth()->user()->role != 'procurement')
             <li class="@yield('order')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">production_quantity_limits</i>
@@ -59,10 +85,7 @@
                     </li>
                 </ul>
             </li>
-            @endif
 
-
-            @if(auth()->user()->role != 'warehouse' && auth()->user()->role != 'accounts')
             <li class="@yield('buyer-user')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">group_add</i>
@@ -79,6 +102,8 @@
             </li>
             @endif
         </ul>
+      {{-- MenuForProcurment --}}
+           
     </div>
     <!-- #Menu -->
     <!-- Footer -->

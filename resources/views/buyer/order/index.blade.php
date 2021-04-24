@@ -1,7 +1,14 @@
 @extends('layouts.buyer-app')
 
+{{--AuthChekd for active menu --}}
+@if(Auth::user()->role=='buyer')
 @section('order', 'active')
 @section('all-order', 'active')
+@else
+    @section('all-order', 'active')
+    @endif
+
+
 @section('title', 'Orders')
 
 @section('content')
@@ -52,13 +59,22 @@
                                             <td>{{ number_format($order->amount, 2) }}</td>
                                             <td>
                                                 <div class="icon-button-demo">
-                                                    <a href="{{ route('orders.edit',$order->id) }}" class="btn btn-info waves-effect" style="float: left">
+                                                    @if(Auth::user()->role=='procurement' && $order->status=='processing')
+                                                        <a href="{{ route('orders.show',$order->id) }}" class="btn btn-success waves-effect" title="Active" style="float: left">
+                                                            <i class="material-icons">visibility</i>
+                                                        </a>
+                                                    @else
+
+
+                                                    <a href="{{ route('orders.edit',$order->id) }}" class="btn btn-info waves-effect" style="float: left"  {{Auth::user()->role=='procurement' && $order->status=='processing'?'disabled':''}}>
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    
+
                                                     <a href="{{ route('orders.show',$order->id) }}" class="btn btn-success waves-effect" title="Active" style="float: left">
                                                         <i class="material-icons">visibility</i>
                                                     </a>
+                                                        @endif
+
                                                 </div>
                                             </td>
                                         </tr>

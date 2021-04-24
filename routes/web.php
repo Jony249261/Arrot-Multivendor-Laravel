@@ -52,6 +52,11 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::post('/unit/store','Supplier\UnitController@store')->name('supplier.unit.store');
     Route::get('/unit/delete/{id}','Supplier\UnitController@delete')->name('supplier.unit.delete');
     Route::post('/unit/update/{id}','Supplier\UnitController@update')->name('supplier.unit.update');
+// Supplier Profile
+
+    Route::get('/profile/index','Supplier\ProfileController@index')->name('supplier.profile.index');
+    Route::get('/profile/edit','Supplier\ProfileController@edit')->name('supplier.profile.edit');
+    Route::post('/profile/update','Supplier\ProfileController@update')->name('supplier.porfile-update');
 
     //products route
     Route::resource('/products','Supplier\ProductController');
