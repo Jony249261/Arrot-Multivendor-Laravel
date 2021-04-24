@@ -30,15 +30,23 @@
     <!-- #User Info -->
     <!-- Menu -->
     <div class="menu">
+        @if(Auth::user()->role=='buyer')
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
+            <li class="@yield('dashboard')">
                 <a href="{{route('buyer.index')}}">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
             </li>
-           
+
+            <li class="@yield('profile')">
+                <a href="{{route('profile.index')}}">
+                    <i class="material-icons">person</i>
+                    <span>Profile</span>
+                </a>
+            </li>
+
             <li class="@yield('order')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">production_quantity_limits</i>
@@ -72,6 +80,25 @@
             </li>
 
         </ul>
+            @elseif(Auth::user()->role=='procurement')
+       
+                <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="@yield('dashboard')">
+                        <a href="{{route('buyer.index')}}">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li class="@yield('profile')">
+                        <a href="{{route('profile.index')}}">
+                            <i class="material-icons">person</i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+            </ul>
+            @endif
     </div>
     <!-- #Menu -->
     <!-- Footer -->

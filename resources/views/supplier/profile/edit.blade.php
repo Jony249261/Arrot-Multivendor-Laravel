@@ -15,7 +15,7 @@
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="{{route('supplier.porfile-update')}}" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="row clearfix">
@@ -104,6 +104,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <button class="btn btn-success waves-effect" type="submit">Update Profile</button>
 
                         </div>
 

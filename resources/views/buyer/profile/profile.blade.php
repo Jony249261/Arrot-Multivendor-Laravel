@@ -1,4 +1,5 @@
 @extends('layouts.buyer-app')
+@section('profile','active')
 @section('page-styles')
 
 

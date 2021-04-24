@@ -1,4 +1,5 @@
 @extends('layouts.buyer-app')
+@section('profile','active')
 @section('title','Create user')
 
 @section('content')
@@ -102,6 +103,9 @@
                                         @enderror
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <button disabled></button>
                             </div>
 
                         </div>
