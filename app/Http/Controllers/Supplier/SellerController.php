@@ -197,4 +197,14 @@ class SellerController extends Controller
 
 
     }
+
+
+    //Seller profile view
+        public function profile($id){
+        $user = User::find($id);
+
+        $seller=Seller::where('user_id',$id)->first();
+        
+            return view('supplier.seller.profile',compact('seller','user'));
+    }
 }

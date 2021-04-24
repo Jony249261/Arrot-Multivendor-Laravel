@@ -70,6 +70,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="@yield('supplier-order')">
+                <a href="{{route('order.index')}}">
+                    <i class="material-icons">forum</i>
+                    <span>Orders</span>
+                </a>
+            </li>
             <li>
                 <li class="@yield('seller')">
                 <a href="javascript:void(0);" class="menu-toggle">

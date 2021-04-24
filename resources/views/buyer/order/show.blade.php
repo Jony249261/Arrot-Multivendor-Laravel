@@ -57,19 +57,19 @@
                                 </tr>
                                 <tr>
                                     <td>Due Amount</td>
-                                    {{-- @php
-                                        $due_amount = $order->amount - $order->transactions()->sum('amount');
+                                    @php
+                                        $due_amount = $order->amount - $billings->sum('payment_amount');
                                     @endphp
-                                    <td>{{ number_format($due_amount,2) }}</td> --}}
+                                    <td>{{ number_format($due_amount,2) }}</td>
                                 </tr>
-                               
+                               @if($order->amount != $billings->sum('payment_amount'))
                                 <tr>
                                     <td>Payment</td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-info" data-toggle="modal" data-target=".make_payment">Make Payment</a>
+                                        <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal">Make Payment</button>
                                     </td>
                                 </tr>
-
+                              @endif
                             </table>
                         </div>
                     </div>
@@ -130,61 +130,131 @@
         <!-- #END# Exportable Table -->
     </div>
 
-
-    <div class="modal fade make_payment" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog ">
+    <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-content">
-                    <div class="modal-header d-flex">
-                        <h2 class="modal-title" id="exampleModalLabel">Make Payment</h2>
-                        
-                    </div>
-                    <div class="modal-body">
-                        <form action="{{route('buyer.order.payment',$order->id)}}"  method="POST" enctype="multipart/form-data">
-                            @csrf
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label>Payment Method</label>
-                                           <select name="account_id" class="form-control @error('account_id') is-invalid @enderror" id="">
-                                            <option value="">Select One</option>
-                                            {{-- @foreach ($accounts as $account)
-                                                <option value="{{ $account->id }}">{{ $account->name }}</option>
-                                            @endforeach --}}
-                                           </select>
-                                            @error('account_id')
-                                            <span class="invalid-feedback text-red">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Proof Of Payment</label>
-                                            <input type="file" name="proof" value="{{ old('proof') }}" class="form-control @error('proof') is-invalid @enderror" >
-                                            @error('proof')
-                                            <span class="invalid-feedback text-red">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Amount</label>
-                                            <input type="number" name="amount" value="{{ old('amount') }}" class="form-control @error('amount') is-invalid @enderror"  placeholder="Enter amount">
-                                            @error('amount')
-                                            <span class="invalid-feedback text-red">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                        
-                                    </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success">Submit</button>
+                <div class="modal-header bg-red">
+                    <h4 class="modal-title" id="defaultModalLabel">Make Payment</h4>
+                </div>
+                <form action="{{route('buyer.order.payment')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                <div class="modal-body">
+                    <input type="hidden" value="{{ $order->id }}" name="order_id" id="">
+                    <input type="hidden" value="{{ $order->amount }}" name="bill_amount" id="">
+                    <input type="hidden" value="{{ auth()->user()->id }}" name="user_id" id="">
+                    <input type="hidden" value="{{ auth()->user()->buyer_id }}" name="buyer_id" id="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="number" disabled min="0" class="form-control @error('bill_amount') is-invalid @enderror" value="{{ old('bill_amount',$order->amount) }}" name="bill_amount" >
+                                    <label class="form-label">Bill amount</label>
+                                    @error('bill_amount')
+                                    <span class="invalid-feedback" role="alert">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="number" min="0" class="form-control @error('payment_amount') is-invalid @enderror" value="{{ old('payment_amount') }}" name="payment_amount" >
+                                    <label class="form-label">Payment amount</label>
+                                    @error('payment_amount')
+                                    <span class="invalid-feedback" role="alert">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="number" min="0" class="form-control @error('check_number') is-invalid @enderror" value="{{ old('check_number') }}" name="check_number" >
+                                    <label class="form-label">Check number</label>
+                                    @error('check_number')
+                                    <span class="invalid-feedback" role="alert">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text"  class="form-control @error('bank_name') is-invalid @enderror" value="{{ old('bank_name') }}" name="bank_name" >
+                                    <label class="form-label">Bank name</label>
+                                    @error('bank_name')
+                                    <span class="invalid-feedback" role="alert">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="">
+                                    <label class="form-label">Due date</label>
+                                    <input type="date" class="form-control @error('due_date') is-invalid @enderror" value="{{ old('due_date') }}" name="due_date" >
+                                    @error('due_date')
+                                    <span class="invalid-feedback" role="alert">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="">
+                                    <label class="form-label">Check issue date</label>
+                                    <input type="date" class="form-control @error('check_issue_date') is-invalid @enderror" value="{{ old('check_issue_date') }}" name="check_issue_date" >
+                                    @error('check_issue_date')
+                                    <span class="invalid-feedback" role="alert">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="">
+                                    <label class="form-label">Check photo</label>
+                                    <input type="file"  class="form-control @error('check_photo') is-invalid @enderror" value="{{ old('check_photo') }}" name="check_photo" >
+                                    @error('check_photo')
+                                    <span class="invalid-feedback" role="alert">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-float">
+                                <div class="">
+                                    <label for="">Payment Type</label><br>
+                                    <input type="radio" checked name="payment_type" value="check" id="check" class="with-gap">
+                                    <label for="check">Check</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
-
-
-
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success waves-effect">SUBMIT</button>
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
+                </div>
+                </form>
             </div>
         </div>
-
     </div>
 
 @endsection

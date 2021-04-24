@@ -61,6 +61,30 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
 
+  
+          .container-fluid {
+    
+    padding-left: 0;
+
+}
+.navbar-brand{
+    color:black !important;
+}
+.navbar-header{
+    width:22.5%;
+
+    background: url("../images/image1.jpg") no-repeat no-repeat;
+
+    
+}
+.navbar-header img{
+    margin-top: -15px;
+
+  }
+  .card{
+        margin-left:10px;
+    }
+
 .ls-closed .bars:before {
   content: '\E5D2';
   -moz-transform: scale(1);

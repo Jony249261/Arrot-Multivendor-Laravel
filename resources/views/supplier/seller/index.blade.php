@@ -1,7 +1,7 @@
 @extends('layouts.supplier-app')
 
-@section('buyer','active')
-@section('buyer-index','active')
+@section('seller','active')
+@section('all-seller','active')
 @section('content')
     <div class="container-fluid" xmlns="">
 
@@ -46,6 +46,7 @@
 
                                             <td>
                                                 <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
+                                                <a href="{{ route('supplier.seller.profile',$user->id) }}" class="btn btn-primary @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
                                                 @if(auth()->user()->role != 'support')
                                                 <form action="{{ route('supplier.seller.delete',$user->id) }}" method="post">
                                                     @csrf
