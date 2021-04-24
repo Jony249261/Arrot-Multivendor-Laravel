@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="header bg-red">
 
-                    <h2 class="text-center">Update Buyer</h2>
+                    <h2 class="text-center">Update @if(Auth::user()->role=='procurement') Procurement @elseif(Auth::user()->role=='warehouse') Warehouse @endif</h2>
 
                 </div>
                 <div class="body">
@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button disabled></button>
+                                <button class="btn btn-success waves-effect" type="submit">Update @if(Auth::user()->role=='procurement') Procurement @elseif(Auth::user()->role=='warehouse') Warehouse @endif</button>
                             </div>
 
                         </div>

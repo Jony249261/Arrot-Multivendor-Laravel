@@ -203,12 +203,12 @@
                     </div>
                     <div class="col-md-3">
                         <div class="row">
-                            <div class="col-sm-12 text-secondary ">
+                            <div class="col-sm-12 text-secondary user-img">
                                 <img src="{{asset('users/'.$user->image)}}" alt="Admin" class="rounded-circles" width="120">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="row">
                             <div class="col-sm-12 ">
                                  <h5 class="mb-0"><span>Name:</span>  {{$user->name}}</h5>
@@ -217,7 +217,7 @@
 
                         <div class="row">
                             <div class="col-sm-12">
-                                 <h5 class="mb-0"><span>Enail:</span> {$user->email}}</h5>
+                                 <h5 class="mb-0"><span>Enail:</span> {{$user->email}}</h5>
                             </div>
                         </div>
 
@@ -229,7 +229,7 @@
 
 
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                     </div>
 
 
