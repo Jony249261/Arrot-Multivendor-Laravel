@@ -108,6 +108,10 @@ Route::post('/profile/user_update','Buyer\ProfileController@user_update')->name(
     //buyer user
     Route::resource('/buyer-users', 'Buyer\UserController');
 
+    //support route
+     Route::get('/support/index','Buyer\SupportController@index')->name('support.index');
+
+
 
 });
 

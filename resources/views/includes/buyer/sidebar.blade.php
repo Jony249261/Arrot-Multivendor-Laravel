@@ -78,6 +78,13 @@
                     </li>
                 </ul>
             </li>
+            
+                    <li class="@yield('support')">
+                        <a href="{{route('support.index')}}">
+                            <i class="material-icons">support</i>
+                            <span>Support</span>
+                        </a>
+                    </li>
 
         </ul>
             @elseif(Auth::user()->role=='procurement')
