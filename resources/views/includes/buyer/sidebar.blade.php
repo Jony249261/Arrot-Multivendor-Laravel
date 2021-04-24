@@ -81,7 +81,6 @@
 
         </ul>
 
-
 {{--            Menu For Procurment--}}
             @elseif(Auth::user()->role=='procurement')
 
@@ -110,6 +109,12 @@
                         <a href="{{route('orders.index')}}">
                             <i class="material-icons">production_quantity_limits</i>
                             <span>Orders</span>
+                        </a>
+                    </li>
+                    <li class="@yield('all-order')">
+                        <a href="{{route('orders.index')}}">
+                            <i class="material-icons">forum</i>
+                            <span>Support User</span>
                         </a>
                     </li>
                     <li>
