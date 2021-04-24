@@ -15,6 +15,11 @@
               <h2 class="text-center">
                 Seller Information
               </h2>
+              
+              <ul class="header-dropdown m-r--5">
+                        <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-success"><i class="material-icons">edit</i> Edit Profile</a>
+
+                    </ul>
               </div>
               <br>
         <div class="card-body cardbody">

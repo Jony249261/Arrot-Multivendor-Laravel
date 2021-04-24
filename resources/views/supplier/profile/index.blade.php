@@ -1,12 +1,16 @@
 @extends('layouts.supplier-app')
 @section('dashboard','active')
-
+@section('page-styles')
+<link href="{{ asset('backend/css/profile.css') }}" rel="stylesheet">
+@endsection
 @section('content')
-<div class="container-fluid">
-    <!-- Basic Example -->
-    <div class="row gutters-sm">
-        <div class="col-md-12 mb-3">
-            <div class="card">
+
+<div class="contaimer-fluid">
+    
+        <div class="row gutters-sm">
+            <div class="col-md-12">
+              <div class="row gutters-sm">
+            <div class="card card-user">
                 <div class="header bg-red">
                     <h2>{{$user->name}} -  Profile Information</h2>
                     <ul class="header-dropdown m-r--5">
@@ -14,29 +18,49 @@
 
                     </ul>
                 </div>
+              <br>
                 <div class="card-body cardbody">
-                    <div class="d-flex flex-column align-items-center text-center">
-                        <img src="{{asset('image_buyer/user/'.$user->image)}}" alt="Admin" class="rounded-circle" width="150">
-                        <div class="mt-3">
-
-                            <div class="row">
-                                <div class="col-md-12 col-12 col-lg-12">
-                                    <div class="card shadow-lg">
-                                        <div class="body">
-                                            <h4><i class="material-icons">account_box</i> {{$user->name}}</h4>
-                                            <p class="text-secondary mb-1"> <i class="material-icons">email</i>  {{$user->email}}</p>
-                                            <p class="text-muted font-size-sm"><i class="material-icons">phone_android</i> {{$user->phone}}</p>
-                                        </div>
-                                    </div>
-
-                                </div>
+                    <div class="col-md-3">
+                
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 text-secondary user-img">
+                                <img src="{{asset('image_buyer/user/'.$user->image)}}" alt="Admin" class="rounded-circles" width="120">
                             </div>
-
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                 <h5 class="mb-0"><span>Name:</span>  {{$user->name}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                 <h5 class="mb-0"><span>Enail:</span> {{$user->email}}</h5>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                 <h5 class="mb-0"><span>Phone:</span> {{$user->phone}}</h5>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+
+
                 </div>
             </div>
         </div>
+
+
+          </div>
+
     </div>
-</div>
 @endsection
