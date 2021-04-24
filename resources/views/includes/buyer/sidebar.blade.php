@@ -38,24 +38,31 @@
                     <span>Home</span>
                 </a>
             </li>
-           
+            @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'accounts')
+            <li><a href="{{route('profile.index')}}"><i class="material-icons">person</i><span>Profile</span></a></li>
+            <li><a href="{{ route('orders.index') }}"><i class="material-icons">production_quantity_limits</i><span>Order List</span></a></li>
+
+            @endif
+            @if(auth()->user()->role != 'warehouse' && auth()->user()->role != 'accounts')
             <li class="@yield('order')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">production_quantity_limits</i>
-                    <span>Order</span>
+                    <span>Orders</span>
                 </a>
                 <ul class="ml-menu">
-                    <li class="@yield('order_create')">
-                        <a href="{{ route('orders.create') }}">Create Order</a>
+                    <li class="@yield('all-order')">
+                        <a href="{{ route('orders.index') }}">Order List</a>
                     </li>
+                   
                     <li class="@yield('create-order')">
                         <a href="{{ route('orders.create') }}">Order create</a>
                     </li>
                 </ul>
             </li>
+            @endif
 
 
-
+            @if(auth()->user()->role != 'warehouse' && auth()->user()->role != 'accounts')
             <li class="@yield('buyer-user')">
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">group_add</i>
@@ -70,7 +77,7 @@
                     </li>
                 </ul>
             </li>
-
+            @endif
         </ul>
     </div>
     <!-- #Menu -->

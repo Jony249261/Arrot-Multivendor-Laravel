@@ -97,6 +97,7 @@ Route::post('/profile/user_update','Buyer\ProfileController@user_update')->name(
 
     //order
     Route::resource('/orders', 'Buyer\OrderController');
+    Route::put('/order/received/{id}', 'Buyer\OrderController@received')->name('orders.received');
 
     Route::post('/order/payment','Buyer\BillingController@store')->name('buyer.order.payment');
 

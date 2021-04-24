@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>{{ __('SL') }}</th>
                                         <th>{{ __('Order ID') }}</th>
-                                        <th>{{ __('Buyer Name') }}</th>
+                                        {{-- <th>{{ __('Buyer Name') }}</th> --}}
                                         <th>{{ __('Delivery Date') }}</th>
                                         <th>{{ __('Status') }}</th>
                                         <th>{{ __('Amount') }}</th>
@@ -46,7 +46,7 @@
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $order->ShowId }}</td>
-                                            <td>{{ $order->user->name }}</td>
+                                            {{-- <td>{{ $order->user->name }}</td> --}}
                                             <td>{{ date('d-M-Y', strtotime($order->delivery_date)) }}</td>
                                             <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
                                             </td>

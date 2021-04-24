@@ -19,7 +19,17 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::where('user_id',auth()->user()->id)->latest()->paginate(15);
+        if(auth()->user()->role == 'warehouse'){
+            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','accepted')->Orwhere('status','received')->latest()->paginate(15);
+        }
+        elseif(auth()->user()->role == 'accounts'){
+            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','received')->Orwhere('status','received')->latest()->paginate(15);
+
+        }
+        else{
+
+            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->paginate(15);
+        }
         return view('buyer.order.index',compact('orders'));
     }
 
@@ -123,6 +133,29 @@ class OrderController extends Controller
 
             }
         }
+        Session::flash('info','Order has been updated successfully!!');
+        return redirect()->route('orders.index');
+    }
+
+    public function received(Request $request, $id)
+    {
+        $order = Order::findOrFail($id);
+        $products = $request->input('products');
+        $quantities = $request->input('quantites');
+        foreach($quantities as $id => $qty){
+            $order_product = OrderProduct::where('order_id',$order->id)->where('product_id',$products[$id])->first();
+
+            if($products[$id] && $qty > 0 ){
+
+                $order_product->product_id = $products[$id];
+                $order_product->order_id = $order->id;
+                $order_product->delivered_qty = $qty;
+                $order_product->save();
+
+            }
+        }
+        $order->status = 'received';
+        $order->save();
         Session::flash('info','Order has been updated successfully!!');
         return redirect()->route('orders.index');
     }

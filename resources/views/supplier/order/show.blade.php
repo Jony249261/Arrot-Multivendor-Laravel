@@ -190,9 +190,13 @@
                                         <th>{{ __('Unit') }}</th>
                                         <th>{{ __('Quantity') }}</th>
                                         <th>{{ __('Price') }}</th>
+                                        <th>{{ __('Total') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                     $grand_total = 0;   
+                                    @endphp
                                     @forelse ($order->items as $i => $item)
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
@@ -202,6 +206,10 @@
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
                                             <td>{{ number_format($item->product->price, 2) }}</td>
+                                            <td>{{ number_format(($item->qty * $item->product->price),2) }}</td>
+                                            @php
+                                                $grand_total +=$item->qty * $item->product->price;
+                                            @endphp
                                         </tr>
                                     @empty
                                         <tr>
@@ -210,7 +218,13 @@
                                     @endforelse
 
                                 </tbody>
-
+                                <tfoot>
+                                    <tr>
+                                        
+                                        <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
+                                        <td colspan="2">{{ number_format($grand_total,2) }}</td>
+                                    </tr>
+                                </tfoot> 
                             </table>
                         </div>
                     </div>
