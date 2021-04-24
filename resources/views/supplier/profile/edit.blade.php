@@ -1,4 +1,5 @@
-@extends('layouts.buyer-app')
+@extends('layouts.supplier-app')
+@section('dashboard','active')
 @section('title','Create user')
 
 @section('content')
@@ -14,7 +15,7 @@
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="{{ route('buyer.user.porfile-update') }}" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="" enctype="multipart/form-data" >
                         @csrf
 
                         <div class="row clearfix">
@@ -70,7 +71,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <img src="{{asset('users/'.$user->image)}}" height="80px" width="80px" alt="">
+                                        <img src="{{asset('image_buyer/user/'.$user->image)}}" height="80px" width="80px" alt="">
                                         {{-- <label class="form-label">Image</label> --}}
                                     </div>
                                 </div>
