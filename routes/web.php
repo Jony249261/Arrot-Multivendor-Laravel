@@ -84,6 +84,8 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/orders','Supplier\OrderController@index')->name('order.index');
     Route::get('/order/show/{id}','Supplier\OrderController@show')->name('order.show');
     Route::put('/order/status/{id}','Supplier\OrderController@status')->name('supplier.order.status');
+    Route::get('/order/invoice/{id}','Supplier\OrderController@invoice')->name('order.invoice');
+    Route::get('/order/index/pdf','Supplier\OrderController@generatePdf')->name('order.index.pdf');
 
 
 
@@ -132,5 +134,6 @@ Route::prefix('seller')->middleware('seller')->group(function(){
     //all Seller route will gose here
 
 });
+
 
 

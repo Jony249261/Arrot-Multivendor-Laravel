@@ -37,6 +37,7 @@
                                         {{-- <th>{{ __('Buyer Name') }}</th> --}}
                                         <th>{{ __('Delivery Date') }}</th>
                                         <th>{{ __('Status') }}</th>
+                                        <th>{{ __('Payment Status') }}</th>
                                         <th>{{ __('Amount') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
@@ -49,6 +50,7 @@
                                             {{-- <td>{{ $order->user->name }}</td> --}}
                                             <td>{{ date('d-M-Y', strtotime($order->delivery_date)) }}</td>
                                             <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
+                                                <td><span class="badge badge-primary">{{ ucfirst($order->payment_status) }}</span>
                                             </td>
                                             <td>{{ number_format($order->amount, 2) }}</td>
                                             <td>
@@ -68,6 +70,7 @@
                                 </tbody>
 
                             </table>
+                            <a href="{{ route('order.index.pdf') }}" class="btn btn-info" style="float: right">PDF</a>
                         </div>
                         {{ $orders->links() }}
                     </div>
