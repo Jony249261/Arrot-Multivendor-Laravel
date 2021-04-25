@@ -1,4 +1,5 @@
 @extends('layouts.seller-app')
+@section('dashboard','active')
 
 @section('content')
 <div class="container-fluid">
@@ -309,5 +310,5 @@
         </div>
         <!-- #END# Browser Usage -->
     </div>
-</div>    
+</div>
 @endsection
