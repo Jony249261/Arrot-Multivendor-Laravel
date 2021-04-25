@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('buyer_id')->nullable();
             $table->date('delivery_date')->nullable();
             $table->float('amount',16);
-            $table->enum('status',['pending','accepted','processing','rejected','completed'])->default('pending');
+            $table->enum('status',['pending','received','accepted','processing','rejected','completed'])->default('pending');
             $table->enum('payment_status',['paid','unpaid','partials'])->default('unpaid');
             $table->timestamps();
         });
