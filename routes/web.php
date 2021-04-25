@@ -125,6 +125,10 @@ Route::prefix('seller')->middleware('seller')->group(function(){
     Route::get('/','Seller\SellerController@index')->name('seller.index');
 
 
+
+// Seller Product
+    Route::get('/product/index','Seller\ProductController@index')->name('seller.product.index');
+   Route::post('/prpose/store','Seller\ProductController@store')->name('seller.propose.store');
     //all Seller route will gose here
 
 });
