@@ -57,7 +57,7 @@
                                 <tr>
                                     <td>Total Amount</td>
                                     <td>
-                                        @php
+                                    @php
                                         $grant_total = 0;
                                     @endphp
                                     @forelse ($order->items as $item)
@@ -233,7 +233,6 @@
             </div>
         </div>
         @endif
-        @if($order->status != 'received')
         @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'buyer')
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -296,7 +295,7 @@
                                 </tfoot> --}}
 
                             </table>
-                            @if($order->status != 'received')
+                            @if($order->status == 'accepted')
                             <button class="btn btn-sm btn-info" style="float: right">Received</button>
                             @endif
                         </form>
@@ -305,7 +304,6 @@
                 </div>
             </div>
         </div>
-        @endif
         @endif
 
         <div class="row clearfix">

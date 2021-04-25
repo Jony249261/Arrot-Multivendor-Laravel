@@ -76,7 +76,7 @@
                                                     </button>
                                                     @endif
                                                     <ul class="dropdown-menu" role="menu">
-                                                        @if($order->status !== 'accepted' && $order->status !== 'processing' && $order->status !== 'rejected' && $order->status !== 'completed')
+                                                        @if($order->status !== 'accepted' && $order->status !== 'received' && $order->status !== 'processing' && $order->status !== 'rejected' && $order->status !== 'completed')
                                                         <li><a>
                                                                 <form
                                                                     action="{{ route('supplier.order.status',$order->id) }}"
@@ -148,15 +148,39 @@
                                         </tr>
                                         <tr>
                                             <td>Total Amount</td>
-                                            <td>{{ number_format($order->amount, 2) }}</td>
+                                            {{-- <td>{{ number_format($order->amount, 2) }}</td> --}}
+                                        @php
+                                            $grant_total = 0;
+                                        @endphp
+                                        @forelse ($order->items as $item)
+                                            @php
+                                                $grant_total +=$item->product->price * $item->qty ;
+                                            @endphp
+                                        @endforeach
+                                        <td>{{ number_format($grant_total,2) }}  </td>  
+                                        </tr>
+                                        <tr>
+                                            <td>Payable Amount</td>
+                                            <td>
+                                                @php
+                                                    $payable = 0;
+                                                @endphp
+                                                @forelse ($order->items as $item)
+                                                    @php
+                                                        $payable +=$item->product->price * $item->delivered_qty ;
+                                                    @endphp
+                                                @endforeach
+                                                {{ number_format($payable,2) }}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Due Amount</td>
                                             @php
-                                                $due_amount = $order->amount - $billings->sum('payment_amount');
+                                                $due_amount = $payable - $billings->sum('payment_amount');
                                             @endphp
-                                            <td>{{ number_format($due_amount, 2) }}</td>
+                                            <td>{{ number_format($due_amount,2) }}</td>
                                         </tr>
+                                       
                                        
                                     </table>
                                 </div>

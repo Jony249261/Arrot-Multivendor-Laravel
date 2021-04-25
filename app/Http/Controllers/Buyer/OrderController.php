@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function index()
     {
         if(auth()->user()->role == 'warehouse'){
-            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','accepted')->Orwhere('status','received')->latest()->paginate(15);
+            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->paginate(15);
         }
          
         elseif(auth()->user()->role == 'accounts'){

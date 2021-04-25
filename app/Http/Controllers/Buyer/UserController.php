@@ -47,10 +47,12 @@ class UserController extends Controller
             'phone' => 'sometimes|nullable',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'required|confirmed|min:6',
-            'role' => 'required|string'
+            'role' => 'required|string',
         ]);
         $data['password'] = Hash::make($data['password']);
         $data['parent_id'] = auth()->user()->id;
+        $data['buyer_id'] = auth()->user()->buyer_id;
+
         if($request->has('image')){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
@@ -114,6 +116,7 @@ class UserController extends Controller
             'role' => 'required|string'
         ]);
         $data['parent_id'] = auth()->user()->id;
+        $data['buyer_id'] = auth()->user()->buyer_id;
         if($request->has('password')) $data['password'] = Hash::make($data['password']);
 
         $path = 'users/'.$user->image;

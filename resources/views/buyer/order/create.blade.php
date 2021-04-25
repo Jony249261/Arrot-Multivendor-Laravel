@@ -47,7 +47,7 @@
                                                 <td>
                                                     <input type="hidden" name="products[]" value="{{ $product->id }}" id="">
                                                     <input type="hidden" min="0" name="prices[]"  value="{{ $product->price }}" id="price">
-                                                    <input type="number" min="0" name="quantites[]" data-id="{{ $product->id }}" placeholder="00.00" id="qty">
+                                                    <input type="number" min="0" name="quantites[]" style="width: 80px" data-id="{{ $product->id }}" placeholder="00.00" id="qty">
 
 
                                                 </td>
