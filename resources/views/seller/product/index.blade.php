@@ -10,6 +10,7 @@
                 <div class="header bg-orange text-center">
 
                     <h2 class="text-center">Create order</h2>
+                   
 
                 </div>
                 <div class="body">
@@ -22,15 +23,17 @@
                                 <th>{{ __('Product Name') }}</th>
                                 <th>Discription</th>
                                 <th>{{ __('Unit') }}</th>
-                                <th>{{ __('Price') }}</th>
                                 <th>{{ __('Quantity') }}</th>
+                                <th>{{ __('Price') }}</th>
+                                <th>{{ __('Action') }}</th>
 
                             </tr>
                             </thead>
-                            <form action="{{ route('seller.propose.store') }}" method="post">
+                            
                                 <tbody>
-                                @csrf
                                 @forelse ($products as $i => $product)
+                                <form action="{{ route('add-to.cart',$product->id) }}" method="post">
+                                    @csrf
                                     <tr role="row" class="odd">
                                         <td>{{ $i + 1 }}</td>
                                         <td><img src="{{ asset('products/' . $product->image) }}"
@@ -38,20 +41,23 @@
                                         <td>{{ $product->product_name }}</td>
                                         <td>{{ Str::limit($product->product_description, 50) }}</td>
                                         <td>{{ $product->unit->name }}</td>
+                                       
                                         <td>
-                                            <input type="hidden" name="products[]" value="{{ $product->id }}" id="">
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
 
-                                            <input type="number" min="0" name="quantites[]" placeholder="Ex: XXX"  id="qty">
+                                            <input type="number" min="0" name="quantity" style="width: 80px" placeholder="Ex: XXX"  id="qty">
 
-
-                                        </td>
-                                        <td ><input type="number" min="0" name="prices[]"  placeholder="Ex:00.00" id="price">
 
                                         </td>
+                                        <td ><input type="number" min="0" name="price" style="width: 80px"  placeholder="Ex:00.00" id="price">
+
+                                        </td>
+                                       <td ><strong><button type="submit" class="btn btn-info" ><i class="material-icons">shopping_cart</i></button></strong></td>
 
 
 
                                     </tr>
+                                </form>
                                 @empty
                                     <tr>
                                         <td colspan="5" class="text-center">No data found!</td>
@@ -61,14 +67,16 @@
                                 </tbody>
                                 <tfoot>
                                 <tr>
-
-                                    <td colspan="7" class="text-right"><strong><button type="submit" class="btn btn-success btn-info" style="float: right">Propose</button></strong></td>
+                                    <form action="{{ route('seller.propose.store') }}" method="POST">
+                                        @csrf
+                                        <td colspan="8" class="text-right"><strong><button type="submit" class="btn btn-success btn-info" style="float: right">Propose</button></strong></td>
+                                    </form>
 
                                 </tr>
                                 </tfoot>
 
 
-                            </form>
+                            
 
                         </table>
                     </div>
