@@ -22,6 +22,7 @@ class OrderController extends Controller
         if(auth()->user()->role == 'warehouse'){
             $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','accepted')->Orwhere('status','received')->latest()->paginate(15);
         }
+         
         elseif(auth()->user()->role == 'accounts'){
             $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','received')->Orwhere('status','received')->latest()->paginate(15);
 

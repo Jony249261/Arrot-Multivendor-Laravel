@@ -23,6 +23,7 @@
 
                         </h2>
                         <ul class="header-dropdown m-r--5">
+                            <a href="{{ route('order.invoice',$order->id) }}" class="btn btn-info">Invoice</a>
                             <a href="{{ route('order.index') }}" class="btn btn-default">View</a>
 
                         </ul>
@@ -174,10 +175,7 @@
                             Product Details - {{ $order->showId }}
 
                         </h2>
-                        {{-- <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('orders.index') }}" class="btn btn-default">View</a>
-
-                        </ul> --}}
+                      
                     </div>
                     <div class="body">
                         <div class="table-responsive">
@@ -225,6 +223,63 @@
                                         <td colspan="2">{{ number_format($grand_total,2) }}</td>
                                     </tr>
                                 </tfoot> 
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header bg-orange text-center">
+                        <h2>
+                            Payment Details - {{ $order->showId }}
+
+                        </h2>
+                      
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>{{ __('SL') }}</th>
+                                        <th>{{ __('Check Number') }}</th>
+                                        <th>{{ __('Bank Name') }}</th>
+                                        <th>{{ __('Check Photo') }}</th>
+                                        <th>{{ __('Payment Date') }}</th>
+                                        <th>{{ __('Pay amount') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                    @forelse ($billings as $i => $bill)
+                                        <tr>
+                                            <td>{{ $i + 1 }}</td>
+                                            <td>{{ $bill->check_number }}</td>
+                                            <td>{{ $bill->bank_name }}</td>
+                                            <td>
+                                                <img src="{{ asset('images/check/'.$bill->check_photo) }}" width="50" alt="">
+                                            </td>
+                                            <td>{{ date('d-M-Y',strtotime($bill->created_at)) }}</td>
+                                            <td>{{ number_format($bill->payment_amount,2) }}</td>
+                                            
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">No data found!!</td>
+                                        </tr>
+                                    @endforelse
+
+                                </tbody>
+                                {{-- <tfoot>
+                                    <tr>
+                                        
+                                        <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
+                                        <td colspan="2">{{ number_format($grand_total,2) }}</td>
+                                    </tr>
+                                </tfoot>  --}}
                             </table>
                         </div>
                     </div>

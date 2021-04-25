@@ -1,4 +1,4 @@
-<aside id="leftsidebar" class="sidebar">
+<aside id="leftsidebar" class="sidebar no-print">
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
@@ -72,7 +72,7 @@
             </li>
             <li class="@yield('supplier-order')">
                 <a href="{{route('order.index')}}">
-                    <i class="material-icons">forum</i>
+                    <i class="material-icons">shopping_cart</i>
                     <span>Orders</span>
                 </a>
             </li>

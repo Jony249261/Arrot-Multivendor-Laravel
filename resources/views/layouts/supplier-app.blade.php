@@ -36,7 +36,20 @@
     <link href="{{ asset('backend/css/themes/all-themes.css') }}" rel="stylesheet" />
     <!-- toster js setup  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <style>
+        .invoice {
+            background: #fff;
+            padding: 20px
+        }
 
+        @media print {
+
+            .no-print,
+            .no-print * {
+                display: none !important;
+            }
+        }
+    </style>
     @yield('page-styles')
 </head>
 
