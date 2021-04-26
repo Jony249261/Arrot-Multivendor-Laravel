@@ -2,7 +2,7 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="{{asset('backend/images/user.png')}}" width="48" height="48" alt="User" />
+            <img src="{{asset('image_buyer/user/'.Auth::user()->buyer->br_image)}}" width="48" height="48" alt="User" />
         </div>
         <div class="info-container">
             <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</div>
@@ -10,7 +10,7 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="{{route('profile.index')}}"><i class="material-icons">person</i>Profile</a></li>
+                    <li><a href="{{ route('buyer.profile.index') }}"><i class="material-icons">person</i>Profile</a></li>
                     <li role="seperator" class="divider"></li>
 
                     <li>  <a  href="{{ route('logout') }}"
@@ -102,7 +102,7 @@
             </li>
             
                     <li class="@yield('support')">
-                        <a href="{{route('support.index')}}">
+                        <a href="{{route('supports.index')}}">
                             <i class="material-icons">support</i>
                             <span>Support</span>
 

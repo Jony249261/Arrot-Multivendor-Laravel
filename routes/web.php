@@ -96,7 +96,7 @@ Route::prefix('buyer')->middleware('buyer')->group(function(){
     Route::get('/','Buyer\BuyerController@index')->name('buyer.index');
 
 //    Profile ROute
- Route::get('/profile/index','Buyer\ProfileController@index')->name('profile.index');
+ Route::get('/profile/index','Buyer\ProfileController@index')->name('buyer.profile.index');
  Route::get('/profile/edit','Buyer\ProfileController@edit')->name('profile.edit');
  Route::post('/profile/update/{id}','Buyer\ProfileController@update')->name('buyer.profile.update');
  Route::get('/profile/user_edit','Buyer\ProfileController@user_edit')->name('buyer.user.update');
@@ -114,7 +114,9 @@ Route::post('/profile/user_update','Buyer\ProfileController@user_update')->name(
     Route::resource('/buyer-users', 'Buyer\UserController');
 
     //support route
-     Route::get('/support/index','Buyer\SupportController@index')->name('support.index');
+     Route::get('/support/index','Buyer\SupportController@index')->name('supports.index');
+     Route::post('/support/contact','Buyer\SupportController@contactSubmit')->name('contact.submit');
+
 
 
 
@@ -127,6 +129,17 @@ Route::prefix('seller')->middleware('seller')->group(function(){
 
     //all Seller route will gose here
 
+
+    //profile route
+    Route::get('/profile/index','Seller\ProfileController@index')->name('seller.profile.index');
+    Route::get('/profile/edit','Seller\ProfileController@edit')->name('seller.profile.edit');
+    Route::post('/profile/update/{id}','Seller\ProfileController@update')->name('seller.porfile-update');
+
+
+    //support route
+     Route::get('/support/index','Seller\SupportController@index')->name('support.index');
+     Route::post('/support/contact','Buyer\SupportController@contactSubmit')->name('contact.submit');
+     
 });
 
 
