@@ -84,6 +84,8 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/orders','Supplier\OrderController@index')->name('order.index');
     Route::get('/order/show/{id}','Supplier\OrderController@show')->name('order.show');
     Route::put('/order/status/{id}','Supplier\OrderController@status')->name('supplier.order.status');
+    Route::get('/order/invoice/{id}','Supplier\OrderController@invoice')->name('order.invoice');
+    Route::get('/order/index/pdf','Supplier\OrderController@generatePdf')->name('order.index.pdf');
 
 
 
@@ -127,7 +129,11 @@ Route::prefix('seller')->middleware('seller')->group(function(){
     Route::get('/','Seller\SellerController@index')->name('seller.index');
 
 
-    //all Seller route will gose here
+
+// Seller Product
+    Route::get('/product/index','Seller\ProductController@index')->name('seller.product.index');
+    Route::post('/product/create','Seller\ProductController@create')->name('seller.product.create');
+   //all Seller route will gose here
 
 
     //profile route
@@ -141,5 +147,6 @@ Route::prefix('seller')->middleware('seller')->group(function(){
      Route::post('/support/contact','Buyer\SupportController@contactSubmit')->name('contact.submit');
      
 });
+
 
 

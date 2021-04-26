@@ -43,6 +43,8 @@
             <li><a href="{{ route('orders.index') }}"><i class="material-icons">production_quantity_limits</i><span>Order List</span></a></li>
 
             @endif
+
+            {{-- procurement --}}
             @if(Auth::user()->role=='procurement')
             <li class="@yield('order_create')">
                 <a href="{{ route('orders.create') }}">

@@ -47,11 +47,14 @@
                                                 <td>
                                                     <input type="hidden" name="products[]" value="{{ $product->id }}" id="">
                                                     <input type="hidden" min="0" name="prices[]"  value="{{ $product->price }}" id="price">
-                                                    <input type="number" min="0" name="quantites[]" data-id="{{ $product->id }}" placeholder="00.00" id="qty">
+                                                    {{-- <input type="number" min="0" name="quantites[]" style="width: 80px" data-id="{{ $product->id }}" placeholder="00.00" id="qty"> --}}
+                                                    <input type="number" min="0" name="quantites[]" style="width: 80px" data-id="{{ $product->id }}" placeholder="00.00" onchange="calculateAmount(this.value)"  id="qty">
 
 
                                                 </td>
-                                                <td >--</td>
+                                                <td >
+                                                    --
+                                                </td>
 
                                             </tr>
                                         @empty
@@ -68,9 +71,14 @@
                                             <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
                                             <td colspan="2">000</td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="7">
+
+                                                <button class="btn btn-sm btn-info" style="float: right">Create order</button>
+                                            </td>
+                                        </tr>
                                     </tfoot>
-                            </table>
-                            <button class="btn btn-sm btn-info" style="float: right">Create order</button>
+
                             </form>
 
                             </table>
@@ -82,4 +90,13 @@
 
         </div>
     </div>
+    <script>
+            function calculateAmount(val,price) {
+                var tot_price = val * price;
+                /*display the result*/
+                var divobj = document.getElementById('tot_amount');
+                divobj.value = tot_price;
+            }
+        </script>
     @endsection
+

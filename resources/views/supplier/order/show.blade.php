@@ -23,6 +23,7 @@
 
                         </h2>
                         <ul class="header-dropdown m-r--5">
+                            <a href="{{ route('order.invoice',$order->id) }}" class="btn btn-info">Invoice</a>
                             <a href="{{ route('order.index') }}" class="btn btn-default">View</a>
 
                         </ul>
@@ -75,7 +76,7 @@
                                                     </button>
                                                     @endif
                                                     <ul class="dropdown-menu" role="menu">
-                                                        @if($order->status !== 'accepted' && $order->status !== 'processing' && $order->status !== 'rejected' && $order->status !== 'completed')
+                                                        @if($order->status !== 'accepted' && $order->status !== 'received' && $order->status !== 'processing' && $order->status !== 'rejected' && $order->status !== 'completed')
                                                         <li><a>
                                                                 <form
                                                                     action="{{ route('supplier.order.status',$order->id) }}"
@@ -147,15 +148,39 @@
                                         </tr>
                                         <tr>
                                             <td>Total Amount</td>
-                                            <td>{{ number_format($order->amount, 2) }}</td>
+                                            {{-- <td>{{ number_format($order->amount, 2) }}</td> --}}
+                                        @php
+                                            $grant_total = 0;
+                                        @endphp
+                                        @forelse ($order->items as $item)
+                                            @php
+                                                $grant_total +=$item->product->price * $item->qty ;
+                                            @endphp
+                                        @endforeach
+                                        <td>{{ number_format($grant_total,2) }}  </td>  
+                                        </tr>
+                                        <tr>
+                                            <td>Payable Amount</td>
+                                            <td>
+                                                @php
+                                                    $payable = 0;
+                                                @endphp
+                                                @forelse ($order->items as $item)
+                                                    @php
+                                                        $payable +=$item->product->price * $item->delivered_qty ;
+                                                    @endphp
+                                                @endforeach
+                                                {{ number_format($payable,2) }}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Due Amount</td>
                                             @php
-                                                $due_amount = $order->amount - $billings->sum('payment_amount');
+                                                $due_amount = $payable - $billings->sum('payment_amount');
                                             @endphp
-                                            <td>{{ number_format($due_amount, 2) }}</td>
+                                            <td>{{ number_format($due_amount,2) }}</td>
                                         </tr>
+                                       
                                        
                                     </table>
                                 </div>
@@ -174,10 +199,7 @@
                             Product Details - {{ $order->showId }}
 
                         </h2>
-                        {{-- <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('orders.index') }}" class="btn btn-default">View</a>
-
-                        </ul> --}}
+                      
                     </div>
                     <div class="body">
                         <div class="table-responsive">
@@ -225,6 +247,63 @@
                                         <td colspan="2">{{ number_format($grand_total,2) }}</td>
                                     </tr>
                                 </tfoot> 
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header bg-orange text-center">
+                        <h2>
+                            Payment Details - {{ $order->showId }}
+
+                        </h2>
+                      
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>{{ __('SL') }}</th>
+                                        <th>{{ __('Check Number') }}</th>
+                                        <th>{{ __('Bank Name') }}</th>
+                                        <th>{{ __('Check Photo') }}</th>
+                                        <th>{{ __('Payment Date') }}</th>
+                                        <th>{{ __('Pay amount') }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                   
+                                    @forelse ($billings as $i => $bill)
+                                        <tr>
+                                            <td>{{ $i + 1 }}</td>
+                                            <td>{{ $bill->check_number }}</td>
+                                            <td>{{ $bill->bank_name }}</td>
+                                            <td>
+                                                <img src="{{ asset('images/check/'.$bill->check_photo) }}" width="50" alt="">
+                                            </td>
+                                            <td>{{ date('d-M-Y',strtotime($bill->created_at)) }}</td>
+                                            <td>{{ number_format($bill->payment_amount,2) }}</td>
+                                            
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">No data found!!</td>
+                                        </tr>
+                                    @endforelse
+
+                                </tbody>
+                                {{-- <tfoot>
+                                    <tr>
+                                        
+                                        <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
+                                        <td colspan="2">{{ number_format($grand_total,2) }}</td>
+                                    </tr>
+                                </tfoot>  --}}
                             </table>
                         </div>
                     </div>

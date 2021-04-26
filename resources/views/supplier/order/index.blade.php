@@ -34,9 +34,10 @@
                                     <tr>
                                         <th>{{ __('SL') }}</th>
                                         <th>{{ __('Order ID') }}</th>
-                                        {{-- <th>{{ __('Buyer Name') }}</th> --}}
+                                        <th>{{ __('Buyer Name') }}</th>
                                         <th>{{ __('Delivery Date') }}</th>
                                         <th>{{ __('Status') }}</th>
+                                        <th>{{ __('Payment Status') }}</th>
                                         <th>{{ __('Amount') }}</th>
                                         <th>{{ __('Action') }}</th>
                                     </tr>
@@ -46,15 +47,29 @@
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $order->ShowId }}</td>
-                                            {{-- <td>{{ $order->user->name }}</td> --}}
+                                            <td>@if(isset($order->user->name )) {{ $order->user->name }} @endif</td>
                                             <td>{{ date('d-M-Y', strtotime($order->delivery_date)) }}</td>
                                             <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
+                                            <td><span
+                                                    class="badge badge-primary">{{ ucfirst($order->payment_status) }}</span>
                                             </td>
-                                            <td>{{ number_format($order->amount, 2) }}</td>
+                                            <td>
+                                                @php
+                                                    $grant_total = 0;
+                                                @endphp
+                                                @forelse ($order->items as $item)
+                                                    @php
+                                                        $grant_total += $item->product->price * $item->qty;
+                                                    @endphp
+                                                @endforeach
+                                                {{ number_format($grant_total, 2) }}
+                                            </td>
                                             <td>
                                                 <div class="icon-button-demo">
-                                                   
-                                                    <a href="{{ route('order.show',$order->id) }}" class="btn btn-info waves-effect" title="Active" style="float: left">
+
+                                                    <a href="{{ route('order.show', $order->id) }}"
+                                                        class="btn btn-info waves-effect" title="Active"
+                                                        style="float: left">
                                                         <i class="material-icons">visibility</i>
                                                     </a>
                                                 </div>
@@ -68,6 +83,7 @@
                                 </tbody>
 
                             </table>
+                            <a href="{{ route('order.index.pdf') }}" class="btn btn-info" style="float: right">PDF</a>
                         </div>
                         {{ $orders->links() }}
                     </div>

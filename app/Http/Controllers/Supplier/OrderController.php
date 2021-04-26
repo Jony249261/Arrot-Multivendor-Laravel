@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use PDF;
+
 
 class OrderController extends Controller
 {
@@ -30,5 +32,18 @@ class OrderController extends Controller
         $order->update(['status' => $status]);
         Session::flash('info','Order status updated successfully!!');
         return back();
+    }
+
+    public function invoice($id)
+    {
+        $order = Order::findOrFail($id);
+        return view('supplier.order.invoice',compact('order'));
+    }
+
+    public function generatePdf()
+    {
+        // $orders = Order::latest()->paginate(15);
+        // $pdf = PDF::loadView('supplier.order.index',compact('orders'));
+        // return $pdf->download('invoice.pdf');
     }
 }
