@@ -20,9 +20,8 @@ class CreateProductsTable extends Migration
             // $table->string('slug')->nullable();
             $table->string('product_type');
             $table->unsignedBigInteger('unit_id');
-            $table->float('price');
             $table->text('product_description');
-            $table->float('price',16);
+            $table->float('price',16)->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
