@@ -131,9 +131,7 @@ Route::prefix('seller')->middleware('seller')->group(function(){
 // Seller Product
     Route::get('/product/index','Seller\ProductController@index')->name('seller.product.index');
     Route::get('/product/create','Seller\ProductController@create')->name('seller.product.create');
-    Route::post('/add-to-cart/{id}','Seller\ProductController@addToCart')->name('add-to.cart');
-    Route::post('/seller/propose/store','Seller\ProductController@store')->name('seller.propose.store');
-    //all Seller route will gose here
+   //all Seller route will gose here
 
 });
 
