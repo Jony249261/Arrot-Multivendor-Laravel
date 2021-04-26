@@ -2,7 +2,7 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="{{asset('backend/images/user.png')}}" width="48" height="48" alt="User" />
+            <img src="{{asset('image_seller/user/'.Auth::user()->seller->sr_image)}}" width="48" height="48" alt="User" />
 
         </div>
         <div class="info-container">
@@ -11,7 +11,7 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                    <li><a href="{{ route('seller.profile.index') }}"><i class="material-icons">person</i>Profile</a></li>
                     <li role="seperator" class="divider"></li>
                     <li>  <a  href="{{ route('logout') }}"
                               onclick="event.preventDefault();
@@ -38,6 +38,16 @@
                     <span>Home</span>
                 </a>
             </li>
+            <li class="@yield('supports')">
+                        <a href="{{route('support.index')}}">
+                            <i class="material-icons">support</i>
+                            <span>Support</span>
+
+            <li>
+            <li>
+                <a href="pages/typography.html">
+                    <i class="material-icons">text_fields</i>
+                    <span>Typography</span>
             <li class="@yield('product-index')">
                 <a href="{{route('seller.product.index')}}">
                     <i class="material-icons">shopping_cart</i>
