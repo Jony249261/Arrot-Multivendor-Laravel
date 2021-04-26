@@ -8,87 +8,43 @@ use App\Order;
 use App\OrderProduct;
 use App\Product;
 use App\SellerPropose;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        $sellerProducts = SellerPropose::latest()->paginate(15);
-        return view('seller.product.index',compact('sellerProducts'));
-    }
-    public  function  create(){
-        $products=Product::latest()->paginate(15);
-        return view('seller.product.create',compact('products'));
-    }
-    public  function addToCart(Request $request,$id){
 
+    public function index(){
+        $products=Product::all();
+        return view('seller.product.index',compact('products'));
+    }
 
-        // dd($request->all());
-        $product = Product::findOrFail($id);
-        $cart = session()->get('cart');
-        if(!$cart){
-            $cart = [
-                $product->id => [
-                    'product_id' => $product->id,
-                    'quantity' => $request->quantity,
-                    'price' => $product->price,
-                    'user_id' => auth()->user()->seller_id
-                    ]
-                ];
-                session()->put('cart',$cart);
-                return redirect()->back()->with('success','Added to cart');
+    public  function create(Request  $request){
+        $products = $request->products;
+        $quantities = $request->quantites;
+        $prices = $request->prices;
+
+        foreach($products as $key => $product)
+        {
+            $sellerpro=new SellerPropose();
+            if($products[$key] && $product > 0){
+                $sellerpro->product_id=$product;
+                $sellerpro->price=$prices[$key];
+                $sellerpro->quantity=$quantities[$key];
+                $sellerpro->seller_id=Auth::user()->seller_id;
+                if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
+                    $sellerpro->save();
+                }
+            }
+
         }
-        
-        $cart[$product->id] = [
-            'product_id' => $product->id,
-            'quantity' => $request->quantity,
-            'price' => $product->price,
-            'user_id' => auth()->user()->seller_id
-        ];
-        session()->put('cart',$cart);
-
-        Session::flash('info','Product add to cart!');
-        return back();
-
-
-        // $products = $request->products;
-        // $quantities = $request->quantites;
-        // $prices = $request->prices;
-        // $sellerpro=new SellerPropose();
-        // foreach($prices as $key => $price)
-        // {
-            
-        //         echo $products[$key].' price '.$price.' qty '.$qty.'<br>';
-            
-            // $sellerpro->product_id=$products[$key];
-            // $sellerpro->price=$prices[$key];
-            // $sellerpro->quantity=$quantities[$key];
-            // $sellerpro->seller_id=Auth::user()->seller_id;
-            // $sellerpro->save();
-            // return redirect()->back();
-
-        // }
-
-
+            Session::flash('info','Your Product has been submitted!');
+            return redirect()->back();
 
     }
 
-    public function store(Request $request)
-    {
-        // dd($request->all());
-        foreach(session('cart') as $cart){
-            SellerPropose::create([
-                'product_id' => $cart['product_id'],
-                'quantity' =>$cart['quantity'],
-                'price' => $cart['price'],
-                'seller_id' => $cart['user_id']
-            ]);
-        }
-        session()->forget('cart');
-        Session::flash('info','Your Product has been submitted!');
-        return redirect()->route('seller.product.index');
-    }
+
+
 }
