@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public  function  index(){
+    public function index()
+    {
+        $sellerProducts = SellerPropose::latest()->paginate(15);
+        return view('seller.product.index',compact('sellerProducts'));
+    }
+    public  function  create(){
         $products=Product::latest()->paginate(15);
-        return view('seller.product.index',compact('products'));
+        return view('seller.product.create',compact('products'));
     }
     public  function addToCart(Request $request,$id){
 
@@ -45,17 +50,8 @@ class ProductController extends Controller
         ];
         session()->put('cart',$cart);
 
+        Session::flash('info','Product add to cart!');
         return back();
-
-
-
-
-
-
-
-
-
-
 
 
         // $products = $request->products;
@@ -92,6 +88,7 @@ class ProductController extends Controller
             ]);
         }
         session()->forget('cart');
-        return back();
+        Session::flash('info','Your Product has been submitted!');
+        return redirect()->route('seller.product.index');
     }
 }

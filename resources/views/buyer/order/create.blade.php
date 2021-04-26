@@ -71,9 +71,14 @@
                                             <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
                                             <td colspan="2">000</td>
                                         </tr>
+                                        <tr>
+                                            <td colspan="7">
+
+                                                <button class="btn btn-sm btn-info" style="float: right">Create order</button>
+                                            </td>
+                                        </tr>
                                     </tfoot>
 
-                            <button class="btn btn-sm btn-info" style="float: right">Create order</button>
                             </form>
 
                             </table>
