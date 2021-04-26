@@ -130,7 +130,7 @@ Route::prefix('seller')->middleware('seller')->group(function(){
 
 // Seller Product
     Route::get('/product/index','Seller\ProductController@index')->name('seller.product.index');
-    Route::get('/product/create','Seller\ProductController@create')->name('seller.product.create');
+    Route::post('/product/create','Seller\ProductController@create')->name('seller.product.create');
    //all Seller route will gose here
 
 });

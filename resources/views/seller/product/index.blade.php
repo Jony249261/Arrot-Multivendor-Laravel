@@ -67,17 +67,7 @@
 
 
                             </tbody>
-                            @if(session('cart'))
-                                <tfoot>
-                                <tr>
-                                    <form action="{{ route('seller.propose.store') }}" method="POST">
-                                        @csrf
-                                        <td colspan="8" class="text-right"><strong><button type="submit" class="btn btn-success btn-info" style="float: right">Propose</button></strong></td>
-                                    </form>
 
-                                </tr>
-                                </tfoot>
-                            @endif
 
 
 

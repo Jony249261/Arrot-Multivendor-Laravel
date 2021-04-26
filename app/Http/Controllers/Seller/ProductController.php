@@ -21,8 +21,7 @@ class ProductController extends Controller
         return view('seller.product.index',compact('products'));
     }
 
-    public  function store(Request  $request){
-        //      dd($request->all());
+    public  function create(Request  $request){
         $products = $request->products;
         $quantities = $request->quantites;
         $prices = $request->prices;
@@ -35,14 +34,14 @@ class ProductController extends Controller
                 $sellerpro->price=$prices[$key];
                 $sellerpro->quantity=$quantities[$key];
                 $sellerpro->seller_id=Auth::user()->seller_id;
-                $sellerpro->save();
+                if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
+                    $sellerpro->save();
+                }
             }
 
         }
             Session::flash('info','Your Product has been submitted!');
             return redirect()->back();
-
-
 
     }
 
