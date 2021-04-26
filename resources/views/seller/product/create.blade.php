@@ -1,7 +1,7 @@
 @extends('layouts.seller-app')
 
-    @section('product-index','active')
-    @section('title','Product')
+    @section('product-create','active')
+    @section('title','Create')
 @section('content')
     <div class="container-fluid">
 
@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="header bg-orange text-center">
 
-                    <h2 class="text-center">All Product</h2>
+                    <h2 class="text-center">Create Product</h2>
                    
 
                 </div>
@@ -22,7 +22,7 @@
                                 <th>{{ __('SL') }}</th>
                                 <th>{{ __('Product Image') }}</th>
                                 <th>{{ __('Product Name') }}</th>
-                                <th>{{ __('Discription') }}</th>
+                                <th>Discription</th>
                                 <th>{{ __('Unit') }}</th>
                                 <th>{{ __('Quantity') }}</th>
                                 <th>{{ __('Price') }}</th>
@@ -32,21 +32,33 @@
                             </thead>
                             
                                 <tbody>
-                                @forelse ($sellerProducts as $i => $item)
-                                <tr>
-                                   <td>{{ $i + 1 }}</td>
-                                   <td>
-                                       <img width="50" src="{{ asset('products/'.$item->product->image) }}" alt="">
-                                   </td>
-                                   {{-- <td>{{ $item->user->name }}</td> --}}
-                                   <td>{{ $item->product->product_name }}</td>
-                                   <td>{{ Str::limit($item->product->product_description,50) }}</td>
-                                   <td>{{ $item->product->unit->name }}</td>
-                                   <td>{{ $item->quantity }}</td>
-                                   <td>{{ $item->price }}</td>
-                                   <td>--</td>
-                                </tr>
-                                
+                                @forelse ($products as $i => $product)
+                                <form action="{{ route('add-to.cart',$product->id) }}" method="post">
+                                    @csrf
+                                    <tr role="row" class="odd">
+                                        <td>{{ $i + 1 }}</td>
+                                        <td><img src="{{ asset('products/' . $product->image) }}"
+                                                 width="60" height="60" alt=""></td>
+                                        <td>{{ $product->product_name }}</td>
+                                        <td>{{ Str::limit($product->product_description, 50) }}</td>
+                                        <td>{{ $product->unit->name }}</td>
+                                       
+                                        <td>
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
+
+                                            <input type="number" min="0" name="quantity" style="width: 80px" placeholder="Ex: XXX"  id="qty">
+
+
+                                        </td>
+                                        <td ><input type="number" min="0" name="price" style="width: 80px"  placeholder="Ex:00.00" id="price">
+
+                                        </td>
+                                       <td ><strong><button type="submit" class="btn btn-info" ><i class="material-icons">shopping_cart</i></button></strong></td>
+
+
+
+                                    </tr>
+                                </form>
                                 @empty
                                     <tr>
                                         <td colspan="5" class="text-center">No data found!</td>
@@ -54,7 +66,8 @@
                                 @endforelse
 
                                 </tbody>
-                                {{-- <tfoot>
+                                @if(session('cart'))
+                                <tfoot>
                                 <tr>
                                     <form action="{{ route('seller.propose.store') }}" method="POST">
                                         @csrf
@@ -62,8 +75,8 @@
                                     </form>
 
                                 </tr>
-                                </tfoot> --}}
-
+                                </tfoot>
+                                @endif
 
                             
 

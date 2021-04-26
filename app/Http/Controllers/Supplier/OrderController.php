@@ -42,8 +42,8 @@ class OrderController extends Controller
 
     public function generatePdf()
     {
-        $orders = Order::latest()->paginate(15);
-        $pdf = PDF::loadView('supplier.order.index',compact('orders'));
-        return $pdf->download('invoice.pdf');
+        // $orders = Order::latest()->paginate(15);
+        // $pdf = PDF::loadView('supplier.order.index',compact('orders'));
+        // return $pdf->download('invoice.pdf');
     }
 }

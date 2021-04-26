@@ -38,12 +38,19 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li class="@yield('product')">
+            <li class="@yield('product-index')">
                 <a href="{{route('seller.product.index')}}">
                     <i class="material-icons">shopping_cart</i>
                     <span>Product</span>
                 </a>
             </li>
+            <li class="@yield('product-create')">
+                <a href="{{route('seller.product.create')}}">
+                    <i class="material-icons">shopping_cart</i>
+                    <span>Product Create</span>
+                </a>
+            </li>
+            
             <li>
                 <a href="pages/helper-classes.html">
                     <i class="material-icons">layers</i>

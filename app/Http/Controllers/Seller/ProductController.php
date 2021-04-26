@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public  function  index(){
+
+    public function index(){
         $products=Product::all();
         return view('seller.product.index',compact('products'));
     }
+
     public  function store(Request  $request){
-//      dd($request->all());
+        //      dd($request->all());
         $products = $request->products;
         $quantities = $request->quantites;
         $prices = $request->prices;
@@ -29,7 +31,6 @@ class ProductController extends Controller
         {
             $sellerpro=new SellerPropose();
             if($products[$key] && $product > 0){
-
                 $sellerpro->product_id=$product;
                 $sellerpro->price=$prices[$key];
                 $sellerpro->quantity=$quantities[$key];
@@ -38,7 +39,13 @@ class ProductController extends Controller
             }
 
         }
-        Session::flash('success','Propsoe successfully!!');
-        return redirect()->back();
+            Session::flash('info','Your Product has been submitted!');
+            return redirect()->back();
+
+
+
     }
+
+
+
 }
