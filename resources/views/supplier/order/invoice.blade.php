@@ -144,10 +144,10 @@
                                 </td>
                                 <td>{{ $item->qty }}</td>
                                 <td>{{ $item->delivered_qty }}</td>
-                                <td>{{ number_format($item->product->price, 2) }}</td>
-                                <td>{{ number_format($item->delivered_qty * $item->product->price, 2) }}</td>
+                                <td>{{ number_format($item->unite_price, 2) }}</td>
+                                <td>{{ number_format($item->delivered_qty * $item->unite_price, 2) }}</td>
                                 @php
-                                    $sub_total += $item->delivered_qty * $item->product->price;
+                                    $sub_total += $item->delivered_qty * $item->unite_price;
                                 @endphp
                             </tr>
                         @empty

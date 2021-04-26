@@ -21,4 +21,9 @@ class Product extends Model
         return $this->hasMany(SellerPropose::class);
 
     }
+
+    public function getSalesRateAttribute()
+    {
+        return $this->productPrices->sortByDesc('updated_date')->first()->sales_rate;
+    }
 }

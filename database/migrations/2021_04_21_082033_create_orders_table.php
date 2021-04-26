@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('buyer_id')->nullable();
             $table->date('delivery_date')->nullable();
-            $table->float('amount',16);
+            $table->float('amount',16)->nullable();
             $table->enum('status',['pending','received','accepted','processing','rejected','completed'])->default('pending');
             $table->enum('payment_status',['paid','unpaid','partials'])->default('unpaid');
             $table->timestamps();

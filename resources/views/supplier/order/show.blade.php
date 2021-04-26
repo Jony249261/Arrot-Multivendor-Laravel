@@ -154,7 +154,7 @@
                                         @endphp
                                         @forelse ($order->items as $item)
                                             @php
-                                                $grant_total +=$item->product->price * $item->qty ;
+                                                $grant_total +=$item->unite_price * $item->qty ;
                                             @endphp
                                         @endforeach
                                         <td>{{ number_format($grant_total,2) }}  </td>  
@@ -163,22 +163,22 @@
                                             <td>Payable Amount</td>
                                             <td>
                                                 @php
-                                                    $payable = 0;
-                                                @endphp
-                                                @forelse ($order->items as $item)
-                                                    @php
-                                                        $payable +=$item->product->price * $item->delivered_qty ;
-                                                    @endphp
-                                                @endforeach
-                                                {{ number_format($payable,2) }}
+                                            $payable = 0;
+                                        @endphp
+                                        @forelse ($order->items as $item)
+                                            @php
+                                                $payable +=$item->unite_price * $item->delivered_qty ;
+                                            @endphp
+                                        @endforeach
+                                        {{ number_format($payable,2) }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Due Amount</td>
-                                            @php
-                                                $due_amount = $payable - $billings->sum('payment_amount');
-                                            @endphp
-                                            <td>{{ number_format($due_amount,2) }}</td>
+                                        @php
+                                            $due_amount = $payable - $billings->sum('payment_amount');
+                                        @endphp
+                                        <td>{{ number_format($due_amount,2) }}</td>
                                         </tr>
                                        
                                        
@@ -227,10 +227,10 @@
                                             <td>{{ $item->product->product_name }}</td>
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
-                                            <td>{{ number_format($item->product->price, 2) }}</td>
-                                            <td>{{ number_format(($item->qty * $item->product->price),2) }}</td>
+                                            <td>{{ number_format($item->unite_price, 2) }}</td>
+                                            <td>{{ number_format(($item->qty * $item->unite_price),2) }}</td>
                                             @php
-                                                $grand_total +=$item->qty * $item->product->price;
+                                                $grand_total +=$item->qty * $item->unite_price;
                                             @endphp
                                         </tr>
                                     @empty

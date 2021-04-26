@@ -39,11 +39,15 @@ class BillingController extends Controller
         Billing::create($data);
         $billings = Billing::where('order_id',$order->id)->get();
         $paid_amount = $billings->sum('payment_amount');
-        if($paid_amount == $order->amount){
+        $total = 0;
+        foreach($order->items as $item){
+            $total += ($item->qty * $item->unite_price);
+        }
+        if($paid_amount == $total){
             $order->payment_status = 'paid';
             $order->save();
         }
-        elseif($paid_amount < $order->amount){
+        elseif($paid_amount < $total){
             $order->payment_status = 'partials';
             $order->save();
         }   

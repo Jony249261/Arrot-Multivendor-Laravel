@@ -22,8 +22,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(10);
-        $prices = ProductPrice::where('updated_date',date('Y-m-d'))->where('product_id',3)->first();
-        // dd($prices->sales_rate); 
+        // $product = Product::find(5);
+        // dd($product->productPrices->sortByDesc('updated_date')->first()->sales_rate); 
         return view('supplier.product.index',compact('products'));
     }
 
@@ -76,7 +76,7 @@ class ProductController extends Controller
         $product_price->sales_rate = $data['sales_rate'];
         $product->productPrices()->save($product_price);
        
-        Session::flash('success'.'Product created successfully!!');
+        Session::flash('success','Product created successfully!!');
         return redirect()->route('products.index');
     }
 
@@ -123,10 +123,10 @@ class ProductController extends Controller
             'unit_id' => 'required|numeric',
             'product_type' => 'required|string',
         ]);
-        $data['product_id'] = '0001';
+        
 
         $product = Product::findOrFail($id);
-        $product->product_id = $data['product_id'];
+        $product_id = Helper::IDGenerator(new Product,'product_id',3,$data['product_type']);
         $product->product_name = $data['product_name'];
         $product->product_description = $data['description'];
         $product->unit_id = $data['unit_id'];

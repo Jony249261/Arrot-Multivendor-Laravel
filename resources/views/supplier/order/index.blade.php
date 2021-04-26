@@ -43,7 +43,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($orders as $i => $order)
+                                    @forelse($orders as $i => $order)
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $order->ShowId }}</td>
@@ -54,15 +54,15 @@
                                                     class="badge badge-primary">{{ ucfirst($order->payment_status) }}</span>
                                             </td>
                                             <td>
+                                            @php
+                                                $grant_total = 0;
+                                            @endphp
+                                            @foreach($order->items as $item)
                                                 @php
-                                                    $grant_total = 0;
+                                                    $grant_total +=$item->unite_price * $item->qty ;
                                                 @endphp
-                                                @forelse ($order->items as $item)
-                                                    @php
-                                                        $grant_total += $item->product->price * $item->qty;
-                                                    @endphp
-                                                @endforeach
-                                                {{ number_format($grant_total, 2) }}
+                                            @endforeach
+                                            {{ number_format($grant_total,2) }}    
                                             </td>
                                             <td>
                                                 <div class="icon-button-demo">
@@ -75,7 +75,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @empty
+                                   @empty
                                         <tr>
                                             <td colspan="7" class="text-center">No data found!!</td>
                                         </tr>
@@ -83,7 +83,7 @@
                                 </tbody>
 
                             </table>
-                            <a href="{{ route('order.index.pdf') }}" class="btn btn-info" style="float: right">PDF</a>
+                            {{-- <a href="{{ route('order.index.pdf') }}" class="btn btn-info" style="float: right">PDF</a> --}}
                         </div>
                         {{ $orders->links() }}
                     </div>

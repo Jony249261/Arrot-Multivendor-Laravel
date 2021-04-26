@@ -62,7 +62,7 @@
                                     @endphp
                                     @forelse ($order->items as $item)
                                         @php
-                                            $grant_total +=$item->product->price * $item->qty ;
+                                            $grant_total +=$item->unite_price * $item->qty ;
                                         @endphp
                                     @endforeach
                                     {{ number_format($grant_total,2) }}    
@@ -76,7 +76,7 @@
                                         @endphp
                                         @forelse ($order->items as $item)
                                             @php
-                                                $payable +=$item->product->price * $item->delivered_qty ;
+                                                $payable +=$item->unite_price * $item->delivered_qty ;
                                             @endphp
                                         @endforeach
                                         {{ number_format($payable,2) }}
@@ -89,13 +89,15 @@
                                     @endphp
                                     <td>{{ number_format($due_amount,2) }}</td>
                                 </tr>
-                               @if($order->amount != $billings->sum('payment_amount') && auth()->user()->role == 'accounts' || auth()->user()->role == 'buyer')
+                               @if($order->status != 'pending')
+                               @if(auth()->user()->role == 'accounts' || auth()->user()->role == 'buyer')
                                 <tr>
                                     <td>Payment</td>
                                     <td>
                                         <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal">Make Payment</button>
                                     </td>
                                 </tr>
+                                @endif
                               @endif
                             </table>
                         </div>
@@ -188,7 +190,7 @@
                                     <th>{{ __('Product Name') }}</th>
                                     <th>{{ __('Unit') }}</th>
                                     <th>{{ __('Quantity') }}</th>
-                                    <th>{{ __('Received Qty') }}</th>
+                                    {{-- <th>{{ __('Received Qty') }}</th> --}}
                                     <th>{{ __('Price') }}</th>
                                     <th>{{ __('Total') }}</th>
                                 </tr>
@@ -205,11 +207,11 @@
                                             <td>{{ $item->product->product_name }}</td>
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
-                                            <td>{{ $item->delivered_qty }}</td>
-                                            <td>{{ number_format($item->product->price, 2) }}</td>
-                                            <td>{{ number_format(($item->product->price * $item->delivered_qty ),2) }}</td>
+                                            {{-- <td>{{ $item->delivered_qty }}</td> --}}
+                                            <td>{{ number_format($item->unite_price, 2) }}</td>
+                                            <td>{{ number_format(($item->unite_price * $item->qty ),2) }}</td>
                                             @php
-                                                $grant_total +=$item->product->price * $item->delivered_qty ;
+                                                $grant_total +=$item->unite_price * $item->qty ;
                                             @endphp
                                         </tr>
                                     @empty
@@ -254,8 +256,8 @@
                                     <th>{{ __('Unit') }}</th>
                                     <th>{{ __('Quantity') }}</th>
                                     <th>{{ __('Received Quantity') }}</th>
-                                    {{-- <th>{{ __('Price') }}</th>
-                                    <th>{{ __('Total') }}</th> --}}
+                                   <th>{{ __('Unite Price') }}</th>
+                                    <th>{{ __('Total') }}</th> 
                                 </tr>
                             </thead>
                             <form action="{{ route('orders.received',$order->id) }}" method="post">
@@ -275,9 +277,10 @@
                                                 <input type="number" name="quantites[]" min="0"  @if($order->status == 'received') disabled @endif style="width: 70px" value="{{ $item->delivered_qty }}" placeholder="0.00" id="">
                                                 <input type="hidden" name="products[]" value="{{ $item->product->id }}" >
                                             </td>
-                                            {{-- <td>{{ number_format($item->product->price, 2) }}</td>
-                                            <td>{{ number_format(($item->product->price * $item->qty),2) }}</td> --}}
-                                           
+                                            <td>{{ number_format($item->unite_price, 2) }}</td>
+                                            @if($order->status =='received')
+                                            <td>{{ number_format(($item->unite_price * $item->delivered_qty),2) }}</td>
+                                           @endif
                                         </tr>
                                     @empty
                                         <tr>
@@ -345,7 +348,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="text-center">No data found!!</td>
+                                            <td colspan="6" class="text-center">No data found!!</td>
                                         </tr>
                                     @endforelse
 
@@ -376,14 +379,14 @@
                     @csrf
                 <div class="modal-body">
                     <input type="hidden" value="{{ $order->id }}" name="order_id" id="">
-                    <input type="hidden" value="{{ $order->amount }}" name="bill_amount" id="">
+                    <input type="hidden" value="{{ $grant_total }}" name="bill_amount" id="">
                     <input type="hidden" value="{{ auth()->user()->id }}" name="user_id" id="">
                     <input type="hidden" value="{{ auth()->user()->buyer_id }}" name="buyer_id" id="">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group form-float">
                                 <div class="form-line">
-                                    <input type="number" disabled min="0" class="form-control @error('bill_amount') is-invalid @enderror" value="{{ old('bill_amount',$order->amount) }}" name="bill_amount" >
+                                    <input type="number" disabled min="0" class="form-control @error('bill_amount') is-invalid @enderror" value="{{ $grant_total }}" name="bill_amount" >
                                     <label class="form-label">Bill amount</label>
                                     @error('bill_amount')
                                     <span class="invalid-feedback" role="alert">
