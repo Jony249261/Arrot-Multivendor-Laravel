@@ -33,7 +33,7 @@ class ProductController extends Controller
                 $sellerpro->product_id=$product;
                 $sellerpro->price=$prices[$key];
                 $sellerpro->quantity=$quantities[$key];
-                $sellerpro->seller_id=Auth::user()->seller_id;
+                $sellerpro->seller_id=Auth::user()->id;
                 if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
                     $sellerpro->save();
                 }
