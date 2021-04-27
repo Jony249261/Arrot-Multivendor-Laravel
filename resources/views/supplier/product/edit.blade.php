@@ -26,21 +26,26 @@
 
                                 <div class="form-group form-float">
                                     <div class="form-line error">
+                                        <label class="form-label">Product Name</label>
                                         <input type="text" class="form-control @error('product_name') is-invalid @enderror"
                                             name="product_name" value="{{ old('product_name',$product->product_name) }}" required>
                                         {{-- <label class="form-label">Product Name</label> --}}
                                         @error('product_name')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
+                                     <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                     </div>
                                 </div>
 
                                 <div class="form-group form-float">
                                     <div class="form-line error">
+                                        <label class="form-label">Description</label>
                                         <textarea name="description" cols="30" rows="5" class="form-control no-resize"
                                             required>{{ old('description',$product->product_description) }}</textarea>
                                         
                                     </div>
+                                    @error('description')
+                                     <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Unit</label><br>
@@ -48,7 +53,9 @@
                                     <input type="radio" name="unit_id" @if($unit->id == $product->unit_id) checked @endif value="{{ $unit->id }}" id="unit_id{{ $unit->id }}" class="with-gap">
                                     <label for="unit_id{{ $unit->id }}">{{ ucfirst($unit->name) }}</label>
                                     @endforeach
-
+                                    @error('unit_id')
+                                    <span class="validation-message">{{ $message }}</span>
+                                   @enderror
                                 </div>
                                
                                
@@ -57,35 +64,40 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
+                                    <div class="">
+                                        <label class="form-label">Product Photo</label>
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                             name="image">
-
-                                        @error('image')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
+                                        <img width="55" src="{{ asset('products/'.$product->image) }}" alt="">
+                                           
                                     </div>
+                                    @error('image')
+                                    <span class="validation-message">{{ $message }}</span>
+                                   @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line error">
+                                        <label class="form-label">Sales Rate</label>
                                         <input type="number" class="form-control @error('sales_rate') is-invalid @enderror"
-                                            name="sales_rate" value="{{ old('sales_rate') }}" required>
-                                        {{-- <label class="form-label">Sales Rate</label> --}}
+                                            name="sales_rate" value="{{ old('sales_rate',$product->sales_rate) }}" required>
                                         @error('sales_rate')
-                                            <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                       @enderror
                                     </div>
                                 </div>
-                                <div class="form-group" style="margin-top: 100px">
+                                <div class="form-group">
                                     <label for="">Product Type</label><br>
-                                    <input type="radio" @if($product->product_type == 'vagetable') checked @endif name="product_type" value="vegetable" id="Vegetable" class="with-gap">
+                                    <input type="radio" name="product_type" value="vegetable" id="Vegetable" class="with-gap" {{ $product->product_type == 'vagetable'?'checked':'' }} >
                                     <label for="Vegetable">Vegetable</label>
 
-                                    <input type="radio" name="product_type" @if($product->product_type == 'fish') checked @endif value="fish" id="Fish" class="with-gap">
+                                    <input type="radio" name="product_type"  value="fish" id="Fish" class="with-gap"{{ $product->product_type == 'fish'?'checked':'' }}>
                                     <label for="Fish" class="m-l-20">Fish</label>
 
-                                    <input type="radio" name="product_type" value="meat" @if($product->product_type == 'meat') checked @endif id="meat" class="with-gap">
-                                    <label for="meat" class="m-l-20">Meat</label>
+                                    <input type="radio" name="product_type" value="meat" id="meat" class="with-gap" {{ $product->product_type == 'meat'?'checked':'' }}>
+                                    <label for="meat" class="m-l-20">Meat</label><br>
+                                    @error('product_type')
+                                    <span class="validation-message">{{ $message }}</span>
+                                   @enderror
                                 </div>
 
                             </div>

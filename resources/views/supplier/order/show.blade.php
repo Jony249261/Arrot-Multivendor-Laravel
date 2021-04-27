@@ -227,7 +227,15 @@
                                             <td>{{ $item->product->product_name }}</td>
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
-                                            <td>{{ number_format($item->unite_price, 2) }}</td>
+                                            <td>
+                                                <form action="{{ route('order.product.update',$item->product->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="number" name="sales_rate" class="input-field-width" value="{{ number_format($item->unite_price, 2) }}" id="">
+                                                    
+                                                    <button class="btn btn-sm btn-info reload-btn"><i class="material-icons">refresh</i></button>
+                                                </form>
+                                            </td>
                                             <td>{{ number_format(($item->qty * $item->unite_price),2) }}</td>
                                             @php
                                                 $grand_total +=$item->qty * $item->unite_price;

@@ -27,8 +27,8 @@
                                         <label class="form-label">Enter Name</label>
                                     </div>
                                     @error('name')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -37,8 +37,8 @@
                                         <label class="form-label">Enter Phone Number</label>
                                     </div>
                                     @error('phone')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -47,8 +47,8 @@
                                         <label class="form-label">Enter Email</label>
                                     </div>
                                     @error('email')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -57,8 +57,8 @@
                                         <label class="form-label">Enter Buyer Address</label>
                                     </div>
                                     @error('buyer_address')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -67,21 +67,21 @@
                                         <label class="form-label">Enter Buyer Website</label>
                                     </div>
                                     @error('buyer_website')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class=" form-control @error('tagline') is-invalid @enderror"
                                             value="{{ old('tagline') }}" name="tagline" required>
-                                       
+
                                         <label class="form-label">Enter Buyer Tagline</label>
                                     </div>
-                                   @error('tagline')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                    @error('tagline')
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                               
+
                                 <div class="form-group">
                                     <label for="">Enter Buyer Type</label>
                                     <br>
@@ -101,8 +101,8 @@
                                     <label for="proprietorship" class="m-l-20">Proprietorship</label><br>
 
                                     @error('buyer_type')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group form-float">
@@ -111,9 +111,9 @@
                                             name="password" required>
                                         <label class="form-label">Password</label>
                                     </div>
-                                   @error('password')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                    @error('password')
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -123,35 +123,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
-
                                     <label class="form-label">Enter Buyer Image</label>
                                     <input type="file" class=" @error('image') is-invalid @enderror"
                                         value="{{ old('image') }}" name="image">
                                     @error('image')
                                         <span class="validation-message">{{ $message }}</span>
-                                       @enderror
+                                    @enderror
                                 </div>
 
 
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="number" class=" form-control @error('buyer_nid') is-invalid @enderror"
-                                            value="{{ old('buyer_nid') }}" name="buyer_nid" required>
-                                        <label class="form-label">Enter NID Number</label>
-                                    </div>
-                                    @error('buyer_nid')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                                
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Logo</label>
                                     <input type="file" class=" @error('buyer_logo') is-invalid @enderror"
                                         value="{{ old('buyer_logo') }}" name="buyer_logo">
-                                        @error('buyer_logo')
+                                    @error('buyer_logo')
                                         <span class="validation-message">{{ $message }}</span>
                                     @enderror
 
@@ -161,7 +151,7 @@
                                     <label class="form-label">Enter Buyer Trade License</label>
                                     <input type="file" class=" @error('trade_license') is-invalid @enderror"
                                         value="{{ old('trade_license') }}" name="trade_license">
-                                        @error('trade_license')
+                                    @error('trade_license')
                                         <span class="validation-message">{{ $message }}</span>
                                     @enderror
 
@@ -173,11 +163,11 @@
                                         <label class="form-label">Trade Licence Expire date</label>
                                         <input type="date" class=" form-control @error('expire_date') is-invalid @enderror"
                                             value="{{ old('expire_date') }}" name="expire_date" required>
-                                      
+
                                     </div>
                                     @error('expire_date')
-                                    <span class="validation-message">{{ $message }}</span>
-                                @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
 
 
                                 </div>
@@ -196,8 +186,8 @@
                                         <label class="form-label">Buyer Representative name</label>
                                     </div>
                                     @error('br_name')
-                                    <span class="validation-message">{{ $message }}</span>
-                                @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -206,8 +196,8 @@
                                         <label class="form-label">Buyer Representative Email</label>
                                     </div>
                                     @error('br_email')
-                                    <span class="validation-message">{{ $message }}</span>
-                                @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
@@ -216,15 +206,25 @@
                                         <label class="form-label">Buyer Representative Phone</label>
                                     </div>
                                     @error('br_phone')
-                                    <span class="validation-message">{{ $message }}</span>
-                                @enderror
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="number" class=" form-control @error('buyer_nid') is-invalid @enderror"
+                                            value="{{ old('buyer_nid') }}" name="buyer_nid" required>
+                                        <label class="form-label">Enter NID Number</label>
+                                    </div>
+                                    @error('buyer_nid')
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Representative Image</label>
                                     <input type="file" class=" @error('br_image') is-invalid @enderror"
                                         value="{{ old('br_image') }}" name="br_image">
-                                        @error('br_image')
+                                    @error('br_image')
                                         <span class="validation-message">{{ $message }}</span>
                                     @enderror
 
