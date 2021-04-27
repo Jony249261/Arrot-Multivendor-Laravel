@@ -28,6 +28,7 @@
 
     <!-- Custom Css -->
     <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('backend/css/themes/all-themes.css') }}" rel="stylesheet" />
