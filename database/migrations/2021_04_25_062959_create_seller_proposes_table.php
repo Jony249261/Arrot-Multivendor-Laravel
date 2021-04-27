@@ -19,6 +19,7 @@ class CreateSellerProposesTable extends Migration
             $table->string('seller_id');
             $table->float('price');
             $table->integer('quantity');
+            $table->integer('status');
             $table->float('total')->nullable();
             $table->timestamps();
         });

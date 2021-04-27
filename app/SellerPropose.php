@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class SellerPropose extends Model
 {
-    protected $fillable = ['product_id','seller_id','price','quantity','total'];
+    protected $fillable = ['product_id','seller_id','price','status','quantity','total'];
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class,'product_id','id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'seller_id','id');
     }
 }

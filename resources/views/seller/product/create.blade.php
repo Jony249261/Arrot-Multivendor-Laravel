@@ -1,7 +1,6 @@
 @extends('layouts.seller-app')
-
     @section('product-create','active')
-    @section('title','Create')
+    @section('title','Create Product')
 @section('content')
     <div class="container-fluid">
 
@@ -11,7 +10,7 @@
                 <div class="header bg-orange text-center">
 
                     <h2 class="text-center">Create Product</h2>
-                   
+
 
                 </div>
                 <div class="body">
@@ -30,7 +29,7 @@
 
                             </tr>
                             </thead>
-                            
+
                                 <tbody>
                                 @forelse ($products as $i => $product)
                                 <form action="{{ route('add-to.cart',$product->id) }}" method="post">
@@ -42,7 +41,7 @@
                                         <td>{{ $product->product_name }}</td>
                                         <td>{{ Str::limit($product->product_description, 50) }}</td>
                                         <td>{{ $product->unit->name }}</td>
-                                       
+
                                         <td>
                                             <input type="hidden" name="product_id" value="{{ $product->id }}" id="">
 
@@ -78,7 +77,7 @@
                                 </tfoot>
                                 @endif
 
-                            
+
 
                         </table>
                     </div>

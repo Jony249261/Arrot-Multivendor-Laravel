@@ -38,35 +38,37 @@
                     <span>Home</span>
                 </a>
             </li>
-            <li class="@yield('supports')">
-                        <a href="{{route('support.index')}}">
-                            <i class="material-icons">support</i>
-                            <span>Support</span>
 
-            <li>
-            <li>
-                <a href="pages/typography.html">
-                    <i class="material-icons">text_fields</i>
-                    <span>Typography</span>
-            <li class="@yield('product-index')">
+            <li class="@yield('product-create')">
                 <a href="{{route('seller.product.index')}}">
                     <i class="material-icons">shopping_cart</i>
                     <span>Product</span>
                 </a>
             </li>
-            <li class="@yield('product-create')">
+            <li class="@yield('')">
                 <a href="{{route('seller.product.create')}}">
-                    <i class="material-icons">shopping_cart</i>
-                    <span>Product Create</span>
+                    <i class="material-icons">local_activity</i>
+                    <span>Prpose Product</span>
                 </a>
             </li>
-            
+
+            <li class="@yield('support')">
+                <a href="{{route('support.index')}}">
+                    <i class="material-icons">support</i>
+                    <span>Support</span>
+                </a>
             <li>
-                <a href="pages/helper-classes.html">
-                    <i class="material-icons">layers</i>
-                    <span>Helper Classes</span>
+            <li>
+                <a  href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    <i class="material-icons">input</i><span>Sign Out</span>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </a>
-            </li>
+            <li>
 
         </ul>
     </div>

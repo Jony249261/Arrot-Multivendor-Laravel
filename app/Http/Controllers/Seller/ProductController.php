@@ -34,6 +34,7 @@ class ProductController extends Controller
                 $sellerpro->price=$prices[$key];
                 $sellerpro->quantity=$quantities[$key];
                 $sellerpro->seller_id=Auth::user()->id;
+                $sellerpro->status=0;
                 if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
                     $sellerpro->save();
                 }

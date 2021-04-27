@@ -1,4 +1,4 @@
-@extends('layouts.buyer-app')
+@extends('layouts.seller-app')
 @section('support','active')
 @section('title','Create user')
 @section('page-styles')
@@ -58,10 +58,10 @@
 					<label>Message</label>
 					<textarea rows="5" placeholder="Type Your Message" name="message"></textarea>
 					<button type="submit">SEND</button>
-					
+
 				</form>
 			</div>
-			
+
 		</div>
 	</div>
 @endsection

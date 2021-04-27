@@ -3,7 +3,7 @@
 @section('title','Profile Edit')
 
 @section('content')
-    
+
     <div class="container-fluid">
 
         <!-- Widgets -->
@@ -103,11 +103,7 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                     @enderror
-
-
                                 </div>
-
-
                             </div>
 
 
@@ -124,28 +120,7 @@
                                         <label class="form-label">Enter Seller NID Number</label>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text"  class=" form-control @error('seller_passport') is-invalid @enderror"  value="{{$seller->seller_passport}}" name="seller_passport" >
-                                        @error('seller_passport')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <label class="form-label">Enter Seller passport </label>
-                                    </div>
-                                </div>
-                                <div class="form-group from-float">
-                                    <div class="">
-                                        <label class="form-label">Enter Passport Expire Date</label>
-                                        <input type="date" class=" form-control @error('passport_expire_date') is-invalid @enderror" name="passport_expire_date" value="{{$seller->passport_expire_date}}" placeholder="Please choose a date...">
-                                        @error('passport_expire_date')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
+
                                 <div class="header bg-red">
 
                                     <h2 class="text-center">Representative Information</h2>
@@ -196,7 +171,7 @@
 
         </div>
 
-        
+
 @endsection
 @section('page-scripts')
 
