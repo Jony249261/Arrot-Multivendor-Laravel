@@ -17,7 +17,7 @@
 
                                     </h2>
                                     <ul class="header-dropdown m-r--5">
-                                        <a href="{{ route('supplier.buyer.create') }}" class="btn btn-success"><i class="material-icons">add</i> Add Buyer</a>
+                                        <a href="{{ route('supplier.buyer.create') }}" class="btn btn-default">Create</a>
                                     </ul>
                                 </div>
                                 <div class="body">
@@ -44,15 +44,16 @@
                                                 <td>{{$user->phone}}</td>
 
                                                 <td>
-                                                <div class="d-flex justify-content-between">
-                                                    <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
-                                                    <a href="{{ route('supplier.buyer.profile',$user->id) }}" class="btn btn-primary @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
+
+                                                <div class="icon-button-demo">
+                                                    <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success custom-btn1"> <i class="material-icons">edit</i></a>
+                                                    <a href="{{ route('supplier.buyer.profile',$user->id) }}" class="btn btn-primary custom-btn1 @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
                                             
 
                                                     @if(auth()->user()->role != 'support')
                                                     <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
                                                         @csrf
-                                                        <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
+                                                        <button class="btn btn-danger delete-confirm  custom-btn1" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
                                                     </form>
                                                 </div>
                                                     @endif

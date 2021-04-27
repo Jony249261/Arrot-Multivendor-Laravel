@@ -9,9 +9,7 @@
         <div class="row clearfix">
             <div class="card">
                 <div class="header bg-red">
-
                     <h2 class="text-center">Update Profile</h2>
-
                 </div>
                 <div class="body">
 

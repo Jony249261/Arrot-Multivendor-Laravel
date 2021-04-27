@@ -1,16 +1,17 @@
 @extends('layouts.seller-app')
 
 @section('product-create','active')
-@section('title','Create')
+@section('title',' Propose Product')
+
 @section('content')
     <div class="container-fluid">
 
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-orange text-center">
+                <div class="header bg-red text-center">
 
-                    <h2 class="text-center">Create Product</h2>
+                    <h2 class="text-center">Propose Your Product</h2>
 
 
                 </div>
@@ -80,12 +81,5 @@
 
         </div>
     </div>
-    <script>
-        function calculateAmount(val,price) {
-            var tot_price = val * price;
-            /*display the result*/
-            var divobj = document.getElementById('tot_amount');
-            divobj.value = tot_price;
-        }
-    </script>
+
 @endsection

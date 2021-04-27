@@ -28,15 +28,13 @@ class BuyerController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|numeric',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|unique:users',
             'role' => 'sometimes|nullable|required|string',
             'status_id' => 'sometimes|nullable',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'buyer_address'=>'required|string|max:255',
             'buyer_website'=>'required|string|max:255',
-            'buyer_passport'=>'sometimes|nullable|string|max:255',
             'buyer_nid'=>'required|string|max:255',
-            'passport_expire_date'=>'sometimes|nullable|string|max:255',
             'buyer_type'=>'required|string|max:255',
             'expire_date'=>'sometimes|nullable|string|max:255',
             'trade_license' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
@@ -48,26 +46,34 @@ class BuyerController extends Controller
             'br_phone' => 'sometimes|nullable|string|max:255',
             'br_image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
-
-        $image=$request->file('image');
-        $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(270,270)->save('image_buyer/user/'.$name_gen);
-        $img_url=$name_gen;
-
-        $trade_license=$request->file('trade_license');
-        $name_gen=hexdec(uniqid()).'.'.$trade_license->getClientOriginalExtension();
-        Image::make($trade_license)->resize(600,600)->save('image_buyer/user/'.$name_gen);
-        $img_url2=$name_gen;
-
+        $img_url = null;
+        if($request->has('image')){
+            $image=$request->file('image');
+            $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(270,270)->save('image_buyer/user/'.$name_gen);
+            $img_url=$name_gen;
+        }
+        $img_url2 = null;
+        if($request->has('trade_license')){
+            $trade_license=$request->file('trade_license');
+            $name_gen=hexdec(uniqid()).'.'.$trade_license->getClientOriginalExtension();
+            Image::make($trade_license)->resize(600,600)->save('image_buyer/user/'.$name_gen);
+            $img_url2=$name_gen;
+        }
+        $img_url3 = null;
+       if($request->has('buyer_logo')){
         $buyer_logo=$request->file('buyer_logo');
         $name_gen=hexdec(uniqid()).'.'.$buyer_logo->getClientOriginalExtension();
         Image::make($buyer_logo)->resize(250,250)->save('image_buyer/user/'.$name_gen);
         $img_url3=$name_gen;
-
-        $br_image=$request->file('br_image');
-        $name_gen=hexdec(uniqid()).'.'.$br_image->getClientOriginalExtension();
-        Image::make($br_image)->resize(250,250)->save('image_buyer/user/'.$name_gen);
-        $img_url4=$name_gen;
+       }
+       $img_url4 = null;
+       if($request->has('br_image')){
+           $br_image=$request->file('br_image');
+           $name_gen=hexdec(uniqid()).'.'.$br_image->getClientOriginalExtension();
+           Image::make($br_image)->resize(250,250)->save('image_buyer/user/'.$name_gen);
+           $img_url4=$name_gen;
+       }
 
 
         $user=new User();
@@ -90,9 +96,7 @@ class BuyerController extends Controller
         $buyer->buyer_website=$request->buyer_website;
         $buyer->buyer_telephone=$request->phone;
         $buyer->buyer_email=$request->email;
-        $buyer->buyer_passport=$request->buyer_passport;
         $buyer->buyer_nid=$request->buyer_nid;
-        $buyer->passport_expire_date=$request->passport_expire_date;
         $buyer->buyer_type=$request->buyer_type;
         $buyer->expire_date=$request->expire_date;
         $buyer->tagline=$request->tagline;
@@ -114,19 +118,32 @@ class BuyerController extends Controller
 //    Buyer deleted Code
     public  function  delete($id){
         $user=User::findOrFail($id);
-
-
         $buyer=Buyer::where('user_id',$id)->first();
+
         $image='image_buyer/user/'.$user->image;
         $br_image='image_buyer/user/'.$buyer->br_image;
         $trade_license='image_buyer/user/'.$buyer->trade_license;
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
-        unlink($image);
-        unlink($br_image);
-        unlink($buyer_logo);
-        unlink($trade_license);
-        $user->delete();
-        $buyer->delete();
+        if($user->image == 'defaultphoto.png' || $buyer->buyer_logo == 'logo.png'){
+            $user->delete();
+            $buyer->delete();
+        }
+        else{
+            if(file_exists(public_path($image))){
+                unlink($image);
+            }
+            if(file_exists(public_path($br_image))){
+            unlink($br_image);
+            }
+            if(file_exists(public_path($buyer_logo))){
+            unlink($buyer_logo);
+            }
+            if(file_exists(public_path($trade_license))){
+            unlink($trade_license);
+            }
+            $user->delete();
+            $buyer->delete();
+        }
         Session::flash('success','Buyer Deleted successfully!!');
         return redirect()->back();
     }

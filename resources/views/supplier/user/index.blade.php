@@ -9,7 +9,6 @@
         <div class="block-header">
             <h2>
                 Support user
-
             </h2>
             
         </div>
@@ -24,7 +23,6 @@
                         </h2>
                         <ul class="header-dropdown m-r--5">
                             <a href="{{ route('users.create') }}" class="btn btn-default">Create</a>
-                           
                         </ul>
                     </div>
                     <div class="body">

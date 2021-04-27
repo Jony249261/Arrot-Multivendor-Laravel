@@ -25,6 +25,7 @@ class ProfileController extends Controller
     }
     public  function  update(Request $request){
         $user = User::findOrFail(Auth::user()->id);
+        //validation
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,'.$user->id,
@@ -33,10 +34,11 @@ class ProfileController extends Controller
             'password' => 'sometimes|nullable|confirmed|min:8',
 
         ]);
+        //check password
         if($request->has('password')){
-            $data['password'] = bcrypt($data['password']);
+            $data['password'] = Hash::make($data['password']);
         }
-
+        //image check
         $path = 'users/'.$user->image;
         if(($request->has('image'))){
         if($user->image == 'defaultphoto.png'){
@@ -46,7 +48,6 @@ class ProfileController extends Controller
             $data['image'] = $name_gen;
         }
         else{
-           
             unlink($path);
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
