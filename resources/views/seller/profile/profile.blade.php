@@ -1,5 +1,5 @@
 @extends('layouts.seller-app')
-@section('profile','active')
+@section('dashboard','active')
 @section('page-styles')
 <link href="{{ asset('backend/css/profile.css') }}" rel="stylesheet">
 @endsection
