@@ -133,7 +133,11 @@ Route::prefix('seller')->middleware('seller')->group(function(){
 // Seller Product
     Route::get('/product/index','Seller\ProductController@index')->name('seller.product.index');
     Route::post('/product/create','Seller\ProductController@create')->name('seller.product.create');
-   //all Seller route will gose here
+    Route::get('/propose/product','Seller\ProductController@propose_product')->name('seller.propose.product');
+    Route::get('/propose/product/delete/{id}','Seller\ProductController@pproduct_delete')->name('propose.product.delete');
+    Route::get('/propose/product/edit/{id}','Seller\ProductController@pproduct_edit')->name('propose.product.edit');
+    Route::post('propose/product/udpate/{id}','Seller\ProductController@update')->name('udpate.propose.prodcut');
+    //all Seller route will gose here
 
 
     //profile route
@@ -145,7 +149,7 @@ Route::prefix('seller')->middleware('seller')->group(function(){
     //support route
      Route::get('/support/index','Seller\SupportController@index')->name('support.index');
      Route::post('/support/contact','Buyer\SupportController@contactSubmit')->name('contact.submit');
-     
+
 });
 
 

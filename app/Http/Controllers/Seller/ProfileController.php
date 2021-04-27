@@ -36,9 +36,7 @@ class ProfileController extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'seller_address'=>'required|string|max:255',
             'seller_website'=>'required|string|max:255',
-            'seller_passport'=>'sometimes|nullable|string|max:255',
             'seller_nid'=>'required|string|max:255',
-            'passport_expire_date'=>'sometimes|nullable|string|max:255',
             'password' => 'sometimes|nullable|string|confirmed|min:8',
             'sr_name' => 'sometimes|nullable|string|max:255',
             'sr_email' => 'sometimes|nullable|string|max:255',
@@ -93,9 +91,7 @@ class ProfileController extends Controller
         $seller->seller_website=$request->seller_website;
         $seller->seller_telephone=$request->phone;
         $seller->seller_email=$request->email;
-        $seller->seller_passport=$request->seller_passport;
         $seller->seller_nid=$request->seller_nid;
-        $seller->passport_expire_date=$request->passport_expire_date;
         $seller->user_id=$user->id;
         if ($request->has('sr_image')){
             $seller->sr_image=$img_url4;
@@ -105,13 +101,11 @@ class ProfileController extends Controller
         $seller->sr_phone=$request->sr_phone;
         $seller->sr_email=$request->sr_email;
         $seller->update();
-        Session::flash('success','Seller updated successfully!!');
-        return redirect()->route('supplier.seller.index');
-
-
+        Session::flash('info','Seller updated successfully!!');
+        return redirect()->route('seller.profile.index');
 
     }
-    
 
-    
+
+
 }

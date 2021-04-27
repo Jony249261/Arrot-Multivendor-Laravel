@@ -21,11 +21,11 @@ body{
 	padding: 20px 60px;
 }
 
-.contact-right{
-	flex-basis: 40%;
-	padding: 20px 40px;
-	background: #1c00b5;
-	color: #fff;
+.contact-right {
+    flex-basis: 40%;
+    padding: 20px 40px;
+    background: #f44336;
+    color: #fff;
 }
 
 h1{
@@ -63,11 +63,11 @@ textarea{
 label{
 	margin-bottom: 2px;
 	display: flex;
-	color: #1c00b5;
+	color: #f44336;
 }
 
 button{
-	background: #1c00b5;
+	background: #f44336;
 	width: 100px;
 	border: none;
 	outline: none;
@@ -80,7 +80,7 @@ button{
 
 .contact-left h3{
 
-	color: #1c00b5;
+	color: #f44336;
 	font-weight: 600;
 	margin-bottom: 20px;
 }
