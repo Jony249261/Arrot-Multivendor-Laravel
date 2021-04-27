@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -34,9 +35,7 @@ class ProfileController extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'buyer_address'=>'required|string|max:255',
             'buyer_website'=>'required|string|max:255',
-            'buyer_passport'=>'sometimes|nullable|string|max:255',
             'buyer_nid'=>'required|string|max:255',
-            'passport_expire_date'=>'sometimes|nullable|string|max:255',
             'buyer_type'=>'required|string|max:255',
             'expire_date'=>'sometimes|nullable|string|max:255',
             'trade_license' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
@@ -119,9 +118,7 @@ class ProfileController extends Controller
         $buyer->buyer_website=$request->buyer_website;
         $buyer->buyer_telephone=$request->phone;
         $buyer->buyer_email=$request->email;
-        $buyer->buyer_passport=$request->buyer_passport;
         $buyer->buyer_nid=$request->buyer_nid;
-        $buyer->passport_expire_date=$request->passport_expire_date;
         $buyer->buyer_type=$request->buyer_type;
         $buyer->expire_date=$request->expire_date;
         $buyer->tagline=$request->tagline;
@@ -141,7 +138,7 @@ class ProfileController extends Controller
         $buyer->br_email=$request->br_email;
         $buyer->update();
         Session::flash('success','Profile updated successfully!!');
-        return redirect()->route('profile.index');
+        return redirect()->route('buyer.profile.index');
 
 
 

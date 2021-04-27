@@ -156,16 +156,6 @@
                       <h5 class="mb-0 "><span>NID:</span> {{$buyer->buyer_nid}}</h5>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <h5 class="mb-0"><span>Passport:</span> {{$buyer->buyer_passport}}</h5>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <h5 class="mb-0"><span>Passport Exp-Date:</span> {{$buyer->passport_expire_date}}</h5>
-                    </div>
-                  </div>
 
 
             </div>

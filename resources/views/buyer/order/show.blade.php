@@ -339,8 +339,9 @@
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $bill->check_number }}</td>
                                             <td>{{ $bill->bank_name }}</td>
-                                            <td>
-                                                <img src="{{ asset('images/check/'.$bill->check_photo) }}" width="50" alt="">
+                                            <td width="25%">
+                                                
+                                                <a data-toggle="modal" data-target="#imgModal-{{$bill->order_id}}"><img src="{{ asset('images/check/'.$bill->check_photo) }}" width="220px" height="80px" alt=""></a>
                                             </td>
                                             <td>{{ date('d-M-Y',strtotime($bill->created_at)) }}</td>
                                             <td>{{ number_format($bill->payment_amount,2) }}</td>
@@ -495,5 +496,27 @@
             </div>
         </div>
     </div>
+
+
+@foreach ($billings as $i => $bill)
+    <div class="modal fade" id="imgModal-{{$bill->order_id}}" tabindex="-1" role="dialog">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><span class="material-icons text-light">
+clear
+</span></button>
+                        
+                    </div>
+                    <div class="modal-body">
+<img src="{{ asset('images/check/'.$bill->check_photo) }}" alt="" width="100%">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    
 
 @endsection
