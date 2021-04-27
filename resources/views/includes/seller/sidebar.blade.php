@@ -45,8 +45,8 @@
                     <span>Product</span>
                 </a>
             </li>
-            <li class="@yield('')">
-                <a href="{{route('seller.product.create')}}">
+            <li class="@yield('Propose-product')">
+                <a href="{{route('seller.propose.product')}}">
                     <i class="material-icons">local_activity</i>
                     <span>Prpose Product</span>
                 </a>

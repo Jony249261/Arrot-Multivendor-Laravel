@@ -34,7 +34,7 @@ class ProductController extends Controller
                 $sellerpro->price=$prices[$key];
                 $sellerpro->quantity=$quantities[$key];
                 $sellerpro->seller_id=Auth::user()->id;
-                $sellerpro->status=0;
+                $sellerpro->status='pending';
                 if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
                     $sellerpro->save();
                 }
@@ -42,8 +42,33 @@ class ProductController extends Controller
 
         }
             Session::flash('info','Your Product has been submitted!');
-            return redirect()->back();
+            return redirect()->route('seller.propose.product');
 
+    }
+
+    public  function propose_product(){
+        $propose_product=SellerPropose::where('seller_id',Auth::user()->id)->get();
+        return view('seller.product.propose_product',compact('propose_product'));
+    }
+    public  function  update(Request  $request,$id){
+        $request->validate([
+           'quantity'=>'required',
+           'price'=>'required'
+        ]);
+        $product=SellerPropose::findOrFail($id);
+        $product->quantity=$request->quantity;
+        $product->price=$request->price;
+        $product->update();
+        Session::flash('info','Your Product has been submitted!');
+        return redirect()->route('seller.propose.product');
+
+    }
+
+    public  function  pproduct_delete($id){
+       $product=SellerPropose::findOrFail($id);
+       $product->delete();
+        Session::flash('success','Your Product has been Deleted!');
+        return redirect()->back();
     }
 
 
