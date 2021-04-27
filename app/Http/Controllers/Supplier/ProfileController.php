@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Image;
 
 class ProfileController extends Controller
 {
@@ -26,23 +27,32 @@ class ProfileController extends Controller
         $user = User::findOrFail(Auth::user()->id);
         $data = $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string',
-            'phone' => 'sometimes|nullable',
+            'email' => 'required|string|email|unique:users,email,'.$user->id,
+            'phone' => 'sometimes|nullable|numeric',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
-            'password' => 'sometimes|nullable|confirmed|min:6',
+            'password' => 'sometimes|nullable|confirmed|min:8',
 
         ]);
-        if($request->has('password')) $data['password'] = Hash::make($data['password']);
+        if($request->has('password')){
+            $data['password'] = bcrypt($data['password']);
+        }
 
-        $path = 'image_buyer/user/'.$user->image;
-        if($request->has('image')){
-            if(file_exists(public_path($path)))
-                unlink($path);{
-            }
+        $path = 'users/'.$user->image;
+        if(($request->has('image'))){
+        if($user->image == 'defaultphoto.png'){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(270,270)->save('image_buyer/user/'.$name_gen);
+            Image::make($image)->resize(270,270)->save('users/'.$name_gen);
             $data['image'] = $name_gen;
+        }
+        else{
+           
+            unlink($path);
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(270,270)->save('users/'.$name_gen);
+            $data['image'] = $name_gen;
+        }
         }
         $user->update($data);
 

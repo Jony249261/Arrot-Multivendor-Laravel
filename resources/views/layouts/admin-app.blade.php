@@ -29,6 +29,7 @@
 
     <!-- Custom Css -->
     <link href="{{ asset('backend/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/css/custom.css') }}" rel="stylesheet">
     <!-- toster js setup  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
 

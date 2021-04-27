@@ -1,6 +1,6 @@
 @extends('layouts.supplier-app')
 @section('dashboard','active')
-@section('title','Create user')
+@section('title','Update profile')
 
 @section('content')
     <div class="container-fluid">
@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="header bg-red">
 
-                    <h2 class="text-center">Update Buyer</h2>
+                    <h2 class="text-center">Update Profile</h2>
 
                 </div>
                 <div class="body">
@@ -23,71 +23,65 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                               name="name" value="{{ $user->name }}" required>
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                               name="name" value="{{ old('name',$user->name) }}" required>
+                                        
                                         <label class="form-label">Enter Name</label>
                                     </div>
+                                    @error('name')
+                                     <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                               name="email" value="{{ $user->email}}" required>
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                               name="email" value="{{ old('name',$user->email) }}" required>
+                                       
                                         <label class="form-label">Enter Email</label>
                                     </div>
+                                  @error('email')
+                                    <span class="validation-message">{{ $message }}</span>
+                                   @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                                               name="phone" value="{{ $user->phone}}" required>
-                                        @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                               name="phone" value="{{ old('phone',$user->phone) }}">
                                         <label class="form-label">Enter Phone</label>
                                     </div>
+                                    @error('phone')
+                                    <span class="validation-message">{{ $message }}</span>
+                                   @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <div class="form-line">
+                                    <div class="">
+                                        <label class="form-label">Image</label>
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                                name="image">
-                                        @error('image')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <img src="{{asset('image_buyer/user/'.$user->image)}}" height="80px" width="80px" alt="">
-                                        {{-- <label class="form-label">Image</label> --}}
+                                        <img src="{{asset('users/'.$user->image)}}" height="80px" width="80px" alt="">
+                                        
                                     </div>
+                                    @error('image')
+                                    <span class="validation-message">{{ $message }}</span>
+                                   @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <div class="form-line @error('password') error @enderror">
-                                        <input type="password" class="form-control"
+                                    <div class="form-line ">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
                                                name="password" value="{{ old('password') }}" >
                                         <label class="form-label">Password</label>
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                        @enderror
+                                       
                                     </div>
+                                    @error('password')
+                                        <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -96,15 +90,11 @@
                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
                                                name="password_confirmation" value="{{ old('password_confirmation') }}" >
                                         <label class="form-label">Confirm Password</label>
-                                        @error('password_confirmation')
-                                        <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                        @enderror
+                                       
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success waves-effect" type="submit">Update Profile</button>
+                            <button class="btn btn-success waves-effect custom-btn" type="submit">Update Profile</button>
 
                         </div>
 
