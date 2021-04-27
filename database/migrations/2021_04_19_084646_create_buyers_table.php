@@ -18,20 +18,18 @@ class CreateBuyersTable extends Migration
             $table->string('buyer_id');//done
             $table->string('buyer_name');//done
             $table->string('buyer_address');//done
-            $table->string('buyer_website');//done
+            $table->string('buyer_website')->nullable();//done
             $table->string('buyer_telephone');//done
-            $table->string('buyer_email');//buyer
-            $table->string('buyer_passport');//buyer
+            $table->string('buyer_email')->nullable();//buyer
             $table->string('buyer_nid');//buyer
+            $table->string('buyer_logo')->nullable()->default('logo.png');//done
             $table->string('br_name')->nullable();
             $table->string('br_email')->nullable();
             $table->string('br_phone')->nullable();
-            $table->date('passport_expire_date')->nullable();
-            $table->string('br_image')->nullable();
+            $table->string('br_image')->nullable()->default('defaultphoto.png');
             $table->string('buyer_type');
             $table->string('trade_license')->nullable();
             $table->date('expire_date');
-            $table->string('buyer_logo')->nullable();//done
             $table->string('tagline');//done
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
