@@ -37,9 +37,9 @@
                                         <th>{{ __('Product Name') }}</th>
                                         <th>{{ __('Unit') }}</th>
                                         <th>{{ __('Type') }}</th>
-                                        {{-- <th>{{ __('Purchase Rate') }}</th>
+                                        {{-- <th>{{ __('Purchase Rate') }}</th> --}}
                                         <th>{{ __('Today Price') }}</th>
-                                        <th>{{ __('Previous Price') }}</th> --}}
+                                        {{-- <th>{{ __('Previous Price') }}</th> --}}
                                         <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
@@ -55,19 +55,12 @@
                                             <td>{{ ucfirst($product->unit->name) }}</td>
                                             <td>{{ ucfirst($product->product_type) }}</td>
                                             
-                                            {{-- @foreach (App\ProductPrice::where('updated_date',date('Y-m-d'))->where('product_id',$product->id)->get() as $price)
-                                            <td>{{ number_format($price->purchase_rate,2) }}</td>
-                                            <td>
-                                                @php
-                                                    $today_price = App\ProductPrice::where('updated_date',date('Y-m-d'))->where('product_id',$product->id)->first();
-                                                    dd($today_price->sales_rate);
-                                                @endphp 
-                                                 {{ $today_price->sales_rate }}
-                                            </td> 
-                                             @endforeach --}}
+                                            
+                                            <td>{{ number_format($product->sales_rate,2) }}</td>
+                                         
                                             <td>
                                                 <div class="icon-button-demo">
-                                                    <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info waves-effect" style="float: left">
+                                                    <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-info waves-effect" style="float: left">
                                                         <i class="material-icons">edit</i>
                                                     </a>
                                                     @if(auth()->user()->role != 'support')
@@ -75,7 +68,7 @@
                                                         @csrf
                                                         @method('DELETE')
     
-                                                        <button type="submit" class="btn btn-danger waves-effect" style="float: left;margin-left:5px">
+                                                        <button type="submit" class="btn btn-sm btn-danger waves-effect" style="float: left;">
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
                                                     </form>

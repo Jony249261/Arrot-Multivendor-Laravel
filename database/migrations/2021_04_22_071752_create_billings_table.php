@@ -17,7 +17,7 @@ class CreateBillingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->float('bill_amount',16);
-            $table->date('due_date');
+            // $table->date('due_date')->nullable();
             $table->enum('payment_status',['paid','unpaid','partials'])->default('partials');
             // $table->date('payment_date');
             $table->float('payment_amount',16);

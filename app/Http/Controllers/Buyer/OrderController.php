@@ -63,20 +63,27 @@ class OrderController extends Controller
             [
                 'user_id' => auth()->user()->id,
                 'buyer_id' => auth()->user()->buyer_id,
-                'amount' => 1000,
             ]
         );
         $order->delivery_date = $order->created_at->addDays(3);
         $order->save();
         //insert data in order_product table
+        $amount = 0;
         foreach($quantities as $id => $qty){
             if($products[$id] && $qty > 0){
                 // echo $products[$id]." qty". $qty."<br>";
-                OrderProduct::create([
-                    'product_id' => $products[$id],
-                    'order_id' => $order->id,
-                    'qty' => $qty
-                ]);
+                // OrderProduct::create([
+                //     'product_id' => $products[$id],
+                //     'order_id' => $order->id,
+                //     'qty' => $qty
+                // ]);
+
+               $orderProduct = new OrderProduct();
+               $orderProduct->product_id = $products[$id];
+               $orderProduct->order_id = $order->id;
+               $orderProduct->qty = $qty;
+               $orderProduct->unite_price = $prices[$id];
+               $orderProduct->save();
 
             }
 
@@ -122,6 +129,7 @@ class OrderController extends Controller
         }
         $products = $request->input('products');
         $quantities = $request->input('quantites');
+        $prices = $request->input('prices');
         foreach($quantities as $id => $qty){
             $order_product = OrderProduct::where('order_id',$order->id)->where('product_id',$products[$id])->first();
 
@@ -130,6 +138,7 @@ class OrderController extends Controller
                 $order_product->product_id = $products[$id];
                 $order_product->order_id = $order->id;
                 $order_product->qty = $qty;
+                $order_product->unite_price = $prices[$id];
                 $order_product->save();
 
             }

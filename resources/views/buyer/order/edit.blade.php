@@ -48,10 +48,11 @@
                                                     width="60" height="60" alt=""></td>
                                             <td>{{ $item->product->product_name }}</td>
                                             <td>{{ ucfirst($item->product->unit->name) }}</td>
-                                            <td>{{ number_format($item->product->price, 2) }}</td>
+                                            <td>{{ number_format($item->product->sales_rate, 2) }}</td>
                                             <td>
                                                 <input type="number" name="quantites[]" style="width: 70px" value="{{ $item->qty }}" id="">
                                                 <input type="hidden" name="products[]" value="{{ $item->product->id }}" >
+                                                <input type="hidden" min="0" name="prices[]"  value="{{ $item->product->sales_rate }}" id="price">
                                             </td>
 
                                             <td>--</td>

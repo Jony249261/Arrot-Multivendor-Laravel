@@ -62,9 +62,9 @@
                                             @php
                                                 $grant_total = 0;
                                             @endphp
-                                            @forelse ($order->items as $item)
+                                            @foreach($order->items as $item)
                                                 @php
-                                                    $grant_total += $item->product->price * $item->qty;
+                                                    $grant_total += $item->unite_price * $item->qty;
                                                 @endphp
                                             @endforeach
                                             {{ number_format($grant_total, 2) }}
@@ -93,7 +93,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="6" class="text-center">No data found!!</td>
+                                            <td colspan="7" class="text-center">No data found!!</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
