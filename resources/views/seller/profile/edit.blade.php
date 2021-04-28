@@ -68,20 +68,20 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" >
-
+                                        <label class="form-label">Password</label>
                                         @error('password')
                                         <span class="validation-message">{{ $message }}</span>
-                                    @enderror
-                                        <label class="form-label">Password</label>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
+
+                                        <label class="form-label">Enter Confirm Password</label>
                                         @error('password_confirmation')
                                         <span class="validation-message">{{ $message }}</span>
-                                    @enderror
-                                        <label class="form-label">Enter Confirm Password</label>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group form-float">

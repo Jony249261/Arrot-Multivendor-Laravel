@@ -1,7 +1,8 @@
-@extends('layouts.seller-app')
+@extends('layouts.supplier-app')
 
-@section('Propose-product','active')
+@section('propose','active')
 @section('title',' Propose Porduct List')
+
 @section('content')
     <div class="container-fluid">
 
@@ -49,8 +50,11 @@
                                     </td>
                                     <td>
 
-                                        <a href="{{route('propose.product.delete',$pproduct->id)}}" onclick="return(confirm('Are you Delete This product'))" class="btn btn-danger"><i class="material-icons">delete</i></a>
+                                        <a href="{{route('propose.product.reject',$pproduct->id)}}" onclick="return(confirm('Are you Reject This product'))" class="btn btn-danger"><i class="material-icons">delete</i></a>
                                         <a type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#editmodal-{{$pproduct->id}}"> <i class="material-icons">edit</i></a>
+                                        <a href="{{route('propose.product.accept',$pproduct->id)}}" onclick="return(confirm('Are you Sure to Accept'))" class="btn btn-primary"><i class="material-icons">done_all
+                                            </i></a>
+
 
                                     </td>
                                 </tr>
@@ -108,9 +112,9 @@
                                     </td>
                                     <td>
 
-                                        <a href="{{route('seller.propose.product.reject',$pproduct->id)}}" onclick="return(confirm('Are you Reject This product'))" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">delete</i></a>
+                                        <a href="{{route('propose.product.reject',$pproduct->id)}}" onclick="return(confirm('Are you Reject This product'))" class="btn btn-danger"><i class="material-icons">delete</i></a>
                                         <a type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#editmodal-{{$pproduct->id}}"> <i class="material-icons">edit</i></a>
-                                        <a href="{{route('seller.propose.product.accept',$pproduct->id)}}" onclick="return(confirm('Are you Sure to Accept'))" class="btn btn-primary waves-effect m-r-20"><i class="material-icons">done_all
+                                        <a href="{{route('propose.product.accept',$pproduct->id)}}" onclick="return(confirm('Are you Sure to Accept'))" class="btn btn-primary"><i class="material-icons">done_all
                                             </i></a>
 
 
@@ -181,61 +185,8 @@
 
             </div>
 
-            <div class="card">
-                <div class="header bg-black text-center">
-
-                    <h2 class="text-center">Your Rejected Product</h2>
-
-                </div>
-                <div class="body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                            <thead>
-                            <tr>
-                                <th>Sl</th>
-                                <th>Product Name</th>
-                                <th>Seller Name</th>
-                                <th>Product Image</th>
-                                <th>Unit</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Status</th>
-
-
-                            </tr>
-                            </thead>
-
-
-                            <tbody>
-                            @foreach($reject_product as $key=>$pproduct)
-                                <tr>
-                                    <td>{{$key+1}}</td>
-                                    <td>{{$pproduct->product->product_name}}</td>
-                                    <td>{{$pproduct->user->name}}</td>
-                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="100" width="100"></td>
-                                    <td>{{$pproduct->product->unit->name}}</td>
-                                    <td>{{$pproduct->quantity}}</td>
-                                    <td>{{$pproduct->price}}</td>
-                                    <td>
-                                        <span class="badge badge-danger">{{$pproduct->status}}</span>
-                                        <br>
-                                        <span>No More Action</span>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-
-                            </tbody>
-
-                        </table>
-                        {{$propose_product->links()}}
-                    </div>
-
-                </div>
-
-            </div>
         </div>
-    @foreach($propose_product as $key=>$pproduct)
+  @foreach($propose_product as $key=>$pproduct)
         <!-- Default Size -->
             <div class="modal fade" id="editmodal-{{$pproduct->id}}" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
@@ -243,7 +194,7 @@
                         <div class="modal-header bg-red">
                             <h4 class="modal-title" id="defaultModalLabel">Update Propose Product</h4>
                         </div>
-                        <form action="{{route('udpate.propose.prodcut',$pproduct->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('supplier.udpate.propose.prodcut',$pproduct->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
 
@@ -280,7 +231,7 @@
                 </div>
             </div>
             <!-- Default Size -->
-    @endforeach
+        @endforeach
     @foreach($process_product as $key=>$pproduct)
         <!-- Default Size -->
             <div class="modal fade" id="editmodal-{{$pproduct->id}}" tabindex="-1" role="dialog">
@@ -289,7 +240,7 @@
                         <div class="modal-header bg-red">
                             <h4 class="modal-title" id="defaultModalLabel">Update Propose Product</h4>
                         </div>
-                        <form action="{{route('seller.udpate.propose.prodcut',$pproduct->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route('supplier.udpate.propose.prodcut',$pproduct->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="modal-body">
 

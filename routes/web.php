@@ -42,6 +42,12 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     //all Supplier route will gose here
     Route::get('/','Supplier\SupplierController@index')->name('supplier.index');
 
+//    Propose Product
+    Route::get('/propose/product','Supplier\ProductController@propose_product')->name('propose.product');
+    Route::get('/propose/product/accepted/{id}','Supplier\ProductController@propose_accept')->name('propose.product.accept');
+    Route::get('/propose/product/reject/{id}','Supplier\ProductController@propose_reject')->name('propose.product.reject');
+    Route::post('/propose/product/propose/{id}','Supplier\ProductController@propose_update')->name('supplier.udpate.propose.prodcut');
+    Route::get('/propose/product/reject/{id}','Supplier\ProductController@propose_reject')->name('propose.product.reject');
     //    Supplier Buyer Route
     Route::get('/buyer/index','Supplier\BuyerController@index')->name('supplier.buyer.index');
     Route::get('/buyer/create','Supplier\BuyerController@create')->name('supplier.buyer.create');
@@ -141,6 +147,10 @@ Route::prefix('seller')->middleware('seller')->group(function(){
     Route::get('/propose/product/delete/{id}','Seller\ProductController@pproduct_delete')->name('propose.product.delete');
     Route::get('/propose/product/edit/{id}','Seller\ProductController@pproduct_edit')->name('propose.product.edit');
     Route::post('propose/product/udpate/{id}','Seller\ProductController@update')->name('udpate.propose.prodcut');
+    Route::get('/propose/product/accepted/{id}','Seller\ProductController@propose_accept')->name('seller.propose.product.accept');
+    Route::get('/propose/product/reject/{id}','Seller\ProductController@propose_reject')->name('seller.propose.product.reject');
+    Route::post('/propose/product/propose/{id}','Seller\ProductController@propose_update')->name('seller.udpate.propose.prodcut');
+
     //all Seller route will gose here
 
 

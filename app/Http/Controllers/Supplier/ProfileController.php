@@ -34,8 +34,9 @@ class ProfileController extends Controller
             'password' => 'sometimes|nullable|confirmed|min:8',
 
         ]);
+
         //check password
-        if($request->has('password')){
+        if(!empty($request->password)){
             $data['password'] = Hash::make($data['password']);
         }
         //image check

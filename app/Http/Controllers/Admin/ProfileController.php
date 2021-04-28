@@ -31,7 +31,9 @@ class ProfileController extends Controller
             'password' => 'sometimes|nullable|confirmed|min:6',
 
         ]);
-        if($request->has('password')) $data['password'] = Hash::make($data['password']);
+        if(!empty($request->password)) {
+            $data['password'] = Hash::make($data['password']);
+        }
 
         $path = 'image_buyer/user/'.$user->image;
         if($request->has('image')){

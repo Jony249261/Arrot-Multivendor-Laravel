@@ -47,8 +47,12 @@ class ProductController extends Controller
     }
 
     public  function propose_product(){
-        $propose_product=SellerPropose::where('seller_id',Auth::user()->id)->get();
-        return view('seller.product.propose_product',compact('propose_product'));
+        $propose_product=SellerPropose::where('seller_id',Auth::user()->id)->Where('status','pending')->paginate(15);
+        $process_product=SellerPropose::where('seller_id',Auth::user()->id)->Where('status','processing')->paginate(15);
+        $accept_product=SellerPropose::where('seller_id',Auth::user()->id)->Where('status','accept')->paginate(15);
+        $reject_product=SellerPropose::where('seller_id',Auth::user()->id)->Where('status','reject')->paginate(15);
+
+        return view('seller.product.propose_product',compact('propose_product','process_product','accept_product','reject_product'));
     }
     public  function  update(Request  $request,$id){
         $request->validate([
@@ -58,6 +62,7 @@ class ProductController extends Controller
         $product=SellerPropose::findOrFail($id);
         $product->quantity=$request->quantity;
         $product->price=$request->price;
+        $product->status='processing';
         $product->update();
         Session::flash('info','Your Product has been submitted!');
         return redirect()->route('seller.propose.product');
@@ -70,7 +75,31 @@ class ProductController extends Controller
         Session::flash('success','Your Product has been Deleted!');
         return redirect()->back();
     }
+    public  function  propose_accept($id){
+        $product=SellerPropose::findOrFail($id);
+        $product->status='accept';
+        $product->update();
+        Session::flash('info'.'Product Accepted successfully!!');
+        return redirect()->back();
 
+    }
+    public  function  propose_update(Request  $request,$id){
+        $product=SellerPropose::findOrFail($id);
+        $product->quantity=$request->quantity;
+        $product->price=$request->price;
+        $product->status='processing';
+        $product->update();
+        Session::flash('success'.'Product Accepted successfully!!');
+        return redirect()->back();
+
+    }
+    public function  propose_reject($id){
+        $product=SellerPropose::findOrFail($id);
+        $product->status='reject';
+        $product->update();
+        Session::flash('success'.'Product Accepted successfully!!');
+        return redirect()->back();
+    }
 
 
 }
