@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="header bg-red">
 
-                    <h2 class="text-center">Update @if(Auth::user()->role=='procurement') Procurement @elseif(Auth::user()->role=='warehouse') Warehouse @endif</h2>
+                    <h2 class="text-center">Update @if(Auth::user()->role=='procurement') Procurement @elseif(Auth::user()->role=='warehouse') Warehouse @elseif(Auth::user()->role=='accounts')Accounts @endif</h2>
 
                 </div>
                 <div class="body">
