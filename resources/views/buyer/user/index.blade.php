@@ -1,11 +1,8 @@
 @extends('layouts.buyer-app')
-
 @section('buyer-user', 'active')
 @section('buyer-user-index', 'active')
 @section('title', 'Buyer user')
-
 @section('content')
-
     <div class="container-fluid">
 
         <!-- Basic Examples -->

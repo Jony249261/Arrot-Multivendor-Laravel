@@ -97,43 +97,6 @@ class UserController extends Controller
         return view('buyer.user.edit',compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-        $data = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users,email,'.$user->id,
-            'phone' => 'sometimes|nullable',
-            'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
-            'password' => 'sometimes|nullable|confirmed|min:6',
-            'role' => 'required|string'
-        ]);
-        $data['parent_id'] = auth()->user()->id;
-        $data['buyer_id'] = auth()->user()->buyer_id;
-        if($request->has('password')) $data['password'] = Hash::make($data['password']);
-
-        $path = 'users/'.$user->image;
-        if($request->has('image')){
-            if(file_exists(public_path($path))){
-                unlink($path);
-            }
-            $image = $request->file('image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(270,270)->save('users/'.$name_gen);
-            $data['image'] = $name_gen;
-        }
-        $user->update($data);
-
-        Session::flash('success','Suport user created successfully!');
-        return redirect()->route('buyer-users.index');
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -144,5 +107,47 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public  function  update_user(Request  $request,$id){
+        $user = User::findOrFail($id);
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users,email,'.$user->id,
+            'phone' => 'sometimes|nullable',
+            'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
+            'password' => 'sometimes|nullable|confirmed|min:6',
+            'role' => 'required|string'
+        ]);
+        $path = 'users/'.$user->image;
+        $user->parent_id= auth()->user()->id;
+        $user->buyer_id= auth()->user()->buyer_id;
+
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        $user->role=$request->role;
+
+        if($request->has('image')){
+            if(file_exists(public_path($path))){
+                unlink($path);
+            }
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(270,270)->save('users/'.$name_gen);
+            $img_url = $name_gen;
+
+        }
+        if ($request->has('image')){
+            $user->image=$img_url;
+        }
+
+
+        if (!empty($request->password)){
+            $user->password=bcrypt($request->password);
+        }
+        $user->update();
+
+        Session::flash('success','Suport user Updated successfully!');
+        return redirect()->route('buyer-users.index');
     }
 }

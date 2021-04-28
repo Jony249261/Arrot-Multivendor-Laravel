@@ -20,9 +20,9 @@
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="{{ route('buyer-users.update',$user->id) }}" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="{{ route('buyer.users.update',$user->id) }}" enctype="multipart/form-data" >
                         @csrf
-                        @method('PUT')
+
                         <div class="row clearfix">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -95,7 +95,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                            name="password_confirmation" value="{{ old('password_confirmation') }}">
+                                            name="password_confirmation">
                                             <label class="form-label">Confirm New Password</label>
                                             @error('password_confirmation')
                                                 <span class="invalid-feedback" role="alert">

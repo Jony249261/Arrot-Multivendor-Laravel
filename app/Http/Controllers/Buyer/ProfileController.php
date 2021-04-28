@@ -163,7 +163,7 @@ class ProfileController extends Controller
         $user->email=$request->email;
         $user->phone=$request->phone;
         if (!empty($request->password)){
-            $user->password=$request->password;
+            $user->password=bcrypt($request->password);
 
         }
         if ($request->has('image')){
