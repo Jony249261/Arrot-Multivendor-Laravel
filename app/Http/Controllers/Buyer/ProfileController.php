@@ -71,7 +71,7 @@ class ProfileController extends Controller
         if ($request->has('image')){
             $user->image=$img_url;
         }
-        if($request->has('password')){
+        if(!empty($request->password)){
             $user->password=bcrypt($request->password);
         }
         $user->update();

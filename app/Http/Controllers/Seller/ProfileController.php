@@ -56,10 +56,7 @@ class ProfileController extends Controller
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(270,270)->save('image_seller/user/'.$name_gen);
             $img_url=$name_gen;
-
-
         }
-
 
         $user -> name = $request->name;
         $user->email = $request->email;
@@ -68,11 +65,10 @@ class ProfileController extends Controller
         if ($request->has('image')){
             $user->image=$img_url;
         }
-        if($request->has('password')){
+        if(!empty($request->password)){
             $user->password=bcrypt($request->password);
         }
         $user->update();
-
         $seller=Seller::where('user_id',$id)->first();
         $sr_image='image_seller/user/'.$seller->sr_image;
 
