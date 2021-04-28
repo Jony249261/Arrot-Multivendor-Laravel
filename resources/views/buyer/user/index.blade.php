@@ -15,11 +15,8 @@
 
                         </h2>
                         <ul class="header-dropdown m-r--5">
-<<<<<<< Updated upstream
-                            <a href="{{ route('buyer-users.create') }}" class="btn btn-default">Create</a>
-=======
-                            <a href="{{ route('users.create') }}" class="btn btn-success"><i class="material-icons">library_add</i>Create</a>
->>>>>>> Stashed changes
+                            <a href="{{ route('buyer-users.create') }}" class="btn btn-success"><i class="material-icons">library_add</i>Create</a>
+
 
                         </ul>
                     </div>
