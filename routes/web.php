@@ -65,8 +65,8 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
 // Supplier Profile
 
     Route::get('/profile/index','Supplier\ProfileController@index')->name('supplier.profile.index');
-    Route::get('/profile/edit','Supplier\ProfileController@edit')->name('supplier.profile.edit');
-    Route::post('/profile/update','Supplier\ProfileController@update')->name('supplier.porfile-update');
+    Route::get('/profile/edit/{id}','Supplier\ProfileController@edit')->name('supplier.profile.edit');
+    Route::put('/profile/update/{id}','Supplier\ProfileController@update')->name('supplier.porfile-update');
 
     //products route
     Route::resource('/products','Supplier\ProductController');

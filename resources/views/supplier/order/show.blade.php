@@ -291,8 +291,8 @@
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $bill->check_number }}</td>
                                             <td>{{ $bill->bank_name }}</td>
-                                            <td width="25%">
-                                                <a data-toggle="modal" data-target="#imgModal-{{$bill->order_id}}"><img src="{{ asset('images/check/'.$bill->check_photo) }}" width="200px" height="80px" alt=""></a>
+                                            <td>
+                                                <a data-toggle="modal" data-target="#imgModal-{{$bill->id}}"><img src="{{ asset('images/check/'.$bill->check_photo) }}" width="100px" height="50px" class="img-img" alt=""></a>
                                             </td>
                                             <td>{{ date('d-M-Y',strtotime($bill->created_at)) }}</td>
                                             <td>{{ number_format($bill->payment_amount,2) }}</td>
@@ -460,22 +460,12 @@
     </div>
 
 @foreach ($billings as $i => $bill)
-    <div class="modal fade" id="imgModal-{{$bill->order_id}}" tabindex="-1" role="dialog">
+    <div class="modal fade" id="imgModal-{{$bill->id}}">
 
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header bg-info">
-                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><span class="material-icons text-light">
-clear
-</span></button>
-                        
-                    </div>
-                    <div class="modal-body bg-info">
-<img src="{{ asset('images/check/'.$bill->check_photo) }}" alt="">
-
-                    </div>
-                </div>
-            </div>
+            <p  class=" waves-effect img-btn" data-dismiss="modal"><span class="material-icons text-danger">
+cancel
+</span></p>
+<div class="text-center"><img src="{{ asset('images/check/'.$bill->check_photo) }}" alt="" width="70%" class="img-img" height="500px"></div>
         </div>
         @endforeach
 
