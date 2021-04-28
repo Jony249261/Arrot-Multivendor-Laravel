@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class SupplierTableSeeder extends Seeder
 {
@@ -16,6 +17,7 @@ class SupplierTableSeeder extends Seeder
             'email' => 'supplier@gmail.com',
             'password' => bcrypt('12345678'),
             'phone'=>'01925555115',
+            'role'=>'supplier',
             'image'=>'defaultphoto.png',
 
         ]);

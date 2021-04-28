@@ -226,6 +226,13 @@ body {
   body .conya {
     height: 100%; }
 
+.data-portion{
+  background-color: black;
+  padding: 10px;
+  opacity: 0.55;
+  color:white;
+}
+
 .side-left {
   background-color: red;
   height: 100%;

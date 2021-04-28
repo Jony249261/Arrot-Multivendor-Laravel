@@ -81,7 +81,7 @@
         </div>
         </form>
         <div class="copyco">
-               <p>Copyrigh <span id="date"></span> @ selevenit.com</p> 
+               <p>Copyright <span id="date"></span> @ selevenit.com</p> 
             </div>
     </div> 
 
