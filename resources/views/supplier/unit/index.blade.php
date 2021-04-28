@@ -37,7 +37,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$unit->name}}</td>
                                     <td class="text-center">
-                                        <a type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#editmodal-{{$unit->id}}"><i class="material-icons">edit</i></a>
+                                        <a type="button" class="btn btn-success waves-effect " data-toggle="modal" data-target="#editmodal-{{$unit->id}}"><i class="material-icons">edit</i></a>
                                         <a href="{{route('supplier.unit.delete',$unit->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i class="material-icons">delete</i></a>
                                     </td>
                                 </tr>

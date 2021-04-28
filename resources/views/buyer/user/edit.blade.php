@@ -29,12 +29,10 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             name="name" value="{{ old('name',$user->name) }}" required>
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                     </div>
+                                    @error('name')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -42,12 +40,10 @@
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             name="email" value="{{ old('email',$user->email) }}" required>
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                     </div>
+                                    @error('email')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -55,12 +51,10 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('phone') is-invalid @enderror"
                                             name="phone" value="{{ old('phone',$user->phone) }}" required>
-                                        @error('phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                     </div>
+                                    @error('phone')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -68,13 +62,11 @@
                                     <div class="form-line">
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                             name="image">
-                                        @error('image')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                         {{-- <label class="form-label">Image</label> --}}
                                     </div>
+                                    @error('image')
+                                    <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -83,12 +75,10 @@
                                         <input type="password" class="form-control"
                                             name="password" value="{{ old('password') }}">
                                             <label class="form-label">New Password</label>
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
                                     </div>
+                                    @error('password')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">

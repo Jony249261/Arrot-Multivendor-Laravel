@@ -13,7 +13,7 @@
 
                     <h2>Edit Product</h2>
                     <ul class="header-dropdown m-r--5">
-                        <a href="{{ route('products.index') }}" class="btn btn-default">View</a>
+                        <a href="{{ route('products.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
                     </ul>
 
                 </div>
@@ -101,8 +101,9 @@
                                 </div>
 
                             </div>
+                            <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update Product</button>
                         </div>
-                         <button class="btn btn-primary waves-effect" type="submit">UPDATE</button>
+                       
                  </form>
             </div>
 

@@ -28,11 +28,12 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             name="name" value="{{ old('name') }}" required>
-                                            @error('name')
-                                            <span class="validation-message">{{ $message }}</span>
-                                        @enderror
+                                        
                                         <label class="form-label">Enter Name</label>
                                     </div>
+                                    @error('name')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -40,11 +41,12 @@
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             name="email" value="{{ old('email') }}" required >
-                                            @error('email')
-                                            <span class="validation-message">{{ $message }}</span>
-                                        @enderror
+                                        
                                         <label class="form-label">Enter Email</label>
                                     </div>
+                                    @error('email')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -52,11 +54,12 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('phone') is-invalid @enderror"
                                             name="phone" value="{{ old('phone') }}" required>
-                                            @error('phone')
-                                            <span class="validation-message">{{ $message }}</span>
-                                        @enderror
+                                        
                                         <label class="form-label">Enter Phone</label>
                                     </div>
+                                    @error('phone')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -64,11 +67,12 @@
                                     <div class="form-line">
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                             name="image">
-                                            @error('image')
-                                            <span class="validation-message">{{ $message }}</span>
-                                        @enderror
+                                        
                                         {{-- <label class="form-label">Image</label> --}}
                                     </div>
+                                    @error('image')
+                                    <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -77,10 +81,10 @@
                                         <input type="password" class="form-control"
                                             name="password" value="{{ old('password') }}" required>
                                             <label class="form-label">Password</label>
-                                            @error('password')
-                                            <span class="validation-message">{{ $message }}</span>
-                                        @enderror
                                     </div>
+                                    @error('password')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -89,11 +93,10 @@
                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
                                             name="password_confirmation" value="{{ old('password_confirmation') }}" required>
                                             <label class="form-label">Confirm Password</label>
-                                            @error('password_confirmation')
-                                            <span class="validation-message">{{ $message }}</span>
-                                        @enderror
+                                      
                                     </div>
                                 </div>
+
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group" >
@@ -107,9 +110,9 @@
                                     <input type="radio" name="role" value="warehouse" id="warehouse" class="with-gap">
                                     <label for="warehouse" class="m-l-20">Warehouse</label>
                                 </div>
-                                <button class="btn btn-success waves-effect"
-                                    type="submit">SUBMIT</button>
+                                
                             </div>
+                            <button class="btn btn-success waves-effect custom-btn item pull-right" type="submit"><i class="material-icons">library_add</i> Create User</button>
                         </div>
 
 
