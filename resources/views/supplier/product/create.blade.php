@@ -1,6 +1,7 @@
 @extends('layouts.supplier-app')
 
 @section('product', 'active')
+@section('product-create', 'active')
 @section('title', 'Create product')
 
 @section('content')
