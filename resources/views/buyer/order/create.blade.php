@@ -13,7 +13,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-orange text-center">
+                <div class="header bg-red text-center">
 
                     <h2 class="text-center">Create order</h2>
 
