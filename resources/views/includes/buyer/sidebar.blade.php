@@ -2,7 +2,12 @@
     <!-- User Info -->
     <div class="user-info">
         <div class="image">
-            <img src="{{asset('image_buyer/user/'.Auth::user()->buyer->br_image)}}" width="48" height="48" alt="User" />
+            @if(Auth::user()->role=='buyer')
+            <img src="{{asset('image_buyer/user/'.Auth::user()->image)}}" width="48" height="48" alt="User" />
+              @else
+                <img src="{{asset('users/'.Auth::user()->image)}}" width="48" height="48" alt="User" />
+            @endif
+
         </div>
         <div class="info-container">
             <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</div>
@@ -39,7 +44,7 @@
                 </a>
             </li>
             @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'accounts' || auth()->user()->role == 'procurement')
-            <li><a href="{{route('profile.index')}}"><i class="material-icons">person</i><span>Profile</span></a></li>
+            <li><a href="{{route('buyer.profile.index')}}"><i class="material-icons">person</i><span>Profile</span></a></li>
             <li><a href="{{ route('orders.index') }}"><i class="material-icons">production_quantity_limits</i><span>Order List</span></a></li>
 
             @endif
@@ -52,7 +57,7 @@
                     <span>Create Order</span>
                 </a>
             </li>
-           
+
             <li class="@yield('all-order')">
                 <a href="{{route('orders.index')}}">
                     <i class="material-icons">forum</i>
@@ -81,7 +86,7 @@
                     <li class="@yield('all-order')">
                         <a href="{{ route('orders.index') }}">Order List</a>
                     </li>
-                   
+
                     <li class="@yield('create-order')">
                         <a href="{{ route('orders.create') }}">Order create</a>
                     </li>
@@ -102,7 +107,7 @@
                     </li>
                 </ul>
             </li>
-            
+
                     <li class="@yield('support')">
                         <a href="{{route('supports.index')}}">
                             <i class="material-icons">support</i>
@@ -136,7 +141,7 @@
                     </li>
 
                     <li class="@yield('profile')">
-                        <a href="{{route('profile.index')}}">
+                        <a href="{{route('buyer.profile.index')}}">
                             <i class="material-icons">person</i>
                             <span>Profile</span>
                         </a>
@@ -174,7 +179,7 @@
             @endif
         </ul>
       {{-- MenuForProcurment --}}
-           
+
     </div>
     <!-- #Menu -->
     <!-- Footer -->

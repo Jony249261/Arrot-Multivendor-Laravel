@@ -44,5 +44,8 @@ class User extends Authenticatable
     public  function  seller(){
         return $this->hasOne(Seller::class,'user_id','id');
     }
+    public  function  parent(){
+        return $this->hasOne(User::class,'id','parent_id');
+    }
 
 }
