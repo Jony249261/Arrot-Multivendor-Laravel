@@ -73,6 +73,8 @@ class OrderController extends Controller
 
             }
         }
+        $order->status = 'accepted';
+        $order->save();
         return back();
 
 

@@ -237,7 +237,7 @@
                                                     <input type="hidden" name="quantites[]" class="input-field-width" value="{{ $item->qty }}" id="">
                                                     {{-- <input type="hidden" name="prices[]" class="input-field-width"  id=""> --}}
                                                     
-                                                    <button class="btn btn-sm btn-info reload-btn"><i class="material-icons">refresh</i></button>
+                                                    {{-- <button class="btn btn-sm btn-info reload-btn"><i class="material-icons">refresh</i></button> --}}
                                                
                                             </td>
                                             <td>{{ number_format(($item->qty * $item->unite_price),2) }}</td>
@@ -254,6 +254,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                        @if($order->status == 'pending')
                                         <td >
                                             <input type="date" name="sales_date" class="@error('sales_date') is-invalid @enderror"><br>
                                             @error('sales_date')
@@ -261,10 +262,11 @@
                                             @enderror
                                         </td>
                                         <td colspan="2" >
-                                            <button class="btn btn-success">Accepted</button>
-                                            <button class="btn btn-danger">Rejected</button>
+                                            <button class="btn btn-success">Accept</button>
+                                            <button class="btn btn-danger">Reject</button>
                                         </td>
-                                        <td colspan="3" class="text-right"><strong>Grand Total:</strong></td>
+                                        @endif
+                                        <td colspan="@if($order->status != 'pending') 6 @else 3 @endif" class="text-right"><strong>Grand Total:</strong></td>
                                         <td colspan="2">{{ number_format($grand_total,2) }}</td>
                                     </tr>
                                 </tfoot> 
