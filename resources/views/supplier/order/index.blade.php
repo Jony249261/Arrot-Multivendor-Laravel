@@ -48,7 +48,7 @@
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $order->ShowId }}</td>
                                             <td>@if(isset($order->user->name )) {{ $order->user->name }} @endif</td>
-                                            <td>{{ date('d-M-Y', strtotime($order->delivery_date)) }}</td>
+                                            <td>@if(isset($order->delivery_date)) {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif</td>
                                             <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
                                             <td><span
                                                     class="badge badge-primary">{{ ucfirst($order->payment_status) }}</span>

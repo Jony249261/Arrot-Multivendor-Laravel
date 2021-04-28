@@ -74,7 +74,9 @@ class OrderController extends Controller
             }
         }
         $order->status = 'accepted';
+        $order->delivery_date = $request->sales_date;
         $order->save();
+        Session::flash('info','Order product price updated!');
         return back();
 
 

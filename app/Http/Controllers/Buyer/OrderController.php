@@ -65,7 +65,7 @@ class OrderController extends Controller
                 'buyer_id' => auth()->user()->buyer_id,
             ]
         );
-        $order->delivery_date = $order->created_at->addDays(3);
+        // $order->delivery_date = $order->created_at->addDays(3);
         $order->save();
         //insert data in order_product table
         $amount = 0;

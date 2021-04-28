@@ -36,7 +36,7 @@
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <tr>
                                     <td>Delivery Date</td>
-                                    <td>{{ date('d-M-Y',strtotime($order->delivery_date)) }}</td>
+                                    <td>@if(isset($order->delivery_date)) {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif</td>
                                 </tr>
 
                                 <tr>
@@ -89,7 +89,7 @@
                                     @endphp
                                     <td>{{ number_format($due_amount,2) }}</td>
                                 </tr>
-                               @if($order->status != 'pending')
+                               @if($order->payment_status != 'paid' && $order->status == 'received' && (auth()->user()->role == 'buyer' || auth()->user()->role == 'accounts'))
                                @if(auth()->user()->role == 'accounts' || auth()->user()->role == 'buyer')
                                 <tr>
                                     <td>Payment</td>
@@ -169,7 +169,7 @@
             </div>
         </div>
         @endif --}}
-        @if(auth()->user()->role == 'accounts' || auth()->user()->role == 'buyer')
+        @if(auth()->user()->role == 'accounts')
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
@@ -190,7 +190,7 @@
                                     <th>{{ __('Product Name') }}</th>
                                     <th>{{ __('Unit') }}</th>
                                     <th>{{ __('Quantity') }}</th>
-                                    {{-- <th>{{ __('Received Qty') }}</th> --}}
+                                    <th>{{ __('Received Qty') }}</th>
                                     <th>{{ __('Price') }}</th>
                                     <th>{{ __('Total') }}</th>
                                 </tr>
@@ -207,11 +207,11 @@
                                             <td>{{ $item->product->product_name }}</td>
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
-                                            {{-- <td>{{ $item->delivered_qty }}</td> --}}
+                                            <td>{{ $item->delivered_qty }}</td>
                                             <td>{{ number_format($item->unite_price, 2) }}</td>
-                                            <td>{{ number_format(($item->unite_price * $item->qty ),2) }}</td>
+                                            <td>{{ number_format(($item->unite_price * $item->delivered_qty ),2) }}</td>
                                             @php
-                                                $grant_total +=$item->unite_price * $item->qty ;
+                                                $grant_total +=$item->unite_price * $item->delivered_qty ;
                                             @endphp
                                         </tr>
                                     @empty
@@ -235,7 +235,7 @@
             </div>
         </div>
         @endif
-        @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'buyer')
+        @if(auth()->user()->role == 'warehouse')
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
@@ -257,7 +257,9 @@
                                     <th>{{ __('Quantity') }}</th>
                                     <th>{{ __('Received Quantity') }}</th>
                                    <th>{{ __('Unite Price') }}</th>
+                                   @if($order->status == 'received')
                                     <th>{{ __('Total') }}</th> 
+                                    @endif
                                 </tr>
                             </thead>
                             <form action="{{ route('orders.received',$order->id) }}" method="post">
@@ -274,7 +276,7 @@
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
                                             <td>
-                                                <input type="number" name="quantites[]" min="0"  @if($order->status == 'received') disabled @endif style="width: 70px" value="{{ $item->delivered_qty }}" placeholder="0.00" id="">
+                                                <input type="number" name="quantites[]" min="0"  @if($order->status == 'received') disabled @endif style="width: 70px" value="{{ $item->qty }}" placeholder="0.00" id="">
                                                 <input type="hidden" name="products[]" value="{{ $item->product->id }}" >
                                             </td>
                                             <td>{{ number_format($item->unite_price, 2) }}</td>
@@ -298,9 +300,79 @@
                                 </tfoot> --}}
 
                             </table>
-                            @if($order->status == 'accepted')
+                            @if($order->status == 'shipping')
                             <button class="btn btn-sm btn-info" style="float: right">Received</button>
                             @endif
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if(auth()->user()->role == 'buyer')
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header bg-orange text-center">
+                        <h2>
+                            Product Details - {{ $order->showId }}
+
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                                <tr>
+                                    <th>{{ __('SL') }}</th>
+                                    <th>{{ __('Product Image') }}</th>
+                                    <th>{{ __('Product Name') }}</th>
+                                    <th>{{ __('Unit') }}</th>
+                                    <th>{{ __('Quantity') }}</th>
+                                    {{-- <th>{{ __('Received Quantity') }}</th> --}}
+                                   <th>{{ __('Unite Price') }}</th>
+                                    <th>{{ __('Total') }}</th> 
+                                </tr>
+                            </thead>
+                            <form action="{{ route('orders.received',$order->id) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <tbody>
+                                   @php
+                                       $grant_total = 0;
+                                   @endphp
+                                    @forelse ($order->items as $i => $item)
+                                        <tr>
+                                            <td>{{ $i + 1 }}</td>
+                                            <td><img src="{{ asset('products/' . $item->product->image) }}"
+                                                    width="60" height="60" alt=""></td>
+                                            <td>{{ $item->product->product_name }}</td>
+                                            <td>{{ $item->product->unit->name }}</td>
+                                            <td>{{ $item->qty }}</td>
+                                           
+                                            <td>{{ number_format($item->unite_price, 2) }}</td>
+                                            <td>{{ number_format(($item->unite_price * $item->qty),2) }}</td>
+                                            @php
+                                                $grant_total += $item->unite_price * $item->qty;
+                                            @endphp
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-center">No data found!!</td>
+                                        </tr>
+                                    @endforelse
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        
+                                        <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
+                                        <td colspan="2">{{ number_format($grant_total,2) }}</td>
+                                    </tr>
+                                </tfoot>
+
+                            </table>
                         </form>
                         </div>
                     </div>

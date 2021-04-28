@@ -41,7 +41,7 @@ class BillingController extends Controller
         $paid_amount = $billings->sum('payment_amount');
         $total = 0;
         foreach($order->items as $item){
-            $total += ($item->qty * $item->unite_price);
+            $total += ($item->delivered_qty * $item->unite_price);
         }
         if($paid_amount == $total){
             $order->payment_status = 'paid';
