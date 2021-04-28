@@ -46,13 +46,7 @@ class BuyerController extends Controller
             'br_phone' => 'sometimes|nullable|string|max:255',
             'br_image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
-        $img_url = null;
-        if($request->has('image')){
-            $image=$request->file('image');
-            $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(270,270)->save('image_buyer/user/'.$name_gen);
-            $img_url=$name_gen;
-        }
+
         $img_url2 = null;
         if($request->has('trade_license')){
             $trade_license=$request->file('trade_license');
@@ -83,7 +77,7 @@ class BuyerController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->role = 'buyer';
-        $user->image=$img_url;
+        $user->image=$img_url3;
         $user->password=bcrypt($request->password);
 
         $user->save();
@@ -124,13 +118,13 @@ class BuyerController extends Controller
         $br_image='image_buyer/user/'.$buyer->br_image;
         $trade_license='image_buyer/user/'.$buyer->trade_license;
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
-        
+
         // if($user->image == 'defaultphoto.png' && $buyer->buyer_logo == 'logo.png'){
         //     $user->delete();
         //     $buyer->delete();
         // }
         // elseif(file_exists(public_path($image)) || file_exists(public_path($br_image)) || file_exists(public_path($buyer_logo))){
-        
+
             unlink($image);
             unlink($br_image);
             unlink($buyer_logo);
@@ -142,7 +136,7 @@ class BuyerController extends Controller
         return redirect()->back();
     }
 
-    //Buyer Edit view 
+    //Buyer Edit view
     public function edit($id){
         $user = User::find($id);
         $buyer=Buyer::where('user_id',$id)->first();
@@ -274,7 +268,7 @@ class BuyerController extends Controller
         $user = User::find($id);
 
         $buyer=Buyer::where('user_id',$id)->first();
-        
+
             return view('supplier.buyer.profile',compact('buyer','user'));
     }
 
