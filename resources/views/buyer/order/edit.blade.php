@@ -55,7 +55,7 @@
                                                 <input type="hidden" min="0" name="prices[]"  value="{{ $item->product->sales_rate }}" id="price">
                                             </td>
 
-                                            <td>--</td>
+                                            <td>{{ number_format($item->product->sales_rate * $item->qty,2) }}</td>
 
                                         </tr>
                                     @empty

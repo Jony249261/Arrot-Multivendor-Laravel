@@ -100,71 +100,8 @@
                 </div>
             </div>
         </div>
-        {{-- @if(auth()->user()->role != 'warehouse' && auth()->user()->role != 'accounts')
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="card">
-                    <div class="header bg-orange text-center">
-                        <h2>
-                            Product Details - {{ $order->showId }}
-
-                        </h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                            <thead>
-                                <tr>
-                                    <th>{{ __('SL') }}</th>
-                                    <th>{{ __('Product Image') }}</th>
-                                    <th>{{ __('Product Name') }}</th>
-                                    <th>{{ __('Unit') }}</th>
-                                    <th>{{ __('Quantity') }}</th>
-                                    <th>{{ __('Price') }}</th>
-                                    <th>{{ __('Total') }}</th>
-                                </tr>
-                            </thead>
-                                <tbody>
-                                    @php
-                                        $grant_total = 0;
-                                    @endphp
-                                    @forelse ($order->items as $i => $item)
-                                        <tr>
-                                            <td>{{ $i + 1 }}</td>
-                                            <td><img src="{{ asset('products/' . $item->product->image) }}"
-                                                    width="60" height="60" alt=""></td>
-                                            <td>{{ $item->product->product_name }}</td>
-                                            <td>{{ $item->product->unit->name }}</td>
-                                            <td>{{ $item->qty }}</td>
-                                            <td>{{ number_format($item->product->price, 2) }}</td>
-                                            <td>{{ number_format(($item->product->price * $item->qty),2) }}</td>
-                                            @php
-                                                $grant_total +=$item->product->price * $item->qty;
-                                            @endphp
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="7" class="text-center">No data found!!</td>
-                                        </tr>
-                                    @endforelse
-
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        
-                                        <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
-                                        <td colspan="2">{{ number_format($grant_total,2) }}</td>
-                                    </tr>
-                                </tfoot>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endif --}}
-        @if(auth()->user()->role == 'accounts')
+       {{-- for accounts --}}
+        {{-- @if(auth()->user()->role == 'accounts')
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
@@ -229,8 +166,9 @@
                 </div>
             </div>
         </div>
-        @endif
-        @if(auth()->user()->role == 'warehouse')
+        @endif --}}
+        @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'buyer')
+        @if($order->status == 'shipping')
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
@@ -305,7 +243,9 @@
             </div>
         </div>
         @endif
-        @if(auth()->user()->role == 'buyer')
+        @endif
+        @if(auth()->user()->role == 'buyer' || auth()->user()->role == 'warehouse' || auth()->user()->role == 'accounts')
+        @if($order->status != 'shipping' || $order->status == 'completed')
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
@@ -325,8 +265,10 @@
                                     <th>{{ __('Product Name') }}</th>
                                     <th>{{ __('Unit') }}</th>
                                     <th>{{ __('Quantity') }}</th>
-                                    {{-- <th>{{ __('Received Quantity') }}</th> --}}
-                                   <th>{{ __('Unite Price') }}</th>
+                                    <th>{{ __('Unite Price') }}</th>
+                                    @if($order->status == 'received')
+                                    <th>{{ __('Received Quantity') }}</th>
+                                    @endif
                                     <th>{{ __('Total') }}</th> 
                                 </tr>
                             </thead>
@@ -345,12 +287,21 @@
                                             <td>{{ $item->product->product_name }}</td>
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
-                                           
                                             <td>{{ number_format($item->unite_price, 2) }}</td>
+                                           
+                                            @if($order->status == 'received')
+                                            <td>{{ number_format($item->delivered_qty,2) }}</td>
+                                            <td>{{ number_format(($item->unite_price * $item->delivered_qty),2) }}</td>
+                                            @php
+                                                $grant_total += $item->unite_price * $item->delivered_qty;
+                                            @endphp
+                                            @else
                                             <td>{{ number_format(($item->unite_price * $item->qty),2) }}</td>
+                                            
                                             @php
                                                 $grant_total += $item->unite_price * $item->qty;
                                             @endphp
+                                            @endif
                                         </tr>
                                     @empty
                                         <tr>
@@ -374,6 +325,7 @@
                 </div>
             </div>
         </div>
+        @endif
         @endif
 
         <div class="row clearfix">

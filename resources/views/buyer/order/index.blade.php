@@ -83,7 +83,7 @@
                                                         @else
 
                                                             @if (auth()->user()->role != 'warehouse')
-                                                                @if($order->status != 'rejected')
+                                                                @if($order->status == 'pending')
                                                                 <a href="{{ route('orders.edit', $order->id) }}"
                                                                     class="btn btn-info waves-effect" style="float: left"
                                                                     {{ Auth::user()->role == 'procurement' && $order->status == 'processing' ? 'disabled' : '' }}>
