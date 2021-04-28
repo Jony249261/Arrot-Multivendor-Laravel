@@ -19,7 +19,7 @@
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="{{ route('buyer-users.store') }}" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="{{ route('buyer-users.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="row clearfix">
@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value="{{ old('email') }}" required>
+                                            name="email" value="{{ old('email') }}" required >
                                             @error('email')
                                             <span class="validation-message">{{ $message }}</span>
                                         @enderror

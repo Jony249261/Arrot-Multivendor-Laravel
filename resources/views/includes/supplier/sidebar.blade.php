@@ -59,10 +59,10 @@
                     <span>Product</span>
                 </a>
                 <ul class="ml-menu">
-                    <li>
+                    <li class="@yield('product-list')">
                         <a href="{{ route('products.index') }}">Product List</a>
                     </li>
-                    <li>
+                    <li class="@yield('product-create')">
                         <a href="{{ route('products.create') }}">Product create</a>
                     </li>
                     <li class="@yield('unit')">
