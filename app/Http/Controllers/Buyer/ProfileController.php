@@ -41,7 +41,7 @@ class ProfileController extends Controller
             'trade_license' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'buyer_logo' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'tagline' => 'required|string|max:255',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'sometimes|nullable|confirmed|min:8',
             'br_name' => 'sometimes|nullable|string|max:255',
             'br_email' => 'sometimes|nullable|string|max:255',
             'br_phone' => 'sometimes|nullable|string|max:255',
@@ -95,7 +95,7 @@ class ProfileController extends Controller
         if ($request->has('buyer_logo')){
             $user->image=$img_url3;
         }
-        if($request->has('password')){
+        if(!empty($request->password)){
             $user->password=bcrypt($request->password);
         }
         $user->update();
@@ -147,7 +147,10 @@ class ProfileController extends Controller
             'password' => 'sometimes|nullable|confirmed|min:6',
             'role' => 'required|string'
         ]);
-        if($request->has('password')) $data['password'] = Hash::make($data['password']);
+        if(!empty($request->password)) {
+            $data['password'] = Hash::make($data['password']);
+        }
+
 
         $path = 'users/'.$user->image;
         if($request->has('image')){

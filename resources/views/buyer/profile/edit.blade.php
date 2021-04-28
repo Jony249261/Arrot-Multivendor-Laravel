@@ -21,7 +21,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text"  class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}"  name="name" required>
-                                        
+
                                         <label class="form-label">Enter Name</label>
                                     </div>
                                     @error('name')
@@ -33,7 +33,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number"  class="form-control @error('phone') is-invalid @enderror"  value="{{$user->phone}}" name="phone" required>
-                                        
+
                                         <label class="form-label">Enter Phone Number</label>
                                     </div>
                                     @error('phone')
@@ -45,7 +45,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"  value="{{$user->email}}" name="email">
-                                        
+
                                         <label class="form-label">Enter Email</label>
                                     </div>
                                     @error('email')
@@ -57,7 +57,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('buyer_address') is-invalid @enderror"  value="{{$buyer->buyer_address}}" name="buyer_address" required>
-                                        
+
                                         <label class="form-label">Enter Buyer Address</label>
                                     </div>
                                     @error('buyer_address')
@@ -69,7 +69,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('buyer_website') is-invalid @enderror" value="{{$buyer->buyer_website}}" name="buyer_website" required>
-                                        
+
                                         <label class="form-label">Enter Buyer Website</label>
                                     </div>
                                     @error('buyer_website')
@@ -81,7 +81,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text"  class=" form-control @error('tagline') is-invalid @enderror" value="{{$buyer->tagline}}" name="tagline" required>
-                                        
+
                                         <label class="form-label">Enter Buyer Tagline</label>
                                     </div>
                                     @error('tagline')
@@ -107,27 +107,14 @@
                                     <label for="proprietorship" class="m-l-20">Proprietorship</label>
                                 </div>
 
-                                
-                                <div class="form-group form-float">
-
-                                    <label class="form-label">Enter Buyer Image</label>
-                                    <img src="{{asset('image_buyer/user/'.$user->image)}}" alt="" height="75px" width="75px">
-                                    <input type="file" class=" @error('image') is-invalid @enderror" value="{{$user->image}}" name="image" >
-                                    
 
 
-                                </div>
-                                @error('image')
-                                    <span class="validation-message" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                    @enderror
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"  name="password">
 
-                                        
+
                                         <label class="form-label">Password</label>
                                     </div>
                                     @error('password')
@@ -142,25 +129,26 @@
                                         <label class="form-label">Enter Confirm Password</label>
                                     </div>
                                 </div>
-<br>
-<button class="btn btn-success waves-effect" type="submit">Update Buyer</button>
-                            </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Logo</label><img src="{{asset('image_buyer/user/'.$buyer->buyer_logo)}}" alt="" height="75px" width="75px">
                                     <input type="file"class=" @error('buyer_logo') is-invalid @enderror" value="{{$buyer->buyer_logo}}" name="buyer_logo">
-                                    
+
 
 
                                 </div>
                                 @error('buyer_logo')
-                                    <span class="validation-message" role="alert">
+                                <span class="validation-message" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
-                                    @enderror
+                                @enderror
+<br>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Trade License</label>
@@ -177,7 +165,7 @@
                                     <div class="form-line">
                                         <input type="date" class=" form-control @error('expire_date') is-invalid @enderror" value="{{$buyer->expire_date}}" name="expire_date"  required>
 
-                                        
+
                                         <label class="form-label">Trade Licence Expire date</label>
 
                                     </div>
@@ -240,7 +228,7 @@
                                         <label class="form-label">Enter NID Number</label>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Representative Image</label>
@@ -254,9 +242,9 @@
 
 
                                 </div>
-                                
-                                
 
+
+                                <button class="btn btn-success waves-effect pull-right" type="submit">Update Buyer</button>
                             </div>
                         </form>
                     </div>

@@ -108,11 +108,11 @@ Route::prefix('buyer')->middleware('buyer')->group(function(){
     Route::get('/','Buyer\BuyerController@index')->name('buyer.index');
 
 //    Profile ROute
- Route::get('/profile/index','Buyer\ProfileController@index')->name('buyer.profile.index');
- Route::get('/profile/edit','Buyer\ProfileController@edit')->name('profile.edit');
- Route::post('/profile/update/{id}','Buyer\ProfileController@update')->name('buyer.profile.update');
- Route::get('/profile/user_edit','Buyer\ProfileController@user_edit')->name('buyer.user.update');
-Route::post('/profile/user_update','Buyer\ProfileController@user_update')->name('buyer.user.porfile-update');
+     Route::get('/profile/index','Buyer\ProfileController@index')->name('buyer.profile.index');
+     Route::get('/profile/edit','Buyer\ProfileController@edit')->name('profile.edit');
+     Route::post('/profile/update/{id}','Buyer\ProfileController@update')->name('buyer.profile.update');
+     Route::get('/profile/user_edit','Buyer\ProfileController@user_edit')->name('buyer.user.update');
+     Route::post('/profile/user_update','Buyer\ProfileController@user_update')->name('buyer.user.porfile-update');
 
 
 
