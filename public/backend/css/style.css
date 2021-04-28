@@ -67,6 +67,15 @@
     padding-left: 0;
 
 }
+.img-btn{
+	margin-bottom: -32px;
+  /*margin-left: 130px;*/
+  /*margin-left: 266px;  width=60%*/
+  margin-left: 197px;
+}
+.img-img{
+  cursor: pointer;
+}
 .navbar-brand{
     color:black !important;
 }
