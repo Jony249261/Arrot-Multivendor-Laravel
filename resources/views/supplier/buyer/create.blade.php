@@ -123,29 +123,22 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-float">
-                                    <label class="form-label">Enter Buyer Image</label>
-                                    <input type="file" class=" @error('image') is-invalid @enderror"
-                                        value="{{ old('image') }}" name="image">
-                                    @error('image')
-                                        <span class="validation-message">{{ $message }}</span>
+
+                                    <label class="form-label">Enter Buyer Logo</label>
+                                    <input type="file" class=" @error('buyer_logo') is-invalid @enderror"
+                                           value="{{ old('buyer_logo') }}" name="buyer_logo">
+                                    @error('buyer_logo')
+                                    <span class="validation-message">{{ $message }}</span>
                                     @enderror
+
                                 </div>
 
 
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                
-                                <div class="form-group form-float">
 
-                                    <label class="form-label">Enter Buyer Logo</label>
-                                    <input type="file" class=" @error('buyer_logo') is-invalid @enderror"
-                                        value="{{ old('buyer_logo') }}" name="buyer_logo">
-                                    @error('buyer_logo')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
 
-                                </div>
                                 <div class="form-group form-float">
 
                                     <label class="form-label">Enter Buyer Trade License</label>
@@ -230,7 +223,8 @@
 
 
                                 </div>
-                                <button class="btn btn-success waves-effect custom-btn" type="submit">Create Buyer</button>
+                                <br>
+                                <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Buyer</button>
 
                             </div>
                         </form>
