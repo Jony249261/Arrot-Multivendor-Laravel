@@ -2,7 +2,8 @@
 
 @if(Auth::user()->role=='buyer')
 @section('buyer_order','active')
-@section('order_create','active')
+@section('order','active')
+@section('create-order','active')
 @else
 @section('order_create','active')
 @endif

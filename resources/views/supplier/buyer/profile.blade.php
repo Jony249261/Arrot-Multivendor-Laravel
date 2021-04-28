@@ -19,9 +19,9 @@
 
                     </ul>
                 </div>
-              </div>
+
               <br>
-        <div class="card-body cardbody">
+        <div class=>
           <div class="col-md-4">
             <div class="row">
                     <div class="col-sm-5">
@@ -83,7 +83,7 @@
 
           </div>
           </div>
-
+                   </div>
 
           <div class="row gutters-sm">
 

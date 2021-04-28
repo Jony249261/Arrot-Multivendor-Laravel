@@ -48,33 +48,7 @@ class ProfileController extends Controller
             'br_image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
         $user=User::findOrFail($id);
-        $image='image_buyer/user/'.$user->image;
 
-
-        if ($request->has('image')){
-            if(file_exists(public_path($image))){
-                unlink($image);
-            }
-            $image=$request->file('image');
-            $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(270,270)->save('image_buyer/user/'.$name_gen);
-            $img_url=$name_gen;
-
-
-        }
-
-
-        $user -> name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->role = 'buyer';
-        if ($request->has('image')){
-            $user->image=$img_url;
-        }
-        if(!empty($request->password)){
-            $user->password=bcrypt($request->password);
-        }
-        $user->update();
 
         $buyer=Buyer::where('user_id',$id)->first();
         $trade_license='image_buyer/user/'.$buyer->trade_license;
@@ -112,6 +86,21 @@ class ProfileController extends Controller
             $img_url4=$name_gen;
 
         }
+
+
+        $user -> name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = 'buyer';
+        if ($request->has('buyer_logo')){
+            $user->image=$img_url3;
+        }
+        if($request->has('password')){
+            $user->password=bcrypt($request->password);
+        }
+        $user->update();
+
+
 
         $buyer->buyer_name = $request->name;
         $buyer->buyer_address=$request->buyer_address;
