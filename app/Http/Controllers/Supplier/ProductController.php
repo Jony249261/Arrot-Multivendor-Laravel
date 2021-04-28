@@ -58,7 +58,13 @@ class ProductController extends Controller
             'product_type' => 'required|string',
         ]);
         $product = new Product();
-        $product_id = Helper::IDGenerator(new Product,'product_id',3,$data['product_type']);
+        if($request->product_type == 'vegetable'){
+            $product_id = Helper::IDGenerator(new Product,'product_id',3,'veg');
+        }elseif($request->product_type == 'fish'){
+            $product_id = Helper::IDGenerator(new Product,'product_id',3,'fis');
+        }else{
+            $product_id = Helper::IDGenerator(new Product,'product_id',3,'met');
+        }
         $product->product_id = $product_id;
         $product->product_name = $data['product_name'];
         $product->product_description = $data['description'];
@@ -124,10 +130,16 @@ class ProductController extends Controller
             'unit_id' => 'required|numeric',
             'product_type' => 'required|string',
         ]);
-        
-
+        // $limit = Str::limit($data['product_type'], 3);
         $product = Product::findOrFail($id);
-        $product_id = Helper::IDGenerator(new Product,'product_id',3,Str::limit($data['product_type'], 3));
+        if($request->product_type == 'vegetable'){
+            $product_id = Helper::IDGenerator(new Product,'product_id',3,'veg');
+        }elseif($request->product_type == 'fish'){
+            $product_id = Helper::IDGenerator(new Product,'product_id',3,'fis');
+        }else{
+            $product_id = Helper::IDGenerator(new Product,'product_id',3,'met');
+        }
+        $product->product_id = $product_id;
         $product->product_name = $data['product_name'];
         $product->product_description = $data['description'];
         $product->unit_id = $data['unit_id'];
@@ -149,7 +161,7 @@ class ProductController extends Controller
         $product_price->updated_date = date('Y-m-d');
         $product->productPrices()->save($product_price);
        
-        Session::flash('success'.'Product updated successfully!!');
+        Session::flash('info'.'Product updated successfully!!');
         return redirect()->route('products.index');
     }
 
@@ -162,6 +174,19 @@ class ProductController extends Controller
     public function destroy($id)
     {
         // dd($product->id);
+        // $product = Product::findOrFail($id);
+        // $product->productPrices()->delete();
+        // $path = 'products/'.$product->image;
+        // if(file_exists(public_path($path))){
+        //     unlink($path);
+        // }
+        // $product->delete();
+        // Session::flash('success'.'Product deleted successfully!!');
+        // return redirect()->back();
+    }
+
+    public function delete($id)
+    {
         $product = Product::findOrFail($id);
         $product->productPrices()->delete();
         $path = 'products/'.$product->image;
@@ -169,7 +194,7 @@ class ProductController extends Controller
             unlink($path);
         }
         $product->delete();
-        Session::flash('success'.'Product deleted successfully!!');
+        Session::flash('warning'.'Product deleted successfully!!');
         return redirect()->back();
     }
 }

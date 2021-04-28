@@ -122,14 +122,14 @@
                                         <label class="form-label">Enter Confirm Password</label>
                                     </div>
                                 </div>
-                                <div class="form-group form-float">
+                                {{-- <div class="form-group form-float">
                                     <label class="form-label">Enter Buyer Image</label>
                                     <input type="file" class=" @error('image') is-invalid @enderror"
                                         value="{{ old('image') }}" name="image">
                                     @error('image')
                                         <span class="validation-message">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
 
 
                             </div>

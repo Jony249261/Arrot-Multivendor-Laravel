@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Product Type</label><br>
-                                    <input type="radio" name="product_type" value="vegetable" id="Vegetable" class="with-gap" {{ $product->product_type == 'vagetable'?'checked':'' }} >
+                                    <input type="radio" name="product_type" value="vegetable" id="Vegetable" class="with-gap" {{ $product->product_type == 'vegetable'?'checked':'' }} >
                                     <label for="Vegetable">Vegetable</label>
 
                                     <input type="radio" name="product_type"  value="fish" id="Fish" class="with-gap"{{ $product->product_type == 'fish'?'checked':'' }}>

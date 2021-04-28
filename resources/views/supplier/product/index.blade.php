@@ -52,7 +52,9 @@
                                                 <img height="80" src="{{ asset('products/'.$product->image) }}" alt="">
                                             </td>
                                             <td>{{ $product->product_name }}</td>
-                                            <td>{{ ucfirst($product->unit->name) }}</td>
+                                            
+                                            <td>@if(isset($product->unit)){{ ucfirst($product->unit->name) }}@endif</td>
+                                            
                                             <td>{{ ucfirst($product->product_type) }}</td>
                                             
                                             
@@ -60,11 +62,13 @@
                                          
                                             <td>
                                                 <div class="icon-button-demo">
-                                                    <a href="{{ route('products.edit',$product->id) }}" class="btn btn-info waves-effect custom-btn1" >
+                                                    <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-info waves-effect custom-btn1" >
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    @if(auth()->user()->role != 'support')
-                                                   
+                                                    <a href="{{ route('product.delete',$product->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger waves-effect custom-btn1" >
+                                                        <i class="material-icons">delete_forever</i>
+                                                    </a>
+                                                    {{-- @if(auth()->user()->role != 'support')
                                                     <form action="{{ route('products.destroy',$product->id) }}" onsubmit="return confirm('Are you sure?')" method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -73,7 +77,7 @@
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
                                                     </form>
-                                                    @endif
+                                                    @endif --}}
                                                 </div>
                                             </td>
                                         </tr>
@@ -85,6 +89,7 @@
                                 </tbody>
                                 
                             </table>
+                            {{ $products->links() }}
                         </div>
                     </div>
                 </div>

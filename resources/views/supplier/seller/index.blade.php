@@ -17,8 +17,7 @@
 
                             </h2>
                             <ul class="header-dropdown m-r--5">
-                                <a href="{{ route('supplier.seller.create') }}" class="btn btn-success"><i class="material-icons">local_hospital
-                                    </i></a>
+                                <a href="{{ route('supplier.seller.create') }}" class="btn btn-default">Create</a>
                             </ul>
                         </div>
                         <div class="body">
@@ -45,15 +44,17 @@
                                             <td>{{$user->phone}}</td>
 
                                             <td>
+                                             <div class="icon-button-demo">
                                                 <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
                                                 <a href="{{ route('supplier.seller.profile',$user->id) }}" class="btn btn-primary @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
-                                                @if(auth()->user()->role != 'support')
+                                                <a href="{{ route('supplier.seller.delete',$user->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger @yield('buyer-profile')"> <i class="material-icons">delete</i></a>
+                                                {{-- @if(auth()->user()->role != 'support')
                                                 <form action="{{ route('supplier.seller.delete',$user->id) }}" method="post">
                                                     @csrf
                                                     <button class="btn btn-danger btn-sm delete-confirm" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
                                                 </form>
-                                                @endif
-
+                                                @endif --}}
+                                            </div>
                                             </td>
                                         </tr>
                                     @endforeach
