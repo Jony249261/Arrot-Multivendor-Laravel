@@ -107,9 +107,9 @@
                                     <input type="radio" name="role" @if($user->role == 'warehouse') checked @endif value="warehouse" id="warehouse" class="with-gap">
                                     <label for="warehouse" class="m-l-20">Warehouse</label>
                                 </div>
-                                <button class="btn btn-success waves-effect"
-                                    type="submit">SUBMIT</button>
+                               
                             </div>
+                            <button class="btn btn-success waves-effect custom-btn item pull-right" type="submit"><i class="material-icons">update</i> Update User</button>
                         </div>
 
 

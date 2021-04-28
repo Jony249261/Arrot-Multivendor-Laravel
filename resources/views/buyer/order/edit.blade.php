@@ -18,7 +18,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-orange text-center">
+                <div class="header bg-red text-center">
 
                     <h2 class="text-center">Edit order</h2>
 
@@ -74,7 +74,7 @@
                                         </tr>
                                     </tfoot>
                             </table>
-                            <button class="btn btn-sm btn-info" style="float: right">Update order</button>
+                            <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update Order</button>
                             </form>
 
                             </table>

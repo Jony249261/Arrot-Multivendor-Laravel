@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success waves-effect custom-btn" type="submit">Update Profile</button>
+                            <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">update</i>Update Profile</button>
 
                         </div>
 
