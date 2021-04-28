@@ -224,13 +224,7 @@
                                     @endforelse
 
                                 </tbody>
-                                {{-- <tfoot>
-                                    <tr>
-                                        
-                                        <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
-                                        <td colspan="2">{{ number_format($grant_total,2) }}</td>
-                                    </tr>
-                                </tfoot> --}}
+                                
 
                             </table>
                             @if($order->status == 'shipping')
