@@ -92,6 +92,12 @@
                     </li>
                 </ul>
             </li>
+            <li class="@yield('propose')">
+                <a href="{{route('propose.product')}}">
+                    <i class="material-icons">local_activity</i>
+                    <span>Prpose Product</span>
+                </a>
+            </li>
 
             <li class="@yield('user')">
                 <a href="{{route('users.index')}}">

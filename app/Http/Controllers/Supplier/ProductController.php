@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Supplier;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\ProductPrice;
+use App\SellerPropose;
 use App\Unit;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
@@ -23,7 +24,7 @@ class ProductController extends Controller
     {
         $products = Product::latest()->paginate(10);
         // $product = Product::find(5);
-        // dd($product->productPrices->sortByDesc('updated_date')->first()->sales_rate); 
+        // dd($product->productPrices->sortByDesc('updated_date')->first()->sales_rate);
         return view('supplier.product.index',compact('products'));
     }
 
@@ -75,7 +76,7 @@ class ProductController extends Controller
         // $product_price->purchase_rate = $data['purchase_rate'];
         $product_price->sales_rate = $data['sales_rate'];
         $product->productPrices()->save($product_price);
-       
+
         Session::flash('success','Product created successfully!!');
         return redirect()->route('products.index');
     }
@@ -123,7 +124,7 @@ class ProductController extends Controller
             'unit_id' => 'required|numeric',
             'product_type' => 'required|string',
         ]);
-        
+
 
         $product = Product::findOrFail($id);
         $product_id = Helper::IDGenerator(new Product,'product_id',3,$data['product_type']);
@@ -147,7 +148,7 @@ class ProductController extends Controller
         $product_price->sales_rate = $data['sales_rate'];
         $product_price->updated_date = date('Y-m-d');
         $product->productPrices()->save($product_price);
-       
+
         Session::flash('success'.'Product updated successfully!!');
         return redirect()->route('products.index');
     }
@@ -166,5 +167,36 @@ class ProductController extends Controller
         $product->delete();
         Session::flash('success'.'Product deleted successfully!!');
         return redirect()->back();
+    }
+    public  function  propose_product(){
+        $propose_product=SellerPropose::Where('status','pending')->paginate(15);
+        $process_product=SellerPropose::Where('status','processing')->paginate(15);
+        $accept_product=SellerPropose::Where('status','accept')->paginate(15);
+        return view('supplier.product.propose_product',compact('propose_product','accept_product','process_product'));
+    }
+    public  function  propose_accept($id){
+        $product=SellerPropose::findOrFail($id);
+        $product->status='accept';
+        $product->update();
+        Session::flash('info'.'Product Accepted successfully!!');
+        return redirect()->back();
+
+    }
+    public function  propose_reject($id){
+        $product=SellerPropose::findOrFail($id);
+        $product->status='reject';
+        $product->update();
+        Session::flash('success'.'Product Accepted successfully!!');
+        return redirect()->back();
+    }
+    public  function  propose_update(Request  $request,$id){
+        $product=SellerPropose::findOrFail($id);
+        $product->quantity=$request->quantity;
+        $product->price=$request->price;
+        $product->status='processing';
+        $product->update();
+        Session::flash('success'.'Product Accepted successfully!!');
+        return redirect()->back();
+
     }
 }
