@@ -168,7 +168,7 @@
 
 
                                 </div>
-                                <button class="btn btn-success waves-effect" type="submit">Create Seller</button>
+                                <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Seller</button>
 
                             </div>
                         </form>

@@ -7,24 +7,20 @@
 
     <div class="container-fluid">
         <div class="block-header">
-            <h2>
-                Show Order
-
-            </h2>
 
         </div>
         <!-- Basic Examples -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Order Details - {{ $order->showId }}
 
                         </h2>
                         <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('order.invoice',$order->id) }}" class="btn btn-info">Invoice</a>
-                            <a href="{{ route('order.index') }}" class="btn btn-default">View</a>
+                            <a href="{{ route('order.invoice',$order->id) }}" class="btn btn-info"><i class="material-icons">receipt</i>Invoice</a>
+                            <a href="{{ route('order.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
 
                         </ul>
                     </div>
@@ -194,7 +190,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Product Details - {{ $order->showId }}
 
@@ -280,7 +276,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Payment Details - {{ $order->showId }}
 
