@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Supplier;
 use App\Billing;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Product;
+use App\ProductPrice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use PDF;
@@ -38,6 +40,16 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
         return view('supplier.order.invoice',compact('order'));
+    }
+
+    public function orderProductUpdate(Request $request,$id)
+    {
+        $product = Product::findOrFail($id);
+        $productPrice =new ProductPrice();
+        $productPrice->sales_date = date('Y-m-d');
+        $productPrice->sales_rate = $request->sales_rate;
+        $product->productPrices()->save($productPrice);
+        return back();
     }
 
     public function generatePdf()

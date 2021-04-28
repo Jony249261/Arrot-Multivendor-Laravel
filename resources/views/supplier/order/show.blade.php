@@ -227,7 +227,15 @@
                                             <td>{{ $item->product->product_name }}</td>
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
-                                            <td>{{ number_format($item->unite_price, 2) }}</td>
+                                            <td>
+                                                <form action="{{ route('order.product.update',$item->product->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="number" name="sales_rate" class="input-field-width" value="{{ number_format($item->unite_price, 2) }}" id="">
+                                                    
+                                                    <button class="btn btn-sm btn-info reload-btn"><i class="material-icons">refresh</i></button>
+                                                </form>
+                                            </td>
                                             <td>{{ number_format(($item->qty * $item->unite_price),2) }}</td>
                                             @php
                                                 $grand_total +=$item->qty * $item->unite_price;
@@ -283,8 +291,8 @@
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $bill->check_number }}</td>
                                             <td>{{ $bill->bank_name }}</td>
-                                            <td>
-                                                <img src="{{ asset('images/check/'.$bill->check_photo) }}" width="50" alt="">
+                                            <td width="25%">
+                                                <a data-toggle="modal" data-target="#imgModal-{{$bill->order_id}}"><img src="{{ asset('images/check/'.$bill->check_photo) }}" width="200px" height="80px" alt=""></a>
                                             </td>
                                             <td>{{ date('d-M-Y',strtotime($bill->created_at)) }}</td>
                                             <td>{{ number_format($bill->payment_amount,2) }}</td>
@@ -450,5 +458,26 @@
             </div>
         </div>
     </div>
+
+@foreach ($billings as $i => $bill)
+    <div class="modal fade" id="imgModal-{{$bill->order_id}}" tabindex="-1" role="dialog">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal"><span class="material-icons text-light">
+clear
+</span></button>
+                        
+                    </div>
+                    <div class="modal-body bg-info">
+<img src="{{ asset('images/check/'.$bill->check_photo) }}" alt="">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
 
 @endsection

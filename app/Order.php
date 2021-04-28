@@ -34,6 +34,6 @@ class Order extends Model
 
     public function getShowIdAttribute()
     {
-        return "#".str_repeat(0,6-strlen((String) $this->id)).$this->id;
+        return "#".str_repeat(0,4-strlen((String) $this->id)).$this->id;
     }
 }

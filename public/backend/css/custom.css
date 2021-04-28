@@ -7,3 +7,9 @@
 .custom-btn1{
     float: left;
 }
+.input-field-width{
+    width: 100px;
+}
+.reload-btn{
+    padding-top: 1px;padding-bottom:1px
+}

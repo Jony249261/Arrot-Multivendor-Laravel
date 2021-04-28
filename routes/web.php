@@ -93,6 +93,9 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/order/invoice/{id}','Supplier\OrderController@invoice')->name('order.invoice');
     Route::get('/order/index/pdf','Supplier\OrderController@generatePdf')->name('order.index.pdf');
 
+    //order change price
+    Route::put('/order/product/update/{id}','Supplier\OrderController@orderProductUpdate')->name('order.product.update');
+
 
 
 });

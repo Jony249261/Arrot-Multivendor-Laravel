@@ -124,26 +124,20 @@ class BuyerController extends Controller
         $br_image='image_buyer/user/'.$buyer->br_image;
         $trade_license='image_buyer/user/'.$buyer->trade_license;
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
-        if($user->image == 'defaultphoto.png' || $buyer->buyer_logo == 'logo.png'){
-            $user->delete();
-            $buyer->delete();
-        }
-        else{
-            if(file_exists(public_path($image))){
-                unlink($image);
-            }
-            if(file_exists(public_path($br_image))){
+        
+        // if($user->image == 'defaultphoto.png' && $buyer->buyer_logo == 'logo.png'){
+        //     $user->delete();
+        //     $buyer->delete();
+        // }
+        // elseif(file_exists(public_path($image)) || file_exists(public_path($br_image)) || file_exists(public_path($buyer_logo))){
+        
+            unlink($image);
             unlink($br_image);
-            }
-            if(file_exists(public_path($buyer_logo))){
             unlink($buyer_logo);
-            }
-            if(file_exists(public_path($trade_license))){
             unlink($trade_license);
-            }
             $user->delete();
             $buyer->delete();
-        }
+        // }
         Session::flash('success','Buyer Deleted successfully!!');
         return redirect()->back();
     }
@@ -166,9 +160,7 @@ class BuyerController extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'buyer_address'=>'required|string|max:255',
             'buyer_website'=>'required|string|max:255',
-            'buyer_passport'=>'sometimes|nullable|string|max:255',
             'buyer_nid'=>'required|string|max:255',
-            'passport_expire_date'=>'sometimes|nullable|string|max:255',
             'buyer_type'=>'required|string|max:255',
             'expire_date'=>'sometimes|nullable|string|max:255',
             'trade_license' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
@@ -183,7 +175,6 @@ class BuyerController extends Controller
         $user=User::findOrFail($id);
         $image='image_buyer/user/'.$user->image;
 
-
         if ($request->has('image')){
             if(file_exists(public_path($image))){
                 unlink($image);
@@ -195,8 +186,6 @@ class BuyerController extends Controller
 
 
         }
-
-
         $user -> name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;

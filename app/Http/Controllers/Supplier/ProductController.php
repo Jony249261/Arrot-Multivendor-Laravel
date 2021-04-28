@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
 use Image;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -127,7 +128,7 @@ class ProductController extends Controller
 
 
         $product = Product::findOrFail($id);
-        $product_id = Helper::IDGenerator(new Product,'product_id',3,$data['product_type']);
+        $product_id = Helper::IDGenerator(new Product,'product_id',3,Str::limit($data['product_type'], 3));
         $product->product_name = $data['product_name'];
         $product->product_description = $data['description'];
         $product->unit_id = $data['unit_id'];
@@ -164,6 +165,10 @@ class ProductController extends Controller
         // dd($product->id);
         $product = Product::findOrFail($id);
         $product->productPrices()->delete();
+        $path = 'products/'.$product->image;
+        if(file_exists(public_path($path))){
+            unlink($path);
+        }
         $product->delete();
         Session::flash('success'.'Product deleted successfully!!');
         return redirect()->back();

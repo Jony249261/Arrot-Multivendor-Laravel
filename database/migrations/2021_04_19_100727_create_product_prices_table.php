@@ -16,6 +16,7 @@ class CreateProductPricesTable extends Migration
         Schema::create('product_prices', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('product_id');
+            $table->date('sales_date')->nullable();
             $table->date('updated_date')->nullable();
             $table->float('purchase_rate',16)->nullable();
             $table->float('sales_rate',16);
