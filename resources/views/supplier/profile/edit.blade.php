@@ -13,16 +13,16 @@
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="{{route('supplier.porfile-update',auth()->user()->id)}}" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="{{route('supplier.porfile-update')}}" enctype="multipart/form-data" >
                         @csrf
-                        @method('PUT')
+
                         <div class="row clearfix">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                                name="name" value="{{ old('name',$user->name) }}" required>
-                                        
+
                                         <label class="form-label">Enter Name</label>
                                     </div>
                                     @error('name')
@@ -35,7 +35,7 @@
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                                name="email" value="{{ old('name',$user->email) }}" required>
-                                       
+
                                         <label class="form-label">Enter Email</label>
                                     </div>
                                   @error('email')
@@ -62,7 +62,7 @@
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                                name="image">
                                         <img src="{{asset('users/'.$user->image)}}" height="80px" width="80px" alt="">
-                                        
+
                                     </div>
                                     @error('image')
                                     <span class="validation-message">{{ $message }}</span>
@@ -73,9 +73,9 @@
                                 <div class="form-group">
                                     <div class="form-line ">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                               name="password" value="{{ old('password') }}" >
+                                               name="password" >
                                         <label class="form-label">Password</label>
-                                       
+
                                     </div>
                                     @error('password')
                                         <span class="validation-message">{{ $message }}</span>
@@ -86,9 +86,9 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                               name="password_confirmation" value="{{ old('password_confirmation') }}" >
+                                               name="password_confirmation"  >
                                         <label class="form-label">Confirm Password</label>
-                                       
+
                                     </div>
                                 </div>
                             </div>

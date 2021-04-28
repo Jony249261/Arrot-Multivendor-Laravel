@@ -9,7 +9,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-orange text-center">
+                <div class="header bg-red text-center">
 
                     <h2>Edit Product</h2>
                     <ul class="header-dropdown m-r--5">
@@ -41,7 +41,7 @@
                                         <label class="form-label">Description</label>
                                         <textarea name="description" cols="30" rows="5" class="form-control no-resize"
                                             required>{{ old('description',$product->product_description) }}</textarea>
-                                        
+
                                     </div>
                                     @error('description')
                                      <span class="validation-message">{{ $message }}</span>
@@ -57,8 +57,8 @@
                                     <span class="validation-message">{{ $message }}</span>
                                    @enderror
                                 </div>
-                               
-                               
+
+
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -69,7 +69,7 @@
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                             name="image">
                                         <img width="55" src="{{ asset('products/'.$product->image) }}" alt="">
-                                           
+
                                     </div>
                                     @error('image')
                                     <span class="validation-message">{{ $message }}</span>
@@ -113,5 +113,5 @@
 
 
 @section('page-scripts')
-    
+
 @endsection
