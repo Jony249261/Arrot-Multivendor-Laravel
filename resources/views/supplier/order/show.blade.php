@@ -7,17 +7,13 @@
 
     <div class="container-fluid">
         <div class="block-header">
-            <h2>
-                Show Order
-
-            </h2>
 
         </div>
         <!-- Basic Examples -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Order Details - {{ $order->showId }}
 
@@ -302,13 +298,12 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row clearfix">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-                <div class="header bg-orange text-center">
-                    <h2>
-                        Payment Details - {{ $order->showId }}
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header bg-red text-center">
+                        <h2>
+                            Payment Details - {{ $order->showId }}
 
                     </h2>
 

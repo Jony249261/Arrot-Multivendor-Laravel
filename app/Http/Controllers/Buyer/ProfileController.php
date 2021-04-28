@@ -139,33 +139,39 @@ class ProfileController extends Controller
     }
     public  function  user_update(Request $request){
         $user = User::findOrFail(Auth::user()->id);
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,'.$user->id,
             'phone' => 'sometimes|nullable',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'sometimes|nullable|confirmed|min:6',
-            'role' => 'required|string'
+
         ]);
-        if(!empty($request->password)) {
-            $data['password'] = Hash::make($data['password']);
-        }
-
-
-        $path = 'users/'.$user->image;
-        if($request->has('image')){
-            if(file_exists(public_path($path))){
-                unlink($path);
+        $image='users/'.$user->image;
+        if ($request->has('image')){
+            if(file_exists(public_path($image))){
+                unlink($image);
             }
-            $image = $request->file('image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(270,270)->save('users/'.$name_gen);
-            $data['image'] = $name_gen;
-        }
-        $user->update($data);
+            $image=$request->file('image');
+            $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(600,600)->save('users/'.$name_gen);
+            $img_url2=$name_gen;
 
+
+        }
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->phone=$request->phone;
+        if (!empty($request->password)){
+            $user->password=bcrypt($request->password);
+
+        }
+        if ($request->has('image')){
+            $user->image=$img_url2;
+        }
+        $user->update();
         Session::flash('success','Profile Updated successfully!');
-        return redirect()->route('profile.index');
+        return redirect()->route('buyer.profile.index');
 
     }
 

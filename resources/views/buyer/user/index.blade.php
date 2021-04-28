@@ -1,11 +1,8 @@
 @extends('layouts.buyer-app')
-
 @section('buyer-user', 'active')
 @section('buyer-user-index', 'active')
 @section('title', 'Buyer user')
-
 @section('content')
-
     <div class="container-fluid">
 
         <!-- Basic Examples -->
@@ -14,11 +11,12 @@
                 <div class="card">
                     <div class="header bg-orange text-center">
                         <h2>
-                            Buyer User
+                            All User
 
                         </h2>
                         <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('users.create') }}" class="btn btn-default">Create</a>
+                            <a href="{{ route('buyer-users.create') }}" class="btn btn-success"><i class="material-icons">library_add</i>Create</a>
+
 
                         </ul>
                     </div>

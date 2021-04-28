@@ -124,6 +124,7 @@ Route::prefix('buyer')->middleware('buyer')->group(function(){
 
     //buyer user
     Route::resource('/buyer-users', 'Buyer\UserController');
+    Route::post('/user/update/{id}','Buyer\UserController@update_user')->name('buyer.users.update');
 
     //support route
      Route::get('/support/index','Buyer\SupportController@index')->name('supports.index');

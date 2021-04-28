@@ -166,8 +166,7 @@
 
 
                                 </div>
-                                <button class="btn btn-success waves-effect" type="submit">Update Seller</button>
-
+                                <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update Seller </button>
                             </div>
                         </form>
                     </div>

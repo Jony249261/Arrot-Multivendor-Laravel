@@ -11,23 +11,18 @@
 
     <div class="container-fluid">
         <div class="block-header">
-            <h2>
-               Show Order
-
-            </h2>
-
         </div>
         <!-- Basic Examples -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Order Details - {{ $order->showId }}
 
                         </h2>
                         <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('orders.index') }}" class="btn btn-default">View</a>
+                            <a href="{{ route('orders.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
 
                         </ul>
                     </div>
@@ -94,7 +89,7 @@
                                 <tr>
                                     <td>Payment</td>
                                     <td>
-                                        <button type="button" class="btn btn-info waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal">Make Payment</button>
+                                        <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal">Make Payment</button>
                                     </td>
                                 </tr>
                                 @endif
@@ -173,7 +168,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Product Details - {{ $order->showId }}
 
@@ -239,7 +234,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Product Details - {{ $order->showId }}
 
@@ -384,7 +379,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             Payment Details - {{ $order->showId }}
 
