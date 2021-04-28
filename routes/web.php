@@ -65,11 +65,12 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
 // Supplier Profile
 
     Route::get('/profile/index','Supplier\ProfileController@index')->name('supplier.profile.index');
-    Route::get('/profile/edit','Supplier\ProfileController@edit')->name('supplier.profile.edit');
-    Route::post('/profile/update','Supplier\ProfileController@update')->name('supplier.porfile-update');
+    Route::get('/profile/edit/{id}','Supplier\ProfileController@edit')->name('supplier.profile.edit');
+    Route::put('/profile/update/{id}','Supplier\ProfileController@update')->name('supplier.porfile-update');
 
     //products route
     Route::resource('/products','Supplier\ProductController');
+    Route::get('/product/delete/{id}','Supplier\ProductController@delete')->name('product.delete');
 
     //support user
     Route::resource('/users', 'Supplier\UserController');
@@ -79,7 +80,7 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/seller/index','Supplier\SellerController@index')->name('supplier.seller.index');
     Route::get('/seller/create','Supplier\SellerController@create')->name('supplier.seller.create');
     Route::post('/seller/store','Supplier\SellerController@store')->name('supplier.seller.store');
-    Route::post('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
+    Route::get('/seller/delete/{id}','Supplier\SellerController@delete')->name('supplier.seller.delete');
     Route::get('/seller/edit/{id}','Supplier\SellerController@edit')->name('supplier.seller.edit');
     Route::post('/seller/update/{id}','Supplier\SellerController@update')->name('supplier.seller.update');
     Route::get('/seller/profile/{id}','Supplier\SellerController@profile')->name('supplier.seller.profile');

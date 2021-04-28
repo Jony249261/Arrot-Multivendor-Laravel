@@ -18,13 +18,14 @@ class ProfileController extends Controller
         return view('supplier.profile.index',compact('user'));
 
     }
-    public  function edit(){
-        $user=User::findOrFail(Auth::user()->id);
+    public  function edit($id){
+        $user=User::findOrFail($id);
        return view('supplier.profile.edit',compact('user'));
 
     }
-    public  function  update(Request $request){
-        $user = User::findOrFail(Auth::user()->id);
+    public function update(Request $request, $id){
+        // dd($request->all());
+        $user = User::findOrFail($id);
         //validation
         $data = $request->validate([
             'name' => 'required|string',
@@ -34,10 +35,13 @@ class ProfileController extends Controller
             'password' => 'sometimes|nullable|confirmed|min:8',
 
         ]);
+
         //check password
-        if($request->has('password')){
+        if(!empty($request->password)){
             $data['password'] = Hash::make($data['password']);
         }
+        // if($request->has('password')) $data["password"] = bcrypt($data["password"]);
+        // if($request->has('password') && !empty($data["password"])) $data['password'] = bcrypt($data['password']);
         //image check
         $path = 'users/'.$user->image;
         if(($request->has('image'))){

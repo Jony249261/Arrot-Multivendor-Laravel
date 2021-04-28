@@ -13,9 +13,9 @@
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="{{route('supplier.porfile-update')}}" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="{{route('supplier.porfile-update',auth()->user()->id)}}" enctype="multipart/form-data" >
                         @csrf
-
+                        @method('PUT')
                         <div class="row clearfix">
                             <div class="col-sm-6">
                                 <div class="form-group">

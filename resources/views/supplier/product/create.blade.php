@@ -1,6 +1,7 @@
 @extends('layouts.supplier-app')
 
 @section('product', 'active')
+@section('product-create', 'active')
 @section('title', 'Create product')
 
 @section('content')
@@ -77,7 +78,7 @@
                                 </div>
                                 <div class="form-group" style="margin-top: 100px">
                                     <label for="">Product Type</label><br>
-                                    <input type="radio" name="product_type" value="vagetable" id="Vegetable" class="with-gap">
+                                    <input type="radio" name="product_type" value="vegetable" id="Vegetable" class="with-gap">
                                     <label for="Vegetable">Vegetable</label>
 
                                     <input type="radio" name="product_type" value="fish" id="Fish" class="with-gap">
