@@ -7,24 +7,18 @@
 @section('content')
 
     <div class="container-fluid">
-        <div class="block-header">
-            <h2>
-                Product list
 
-            </h2>
-            
-        </div>
         <!-- Basic Examples -->
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-orange text-center">
+                    <div class="header bg-red text-center">
                         <h2>
                             ALL PRODUCT
-                            
+
                         </h2>
                         <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('products.create') }}" class="btn btn-default">Create</a>
+                            <a href="{{ route('products.create') }}" class="btn btn-success"><i class="material-icons">edit</i> Create</a>
                         </ul>
                     </div>
                     <div class="body">
@@ -53,14 +47,14 @@
                                                 <img height="80" src="{{ asset('products/'.$product->image) }}" alt="">
                                             </td>
                                             <td>{{ $product->product_name }}</td>
-                                            
+
                                             <td>@if(isset($product->unit)){{ ucfirst($product->unit->name) }}@endif</td>
-                                            
+
                                             <td>{{ ucfirst($product->product_type) }}</td>
-                                            
-                                            
+
+
                                             <td>{{ number_format($product->sales_rate,2) }}</td>
-                                         
+
                                             <td>
                                                 <div class="icon-button-demo">
                                                     <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-info waves-effect custom-btn1" >
@@ -73,7 +67,7 @@
                                                     <form action="{{ route('products.destroy',$product->id) }}" onsubmit="return confirm('Are you sure?')" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-    
+
                                                         <button type="submit" class="btn btn-danger waves-effect custom-btn1" >
                                                             <i class="material-icons">delete_forever</i>
                                                         </button>
@@ -88,7 +82,7 @@
                                         </tr>
                                     @endforelse
                                 </tbody>
-                                
+
                             </table>
                             {{ $products->links() }}
                         </div>

@@ -30,9 +30,7 @@ class SellerController extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'seller_address'=>'required|string|max:255',
             'seller_website'=>'required|string|max:255',
-            'seller_passport'=>'sometimes|nullable|string|max:255',
             'seller_nid'=>'required|string|max:255',
-            'passport_expire_date'=>'sometimes|nullable|string|max:255',
             'password' => 'required|string|confirmed|min:8',
             'sr_name' => 'required|string|max:255',
             'sr_email' => 'required|string|max:255',
@@ -72,17 +70,14 @@ class SellerController extends Controller
         $seller->seller_website=$request->seller_website;
         $seller->seller_telephone=$request->phone;
         $seller->seller_email=$request->email;
-        $seller->seller_passport=$request->seller_passport;
         $seller->seller_nid=$request->seller_nid;
-        $seller->passport_expire_date=$request->passport_expire_date;
         $seller->user_id=$user->id;
-
         $seller->sr_image=$img_url2;
         $seller->sr_name=$request->sr_name;
         $seller->sr_phone=$request->sr_phone;
         $seller->sr_email=$request->sr_email;
         $seller->save();
-        Session::flash('success','Buyer Created  successfully!!');
+        Session::flash('success','Seller Created  successfully!!');
         return redirect()->route('supplier.seller.index');
 
 
@@ -122,9 +117,7 @@ class SellerController extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'seller_address'=>'required|string|max:255',
             'seller_website'=>'required|string|max:255',
-            'seller_passport'=>'sometimes|nullable|string|max:255',
             'seller_nid'=>'required|string|max:255',
-            'passport_expire_date'=>'sometimes|nullable|string|max:255',
             'password' => 'sometimes|nullable|string|confirmed|min:8',
             'sr_name' => 'sometimes|nullable|string|max:255',
             'sr_email' => 'sometimes|nullable|string|max:255',
@@ -155,7 +148,7 @@ class SellerController extends Controller
         if ($request->has('image')){
             $user->image=$img_url;
         }
-        if($request->has('password')){
+        if(!empty($request->password)){
             $user->password=bcrypt($request->password);
         }
         $user->update();
@@ -179,9 +172,7 @@ class SellerController extends Controller
         $seller->seller_website=$request->seller_website;
         $seller->seller_telephone=$request->phone;
         $seller->seller_email=$request->email;
-        $seller->seller_passport=$request->seller_passport;
         $seller->seller_nid=$request->seller_nid;
-        $seller->passport_expire_date=$request->passport_expire_date;
         $seller->user_id=$user->id;
         if ($request->has('sr_image')){
             $seller->sr_image=$img_url4;
@@ -204,7 +195,7 @@ class SellerController extends Controller
         $user = User::find($id);
 
         $seller=Seller::where('user_id',$id)->first();
-        
+
             return view('supplier.seller.profile',compact('seller','user'));
     }
 }

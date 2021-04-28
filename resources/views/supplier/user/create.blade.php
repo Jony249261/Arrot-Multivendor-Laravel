@@ -18,7 +18,7 @@
                 </div>
                 <div class="body">
 
-                    <form id="form_validation" method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data" >
+                    <form id="form_validation" method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data"   autocomplete="off">
                         @csrf
 
                         <div class="row clearfix">
@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value="{{ old('name') }}" required>
+                                            name="name" value="{{ old('name') }}" required >
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            name="email" value="{{ old('email') }}" required>
+                                            name="email" value="{{ old('email') }}" required >
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

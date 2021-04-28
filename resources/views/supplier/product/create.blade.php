@@ -10,7 +10,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-orange text-center">
+                <div class="header bg-red text-center">
 
                     <h2>Create Product</h2>
                     <ul class="header-dropdown m-r--5">
@@ -50,8 +50,8 @@
                                     @endforeach
 
                                 </div>
-                               
-                               
+
+
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -90,9 +90,9 @@
 
                             </div>
                         </div>
-                       
-                        
-                        
+
+
+
                          <button class="btn btn-primary waves-effect" type="submit">SUBMIT</button>
                  </form>
             </div>
@@ -104,5 +104,5 @@
 
 
 @section('page-scripts')
-    
+
 @endsection

@@ -8,14 +8,14 @@
 
 
       <div class="container-fluid">
-           
+
        <div class="row gutters-sm">
             <div class="card">
               <div class="header bg-red">
               <h2 class="text-center">
                 Seller Information
               </h2>
-              
+
               <ul class="header-dropdown m-r--5">
                         <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-success"><i class="material-icons">edit</i> Edit Profile</a>
 
@@ -108,30 +108,22 @@
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <h5 class="mb-0"><span>Email:</span> {{$seller->sr_email}}</h5>
-                    </div>
-                  </div>
+
 
 
             </div>
             <div class="col-md-4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="mb-0"><span>Email:</span> {{$seller->sr_email}}</h5>
+                    </div>
+                </div>
                     <div class="row">
                     <div class="col-sm-12">
                       <h5 class="mb-0 "><span>NID:</span> {{$seller->seller_nid}}</h5>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <h5 class="mb-0"><span>Passport:</span> {{$seller->seller_passport}}</h5>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <h5 class="mb-0"><span>Passport Exp-Date:</span> {{$seller->passport_expire_date}}</h5>
-                    </div>
-                  </div>
+
             </div>
 
           </div>
