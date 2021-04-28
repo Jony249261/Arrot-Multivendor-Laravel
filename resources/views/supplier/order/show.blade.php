@@ -215,6 +215,9 @@
                                         <th>{{ __('Total') }}</th>
                                     </tr>
                                 </thead>
+                                <form action="{{ route('order.product.update',$order->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
                                 <tbody>
                                     @php
                                      $grand_total = 0;   
@@ -228,13 +231,14 @@
                                             <td>{{ $item->product->unit->name }}</td>
                                             <td>{{ $item->qty }}</td>
                                             <td>
-                                                <form action="{{ route('order.product.update',$item->product->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="number" name="sales_rate" class="input-field-width" value="{{ number_format($item->unite_price, 2) }}" id="">
+                                               
+                                                    <input type="number" name="prices[]" class="input-field-width" value="{{ number_format($item->unite_price, 2) }}" id="">
+                                                    <input type="hidden" name="products[]" class="input-field-width" value="{{ $item->product->id }}" id="">
+                                                    <input type="hidden" name="quantites[]" class="input-field-width" value="{{ $item->qty }}" id="">
+                                                    {{-- <input type="hidden" name="prices[]" class="input-field-width"  id=""> --}}
                                                     
                                                     <button class="btn btn-sm btn-info reload-btn"><i class="material-icons">refresh</i></button>
-                                                </form>
+                                               
                                             </td>
                                             <td>{{ number_format(($item->qty * $item->unite_price),2) }}</td>
                                             @php
@@ -250,11 +254,21 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        
-                                        <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
+                                        <td >
+                                            <input type="date" name="sales_date" class="@error('sales_date') is-invalid @enderror"><br>
+                                            @error('sales_date')
+                                             <span class="validation-message">{{ $message }}</span>   
+                                            @enderror
+                                        </td>
+                                        <td colspan="2" >
+                                            <button class="btn btn-success">Accepted</button>
+                                            <button class="btn btn-danger">Rejected</button>
+                                        </td>
+                                        <td colspan="3" class="text-right"><strong>Grand Total:</strong></td>
                                         <td colspan="2">{{ number_format($grand_total,2) }}</td>
                                     </tr>
                                 </tfoot> 
+                            </form>
                             </table>
                         </div>
                     </div>
