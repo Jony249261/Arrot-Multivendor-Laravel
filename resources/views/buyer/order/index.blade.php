@@ -25,13 +25,13 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header bg-orange text-center">
+                        <div class="header bg-red text-center">
                             <h2>
                                 ALL Order
 
                             </h2>
                             <ul class="header-dropdown m-r--5">
-                                <a href="{{ route('orders.create') }}" class="btn btn-default">Create</a>
+                                <a href="{{ route('orders.create') }}" class="btn btn-success"><i class="material-icons">library_add</i>Create</a>
 
                             </ul>
                         </div>

@@ -19,8 +19,8 @@
 
                         </h2>
                         <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-info">Invoice</a>
-                            <a href="{{ route('order.index') }}" class="btn btn-default">View</a>
+                            <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-info"><i class="material-icons">receipt</i>Invoice</a>
+                            <a href="{{ route('order.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
 
                         </ul>
                     </div>
@@ -209,7 +209,7 @@
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
-                <div class="header bg-orange text-center">
+                <div class="header bg-red text-center">
                     <h2>
                         Product Details - {{ $order->showId }}
 
@@ -281,10 +281,10 @@
                                                 @enderror
                                             </td>
                                             <td colspan="2">
-                                                <button class="btn btn-success">Accept</button>
+                                                <button class="btn btn-success"><i class="material-icons">done_all</i>Accept</button>
 
                                                 <button type="submit" onclick="event.preventDefault();
-                                                document.getElementById('submitForm').submit();" class="btn btn-danger">Reject</button>
+                                                document.getElementById('submitForm').submit();" class="btn btn-danger"><i class="material-icons">close</i>Reject</button>
                                             </td>
                                         @endif
                                         <td colspan="@if ($order->status != 'pending') 6 @else 3 @endif" class="text-right"><strong>Grand
