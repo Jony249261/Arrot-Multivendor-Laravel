@@ -12,15 +12,15 @@ class SupplierTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Md Supplier Rahman',
-            'email' => 'supplier@gmail.com',
-            'password' => bcrypt('12345678'),
-            'phone'=>'01925555115',
-            'role'=>'supplier',
-            'image'=>'defaultphoto.png',
-            'is_verified'=>1
-
-        ]);
+//        User::create([
+//            'name' => 'Md Supplier Rahman',
+//            'email' => 'supplier@gmail.com',
+//            'password' => bcrypt('12345678'),
+//            'phone'=>'01925555115',
+//            'role'=>'supplier',
+//            'image'=>'defaultphoto.png',
+//            'is_verified'=>1
+//
+//        ]);
     }
 }
