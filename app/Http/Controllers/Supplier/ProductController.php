@@ -148,9 +148,9 @@ class ProductController extends Controller
         $product->product_type = $data['product_type'];
         $path = 'products/'.$product->image;
         if($request->has('image')){
-            if(file_exists(public_path($path))){
-                unlink($path);
-            }
+            // if(file_exists(public_path($path))){
+            //     unlink($path);
+            // }
             $image = $request->file('image');
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(270,270)->save('products/'.$name_gen);

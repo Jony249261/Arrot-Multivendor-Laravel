@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Providers;
+
+use App\Order;
+use App\User;
 use Illuminate\Support\Facades\Schema;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +28,19 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        // Schema::defaultStringLength(191);
+        view()->composer(['includes.buyer.navbar','includes.supplier.navbar'],function($view){
+            $today = now();
+            $users = User::where('parent_id',auth()->user()->id)->whereDate('created_at',$today);
+            $query = Order::whereDate('created_at',$today);
+            $buyerOrders = $query->where('user_id',auth()->user()->id);
+            $count = $buyerOrders->count() + $users->count();
+            $view->with([
+                'users'=>$users,
+                'buyerOrders'=>$buyerOrders,
+                'count'=>$count,
+                
+                ]);
+        });
     }
 }
