@@ -234,7 +234,6 @@ body {
 }
 
 .side-left {
-  background-color: red;
   height: 100%;
   width: calc(100% - 340px);
   float: left;

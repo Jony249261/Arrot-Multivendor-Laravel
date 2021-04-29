@@ -25,6 +25,7 @@ Auth::routes(['register' => false]);
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/verify','Auth\RegisterController@verifyUser')->name('verify.user');
 
 
 //admin route
