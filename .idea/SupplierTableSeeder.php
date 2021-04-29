@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +12,7 @@ class SupplierTableSeeder extends Seeder
      */
     public function run()
     {
+        
         DB::table('users')->insert([
             'name' => 'Md Supplier Rahman',
             'email' => 'supplier@gmail.com',
