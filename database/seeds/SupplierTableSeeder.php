@@ -13,7 +13,7 @@ class SupplierTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Md Supplier Rahman',
+            'name' => 'Arrot',
             'email' => 'supplier@gmail.com',
             'password' => bcrypt('12345678'),
             'phone'=>'01925555115',

@@ -68,4 +68,9 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function credentials(Request $request)
+    {
+     return array_merge($request->only($this->username(), 'password'), ['is_verified' => 1]);   
+    }
 }

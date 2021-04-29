@@ -70,4 +70,16 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function verifyUser()
+    {
+        $verification_code =  \Illuminate\Support\Facades\Request::get('code');
+        $user = User::where(['verification_code' => $verification_code])->first();
+        if($user != null){
+            $user->is_verified = 1;
+            $user->save();
+            return redirect()->route('login')->with(session()->flash('successLogin','Your accoutn is verified. Please login!!'));
+        }
+        return redirect()->route('login')->with(session()->flash('warning','Something went wrong!!'));
+    }
 }
