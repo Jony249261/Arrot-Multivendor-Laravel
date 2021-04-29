@@ -37,6 +37,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+  
+
 
     public  function  buyer(){
         return $this->hasOne(Buyer::class,'user_id','id');
