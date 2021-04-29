@@ -19,6 +19,7 @@ class SupplierTableSeeder extends Seeder
             'phone'=>'01925555115',
             'role'=>'supplier',
             'image'=>'defaultphoto.png',
+            'is_verified'=>1
 
         ]);
     }
