@@ -12,4 +12,7 @@ class Billing extends Model
     {
         return blank($this->created_at) ? '' : $this->created_at->format('d-m-Y');
     }
+    public  function  getUser(){
+        return $this->belongsTo(User::class,'user_id',id);
+    }
 }

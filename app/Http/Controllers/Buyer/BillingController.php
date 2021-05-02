@@ -50,7 +50,7 @@ class BillingController extends Controller
         elseif($paid_amount < $total){
             $order->payment_status = 'partials';
             $order->save();
-        }   
+        }
         Session::flash('success','Order payment has been submitted!');
         return back();
     }
