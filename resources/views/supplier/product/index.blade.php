@@ -60,9 +60,7 @@
                                                     <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-info waves-effect custom-btn1" >
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="{{ route('product.delete',$product->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger waves-effect custom-btn1" >
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </a>
+                                                    <a href="{{ route('product.delete',$product->id) }}" id="delete" class="btn btn-sm btn-danger "> <i class="material-icons">delete_forever</i></a>
                                                     {{-- @if(auth()->user()->role != 'support')
                                                     <form action="{{ route('products.destroy',$product->id) }}" onsubmit="return confirm('Are you sure?')" method="POST">
                                                         @csrf
@@ -93,3 +91,5 @@
         <!-- #END# Exportable Table -->
     </div>
 @endsection
+
+
