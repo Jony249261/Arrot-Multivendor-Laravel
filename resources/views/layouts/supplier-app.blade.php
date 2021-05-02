@@ -233,6 +233,24 @@
             });
             });
 
+    $(document).on("click", "#accept", function(e){
+	   e.preventDefault();
+	   var link = $(this).attr("href");
+	    swal({
+		title: "Are You Sure Want to Accept?",
+	        text: "If you Accept this, it can't be Deleted.",
+            	icon: "warning",
+            	buttons: true,
+            	dangerMode: true,
+            })
+	    .then((willDelete) => {
+            if (willDelete) {
+            window.location.href = link;
+            }
+		
+            });
+            });
+
 </script>
 
     @yield('page-scripts')

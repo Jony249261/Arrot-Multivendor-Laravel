@@ -109,20 +109,47 @@
                          data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
                          data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
                          data-fill-Color="rgba(0, 188, 212, 0)">
-                        12,10,9,6,5,6,10,5,7,5,12,13,7,12,11
+                        @php
+                            $date1=\Carbon\Carbon::today()->subDays(1);
+                            $date7=\Carbon\Carbon::today()->subDays(7);
+                            $date30=\Carbon\Carbon::today()->subDays(30);
+
+                            $total_graph1=App\Billing::where('created_at','>=',$date1)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            $total_graph2=App\Billing::where('created_at','>=',$date7)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            $total_graph3=App\Billing::where('created_at','>=',$date30)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                        @endphp
+                        {{$total_graph1}},{{$total_graph2}},{{$total_graph3}}
                     </div>
                     <ul class="dashboard-stat-list">
                         <li>
                             TODAY
-                            <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                            @php
+                                $date1=\Carbon\Carbon::today()->subDays(1);
+
+                                $total_lastday=App\Billing::where('created_at','>=',$date1)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            @endphp
+
+                            <span class="pull-right"><b>{{$total_lastday}}</b> <small>TAKA</small></span>
                         </li>
                         <li>
-                            YESTERDAY
-                            <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                            LAST 7 DAYS
+                            @php
+
+                                  $date7=\Carbon\Carbon::today()->subDays(7);
+
+                                $total_last7day=App\Billing::where('created_at','>=',$date7)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            @endphp
+                            <span class="pull-right"><b>{{$total_last7day}}</b> <small>TAKA</small></span>
                         </li>
                         <li>
-                            LAST WEEK
-                            <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
+                            LAST 30 DAYS
+                            @php
+
+
+                              $date30=\Carbon\Carbon::today()->subDays(30);
+                              $total_last30day=App\Billing::where('created_at','>=',$date30)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            @endphp
+                            <span class="pull-right"><b>{{$total_last30day}}</b> <small>TAKA</small></span>
                         </li>
                     </ul>
                 </div>
