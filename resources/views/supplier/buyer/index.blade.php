@@ -48,6 +48,7 @@
                                                 <div class="icon-button-demo">
                                                     <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success custom-btn1"> <i class="material-icons">edit</i></a>
                                                     <a href="{{ route('supplier.buyer.profile',$user->id) }}" class="btn btn-primary custom-btn1 @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
+                                                    <a href="{{ route('supplier.buyer.delete',$user->id) }}" id="delete" class="btn btn-danger custom-btn1 @yield('buyer-profile')"> <i class="material-icons">delete</i></a>
                                                     
 
 

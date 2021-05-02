@@ -100,7 +100,7 @@ class SellerController extends Controller
 
         $user->delete();
         $seller->delete();
-        Session::flash('success','Buyer Deleted successfully!!');
+        Session::flash('success','Seller Deleted successfully!!');
         return redirect()->back();
 
     }

@@ -27,7 +27,7 @@ class UnitController extends Controller
     public  function  delete($id){
         $unit=Unit::findOrFail($id);
         $unit->delete();
-        Session::flash('success','Unit added successfully!!');
+        Session::flash('success','Unit Deleted successfully!!');
         return redirect()->back();
     }
     public function update(Request $request,$id){

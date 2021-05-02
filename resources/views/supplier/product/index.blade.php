@@ -60,9 +60,7 @@
                                                     <a href="{{ route('products.edit',$product->id) }}" class="btn btn-sm btn-info waves-effect custom-btn1" >
                                                         <i class="material-icons">edit</i>
                                                     </a>
-                                                    <a href="{{ route('product.delete',$product->id) }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger waves-effect custom-btn1" >
-                                                        <i class="material-icons">delete_forever</i>
-                                                    </a>
+                                                    <a href="{{ route('product.delete',$product->id) }}" id="delete" class="btn btn-sm btn-danger "> <i class="material-icons">delete_forever</i></a>
                                                     {{-- @if(auth()->user()->role != 'support')
                                                     <form action="{{ route('products.destroy',$product->id) }}" onsubmit="return confirm('Are you sure?')" method="POST">
                                                         @csrf
@@ -92,4 +90,35 @@
         </div>
         <!-- #END# Exportable Table -->
     </div>
+@endsection
+
+        @section('page-scripts')
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
+
+    <script>
+
+	$(document).on("click", "#delete", function(e){
+	   e.preventDefault();
+	   var link = $(this).attr("href");
+	    swal({
+		title: "Are You Sure Want to Delete?",
+	        text: "If you delete this, it will be gone forever.",
+            	icon: "warning",
+            	buttons: true,
+            	dangerMode: true,
+            })
+	    .then((willDelete) => {
+            if (willDelete) {
+            window.location.href = link;
+            } else{
+		swal("Safe Data!");
+	}
+		
+            });
+            });
+
+</script>
+
+
 @endsection
