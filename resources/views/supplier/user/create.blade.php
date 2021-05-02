@@ -49,7 +49,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                        <input type="number" class="form-control @error('phone') is-invalid @enderror"
                                             name="phone" value="{{ old('phone') }}" required>
                                         <label class="form-label">Enter Phone</label>
                                     </div>
