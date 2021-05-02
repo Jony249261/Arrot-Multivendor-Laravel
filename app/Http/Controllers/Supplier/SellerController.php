@@ -40,8 +40,6 @@ class SellerController extends Controller
             'sr_image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
 
-//        dd($request->all());
-
         $image=$request->file('image');
         $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
         Image::make($image)->resize(270,270)->save('image_seller/user/'.$name_gen);
@@ -52,8 +50,7 @@ class SellerController extends Controller
         Image::make($sr_image)->resize(600,600)->save('image_seller/user/'.$name_gen);
         $img_url2=$name_gen;
 
-
-        $seller_id=Helper::IDGenerator(new User,'seller_id',2,'SEL');
+        $seller_id=Helper::IDGenerator(new User,'seller_id',4,'SEL');
         $user=new User();
         $user->seller_id =$seller_id;
         $user -> name = $request->name;
@@ -80,7 +77,7 @@ class SellerController extends Controller
         $seller->sr_phone=$request->sr_phone;
         $seller->sr_email=$request->sr_email;
         $seller->save();
-        
+
         if($user != null){
             EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
             Session::flash('success','Account has been created. Please check email for verification link.');
