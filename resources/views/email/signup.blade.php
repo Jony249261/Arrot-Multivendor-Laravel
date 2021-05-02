@@ -115,7 +115,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="link">
-                    <a href="http://localhost/Arrot-Krishi-Ponno/public/verify?code={{ $email_data['verification_code'] }}" class="button">Let's Start</a>
+                    <a href="http://localhost/Arrot/verify?code={{ $email_data['verification_code'] }}" class="button">Let's Start</a>
                 </div>
             </div>
         </div>

@@ -6,7 +6,9 @@ use App\Buyer;
 use App\Seller;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailController;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Image;
@@ -50,8 +52,9 @@ class SellerController extends Controller
         Image::make($sr_image)->resize(600,600)->save('image_seller/user/'.$name_gen);
         $img_url2=$name_gen;
 
+
+        $seller_id=Helper::IDGenerator(new User,'seller_id',2,'SEL');
         $user=new User();
-        $seller_id=Helper::IDGenerator(new User,'seller_id',3,'SELLER');
         $user->seller_id =$seller_id;
         $user -> name = $request->name;
         $user->email = $request->email;
@@ -59,7 +62,7 @@ class SellerController extends Controller
         $user->role = 'seller';
         $user->image = $img_url;
         $user->password=bcrypt($request->password);
-
+        $user->verification_code = sha1(time());
         $user->save();
 
 
@@ -77,8 +80,15 @@ class SellerController extends Controller
         $seller->sr_phone=$request->sr_phone;
         $seller->sr_email=$request->sr_email;
         $seller->save();
-        Session::flash('success','Seller Created  successfully!!');
-        return redirect()->route('supplier.seller.index');
+        
+        if($user != null){
+            EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
+            Session::flash('success','Account has been created. Please check email for verification link.');
+            return redirect()->route('supplier.seller.index');
+        }
+
+        Session::flash('warning','Something went worng!');
+        return redirect()->back();
 
 
 

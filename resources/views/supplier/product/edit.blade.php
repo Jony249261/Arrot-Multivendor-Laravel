@@ -25,19 +25,20 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
+                                    <div class="form-line">
                                         <label class="form-label">Product Name</label>
                                         <input type="text" class="form-control @error('product_name') is-invalid @enderror"
                                             name="product_name" value="{{ old('product_name',$product->product_name) }}" required>
                                         {{-- <label class="form-label">Product Name</label> --}}
-                                        @error('product_name')
-                                     <span class="validation-message">{{ $message }}</span>
-                                    @enderror
+                                       
                                     </div>
+                                    @error('paroduct_name')
+                                    <span class="validation-message">{{ $message }}</span>
+                                   @enderror
                                 </div>
 
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
+                                    <div class="form-line">
                                         <label class="form-label">Description</label>
                                         <textarea name="description" cols="30" rows="5" class="form-control no-resize"
                                             required>{{ old('description',$product->product_description) }}</textarea>
@@ -53,6 +54,7 @@
                                     <input type="radio" name="unit_id" @if($unit->id == $product->unit_id) checked @endif value="{{ $unit->id }}" id="unit_id{{ $unit->id }}" class="with-gap">
                                     <label for="unit_id{{ $unit->id }}">{{ ucfirst($unit->name) }}</label>
                                     @endforeach
+                                    <br>
                                     @error('unit_id')
                                     <span class="validation-message">{{ $message }}</span>
                                    @enderror

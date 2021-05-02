@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
-use PHPUnit\TextUI\Help;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Image;
 
@@ -70,8 +68,9 @@ class BuyerController extends Controller
        }
 
 
+
+        $buyer_id=Helper::IDGenerator(new User,'buyer_id',2,'BUY');
         $user=new User();
-        $buyer_id=Helper::IDGenerator(new User,'buyer_id',3,'BUYER');
         $user->buyer_id=$buyer_id;
         $user -> name = $request -> name;
         $user->email = $request->email;
