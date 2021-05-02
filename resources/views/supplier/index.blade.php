@@ -1,6 +1,7 @@
 @extends('layouts.supplier-app')
 
 @section('dashboard','active')
+@section('title','Dashboard')
 
 @section('content')
 
@@ -17,8 +18,8 @@
                     <i class="material-icons">playlist_add_check</i>
                 </div>
                 <div class="content">
-                    <div class="text">NEW TASKS</div>
-                    <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                    <div class="text">Total Order</div>
+                    <div class="number count-to" data-from="0" data-to="{{ $orders->count() }}" data-speed="15" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>
@@ -28,8 +29,8 @@
                     <i class="material-icons">help</i>
                 </div>
                 <div class="content">
-                    <div class="text">NEW TICKETS</div>
-                    <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="text">Pending Order</div>
+                    <div class="number count-to" data-from="0" data-to="{{ $orders->where('status','pending')->count() }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>
@@ -39,8 +40,8 @@
                     <i class="material-icons">forum</i>
                 </div>
                 <div class="content">
-                    <div class="text">NEW COMMENTS</div>
-                    <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="text">Total Balance</div>
+                    <div class="number count-to" data-from="0" data-to="{{ $billings->sum('bill_amount') }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>
@@ -50,8 +51,8 @@
                     <i class="material-icons">person_add</i>
                 </div>
                 <div class="content">
-                    <div class="text">NEW VISITORS</div>
-                    <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="text">Total User</div>
+                    <div class="number count-to" data-from="0" data-to="{{ $users->count() }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>
