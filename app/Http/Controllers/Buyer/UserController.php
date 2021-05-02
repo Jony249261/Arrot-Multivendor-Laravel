@@ -20,6 +20,8 @@ class UserController extends Controller
     {
         $users = User::where('parent_id',auth()->user()->id)->latest()->paginate(15);
         return view('buyer.user.index',compact('users'));
+
+
     }
 
     /**

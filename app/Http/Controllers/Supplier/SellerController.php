@@ -8,6 +8,7 @@ use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Image;
@@ -51,8 +52,9 @@ class SellerController extends Controller
         Image::make($sr_image)->resize(600,600)->save('image_seller/user/'.$name_gen);
         $img_url2=$name_gen;
 
+
+        $seller_id=Helper::IDGenerator(new User,'seller_id',2,'SEL');
         $user=new User();
-        $seller_id=Helper::IDGenerator(new User,'seller_id',3,'SELLER');
         $user->seller_id =$seller_id;
         $user -> name = $request->name;
         $user->email = $request->email;
