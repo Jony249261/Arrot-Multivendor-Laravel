@@ -49,7 +49,7 @@
                                     </td>
                                     <td>
 
-                                        <a href="{{route('propose.product.delete',$pproduct->id)}}" onclick="return(confirm('Are you Delete This product'))" class="btn btn-danger"><i class="material-icons">delete</i></a>
+                                        <a href="{{route('propose.product.delete',$pproduct->id)}}" id="delete" class="btn btn-danger"><i class="material-icons">delete</i></a>
                                         <a type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#editmodal-{{$pproduct->id}}"> <i class="material-icons">edit</i></a>
 
                                     </td>
