@@ -54,7 +54,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'purchase_rate' => 'sometimes|nullable|numeric',
             'sales_rate' => 'required|numeric',
-            'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
+            'image' => 'required|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'unit_id' => 'required|numeric',
             'product_type' => 'required|string',
         ]);
