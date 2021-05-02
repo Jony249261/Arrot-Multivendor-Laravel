@@ -130,7 +130,7 @@ Route::prefix('buyer')->middleware('buyer')->group(function(){
 
     //support route
      Route::get('/support/index','Buyer\SupportController@index')->name('supports.index');
-     Route::post('/support/contact','Buyer\SupportController@contactSubmit')->name('contact.submit');
+     Route::post('/support/send-message','Buyer\SupportController@sendMessage')->name('support.send-message');
 
 
 
