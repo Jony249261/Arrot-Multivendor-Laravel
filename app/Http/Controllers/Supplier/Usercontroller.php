@@ -48,16 +48,21 @@ class Usercontroller extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'required|confirmed|min:6'
         ]);
-        $data['role'] = 'support';
-        $data['password'] = Hash::make($data['password']);
+        $user = new User;
+        $user->name = $request->name;
+        $user->role = 'support';
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->name);
+        
         if($request->has('image')){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(270,270)->save('users/'.$name_gen);
-            $data['image'] = $name_gen;
         }
-        $data['verification_code'] = sha1(time());
-        $user = User::create($data);
+        $user->image = $name_gen;
+        $user->verification_code = sha1(time());
+        $user->save();
 
         if($user != null){
             EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailController;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,8 @@ class UserController extends Controller
     {
         $users = User::where('parent_id',auth()->user()->id)->latest()->paginate(15);
         return view('buyer.user.index',compact('users'));
+
+
     }
 
     /**
@@ -44,7 +47,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'phone' => 'sometimes|nullable',
+            'phone' => 'sometimes|nullable|numeric',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'required|confirmed|min:6',
             'role' => 'required|string',
@@ -52,17 +55,32 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         $data['parent_id'] = auth()->user()->id;
         $data['buyer_id'] = auth()->user()->buyer_id;
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
 
         if($request->has('image')){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(270,270)->save('users/'.$name_gen);
-            $data['image'] = $name_gen;
         }
-        User::create($data);
+        $user->image = $name_gen;
+        $user->parent_id = auth()->user()->id;
+        $user->buyer_id = auth()->user()->buyer_id;
+        $user->verification_code = sha1(time());
+        $user->save();
 
-        Session::flash('success','Buyer user created successfully!');
-        return redirect()->route('buyer-users.index');
+        if($user != null){
+            EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
+            Session::flash('success','Account has been created. Please check email for verification link.');
+            return redirect()->route('buyer-users.index');
+        }
+
+        Session::flash('warning','Something went wrong!');
+        return redirect()->back();
     }
 
     /**
@@ -113,7 +131,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,'.$user->id,
-            'phone' => 'sometimes|nullable',
+            'phone' => 'sometimes|nullable|numeric',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'sometimes|nullable|confirmed|min:6',
             'role' => 'required|string'

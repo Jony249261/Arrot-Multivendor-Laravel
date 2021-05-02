@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="number"  class="form-control @error('phone') is-invalid @enderror"  value="{{$user->phone}}" name="phone" required>
+                                        <input type="text"  class="form-control @error('phone') is-invalid @enderror"  value="{{$user->phone}}" name="phone" required>
 
                                         <label class="form-label">Enter Phone Number</label>
                                     </div>

@@ -7,8 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
-use PHPUnit\TextUI\Help;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Session;
 use Image;
 
@@ -70,8 +69,9 @@ class BuyerController extends Controller
        }
 
 
+
+        $buyer_id=Helper::IDGenerator(new User,'buyer_id',4,'BUY');
         $user=new User();
-        $buyer_id=Helper::IDGenerator(new User,'buyer_id',3,'BUYER');
         $user->buyer_id=$buyer_id;
         $user -> name = $request -> name;
         $user->email = $request->email;
@@ -79,7 +79,7 @@ class BuyerController extends Controller
         $user->role = 'buyer';
         $user->image=$img_url3;
         $user->password=bcrypt($request->password);
-
+        $user->verification_code = sha1(time());
         $user->save();
 
 
@@ -102,8 +102,15 @@ class BuyerController extends Controller
         $buyer->br_phone=$request->br_phone;
         $buyer->br_email=$request->br_email;
         $buyer->save();
-        Session::flash('success','Buyer Created  successfully!!');
-        return redirect()->route('supplier.buyer.index');
+
+        if($user != null){
+            EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
+            Session::flash('success','Account has been created. Please check email for verification link.');
+            return redirect()->route('supplier.buyer.index');
+        }
+        
+        Session::flash('warning','Something went wrong!!');
+        return redirect()->back();
 
 
 
@@ -119,19 +126,13 @@ class BuyerController extends Controller
         $trade_license='image_buyer/user/'.$buyer->trade_license;
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
 
-        // if($user->image == 'defaultphoto.png' && $buyer->buyer_logo == 'logo.png'){
-        //     $user->delete();
-        //     $buyer->delete();
-        // }
-        // elseif(file_exists(public_path($image)) || file_exists(public_path($br_image)) || file_exists(public_path($buyer_logo))){
-
             unlink($image);
             unlink($br_image);
             unlink($buyer_logo);
             unlink($trade_license);
             $user->delete();
             $buyer->delete();
-        // }
+
         Session::flash('success','Buyer Deleted successfully!!');
         return redirect()->back();
     }
