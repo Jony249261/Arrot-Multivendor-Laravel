@@ -47,7 +47,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                        <input type="number" class="form-control @error('phone') is-invalid @enderror"
                                             name="phone" value="{{ old('phone',$user->phone) }}" required>
                                     </div>
                                     @error('phone')
@@ -85,11 +85,6 @@
                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
                                             name="password_confirmation" value="{{ old('password_confirmation') }}">
                                             <label class="form-label">Confirm New Password</label>
-                                            @error('password_confirmation')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
                                     </div>
                                 </div>
                             </div>

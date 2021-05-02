@@ -126,19 +126,13 @@ class BuyerController extends Controller
         $trade_license='image_buyer/user/'.$buyer->trade_license;
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
 
-        // if($user->image == 'defaultphoto.png' && $buyer->buyer_logo == 'logo.png'){
-        //     $user->delete();
-        //     $buyer->delete();
-        // }
-        // elseif(file_exists(public_path($image)) || file_exists(public_path($br_image)) || file_exists(public_path($buyer_logo))){
-
             unlink($image);
             unlink($br_image);
             unlink($buyer_logo);
             unlink($trade_license);
             $user->delete();
             $buyer->delete();
-        // }
+
         Session::flash('success','Buyer Deleted successfully!!');
         return redirect()->back();
     }

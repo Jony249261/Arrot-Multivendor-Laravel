@@ -23,66 +23,66 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text"  class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}" name="name" required>
-                                        @error('name')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Enter Name</label>
                                     </div>
+                                    @error('name')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number"  class="form-control @error('phone') is-invalid @enderror"  value="{{$user->phone}}" name="phone" required>
-                                        @error('phone')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Enter Phone Number</label>
                                     </div>
+                                    @error('phone')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"  value="{{$user->email}}" name="email" required>
-                                        @error('email')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Enter Seller Email</label>
                                     </div>
+                                    @error('email')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('seller_address') is-invalid @enderror" value="{{$seller->seller_address}}" name="seller_address" required>
-                                        @error('seller_address')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                          <label class="form-label">Enter Seller Address</label>
                                     </div>
+                                    @error('seller_address')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('seller_website') is-invalid @enderror" value="{{$seller->seller_website}}" name="seller_website" required>
-                                        @error('seller_website')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Enter Seller Website</label>
                                     </div>
+                                    @error('seller_website')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" >
                                         <label class="form-label">Password</label>
-                                        @error('password')
-                                        <span class="validation-message">{{ $message }}</span>
-                                        @enderror
                                     </div>
+                                    @error('password')
+                                    <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
 
                                         <label class="form-label">Enter Confirm Password</label>
-                                        @error('password_confirmation')
-                                        <span class="validation-message">{{ $message }}</span>
-                                        @enderror
                                     </div>
+                                    @error('password_confirmation')
+                                    <span class="validation-message">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
 
@@ -101,11 +101,11 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number"  class=" form-control @error('seller_nid') is-invalid @enderror"  value="{{$seller->seller_nid}}" name="seller_nid" required>
-                                        @error('seller_nid')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Enter Seller NID Number</label>
                                     </div>
+                                    @error('seller_nid')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
 
                                 <div class="header bg-red">
@@ -118,29 +118,29 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('sr_name') is-invalid @enderror" value="{{$seller->sr_name}}" name="sr_name" >
-                                        @error('sr_name')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Seller Representative name</label>
                                     </div>
+                                    @error('sr_name')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('sr_email') is-invalid @enderror" value="{{$seller->sr_email}}" name="sr_email" >
-                                        @error('sr_email')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Seller Representative Email</label>
                                     </div>
+                                    @error('sr_email')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" class="form-control @error('sr_phone') is-invalid @enderror" value="{{$seller->sr_phone}}" name="sr_phone">
-                                        @error('sr_phone')
-                                        <span class="validation-message">{{ $message }}</span>
-                                    @enderror
                                         <label class="form-label">Seller Representative Phone</label>
                                     </div>
+                                    @error('sr_phone')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
 
@@ -150,8 +150,6 @@
                                     @error('sr_image')
                                     <span class="validation-message">{{ $message }}</span>
                                 @enderror
-
-
                                 </div>
                                 <button class="btn btn-success waves-effect item pull-right" type="submit"><i class="material-icons">update</i>Update Seller</button>
 

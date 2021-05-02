@@ -135,7 +135,7 @@ class ProductController extends Controller
         ]);
 
 
-        
+
         if($request->product_type == 'vegetable'){
             $product_id = Helper::IDGenerator(new Product,'product_id',4,'VEG');
         }elseif($request->product_type == 'fish'){

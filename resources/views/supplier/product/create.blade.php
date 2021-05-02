@@ -29,22 +29,21 @@
                                         <input type="text" class="form-control @error('product_name') is-invalid @enderror"
                                             name="product_name" value="{{ old('product_name') }}" required>
                                         <label class="form-label">Product Name</label>
-                                       
                                     </div>
                                     @error('product_name')
-                                     <span class="validation-message">{{ $message }}</span>
-                                    @enderror
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                                 </div>
 
                                 <div class="form-group form-float">
-                                    <div class="form-line">
+                                    <div class="form-line error">
                                         <textarea name="description" cols="30" rows="5" class="form-control no-resize"
                                             required>{{ old('description') }}</textarea>
                                         <label class="form-label">Description...</label>
                                     </div>
                                     @error('description')
-                                     <span class="validation-message">{{ $message }}</span>
-                                    @enderror
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="">Unit</label><br>
@@ -64,25 +63,21 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                             name="image">
-                                        
-                                    </div>
                                     @error('image')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line error">
                                         <input type="number" class="form-control @error('sales_rate') is-invalid @enderror"
                                             name="sales_rate" value="{{ old('sales_rate') }}" required>
                                         <label class="form-label">Sales Rate</label>
-                                       
                                     </div>
                                     @error('sales_rate')
-                                    <span class="validation-message">{{ $message }}</span>
-                                   @enderror
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                                 </div>
                                 <div class="form-group" style="margin-top: 100px">
                                     <label for="">Product Type</label><br>
