@@ -46,7 +46,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'phone' => 'sometimes|nullable',
+            'phone' => 'sometimes|nullable|numeric',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'required|confirmed|min:6',
             'role' => 'required|string',
@@ -115,7 +115,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,'.$user->id,
-            'phone' => 'sometimes|nullable',
+            'phone' => 'sometimes|nullable|numeric',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'sometimes|nullable|confirmed|min:6',
             'role' => 'required|string'
