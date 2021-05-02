@@ -8,6 +8,7 @@ use App\ProductPrice;
 use App\SellerPropose;
 use App\Unit;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
@@ -58,14 +59,15 @@ class ProductController extends Controller
             'unit_id' => 'required|numeric',
             'product_type' => 'required|string',
         ]);
-        $product = new Product();
+
         if($request->product_type == 'vegetable'){
-            $product_id = Helper::IDGenerator(new Product,'product_id',3,'veg');
+            $product_id = Helper::IDGenerator(new Product,'product_id',4,'VEG');
         }elseif($request->product_type == 'fish'){
-            $product_id = Helper::IDGenerator(new Product,'product_id',3,'fis');
+            $product_id = Helper::IDGenerator(new Product,'product_id',4,'FIS');
         }else{
-            $product_id = Helper::IDGenerator(new Product,'product_id',3,'met');
+            $product_id = Helper::IDGenerator(new Product,'product_id',4,'MET');
         }
+        $product = new Product();
         $product->product_id = $product_id;
         $product->product_name = $data['product_name'];
         $product->product_description = $data['description'];
@@ -133,14 +135,15 @@ class ProductController extends Controller
         ]);
 
 
-        $product = Product::findOrFail($id);
+        
         if($request->product_type == 'vegetable'){
-            $product_id = Helper::IDGenerator(new Product,'product_id',3,'veg');
+            $product_id = Helper::IDGenerator(new Product,'product_id',4,'VEG');
         }elseif($request->product_type == 'fish'){
-            $product_id = Helper::IDGenerator(new Product,'product_id',3,'fis');
+            $product_id = Helper::IDGenerator(new Product,'product_id',4,'FIS');
         }else{
-            $product_id = Helper::IDGenerator(new Product,'product_id',3,'met');
+            $product_id = Helper::IDGenerator(new Product,'product_id',4,'MET');
         }
+        $product = Product::findOrFail($id);
         $product->product_id = $product_id;
         $product->product_name = $data['product_name'];
         $product->product_description = $data['description'];

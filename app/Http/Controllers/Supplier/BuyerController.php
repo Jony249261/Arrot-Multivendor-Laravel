@@ -70,7 +70,7 @@ class BuyerController extends Controller
 
 
 
-        $buyer_id=Helper::IDGenerator(new User,'buyer_id',2,'BUY');
+        $buyer_id=Helper::IDGenerator(new User,'buyer_id',4,'BUY');
         $user=new User();
         $user->buyer_id=$buyer_id;
         $user -> name = $request -> name;
