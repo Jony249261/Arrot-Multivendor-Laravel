@@ -25,8 +25,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(10);
-        // $product = Product::find(5);
-        // dd($product->productPrices->sortByDesc('updated_date')->first()->sales_rate);
         return view('supplier.product.index',compact('products'));
     }
 
@@ -194,7 +192,7 @@ class ProductController extends Controller
     public function delete($id)
     {
         $product = Product::findOrFail($id);
-        $product->productPrices()->delete();
+        // $product->productPrices()->delete();
         $path = 'products/'.$product->image;
         if(file_exists(public_path($path))){
             unlink($path);

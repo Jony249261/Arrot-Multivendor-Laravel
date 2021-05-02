@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('unit_id');
             $table->text('product_description');
             $table->string('image')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

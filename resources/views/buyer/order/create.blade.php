@@ -29,7 +29,7 @@
                                         <th>{{ __('Unit') }}</th>
                                         <th>{{ __('Price') }}</th>
                                         <th>{{ __('Quantity') }}</th>
-                                        <th>{{ __('Total Price') }}</th>
+                                        {{-- <th>{{ __('Total Price') }}</th> --}}
                                     </tr>
                                 </thead>
                                 <form action="{{ route('orders.store') }}" method="post">
@@ -53,9 +53,9 @@
 
 
                                                 </td>
-                                                <td >
+                                                {{-- <td >
                                                     --
-                                                </td>
+                                                </td> --}}
 
                                             </tr>
                                         @empty
@@ -66,12 +66,10 @@
 
                                     </tbody>
                                     <tfoot>
-                                        <tr>
-                                            {{-- <td><strong>Delivery Date</strong></td>
-                                            <td><input type="date" name="delivery_date"></td> --}}
+                                        {{-- <tr>
                                             <td colspan="6" class="text-right"><strong>Grand Total:</strong></td>
                                             <td colspan="2">000</td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr>
                                             <td colspan="7">
 

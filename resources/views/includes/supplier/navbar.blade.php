@@ -27,7 +27,7 @@
                                         <div class="menu-info">
                                             <h4>{{ $supplierUsers->count() }} new user added</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i> {{ $supplierUsers->latest()->first()->created_at->diffForHumans() }} mins ago
+                                                <i class="material-icons">access_time</i>@if(isset($supplierUsers->latest()->first()->created_at)) {{ $supplierUsers->latest()->first()->created_at->diffForHumans() }} @endif mins ago
                                             </p>
                                         </div>
                                     </a>
@@ -45,9 +45,8 @@
                                         </div>
                                     </a>
                                 </li>
-
                                 @php
-                                    $order = $orders->orWhere('status','received')->latest()->first();
+                                    $order = $orders->orWhere('status','received')->Orwhere('payment_status','paid')->latest()->first();
                                 @endphp
                                 @if(isset($order))
                                 <li>
@@ -57,7 +56,7 @@
                                         </div>
                                         <div class="menu-info">
                                             
-                                            <h4>Order id {{ $order->showId }} is {{ $order->status }}.</h4>
+                                            <h4>Order id {{ $order->showId }} is {{ $order->status }} @if($order->payment_status == 'paid') and payment is {{ $order->payment_status }} @endif.</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i>@if(isset($order->showId)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
                                             </p>
@@ -65,8 +64,8 @@
                                     </a>
                                 </li>
                                 @endif
-                                @php
-                                    $order = $orders->orWhere('payment_status','paid')->latest()->first();
+                                {{-- @php
+                                    $order = $orders->where('payment_status','paid')->latest()->first();
                                 @endphp
                                 @if(isset($order))
                                 <li>
@@ -83,7 +82,7 @@
                                         </div>
                                     </a>
                                 </li>
-                                @endif
+                                @endif --}}
 
                             </ul>
                         </li>

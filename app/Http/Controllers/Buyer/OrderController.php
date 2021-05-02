@@ -41,7 +41,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $products = Product::latest()->paginate(15);
+        $products = Product::latest()->paginate(20);
         return view('buyer.order.create',compact('products'));
     }
 

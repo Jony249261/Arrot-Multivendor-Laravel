@@ -55,13 +55,14 @@ class Usercontroller extends Controller
         $user->phone = $request->phone;
         $user->password = bcrypt($request->name);
         $user->parent_id= auth()->user()->id;
-        
+        $image_url = null;
         if($request->has('image')){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(270,270)->save('users/'.$name_gen);
+            $image_url = $name_gen;
         }
-        $user->image = $name_gen;
+        $user->image = $image_url;
         $user->verification_code = sha1(time());
         $user->save();
 

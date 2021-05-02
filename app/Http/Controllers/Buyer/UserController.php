@@ -61,13 +61,14 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->password = bcrypt($request->password);
         $user->role = $request->role;
-
+        $image_url = null;
         if($request->has('image')){
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(270,270)->save('users/'.$name_gen);
+            $image_url = $name_gen;
         }
-        $user->image = $name_gen;
+        $user->image = $image_url;
         $user->parent_id = auth()->user()->id;
         $user->buyer_id = auth()->user()->buyer_id;
         $user->verification_code = sha1(time());
@@ -132,7 +133,7 @@ class UserController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,'.$user->id,
             'phone' => 'sometimes|nullable|numeric',
-            'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
+            'image' => 'required|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'sometimes|nullable|confirmed|min:6',
             'role' => 'required|string'
         ]);
