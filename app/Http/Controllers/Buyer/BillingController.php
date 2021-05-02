@@ -28,7 +28,7 @@ class BillingController extends Controller
             'payment_type' => 'required',
             'check_photo' => 'required|mimes:jpeg,jpg,png|required|max:10000'
         ]);
-
+            
         if($request->has('check_photo')){
             $image = $request->file('check_photo');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();

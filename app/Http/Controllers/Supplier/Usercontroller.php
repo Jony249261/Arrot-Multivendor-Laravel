@@ -56,14 +56,16 @@ class Usercontroller extends Controller
             Image::make($image)->resize(270,270)->save('users/'.$name_gen);
             $data['image'] = $name_gen;
         }
+        $data['verification_code'] = sha1(time());
         $user = User::create($data);
 
         if($user != null){
             EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
-            return redirect()->route('users.index')->with(session()->flash('success','Account has been created. Please check email for verification link.'));
+            Session::flash('success','Account has been created. Please check email for verification link.');
+            return redirect()->route('users.index');
         }
 
-        Session::flash('success','Suport user created successfully!');
+        Session::flash('warning','Something went wrong!');
         return redirect()->route('users.index');
 
     }

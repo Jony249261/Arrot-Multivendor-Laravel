@@ -53,7 +53,7 @@
                                             <td>{{ ucfirst($product->product_type) }}</td>
 
 
-                                            <td>{{ number_format($product->sales_rate,2) }}</td>
+                                            <td>{{ $product->sales_rate,2 }} </td>
 
                                             <td>
                                                 <div class="icon-button-demo">

@@ -24,12 +24,12 @@ class OrderController extends Controller
         }
 
         elseif(auth()->user()->role == 'accounts'){
-            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','received')->Orwhere('status','received')->latest()->paginate(15);
+            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','received')->latest()->paginate(15);
 
         }
         else{
 
-            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->paginate(15);
+            $orders = Order::where('user_id',auth()->user()->id)->latest()->paginate(15);
         }
         return view('buyer.order.index',compact('orders'));
     }

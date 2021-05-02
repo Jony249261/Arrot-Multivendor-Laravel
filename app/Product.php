@@ -24,6 +24,6 @@ class Product extends Model
 
     public function getSalesRateAttribute()
     {
-        return $this->productPrices->sortByDesc('updated_date')->first()->sales_rate;
+        return blank($this->productPrices->sortByDesc('updated_date')->first()) ? '' : $this->productPrices->sortByDesc('updated_date')->first()->sales_rate;
     }
 }

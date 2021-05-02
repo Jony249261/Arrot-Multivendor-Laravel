@@ -237,8 +237,9 @@ body {
   height: 100%;
   width: calc(100% - 340px);
   float: left;
-  background-image: url(../images/rice.jpg);
-  background-size: 100%; }
+  background-image: url("../images/rice.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
   @media screen and (max-width: 660px) {
     .side-left {
       display: none; } }
