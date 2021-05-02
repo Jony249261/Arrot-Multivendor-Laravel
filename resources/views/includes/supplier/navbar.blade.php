@@ -13,7 +13,7 @@
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">notifications</i>
                         
-                        <span class="label-count">7</span>
+                        <span class="label-count">{{  $supplierUsers->count() + $orders->count() }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">NOTIFICATIONS</li>
@@ -25,91 +25,66 @@
                                             <i class="material-icons">person_add</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4>12 new members joined</h4>
+                                            <h4>{{ $supplierUsers->count() }} new user added</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i> 14 mins ago
+                                                <i class="material-icons">access_time</i> {{ $supplierUsers->latest()->first()->created_at->diffForHumans() }} mins ago
                                             </p>
                                         </div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0);">
+                                    <a href="{{ route('order.index') }}">
                                         <div class="icon-circle bg-cyan">
                                             <i class="material-icons">add_shopping_cart</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4>4 sales made</h4>
+                                            <h4>{{ $orders->count() }} new order</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i> 22 mins ago
+                                                <i class="material-icons">access_time</i>@if(isset($orders->latest()->first()->created_at)) {{ $orders->latest()->first()->created_at->diffForHumans() }} @endif mins ago
                                             </p>
                                         </div>
                                     </a>
                                 </li>
+
+                                @php
+                                    $order = $orders->orWhere('status','received')->latest()->first();
+                                @endphp
+                                @if(isset($order))
                                 <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-red">
-                                            <i class="material-icons">delete_forever</i>
+                                    <a href="{{ route('order.show',$order->id) }}">
+                                        <div class="icon-circle bg-cyan">
+                                            <i class="material-icons">add_shopping_cart</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><b>Nancy Doe</b> deleted account</h4>
+                                            
+                                            <h4>Order id {{ $order->showId }} is {{ $order->status }}.</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i> 3 hours ago
+                                                <i class="material-icons">access_time</i>@if(isset($order->showId)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
                                             </p>
                                         </div>
                                     </a>
                                 </li>
+                                @endif
+                                @php
+                                    $order = $orders->orWhere('payment_status','paid')->latest()->first();
+                                @endphp
+                                @if(isset($order))
                                 <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-orange">
-                                            <i class="material-icons">mode_edit</i>
+                                    <a href="{{ route('order.show',$order->id) }}">
+                                        <div class="icon-circle bg-cyan">
+                                            <i class="material-icons">add_shopping_cart</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4><b>Nancy</b> changed name</h4>
+                                            
+                                            <h4>Order id {{ $order->showId }} is {{ $order->payment_status }}.</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i> 2 hours ago
+                                                <i class="material-icons">access_time</i>@if(isset($order->showId)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
                                             </p>
                                         </div>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-blue-grey">
-                                            <i class="material-icons">comment</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4><b>John</b> commented your post</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> 4 hours ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-light-green">
-                                            <i class="material-icons">cached</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4><b>John</b> updated status</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> 3 hours ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-purple">
-                                            <i class="material-icons">settings</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4>Settings updated</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> Yesterday
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
+                                @endif
+
                             </ul>
                         </li>
                         <li class="footer">
@@ -119,7 +94,7 @@
                 </li>
                 <!-- #END# Notifications -->
                 <!-- Tasks -->
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">flag</i>
                         <span class="label-count">9</span>
@@ -194,7 +169,7 @@
                             <a href="javascript:void(0);">View All Tasks</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
             </ul>
         </div>

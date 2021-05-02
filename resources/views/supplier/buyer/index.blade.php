@@ -48,13 +48,11 @@
                                                 <div class="icon-button-demo">
                                                     <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success custom-btn1"> <i class="material-icons">edit</i></a>
                                                     <a href="{{ route('supplier.buyer.profile',$user->id) }}" class="btn btn-primary custom-btn1 @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
-                                            
+                                                    
+
 
                                                     @if(auth()->user()->role != 'support')
-                                                    <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
-                                                        @csrf
-                                                        <button class="btn btn-danger delete-confirm  custom-btn1" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
-                                                    </form>
+                                                    <a href="{{ route('supplier.buyer.delete',$user->id) }}" id="delete" class="btn btn-danger custom-btn1 @yield('buyer-profile')"> <i class="material-icons">delete</i></a>
                                                 </div>
                                                     @endif
 
@@ -78,31 +76,5 @@
 
 @endsection
 
-@section('page-scripts')
-
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-
-    <script>
-            $('.delete-confirm').click(function(event) {
-            var form =  $(this).closest("form");
-            var id = $(this).data("name");
-            event.preventDefault();
-            swal({
-            title: `Are you sure you want to delete ${name}?`,
-            text: "If you delete this, it will be gone forever.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
-            .then((willDelete) => {
-            if (willDelete) {
-            form.submit();
-            }
-            });
-            });
-    </script>
-
-
-@endsection
 
 

@@ -38,7 +38,7 @@
                                     <td>{{$unit->name}}</td>
                                     <td class="text-center">
                                         <a type="button" class="btn btn-success waves-effect " data-toggle="modal" data-target="#editmodal-{{$unit->id}}"><i class="material-icons">edit</i></a>
-                                        <a href="{{route('supplier.unit.delete',$unit->id)}}" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i class="material-icons">delete</i></a>
+                                        <a href="{{route('supplier.unit.delete',$unit->id)}}" id="delete" class="btn btn-danger @yield('buyer-profile')"> <i class="material-icons">delete</i></a>
                                     </td>
                                 </tr>
                                @endforeach
@@ -125,3 +125,5 @@
 
     </div>
 @endsection
+
+

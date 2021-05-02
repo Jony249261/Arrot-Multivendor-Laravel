@@ -73,6 +73,7 @@ class BuyerController extends Controller
         $buyer_id=Helper::IDGenerator(new User,'buyer_id',4,'BUY');
         $user=new User();
         $user->buyer_id=$buyer_id;
+        $user->parent_id= auth()->user()->id;
         $user -> name = $request -> name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -126,7 +127,7 @@ class BuyerController extends Controller
         $trade_license='image_buyer/user/'.$buyer->trade_license;
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
 
-            unlink($image);
+            
             unlink($br_image);
             unlink($buyer_logo);
             unlink($trade_license);

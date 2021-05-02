@@ -38,6 +38,7 @@ class ProductController extends Controller
     public function create()
     {
         $units = Unit::all();
+        if(blank($units)) return redirect()->route('unit.index')->with(session()->flash('info','Please add one uint first.'));
         return view('supplier.product.create',compact('units'));
     }
 
@@ -55,7 +56,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'purchase_rate' => 'sometimes|nullable|numeric',
             'sales_rate' => 'required|numeric',
-            'image' => 'required|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
+            'image' => 'required|mimes:jpeg,jpg,png,gif|required|max:10000',
             'unit_id' => 'required|numeric',
             'product_type' => 'required|string',
         ]);

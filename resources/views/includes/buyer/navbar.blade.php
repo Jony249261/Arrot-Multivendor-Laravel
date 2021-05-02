@@ -47,6 +47,25 @@
                                         </div>
                                     </a>
                                 </li>
+                                @php
+                                    $order = $buyerOrders->where('status','accepted')->orWhere('status','processing')->orWhere('status','shipping')->orWhere('status','completed')->latest()->first();
+                                @endphp
+                                @if($order)
+                                <li>
+                                    <a href="{{ route('orders.show',$order->id) }}">
+                                        <div class="icon-circle bg-cyan">
+                                            <i class="material-icons">add_shopping_cart</i>
+                                        </div>
+                                        <div class="menu-info">
+                                            
+                                            <h4>Order id {{ $order->showId }} is {{ $order->status }}.</h4>
+                                            <p>
+                                                <i class="material-icons">access_time</i>@if(isset($order->created_at)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                @endif
                                 {{-- <li>
                                     <a href="javascript:void(0);">
                                         <div class="icon-circle bg-red">

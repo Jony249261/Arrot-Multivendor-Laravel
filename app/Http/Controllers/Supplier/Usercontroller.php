@@ -54,6 +54,7 @@ class Usercontroller extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->password = bcrypt($request->name);
+        $user->parent_id= auth()->user()->id;
         
         if($request->has('image')){
             $image = $request->file('image');

@@ -53,6 +53,7 @@ class SellerController extends Controller
         $seller_id=Helper::IDGenerator(new User,'seller_id',4,'SEL');
         $user=new User();
         $user->seller_id =$seller_id;
+        $user->parent_id= auth()->user()->id;
         $user -> name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -100,7 +101,7 @@ class SellerController extends Controller
 
         $user->delete();
         $seller->delete();
-        Session::flash('success','Buyer Deleted successfully!!');
+        Session::flash('success','Seller Deleted successfully!!');
         return redirect()->back();
 
     }
