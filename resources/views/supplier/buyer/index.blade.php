@@ -48,7 +48,8 @@
                                                 <div class="icon-button-demo">
                                                     <a href="{{ route('supplier.buyer.edit',$user->id) }}" class="btn btn-success custom-btn1"> <i class="material-icons">edit</i></a>
                                                     <a href="{{ route('supplier.buyer.profile',$user->id) }}" class="btn btn-primary custom-btn1 @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
-                                            
+                                                    
+
 
                                                     @if(auth()->user()->role != 'support')
                                                     <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
@@ -80,7 +81,7 @@
 
 @section('page-scripts')
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
 
     <script>
             $('.delete-confirm').click(function(event) {
@@ -101,6 +102,8 @@
             });
             });
     </script>
+
+ 
 
 
 @endsection
