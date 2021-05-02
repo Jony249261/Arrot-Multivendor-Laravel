@@ -52,10 +52,7 @@
 
 
                                                     @if(auth()->user()->role != 'support')
-                                                    <form action="{{ route('supplier.buyer.delete',$user->id) }}" method="post">
-                                                        @csrf
-                                                        <button class="btn btn-danger delete-confirm  custom-btn1" data-name="{{ $user->name }}" type="submit"><i class="material-icons">delete</i></button>
-                                                    </form>
+                                                    <a href="{{ route('supplier.buyer.delete',$user->id) }}" id="delete" class="btn btn-danger custom-btn1 @yield('buyer-profile')"> <i class="material-icons">delete</i></a>
                                                 </div>
                                                     @endif
 
@@ -84,26 +81,28 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
 
     <script>
-            $('.delete-confirm').click(function(event) {
-            var form =  $(this).closest("form");
-            var id = $(this).data("name");
-            event.preventDefault();
-            swal({
-            title: `Are you sure you want to delete ${name}?`,
-            text: "If you delete this, it will be gone forever.",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
-            .then((willDelete) => {
-            if (willDelete) {
-            form.submit();
-            }
-            });
-            });
-    </script>
 
- 
+	$(document).on("click", "#delete", function(e){
+	   e.preventDefault();
+	   var link = $(this).attr("href");
+	    swal({
+		title: "Are You Sure Want to Delete?",
+	        text: "If you delete this, it will be gone forever.",
+            	icon: "warning",
+            	buttons: true,
+            	dangerMode: true,
+            })
+	    .then((willDelete) => {
+            if (willDelete) {
+            window.location.href = link;
+            } else{
+		swal("Safe Data!");
+	}
+		
+            });
+            });
+
+</script>
 
 
 @endsection

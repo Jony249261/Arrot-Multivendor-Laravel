@@ -127,6 +127,9 @@ class BuyerController extends Controller
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
 
             
+            unlink($br_image);
+            unlink($buyer_logo);
+            unlink($trade_license);
             $user->delete();
             $buyer->delete();
 
