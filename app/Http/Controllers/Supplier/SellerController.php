@@ -87,7 +87,7 @@ class SellerController extends Controller
             return redirect()->route('supplier.seller.index');
         }
 
-        Session::flash('warning','Something went worng!');
+        Session::flash('warning','Something went wrong!');
         return redirect()->back();
 
 
