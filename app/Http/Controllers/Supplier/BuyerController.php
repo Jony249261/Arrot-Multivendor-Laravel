@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
+use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Session;
 use Image;
 
@@ -78,7 +79,7 @@ class BuyerController extends Controller
         $user->role = 'buyer';
         $user->image=$img_url3;
         $user->password=bcrypt($request->password);
-
+        $user->verification_code = sha1(time());
         $user->save();
 
 
@@ -101,8 +102,15 @@ class BuyerController extends Controller
         $buyer->br_phone=$request->br_phone;
         $buyer->br_email=$request->br_email;
         $buyer->save();
-        Session::flash('success','Buyer Created  successfully!!');
-        return redirect()->route('supplier.buyer.index');
+
+        if($user != null){
+            EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
+            Session::flash('success','Account has been created. Please check email for verification link.');
+            return redirect()->route('supplier.buyer.index');
+        }
+        
+        Session::flash('warning','Something went wrong!!');
+        return redirect()->back();
 
 
 
