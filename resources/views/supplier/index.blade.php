@@ -41,7 +41,7 @@
                 </div>
                 <div class="content">
                     <div class="text">Total Balance</div>
-                    <div class="number count-to" data-from="0" data-to="{{ $billings->sum('bill_amount') }}" data-speed="1000" data-fresh-interval="20"></div>
+                    <div class="number count-to" data-from="0" data-to="{{ $billings->sum('payment_amount') }}" data-speed="1000" data-fresh-interval="20"></div>
                 </div>
             </div>
         </div>

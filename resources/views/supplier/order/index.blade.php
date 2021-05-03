@@ -43,7 +43,8 @@
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $order->ShowId }}</td>
-                                            <td>@if(isset($order->user->parent->name )) {{ $order->user->parent->name }} @endif</td>
+                                           
+                                            <td>@if($order->user->parent->role == 'buyer') {{ $order->user->parent->name }}  @else  {{ $order->user->name }} @endif</td>
                                             <td>@if(isset($order->delivery_date)) {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif</td>
                                             <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
                                             <td><span

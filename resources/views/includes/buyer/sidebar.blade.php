@@ -43,7 +43,7 @@
                     <span>Home</span>
                 </a>
             </li>
-            @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'accounts' || auth()->user()->role == 'procurement')
+            @if(auth()->user()->role == 'warehouse' || auth()->user()->role == 'accounts')
             <li><a href="{{route('buyer.profile.index')}}"><i class="material-icons">person</i><span>Profile</span></a></li>
             <li><a href="{{ route('orders.index') }}"><i class="material-icons">production_quantity_limits</i><span>Order List</span></a></li>
 
@@ -105,12 +105,7 @@
             @elseif(Auth::user()->role=='procurement')
 
                 <ul class="list">
-                    <li class="@yield('dashboard')">
-                        <a href="{{route('buyer.index')}}">
-                            <i class="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
+                   
 
                     <li class="@yield('profile')">
                         <a href="{{route('buyer.profile.index')}}">
@@ -130,12 +125,12 @@
                             <span>Orders</span>
                         </a>
                     </li>
-                    <li class="@yield('all-order')">
+                    {{-- <li class="@yield('all-order')">
                         <a href="{{route('orders.index')}}">
                             <i class="material-icons">forum</i>
                             <span>Support User</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a  href="{{ route('logout') }}"
                             onclick="event.preventDefault();

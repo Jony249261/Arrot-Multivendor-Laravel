@@ -161,7 +161,7 @@ Route::prefix('seller')->middleware('seller')->group(function(){
 
     //support route
      Route::get('/support/index','Seller\SupportController@index')->name('support.index');
-     Route::post('/support/contact','Buyer\SupportController@contactSubmit')->name('contact.submit');
+     Route::post('/support/contact','Seller\SupportController@sendMessage')->name('contact.submit');
 
 });
 

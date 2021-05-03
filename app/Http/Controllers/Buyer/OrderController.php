@@ -29,7 +29,7 @@ class OrderController extends Controller
         }
         else{
 
-            $orders = Order::where('user_id',auth()->user()->id)->latest()->paginate(15);
+            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->orWhere('user_id',auth()->user()->id)->latest()->paginate(15);
         }
         return view('buyer.order.index',compact('orders'));
     }
