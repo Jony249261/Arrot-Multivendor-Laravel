@@ -194,7 +194,7 @@ class BuyerController extends Controller
             }
             $buyer_logo=$request->file('buyer_logo');
             $name_gen=hexdec(uniqid()).'.'.$buyer_logo->getClientOriginalExtension();
-            Image::make($buyer_logo)->resize(250,250)->save('image_buyer/user/'.$name_gen);
+            Image::make($buyer_logo)->resize(295,65)->save('image_buyer/user/'.$name_gen);
             $img_url3=$name_gen;
 
         }
@@ -204,7 +204,7 @@ class BuyerController extends Controller
             }
             $br_image=$request->file('br_image');
             $name_gen=hexdec(uniqid()).'.'.$buyer_logo->getClientOriginalExtension();
-            Image::make($br_image)->resize(250,250)->save('image_buyer/user/'.$name_gen);
+            Image::make($br_image)->resize(295,65)->save('image_buyer/user/'.$name_gen);
             $img_url4=$name_gen;
 
         }

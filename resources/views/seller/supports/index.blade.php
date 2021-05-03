@@ -36,28 +36,55 @@
 				<form action="{{ route('contact.submit') }}" method="post" enctype="multipart/form-data">
 					@csrf
                     <div class="input-row">
-						<div class="input-group">
-							<label>Name</label>
-							<input type="text" name="name" placeholder="Enter Your Name">
-						</div>
-						<div class="input-group">
-							<label>Company</label>
-							<input type="text" name="company" placeholder="Enter Your Company Name">
-						</div>
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Enter Your Name">
+                            @error('name')
+                                <span class="validation-message" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="input-group">
+                            <label>Company</label>
+                            <input type="text" name="company" placeholder="Enter Your Company Name">
+                            @error('name')
+                                <span class="validation-message" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="Enter Your Email">
+                            @error('email')
+                                <span class="validation-message" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="input-group">
+                            <label>Phone</label>
+                            <input type="text" placeholder="Enter Your Phone" name="phone">
+                            @error('phone')
+                                <span class="validation-message" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+					<div class="input-group">
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="Type Your Message" name="message"></textarea>
+                    @error('message')
+                        <span class="validation-message" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 					</div>
-					<div class="input-row">
-						<div class="input-group">
-							<label>Email</label>
-							<input type="text" name="email" placeholder="Enter Your Email">
-						</div>
-						<div class="input-group">
-							<label>Phone</label>
-							<input type="text" placeholder="Enter Your Phone" name="phone">
-						</div>
-					</div>
-					<label>Message</label>
-					<textarea rows="5" placeholder="Type Your Message" name="message"></textarea>
-					<button type="submit">SEND</button>
+                    <button type="submit">SEND</button>
 
 				</form>
 			</div>
