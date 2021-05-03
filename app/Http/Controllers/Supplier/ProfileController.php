@@ -53,7 +53,7 @@ class ProfileController extends Controller
             unlink($path);
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(270,270)->save('users/'.$name_gen);
+            Image::make($image)->resize(295,65)->save('users/'.$name_gen);
             $img_url = $name_gen;
         }
             $user->image=$img_url;

@@ -49,33 +49,6 @@
 
             @endif
 
-            {{-- procurement --}}
-            @if(Auth::user()->role=='procurement')
-            <li class="@yield('order_create')">
-                <a href="{{ route('orders.create') }}">
-                    <i class="material-icons">shopping_cart</i>
-                    <span>Create Order</span>
-                </a>
-            </li>
-
-            <li class="@yield('all-order')">
-                <a href="{{route('orders.index')}}">
-                    <i class="material-icons">forum</i>
-                    <span>Support User</span>
-                </a>
-            </li>
-            <li>
-                <a  href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                    <i class="material-icons">input</i> <span>Logout</span>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </a>
-            </li>
-            @endif
             @if(auth()->user()->role != 'warehouse' && auth()->user()->role != 'accounts' && auth()->user()->role != 'procurement')
             <li class="@yield('order')">
                 <a href="javascript:void(0);" class="menu-toggle">
@@ -132,7 +105,6 @@
             @elseif(Auth::user()->role=='procurement')
 
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
                     <li class="@yield('dashboard')">
                         <a href="{{route('buyer.index')}}">
                             <i class="material-icons">home</i>

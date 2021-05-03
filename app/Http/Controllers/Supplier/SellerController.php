@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Supplier;
 
-use App\Buyer;
 use App\Seller;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
 use App\User;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Image;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class SellerController extends Controller
 {
@@ -50,7 +49,8 @@ class SellerController extends Controller
         Image::make($sr_image)->resize(600,600)->save('image_seller/user/'.$name_gen);
         $img_url2=$name_gen;
 
-        $seller_id=Helper::IDGenerator(new User,'seller_id',4,'SEL');
+//        $seller_id=Helper::IDGenerator(new User,'seller_id',4,'SEL');
+        $seller_id = IdGenerator::generate(['table' => 'users','field'=>'seller_id', 'length' => 10, 'prefix' =>'SELLER-']);
         $user=new User();
         $user->seller_id =$seller_id;
         $user->parent_id= auth()->user()->id;

@@ -6,10 +6,11 @@ use App\Buyer;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
-use App\Helpers\Helper;
+
 use App\Http\Controllers\EmailController;
 use Illuminate\Support\Facades\Session;
 use Image;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class BuyerController extends Controller
 {
@@ -57,7 +58,7 @@ class BuyerController extends Controller
        if($request->has('buyer_logo')){
         $buyer_logo=$request->file('buyer_logo');
         $name_gen=hexdec(uniqid()).'.'.$buyer_logo->getClientOriginalExtension();
-        Image::make($buyer_logo)->resize(250,250)->save('image_buyer/user/'.$name_gen);
+        Image::make($buyer_logo)->resize(295,65)->save('image_buyer/user/'.$name_gen);
         $img_url3=$name_gen;
        }
        $img_url4 = null;
@@ -69,8 +70,8 @@ class BuyerController extends Controller
        }
 
 
-
-        $buyer_id=Helper::IDGenerator(new User,'buyer_id',4,'BUY');
+        $buyer_id = IdGenerator::generate(['table' => 'users','field'=>'buyer_id', 'length' => 9, 'prefix' =>'BUYER-']);
+//        $buyer_id=Helper::IDGenerator(new User,'buyer_id',4,'BUY');
         $user=new User();
         $user->buyer_id=$buyer_id;
         $user->parent_id= auth()->user()->id;
@@ -109,7 +110,7 @@ class BuyerController extends Controller
             Session::flash('success','Account has been created. Please check email for verification link.');
             return redirect()->route('supplier.buyer.index');
         }
-        
+
         Session::flash('warning','Something went wrong!!');
         return redirect()->back();
 
@@ -127,7 +128,7 @@ class BuyerController extends Controller
         $trade_license='image_buyer/user/'.$buyer->trade_license;
         $buyer_logo='image_buyer/user/'.$buyer->buyer_logo;
 
-            
+
             unlink($br_image);
             unlink($buyer_logo);
             unlink($trade_license);

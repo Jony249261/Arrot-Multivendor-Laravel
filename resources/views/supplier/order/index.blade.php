@@ -43,7 +43,7 @@
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $order->ShowId }}</td>
-                                            <td>@if(isset($order->user->name )) {{ $order->user->name }} @endif</td>
+                                            <td>@if(isset($order->user->parent->name )) {{ $order->user->parent->name }} @endif</td>
                                             <td>@if(isset($order->delivery_date)) {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif</td>
                                             <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
                                             <td><span
@@ -58,7 +58,7 @@
                                                     $grant_total +=$item->unite_price * $item->qty ;
                                                 @endphp
                                             @endforeach
-                                            {{ number_format($grant_total,2) }}    
+                                            {{ number_format($grant_total,2) }}
                                             </td>
                                             <td>
                                                 <div class="icon-button-demo">
