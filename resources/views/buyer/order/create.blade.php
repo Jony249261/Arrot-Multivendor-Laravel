@@ -1,5 +1,5 @@
 @extends('layouts.buyer-app')
-
+@section('title','Create order')
 @if(Auth::user()->role=='buyer')
 @section('buyer_order','active')
 @section('order','active')
