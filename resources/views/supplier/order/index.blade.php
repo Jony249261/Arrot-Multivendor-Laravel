@@ -59,7 +59,7 @@
                                                     $grant_total +=$item->unite_price * $item->qty ;
                                                 @endphp
                                             @endforeach
-                                            {{ number_format($grant_total,2) }}    
+                                            {{ number_format($grant_total,2) }}
                                             </td>
                                             <td>
                                                 <div class="icon-button-demo">

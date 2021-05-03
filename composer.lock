@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "29ac40a68b5f604d9ea9c0a0e8f6b136",
+    "content-hash": "f161b7aa0716111ca23bbecda3297276",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -930,6 +930,53 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
             "time": "2021-04-26T09:17:50+00:00"
+        },
+        {
+            "name": "haruncpi/laravel-id-generator",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/haruncpi/laravel-id-generator.git",
+                "reference": "c8b1814df3615b22217ec7669d863fd18e3226cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/haruncpi/laravel-id-generator/zipball/c8b1814df3615b22217ec7669d863fd18e3226cb",
+                "reference": "c8b1814df3615b22217ec7669d863fd18e3226cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Haruncpi\\LaravelIdGenerator\\IdGeneratorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Haruncpi\\LaravelIdGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "cc-by-4.0"
+            ],
+            "authors": [
+                {
+                    "name": "Md.Harun-Ur-Rashid",
+                    "email": "harun.cox@gmail.com"
+                }
+            ],
+            "description": "Easy way to generate custom ID in laravel framework",
+            "support": {
+                "issues": "https://github.com/haruncpi/laravel-id-generator/issues",
+                "source": "https://github.com/haruncpi/laravel-id-generator/tree/v1.0.8"
+            },
+            "time": "2021-04-06T03:40:52+00:00"
         },
         {
             "name": "intervention/image",

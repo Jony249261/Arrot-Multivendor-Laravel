@@ -108,10 +108,12 @@
                                     </td>
                                     <td>
 
-                                        <a href="{{route('seller.propose.product.reject',$pproduct->id)}}" onclick="return(confirm('Are you Reject This product'))" class="btn btn-danger waves-effect m-r-20"><i class="material-icons">delete</i></a>
-                                        <a type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#editmodal-{{$pproduct->id}}"> <i class="material-icons">edit</i></a>
-                                        <a href="{{route('seller.propose.product.accept',$pproduct->id)}}" onclick="return(confirm('Are you Sure to Accept'))" class="btn btn-primary waves-effect m-r-20"><i class="material-icons">done_all
+                                        
+                                        <a href="{{route('seller.propose.product.accept',$pproduct->id)}}" id="accept" class="btn btn-primary"><i class="material-icons">done_all
                                             </i></a>
+                                        <a type="button" class="btn btn-success waves-effect" data-toggle="modal" data-target="#editmodal-{{$pproduct->id}}"> <i class="material-icons">edit</i></a>
+                                        <a href="{{route('seller.propose.product.reject',$pproduct->id)}}" id="delete" class="btn btn-danger"><i class="material-icons">delete</i></a>
+                                        
 
 
                                     </td>

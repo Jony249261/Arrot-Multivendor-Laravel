@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Helpers\Helper;
 use Image;
 use Illuminate\Support\Str;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ProductController extends Controller
 {
@@ -60,11 +61,14 @@ class ProductController extends Controller
         ]);
 
         if($request->product_type == 'vegetable'){
-            $product_id = Helper::IDGenerator(new Product,'product_id',4,'VEG');
+            $product_id = IdGenerator::generate(['table' => 'products','field'=>'product_id', 'length' => 7, 'prefix' =>'VEG-']);
+
         }elseif($request->product_type == 'fish'){
-            $product_id = Helper::IDGenerator(new Product,'product_id',4,'FIS');
+            $product_id = IdGenerator::generate(['table' => 'products','field'=>'product_id', 'length' => 7, 'prefix' =>'FIS-']);
+
         }else{
-            $product_id = Helper::IDGenerator(new Product,'product_id',4,'MET');
+            $product_id = IdGenerator::generate(['table' => 'products','field'=>'product_id', 'length' => 7, 'prefix' =>'MET-']);
+
         }
         $product = new Product();
         $product->product_id = $product_id;
