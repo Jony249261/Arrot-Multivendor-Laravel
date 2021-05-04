@@ -11,6 +11,9 @@
             
             <li class="navdesc">@if(auth()->user()->role == 'buyer') {{Auth::user()->buyer->buyer_name}}@elseif(auth()->user()->role == 'warehouse') {{Auth::user()->parent->name}} @elseif(auth()->user()->role == 'accounts') {{Auth::user()->parent->name}} @elseif(Auth::user()->role == 'procurement') {{Auth::user()->parent->name}} @endif</li>
                 
+                <!-- Call Search -->
+                {{-- <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li> --}}
+                <!-- #END# Call Search -->
                 <!-- Notifications -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -218,7 +221,27 @@
                     </ul>
                 </li> --}}
                 <!-- #END# Tasks -->
-                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        <i class="material-icons">exit_to_app</i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('buyer.profile.index') }}"><i class="material-icons">person</i>Profile</a></li>
+                    <li role="seperator" class="divider"></li>
+
+                    <li>  <a  href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            <i class="material-icons">input</i>Log Out
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </a>
+                    </li>
+                    </ul>
+                </li> 
+
             </ul>
         </div>
     </div>

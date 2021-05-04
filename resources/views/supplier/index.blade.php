@@ -103,20 +103,48 @@
                          data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
                          data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
                          data-fill-Color="rgba(0, 188, 212, 0)">
-                        12,10,9,6,5,6,10,5,7,5,12,13,7,12,11
+                        @php
+                            $date1=\Carbon\Carbon::today()->subDays(1);
+                            $date7=\Carbon\Carbon::today()->subDays(7);
+                            $date30=\Carbon\Carbon::today()->subDays(30);
+
+
+                            $total_graph1=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->sum('bill_amount');
+                            $total_graph2=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->sum('bill_amount');
+                            $total_graph3=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->sum('bill_amount');
+                        @endphp
+                        {{$total_graph1}},{{$total_graph2}},{{$total_graph3}}
                     </div>
                     <ul class="dashboard-stat-list">
                         <li>
                             TODAY
-                            <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
+                            @php
+                                $date1=\Carbon\Carbon::today()->subDays(1);
+
+                                $total_lastday=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->sum('bill_amount');
+                            @endphp
+
+                            <span class="pull-right"><b>{{$total_lastday}}</b> <small>TAKA</small></span>
                         </li>
                         <li>
-                            YESTERDAY
-                            <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
+                            LAST 7 DAYS
+                            @php
+
+                                $date7=\Carbon\Carbon::today()->subDays(7);
+
+                               $total_last7day=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->sum('bill_amount');
+                            @endphp
+                            <span class="pull-right"><b>{{$total_last7day}}</b> <small>TAKA</small></span>
                         </li>
                         <li>
-                            LAST WEEK
-                            <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
+                            LAST 30 DAYS
+                            @php
+
+
+                                $date30=\Carbon\Carbon::today()->subDays(30);
+                                $total_last30day=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->sum('bill_amount');
+                            @endphp
+                            <span class="pull-right"><b>{{$total_last30day}}</b> <small>TAKA</small></span>
                         </li>
                     </ul>
                 </div>
@@ -197,7 +225,7 @@
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
             <div class="card">
                 <div class="header">
-                    <h2>TASK INFOS</h2>
+                    <h2>Product Status</h2>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -216,71 +244,40 @@
                         <table class="table table-hover dashboard-task-infos">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Task</th>
+                                    <th>Sl</th>
+                                    <th>Order Id</th>
+                                    <th>Buyer Name</th>
                                     <th>Status</th>
-                                    <th>Manager</th>
                                     <th>Progress</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            @php
+                                $orders = App\Order::where('status','!=','received')->paginate(15);
+
+                            @endphp
+                            @foreach($orders as $i => $order)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Task A</td>
-                                    <td><span class="label bg-green">Doing</span></td>
-                                    <td>John Doe</td>
+                                    <td>{{ $i + 1 }}</td>
+                                    <td>{{ $order->ShowId }}</td>
+
+                                    <td>@if($order->user->parent->role == 'buyer') {{ $order->user->parent->name }}  @else  {{ $order->user->name }} @endif</td>
+                                    <td><span class="label bg-green">{{$order->status}}</span></td>
+
                                     <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
-                                        </div>
+                                        @php
+                                            $grant_total = 0;
+                                        @endphp
+                                        @foreach($order->items as $item)
+                                            @php
+                                                $grant_total +=$item->unite_price * $item->qty ;
+                                            @endphp
+                                        @endforeach
+                                        {{ number_format($grant_total,2) }}
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Task B</td>
-                                    <td><span class="label bg-blue">To Do</span></td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Task C</td>
-                                    <td><span class="label bg-light-blue">On Hold</span></td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-light-blue" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Task D</td>
-                                    <td><span class="label bg-orange">Wait Approvel</span></td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Task E</td>
-                                    <td>
-                                        <span class="label bg-red">Suspended</span>
-                                    </td>
-                                    <td>John Doe</td>
-                                    <td>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-red" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
-                                        </div>
-                                    </td>
-                                </tr>
+                            @endforeach
+                            {{$orders->links()}}
                             </tbody>
                         </table>
                     </div>

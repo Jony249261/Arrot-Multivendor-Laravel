@@ -24,7 +24,7 @@
 
                         <div class="row clearfix">
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             name="name" value="{{ old('name') }}" required>
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             name="email" value="{{ old('email') }}" required >
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('phone') is-invalid @enderror"
                                             name="phone" value="{{ old('phone') }}" required>
@@ -76,9 +76,9 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="form-line @error('password') error @enderror">
-                                        <input type="password" class="form-control"
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
                                             name="password" value="{{ old('password') }}" required>
                                             <label class="form-label">Password</label>
                                     </div>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
                                             name="password_confirmation" value="{{ old('password_confirmation') }}" required>
