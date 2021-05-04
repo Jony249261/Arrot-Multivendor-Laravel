@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('role')->nullable();
             $table->string('password');
-            $table->string('image')->default('defaultphoto.png');
+            $table->string('image')->default('defaultphoto.png')->nullable();
             $table->string('verification_code')->nullable();
             $table->integer('is_verified')->default(0);
             $table->unsignedBigInteger('parent_id')->nullable();

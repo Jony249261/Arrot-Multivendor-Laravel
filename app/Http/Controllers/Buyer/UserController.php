@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Buyer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
+use App\Notifications\BuyerUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 use Image;
 
@@ -48,7 +50,7 @@ class UserController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'phone' => 'sometimes|nullable|numeric',
-            'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
+            'image' => 'required|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'required|confirmed|min:6',
             'role' => 'required|string',
         ]);
@@ -73,12 +75,17 @@ class UserController extends Controller
         $user->buyer_id = auth()->user()->buyer_id;
         $user->verification_code = sha1(time());
         $user->save();
-
-        if($user != null){
-            EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
-            Session::flash('success','Account has been created. Please check email for verification link.');
-            return redirect()->route('buyer-users.index');
-        }
+        $auth_user = User::find(auth()->user()->id);
+        Notification::send($auth_user,new BuyerUser($user));
+        // if($user != null){
+        //     EmailController::sendSignupEmail($user->name,$user->email,$user->verification_code);
+        //     $auth_user = User::find(auth()->user()->id);
+        //     Notification::send($auth_user,new BuyerUser($user));
+        //     Session::flash('success','Account has been created. Please check email for verification link.');
+        //     return redirect()->route('buyer-users.index');
+        // }
+        
+        
 
         Session::flash('warning','Something went wrong!');
         return redirect()->back();

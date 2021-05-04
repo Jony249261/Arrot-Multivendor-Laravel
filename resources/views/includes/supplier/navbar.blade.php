@@ -13,7 +13,7 @@
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">notifications</i>
                         
-                        <span class="label-count">{{  $supplierUsers->count() + $orders->count() }}</span>
+                        <span class="label-count">{{  auth()->user()->unreadNotifications->count() }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">NOTIFICATIONS</li>
@@ -32,19 +32,21 @@
                                         </div>
                                     </a>
                                 </li>
+                                @if(auth()->user()->unreadNotifications->count())
                                 <li>
                                     <a href="{{ route('order.index') }}">
                                         <div class="icon-circle bg-cyan">
                                             <i class="material-icons">add_shopping_cart</i>
                                         </div>
                                         <div class="menu-info">
-                                            <h4>{{ $orders->count() }} new order</h4>
+                                            <h4>{{ auth()->user()->notifications->count() }} new order</h4>
                                             <p>
-                                                <i class="material-icons">access_time</i>@if(isset($orders->latest()->first()->created_at)) {{ $orders->latest()->first()->created_at->diffForHumans() }} @endif mins ago
+                                                {{-- <i class="material-icons">access_time</i>@if(isset($orders->latest()->first()->created_at)) {{ $orders->latest()->first()->created_at->diffForHumans() }} @endif mins ago --}}
                                             </p>
                                         </div>
                                     </a>
                                 </li>
+                                @endif
                                 @php
                                     $order = $orders->orWhere('status','received')->Orwhere('payment_status','paid')->latest()->first();
                                 @endphp
@@ -56,7 +58,7 @@
                                         </div>
                                         <div class="menu-info">
                                             
-                                            <h4>Order id {{ $order->showId }} is {{ $order->status }} @if($order->payment_status == 'paid') and payment is {{ $order->payment_status }} @endif.</h4>
+                                            <h4>Order id {{ $order->showId }} is {{ $order->status }}.</h4>
                                             <p>
                                                 <i class="material-icons">access_time</i>@if(isset($order->showId)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
                                             </p>
@@ -87,7 +89,7 @@
                             </ul>
                         </li>
                         <li class="footer">
-                            <a href="javascript:void(0);">View All Notifications</a>
+                            <a href="{{ route('markread') }}">Mark all as read</a>
                         </li>
                     </ul>
                 </li>

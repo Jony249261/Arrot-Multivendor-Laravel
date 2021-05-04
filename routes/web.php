@@ -96,6 +96,10 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     //order change price
     Route::put('/order/product/update/{id}','Supplier\OrderController@orderProductUpdate')->name('order.product.update');
 
+    Route::get('/markread',function(){
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    })->name('markread');
 
 
 });
@@ -130,7 +134,10 @@ Route::prefix('buyer')->middleware('buyer')->group(function(){
      Route::post('/support/send-message','Buyer\SupportController@sendMessage')->name('support.send-message');
 
 
-
+     Route::get('/markread',function(){
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    })->name('markread');
 
 });
 
@@ -165,6 +172,8 @@ Route::prefix('seller')->middleware('seller')->group(function(){
      Route::post('/support/contact','Seller\SupportController@sendMessage')->name('contact.submit');
 
 });
+
+
 
 
 

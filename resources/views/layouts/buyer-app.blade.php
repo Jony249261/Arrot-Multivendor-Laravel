@@ -135,6 +135,9 @@
         toastr.info("{{Session::get('info')}}")
 
         @endif
+        @if(Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}")
+        @endif
     </script>
 
     @yield('page-scripts')

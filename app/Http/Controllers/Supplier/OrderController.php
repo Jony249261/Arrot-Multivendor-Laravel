@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Supplier;
 
 use App\Billing;
 use App\Http\Controllers\Controller;
+use App\Notifications\OrderStatus;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
 use App\ProductPrice;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 use PDF;
 
@@ -33,6 +36,10 @@ class OrderController extends Controller
         $order = Order::findOrFail($id);
         $status = $request->status;
         $order->update(['status' => $status]);
+        //send notification
+        $user = User::find($order->user->id);
+        Notification::send($user,new OrderStatus($order->id,$order->status));
+
         Session::flash('info','Order status updated successfully!!');
         return back();
     }
@@ -76,6 +83,10 @@ class OrderController extends Controller
         $order->status = 'accepted';
         $order->delivery_date = $request->sales_date;
         $order->save();
+        //send notification
+        $user = User::find($order->user->id);
+        Notification::send($user,new OrderStatus($order->showId,$order->status));
+        
         Session::flash('info','Order product price updated!');
         return back();
 
