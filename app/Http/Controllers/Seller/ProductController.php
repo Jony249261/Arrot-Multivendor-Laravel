@@ -64,7 +64,7 @@ class ProductController extends Controller
         $product->price=$request->price;
         $product->status='processing';
         $product->update();
-        Session::flash('info','Your Product has been submitted!');
+        Session::flash('success','Your Product has been submitted!');
         return redirect()->route('seller.propose.product');
 
     }
@@ -79,7 +79,7 @@ class ProductController extends Controller
         $product=SellerPropose::findOrFail($id);
         $product->status='accept';
         $product->update();
-        Session::flash('info'.'Product Accepted successfully!!');
+        Session::flash('success'.'Product Accepted successfully!!');
         return redirect()->back();
 
     }
@@ -97,7 +97,7 @@ class ProductController extends Controller
         $product=SellerPropose::findOrFail($id);
         $product->status='reject';
         $product->update();
-        Session::flash('success'.'Product Accepted successfully!!');
+        Session::flash('success'.'Product Rejected successfully!!');
         return redirect()->back();
     }
 

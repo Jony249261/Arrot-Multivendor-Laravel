@@ -6,10 +6,11 @@
             <a class="navbar-brand" href="{{route('buyer.index')}}">@if(auth()->user()->role == 'buyer') <img src="{{asset('image_buyer/user/'.Auth::user()->buyer->buyer_logo)}}" alt="Buyer" height="50px" alt=""> @elseif(auth()->user()->role == 'warehouse') <img src="{{asset('image_buyer/user/'.Auth::user()->parent->image)}}" alt="Buyer" height="50px" alt=""> @elseif(auth()->user()->role == 'accounts') <img src="{{asset('image_buyer/user/'.Auth::user()->parent->image)}}" alt="Buyer" height="50px" alt=""> @elseif(Auth::user()->role == 'procurement') <img src="{{asset('image_buyer/user/'.Auth::user()->parent->image)}}" alt="Buyer" height="50px" alt=""> @endif</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
+        
             <ul class="nav navbar-nav navbar-right">
-                <!-- Call Search -->
-                <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
-                <!-- #END# Call Search -->
+            
+            <li class="navdesc">@if(auth()->user()->role == 'buyer') {{Auth::user()->buyer->buyer_name}}@elseif(auth()->user()->role == 'warehouse') {{Auth::user()->parent->name}} @elseif(auth()->user()->role == 'accounts') {{Auth::user()->parent->name}} @elseif(Auth::user()->role == 'procurement') {{Auth::user()->parent->name}} @endif</li>
+                
                 <!-- Notifications -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">

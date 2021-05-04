@@ -67,6 +67,14 @@
     padding-left: 0;
 
 }
+
+.navdesc{
+  margin-right:380px;
+  padding-left:10px;  
+  font-size:20px; 
+  margin-top:20px;
+  color:white;
+}
 .img-btn{
 	margin-bottom: -32px;
   /*margin-left: 130px;*/
