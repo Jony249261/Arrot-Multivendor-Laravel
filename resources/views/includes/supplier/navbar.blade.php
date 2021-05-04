@@ -7,7 +7,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-
+                <li class="navdesc"><span class="typing"></span> </li>
                 <!-- Notifications -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
@@ -95,6 +95,26 @@
                 </li>
                 <!-- #END# Notifications -->
                 <!-- Tasks -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        <i class="material-icons">exit_to_app</i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('supplier.profile.index') }}"><i class="material-icons">person</i>Profile</a></li>
+                    <li role="seperator" class="divider"></li>
+
+                    <li>  <a  href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                            <i class="material-icons">input</i>Log Out
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </a>
+                    </li>
+                    </ul>
+                </li> 
                 {{-- <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">flag</i>

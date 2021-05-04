@@ -24,11 +24,10 @@
                     <i class="material-icons">help</i>
                 </div>
                 <div class="content">
-                    <div class="text">NEW TICKETS</div>
+                    <div class="text">TOTAL PURSCHES</div>
                     @php
 
-
-                    $bill=App\Billing::where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                      $bill=App\Billing::distinct('bill_amount')->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
 
 
                     @endphp
@@ -44,7 +43,7 @@
                 <div class="content">
                     <div class="text">Due</div>
                     @php
-                         $total=App\Billing::where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                         $total=App\Billing::distinct('bill_amount')->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
                          $pay=App\Billing::where('buyer_id',Auth::user()->buyer_id)->sum('payment_amount');
                          $due=$total-$pay;
                     @endphp
@@ -116,9 +115,10 @@
                             $date7=\Carbon\Carbon::today()->subDays(7);
                             $date30=\Carbon\Carbon::today()->subDays(30);
 
-                            $total_graph1=App\Billing::where('created_at','>=',$date1)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
-                            $total_graph2=App\Billing::where('created_at','>=',$date7)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
-                            $total_graph3=App\Billing::where('created_at','>=',$date30)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+
+                            $total_graph1=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            $total_graph2=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            $total_graph3=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
                         @endphp
                         {{$total_graph1}},{{$total_graph2}},{{$total_graph3}}
                     </div>
@@ -128,7 +128,7 @@
                             @php
                                 $date1=\Carbon\Carbon::today()->subDays(1);
 
-                                $total_lastday=App\Billing::where('created_at','>=',$date1)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                                $total_lastday=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
                             @endphp
 
                             <span class="pull-right"><b>{{$total_lastday}}</b> <small>TAKA</small></span>
@@ -139,7 +139,7 @@
 
                                   $date7=\Carbon\Carbon::today()->subDays(7);
 
-                                $total_last7day=App\Billing::where('created_at','>=',$date7)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                                 $total_last7day=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
                             @endphp
                             <span class="pull-right"><b>{{$total_last7day}}</b> <small>TAKA</small></span>
                         </li>
@@ -149,7 +149,7 @@
 
 
                               $date30=\Carbon\Carbon::today()->subDays(30);
-                              $total_last30day=App\Billing::where('created_at','>=',$date30)->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                              $total_last30day=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
                             @endphp
                             <span class="pull-right"><b>{{$total_last30day}}</b> <small>TAKA</small></span>
                         </li>
