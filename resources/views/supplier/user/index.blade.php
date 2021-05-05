@@ -61,11 +61,11 @@
                                                     </a>
                                                     @if($user->is_verified == 1)
                                                     <a href="{{ route('users.show',$user->id) }}" class="btn btn-danger waves-effect" title="Inactive" style="float: left">
-                                                        <i class="material-icons">visibility_off</i>
+                                                        <i class="material-icons">toggle_off</i>
                                                     </a>
                                                     @else
                                                     <a href="{{ route('users.show',$user->id) }}" class="btn btn-success waves-effect" title="Active" style="float: left">
-                                                        <i class="material-icons">visibility</i>
+                                                        <i class="material-icons">toggle_on</i>
                                                     </a>
                                                     @endif
 
