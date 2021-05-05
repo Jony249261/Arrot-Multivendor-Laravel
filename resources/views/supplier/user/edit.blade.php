@@ -88,7 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-info btn-lg waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update User</button>
+                            <button class="btn button waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update User</button>
                         </div>
 
 

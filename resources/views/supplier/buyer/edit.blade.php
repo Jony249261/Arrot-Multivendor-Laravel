@@ -215,7 +215,7 @@
 
 
                                 </div>
-                                <button class="btn btn-info btn-lg waves-effect pull-right" type="submit"><i class="material-icons">update</i> Update Buyer</button>
+                                <button class="btn button  waves-effect pull-right" type="submit"><i class="material-icons">update</i> Update Buyer</button>
 
                             </div>
                         </form>

@@ -158,7 +158,7 @@
                                     <span class="validation-message">{{ $message }}</span>
                                 @enderror
                                 </div>
-                                <button class="btn btn-info btn-lg waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Seller</button>
+                                <button class="btn button waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Seller</button>
 
                             </div>
                         </form>

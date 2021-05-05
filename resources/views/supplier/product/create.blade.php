@@ -96,7 +96,7 @@
                                 </div>
 
                             </div>
-                            <button class="btn btn-info btn-lg waves-effect item pull-right" type="submit"><i class="material-icons">library_add</i> Create Product</button>
+                            <button class="btn button waves-effect item pull-right" type="submit"><i class="material-icons">library_add</i> Create Product</button>
                         </div>
 
 
