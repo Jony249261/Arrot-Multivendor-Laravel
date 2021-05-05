@@ -17,7 +17,7 @@
 
                                     </h2>
                                     <ul class="header-dropdown m-r--5 m-t--2">
-                                        <a href="{{ route('supplier.buyer.create') }}" class="btn btn-success"><i class="material-icons">library_add</i>Create</a>
+                                        <a href="{{ route('supplier.buyer.create') }}" class="btn btn-grad"><i class="material-icons">library_add</i>Create</a>
                                     </ul>
                                 </div>
                                 <div class="body">

@@ -19,9 +19,10 @@
 
                         </h2>
                         <ul class="header-dropdown m-r--5 m-t--2">
-                            <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-info"><i class="material-icons">receipt</i>Invoice</a>
-                            <a href="{{ route('order.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
-
+                            <div class="display-flex">
+                                <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-grad"><i class="material-icons">receipt</i>Invoice</a>
+                                <a href="{{ route('order.index') }}" class="btn btn-grad1"><i class="material-icons">visibility</i>View</a>
+                            </div>
                         </ul>
                     </div>
                     <div class="row">
@@ -209,16 +210,13 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="row">
-                        <div class="col-md-6">
-                    <div class="header bg-cyan ">
+                   
+                    <div class="header bg-cyan text-center">
                         <h2>
                             Product Details - {{ $order->showId }}
 
                         </h2>
 
-                    </div>
-                    </div>
                     </div>
                     <div class="body">
                         <div class="table-responsive">
@@ -305,19 +303,13 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="row">
-                            <div class="col-md-6">
-
-                            </div>
-                            <div class="col-md-6">
-                                    <div class="header bg-green text-right">
+                        
+                            
+                                    <div class="header bg-green text-center">
                             <h2>
                                 Payment Details - {{ $order->showId }}
 
                             </h2>
-
-                        </div>
-                            </div>
 
                         </div>
                         

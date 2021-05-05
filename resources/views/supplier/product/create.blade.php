@@ -14,7 +14,7 @@
 
                     <h2>Create Product</h2>
                     <ul class="header-dropdown m-r--5 m-t--2">
-                        <a href="{{ route('products.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
+                        <a href="{{ route('products.index') }}" class="btn btn-grad"><i class="material-icons">visibility</i>View</a>
                     </ul>
 
                 </div>

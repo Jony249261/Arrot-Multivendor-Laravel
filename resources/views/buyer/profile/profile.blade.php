@@ -15,7 +15,7 @@
                 Buyer Information
               </h2>
               <ul class="header-dropdown m-r--5 m-t--2">
-                            <a href="{{ route('profile.edit') }}" class="btn btn-success"><i class="material-icons">edit</i> Edit Profile</a>
+                            <a href="{{ route('profile.edit') }}" class="btn btn-grad"><i class="material-icons">edit</i> Edit Profile</a>
 
                         </ul>
               </div>
@@ -182,7 +182,7 @@
                 <div class="header bg-red">
                     <h2>Profile Information</h2>
                         <ul class="header-dropdown m-r--5 m-t--2">
-                            <a href="{{ route('buyer.user.update') }}" class="btn btn-success"><i class="material-icons">edit</i> Edit Profile</a>
+                            <a href="{{ route('buyer.user.update') }}" class="btn btn-grad"><i class="material-icons">edit</i> Edit Profile</a>
 
                         </ul>
                 </div>
