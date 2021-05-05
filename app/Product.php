@@ -23,6 +23,9 @@ class Product extends Model
         return $this->hasMany(SellerPropose::class);
 
     }
+    public  function orders(){
+        return $this->hasMany(OrderProduct::class,'product_id','id');
+    }
 
     public function getSalesRateAttribute()
     {
