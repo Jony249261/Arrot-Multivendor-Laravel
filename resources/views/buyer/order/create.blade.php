@@ -49,7 +49,7 @@
                                                     <input type="hidden" name="products[]" value="{{ $product->id }}" id="">
                                                     <input type="hidden" min="0" name="prices[]"  value="{{ $product->sales_rate }}" id="price">
                                                     {{-- <input type="number" min="0" name="quantites[]" style="width: 80px" data-id="{{ $product->id }}" placeholder="00.00" id="qty"> --}}
-                                                    <input type="number" min="0" name="quantites[]" style="width: 80px" data-id="{{ $product->id }}" placeholder="00.00" onchange="calculateAmount(this.value)"  id="qty">
+                                                    <input type="number" min="0" name="quantites[]" style="width: 80px" data-id="{{ $product->id }}" placeholder="00.00" id="qty">
 
 
                                                 </td>

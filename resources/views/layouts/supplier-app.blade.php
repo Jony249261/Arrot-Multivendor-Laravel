@@ -38,6 +38,8 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- toster js setup  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
     <style>
         .invoice {
             position: relative;
@@ -252,6 +254,14 @@
       });
     });
 
+</script>
+<script>
+    var typed = new Typed(".typing", {
+        strings: ["Arrot Krishi Ponno Ltd."],
+        typeSpeed: 100,
+        backSpeed: 100,
+        loop: true
+    });
 </script>
 
     @yield('page-scripts')

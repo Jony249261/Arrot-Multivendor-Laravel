@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Buyer;
 
 use App\Billing;
 use App\Http\Controllers\Controller;
+use App\Notifications\NewOrder;
+use App\Notifications\OrderStatus;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -19,6 +24,18 @@ class OrderController extends Controller
      */
     public function index()
     {
+        // $max = DB::table('order_products')
+        // ->join('orders','orders.id', '=','order_products.product_id')
+        // ->select('order_products.product_id')
+        // ->groupBy('order_products.product_id')
+        // ->max('order_products.product_id');
+
+        // $most_sold_product=Order::
+        // join('order_products','orders.id', '=','order_products.product_id')
+        // ->where('order_products.product_id','=',$max)
+        // ->get();
+        // dd($most_sold_product);
+
         if(auth()->user()->role == 'warehouse'){
             $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->paginate(15);
         }
@@ -54,19 +71,28 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+
         $products = $request->input('products');
         $quantities = $request->input('quantites');
         $prices = $request->input('prices');
 
         //insert data in orders table
-        $order = Order::create(
-            [
-                'user_id' => auth()->user()->id,
-                'buyer_id' => auth()->user()->buyer_id,
-            ]
-        );
+        if ( !empty(array_filter($quantities))){
+            $order = Order::create(
+                [
+                    'user_id' => auth()->user()->id,
+                    'buyer_id' => auth()->user()->buyer_id,
+                ]
+            );
+        }
+        else{
+            Session::flash('warning','Please add atleast one quantites!!');
+            return redirect()->back();
+
+        }
         // $order->delivery_date = $order->created_at->addDays(3);
-        $order->save();
+        // $order->save();
+
         //insert data in order_product table
         $amount = 0;
         foreach($quantities as $id => $qty){
@@ -88,6 +114,9 @@ class OrderController extends Controller
             }
 
         }
+        $users = User::where('role','supplier')->get();
+        Notification::send($users, new NewOrder($order,$order->id));
+        
         Session::flash('success','Order created successfully!!');
         return redirect()->route('orders.index');
     }
@@ -166,6 +195,10 @@ class OrderController extends Controller
         }
         $order->status = 'received';
         $order->save();
+        //notification
+        $user = User::where('role','supplier')->get();
+        Notification::send($user,new OrderStatus($order->id,$order->status));
+
         Session::flash('info','Order has been updated successfully!!');
         return redirect()->route('orders.index');
     }

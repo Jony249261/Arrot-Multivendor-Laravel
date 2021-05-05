@@ -18,13 +18,15 @@
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
                         <i class="material-icons">notifications</i>
-                        <span class="label-count">{{ $count }}</span>
+                        <span class="label-count">{{ auth()->user()->unreadNotifications->count() }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">NOTIFICATIONS</li>
                         <li class="body">
-                            <ul class="menu">
-                                <li>
+                            <ul class="menu" style="list-style: none">
+                               
+                                
+                                {{-- <li>
                                     <a href="@if(auth()->user()->role == 'buyer') {{ route('buyer-users.index') }} @else javascript:void(0); @endif">
                                         <div class="icon-circle bg-light-green">
                                             <i class="material-icons">person_add</i>
@@ -37,109 +39,34 @@
                                             </p>
                                         </div>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('orders.index') }}">
-                                        <div class="icon-circle bg-cyan">
-                                            <i class="material-icons">add_shopping_cart</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4>{{ $buyerOrders->count() }} new order.</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i>@if(isset($buyerOrders->latest()->first()->created_at)) {{ $buyerOrders->latest()->first()->created_at->diffForHumans()}} @else 0 @endif  mins ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                @php
-                                    $order = $buyerOrders->where('status','accepted')->orWhere('status','processing')->orWhere('status','shipping')->orWhere('status','completed')->latest()->first();
-                                @endphp
-                                @if($order)
-                                <li>
-                                    <a href="{{ route('orders.show',$order->id) }}">
-                                        <div class="icon-circle bg-cyan">
-                                            <i class="material-icons">add_shopping_cart</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            
-                                            <h4>Order id {{ $order->showId }} is {{ $order->status }}.</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i>@if(isset($order->created_at)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                @endif
-                                {{-- <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-red">
-                                            <i class="material-icons">delete_forever</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4><b>Nancy Doe</b> deleted account</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> 3 hours ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-orange">
-                                            <i class="material-icons">mode_edit</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4><b>Nancy</b> changed name</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> 2 hours ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-blue-grey">
-                                            <i class="material-icons">comment</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4><b>John</b> commented your post</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> 4 hours ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-light-green">
-                                            <i class="material-icons">cached</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4><b>John</b> updated status</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> 3 hours ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">
-                                        <div class="icon-circle bg-purple">
-                                            <i class="material-icons">settings</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4>Settings updated</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i> Yesterday
-                                            </p>
-                                        </div>
-                                    </a>
                                 </li> --}}
+                                
+                               
+                                 @if(auth()->user()->unreadNotifications->count())
+                                 @foreach (auth()->user()->unreadNotifications->where('type','App\Notifications\OrderStatus') as $notification)
+                                 <li>
+                                    <a href="{{ route('orders.show',$notification->data['order_id']) }}">
+                                        <div class="icon-circle bg-cyan">
+                                            <i class="material-icons">add_shopping_cart</i>
+                                        </div>
+                                        <div class="menu-info">
+                                            <h4>Order id #000{{ $notification->data['order_id'] }} is {{ $notification->data['status'] }}</h4>
+                                            <p>
+                                                <i class="material-icons">access_time</i>{{ $notification->created_at->diffForHumans() }}  
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                 @endforeach
+                                 @endif
+                                 
                             </ul>
                         </li>
+                        @if(auth()->user()->unreadNotifications->count())
                         <li class="footer">
-                            <a href="javascript:void(0);">View All Notifications</a>
+                            <a href="{{ route('markread') }}">Mark all as read</a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 <!-- #END# Notifications -->

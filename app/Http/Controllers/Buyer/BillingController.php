@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Buyer;
 
 use App\Billing;
 use App\Http\Controllers\Controller;
+use App\Notifications\OrderBill;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 use Image;
 
@@ -36,7 +39,7 @@ class BillingController extends Controller
             $data['check_photo'] = $name_gen;
         }
 
-        Billing::create($data);
+        $bill = Billing::create($data);
         $billings = Billing::where('order_id',$order->id)->get();
         $paid_amount = $billings->sum('payment_amount');
         $total = 0;
@@ -51,6 +54,10 @@ class BillingController extends Controller
             $order->payment_status = 'partials';
             $order->save();
         }
+        //send notification
+        $users = User::where('role','supplier')->get();
+        Notification::send($users, new OrderBill($order,$bill));
+
         Session::flash('success','Order payment has been submitted!');
         return back();
     }
