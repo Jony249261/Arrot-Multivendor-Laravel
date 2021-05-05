@@ -41,7 +41,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$pproduct->product->product_name}}</td>
                                     <td>{{$pproduct->user->name}}</td>
-                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="100" width="100"></td>
+                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="50" width="50"></td>
                                     <td>{{$pproduct->product->unit->name}}</td>
                                     <td>{{$pproduct->quantity}}</td>
                                     <td>{{$pproduct->price}}</td>
@@ -105,7 +105,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$pproduct->product->product_name}}</td>
                                     <td>{{$pproduct->user->name}}</td>
-                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="100" width="100"></td>
+                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="50" width="50"></td>
                                     <td>{{$pproduct->product->unit->name}}</td>
                                     <td>{{$pproduct->quantity}}</td>
                                     <td>{{$pproduct->price}}</td>
@@ -165,7 +165,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$pproduct->product->product_name}}</td>
                                     <td>{{$pproduct->user->name}}</td>
-                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="100" width="100"></td>
+                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="50" width="50"></td>
                                     <td>{{$pproduct->product->unit->name}}</td>
                                     <td>{{$pproduct->quantity}}</td>
                                     <td>{{$pproduct->price}}</td>

@@ -8,6 +8,7 @@ use App\Order;
 use App\OrderProduct;
 use App\Product;
 use App\SellerPropose;
+use Carbon\Exceptions\InvalidFormatException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,10 +23,10 @@ class ProductController extends Controller
     }
 
     public  function create(Request  $request){
+
         $products = $request->products;
         $quantities = $request->quantites;
         $prices = $request->prices;
-
         foreach($products as $key => $product)
         {
             $sellerpro=new SellerPropose();
@@ -37,12 +38,19 @@ class ProductController extends Controller
                 $sellerpro->status='pending';
                 if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
                     $sellerpro->save();
+                    Session::flash('info','Your Product has been submitted!');
+                    return redirect()->route('seller.propose.product');
                 }
+                else{
+                    Session::flash('warning','Your Product has been submitted!');
+                    return  redirect()->back();
+                }
+
             }
 
         }
-            Session::flash('info','Your Product has been submitted!');
-            return redirect()->route('seller.propose.product');
+
+
 
     }
 

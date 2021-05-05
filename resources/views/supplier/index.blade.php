@@ -103,8 +103,6 @@
                             $date1=\Carbon\Carbon::today()->subDays(1);
                             $date7=\Carbon\Carbon::today()->subDays(7);
                             $date30=\Carbon\Carbon::today()->subDays(30);
-
-
                             $total_graph1=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->sum('bill_amount');
                             $total_graph2=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->sum('bill_amount');
                             $total_graph3=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->sum('bill_amount');
