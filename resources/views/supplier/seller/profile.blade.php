@@ -16,8 +16,8 @@
                 Seller Information
               </h2>
 
-              <ul class="header-dropdown m-r--5">
-                        <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-success"><i class="material-icons">edit</i> Edit Profile</a>
+              <ul class="header-dropdown m-r--5 m-t--2">
+                        <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-grad"><i class="material-icons">edit</i> Edit Profile</a>
 
                     </ul>
               </div>

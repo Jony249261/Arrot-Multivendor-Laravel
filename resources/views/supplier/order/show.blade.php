@@ -13,15 +13,16 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-red text-center">
+                    <div class="header bg-orange text-center">
                         <h2>
                             Order Details - {{ $order->showId }}
 
                         </h2>
-                        <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-info"><i class="material-icons">receipt</i>Invoice</a>
-                            <a href="{{ route('order.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
-
+                        <ul class="header-dropdown m-r--5 m-t--2">
+                            <div class="display-flex">
+                                <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-grad"><i class="material-icons">receipt</i>Invoice</a>
+                                <a href="{{ route('order.index') }}" class="btn btn-grad1"><i class="material-icons">visibility</i>View</a>
+                            </div>
                         </ul>
                     </div>
                     <div class="row">
@@ -209,7 +210,8 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-red text-center">
+                   
+                    <div class="header bg-cyan text-center">
                         <h2>
                             Product Details - {{ $order->showId }}
 
@@ -301,13 +303,16 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header bg-red text-center">
+                        
+                            
+                                    <div class="header bg-green text-center">
                             <h2>
                                 Payment Details - {{ $order->showId }}
 
                             </h2>
 
                         </div>
+                        
                         <div class="body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">

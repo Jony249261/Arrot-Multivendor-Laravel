@@ -25,11 +25,10 @@ class ProductController extends Controller
     }
 
     public  function create(Request  $request){
+
         $products = $request->products;
         $quantities = $request->quantites;
-        // dd($quantities);
         $prices = $request->prices;
-
         foreach($products as $key => $product)
         {
             $sellerpro=new SellerPropose();
@@ -41,15 +40,23 @@ class ProductController extends Controller
                 $sellerpro->status='pending';
                 if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
                     $sellerpro->save();
+                    Session::flash('info','Your Product has been submitted!');
+                    
                 }
+                else{
+                    Session::flash('warning','Something went wrong!');
+                    return  redirect()->back();
+                }
+
             }
 
         }
         $user = User::find(auth()->user()->id);
         $supplier = User::where('role','supplier')->get();
         Notification::send($supplier,new SellerProduct($user));
-        Session::flash('success','Your Product has been submitted!');
         return redirect()->route('seller.propose.product');
+
+
 
     }
 
@@ -69,7 +76,7 @@ class ProductController extends Controller
         $product=SellerPropose::findOrFail($id);
         $product->quantity=$request->quantity;
         $product->price=$request->price;
-        $product->status='processing';
+        $product->status='pending';
         $product->update();
         Session::flash('success','Your Product has been submitted!');
         return redirect()->route('seller.propose.product');
