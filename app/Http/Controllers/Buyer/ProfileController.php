@@ -35,7 +35,7 @@ class ProfileController extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'buyer_address'=>'required|string|max:255',
             'buyer_website'=>'required|string|max:255',
-            'buyer_nid'=>'required|string|max:255',
+            'buyer_nid'=>'required|numeric|digits_between:10,20',
             'buyer_type'=>'required|string|max:255',
             'expire_date'=>'sometimes|nullable|string|max:255',
             'trade_license' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',

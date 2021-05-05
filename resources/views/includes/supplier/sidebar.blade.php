@@ -95,7 +95,11 @@
             <li class="@yield('propose')">
                 <a href="{{route('propose.product')}}">
                     <i class="material-icons">local_activity</i>
-                    <span>Prpose Product</span>
+<<<<<<< Updated upstream
+                    <span>Proposed Product</span>
+=======
+                    <span>Proposse Product</span>
+>>>>>>> Stashed changes
                 </a>
             </li>
 
