@@ -62,7 +62,7 @@ class ProductController extends Controller
         $product=SellerPropose::findOrFail($id);
         $product->quantity=$request->quantity;
         $product->price=$request->price;
-        $product->status='processing';
+        $product->status='pending';
         $product->update();
         Session::flash('success','Your Product has been submitted!');
         return redirect()->route('seller.propose.product');

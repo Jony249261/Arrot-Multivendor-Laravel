@@ -4,12 +4,7 @@
 @section('title','Dashboard')
 
 @section('content')
-
-
-
-<div class="container-fluid">
-
-
+ <div class="container-fluid">
     <!-- Widgets -->
     <div class="row clearfix">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -103,6 +98,7 @@
                          data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
                          data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
                          data-fill-Color="rgba(0, 188, 212, 0)">
+
                         @php
                             $date1=\Carbon\Carbon::today()->subDays(1);
                             $date7=\Carbon\Carbon::today()->subDays(7);
