@@ -10,7 +10,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red text-center">
+                <div class="header bg-cyan text-center">
 
                     <h2>Create Product</h2>
                     <ul class="header-dropdown m-r--5 m-t--2">

@@ -11,7 +11,7 @@
 
        <div class="row gutters-sm">
             <div class="card">
-              <div class="header bg-red">
+              <div class="header bg-cyan">
               <h2 class="text-center">
                 Seller Information
               </h2>

@@ -8,7 +8,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red">
+                <div class="header bg-cyan">
 
                     <h2 class="text-center">Update @if(Auth::user()->role=='procurement') Procurement @elseif(Auth::user()->role=='warehouse') Warehouse @elseif(Auth::user()->role=='accounts')Accounts @endif</h2>
 
