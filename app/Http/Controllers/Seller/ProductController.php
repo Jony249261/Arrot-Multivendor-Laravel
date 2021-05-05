@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Seller;
+use App\Notifications\SellerProduct;
 use App\Order;
 use App\OrderProduct;
 use App\Product;
 use App\SellerPropose;
-use Carbon\Exceptions\InvalidFormatException;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -39,16 +41,20 @@ class ProductController extends Controller
                 if(!$prices[$key] == NULL && !$quantities[$key] == NULL) {
                     $sellerpro->save();
                     Session::flash('info','Your Product has been submitted!');
-                    return redirect()->route('seller.propose.product');
+                    
                 }
                 else{
-                    Session::flash('warning','Your Product has been submitted!');
+                    Session::flash('warning','Something went wrong!');
                     return  redirect()->back();
                 }
 
             }
 
         }
+        $user = User::find(auth()->user()->id);
+        $supplier = User::where('role','supplier')->get();
+        Notification::send($supplier,new SellerProduct($user));
+        return redirect()->route('seller.propose.product');
 
 
 
