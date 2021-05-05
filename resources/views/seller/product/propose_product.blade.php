@@ -166,8 +166,7 @@
                                     <td>{{$pproduct->price}}</td>
                                     <td>
                                         <span class="badge badge-danger">{{$pproduct->status}}</span>
-                                        <br>
-                                        <span>No More Action</span>
+                                        
                                     </td>
 
                                 </tr>
@@ -220,8 +219,7 @@
                                     <td>{{$pproduct->price}}</td>
                                     <td>
                                         <span class="badge badge-danger">{{$pproduct->status}}</span>
-                                        <br>
-                                        <span>No More Action</span>
+                                        
                                     </td>
 
                                 </tr>

@@ -37,7 +37,7 @@ class ProfileController extends Controller
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|required|max:10000',
             'seller_address'=>'required|string|max:255',
             'seller_website'=>'required|string|max:255',
-            'seller_nid'=>'required|string|max:255',
+            'seller_nid'=>'required|numeric|digits_between:10,20',
             'password' => 'sometimes|nullable|string|confirmed|min:8',
             'sr_name' => 'sometimes|nullable|string|max:255',
             'sr_email' => 'sometimes|nullable|string|max:255',
