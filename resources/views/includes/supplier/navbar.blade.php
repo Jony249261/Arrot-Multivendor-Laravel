@@ -18,8 +18,8 @@
                     <ul class="dropdown-menu">
                         <li class="header">NOTIFICATIONS</li>
                         <li class="body">
-                            <ul class="menu">
-                                <li>
+                            <ul class="menu" style="list-style: none">
+                                {{-- <li>
                                     <a href="javascript:void(0);">
                                         <div class="icon-circle bg-light-green">
                                             <i class="material-icons">person_add</i>
@@ -32,64 +32,66 @@
                                         </div>
                                     </a>
                                 </li>
+                                --}}
+                                
                                 @if(auth()->user()->unreadNotifications->count())
+                                @foreach (auth()->user()->unreadNotifications->where('type','App\Notifications\OrderStatus') as $notification)
                                 <li>
-                                    <a href="{{ route('order.index') }}">
-                                        <div class="icon-circle bg-cyan">
-                                            <i class="material-icons">add_shopping_cart</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            <h4>{{ auth()->user()->notifications->count() }} new order</h4>
-                                            <p>
-                                                {{-- <i class="material-icons">access_time</i>@if(isset($orders->latest()->first()->created_at)) {{ $orders->latest()->first()->created_at->diffForHumans() }} @endif mins ago --}}
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
+                                   <a href="{{ route('order.show',$notification->data['order_id']) }}">
+                                       <div class="icon-circle bg-cyan">
+                                           <i class="material-icons">add_shopping_cart</i>
+                                       </div>
+                                       <div class="menu-info">
+                                           <h4>Order id #000{{ $notification->data['order_id'] }} is {{ $notification->data['status'] }}</h4>
+                                           <p>
+                                               <i class="material-icons">access_time</i>{{ $notification->created_at->diffForHumans() }}  
+                                           </p>
+                                       </div>
+                                   </a>
+                               </li>
+                                @endforeach
                                 @endif
-                                @php
-                                    $order = $orders->orWhere('status','received')->Orwhere('payment_status','paid')->latest()->first();
-                                @endphp
-                                @if(isset($order))
+
+                                @if(auth()->user()->unreadNotifications->count())
+                                @foreach (auth()->user()->unreadNotifications->where('type','App\Notifications\NewOrder') as $notification)
                                 <li>
-                                    <a href="{{ route('order.show',$order->id) }}">
-                                        <div class="icon-circle bg-cyan">
-                                            <i class="material-icons">add_shopping_cart</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            
-                                            <h4>Order id {{ $order->showId }} is {{ $order->status }}.</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i>@if(isset($order->showId)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
+                                   <a href="{{ route('order.show',$notification->data['order_id']) }}">
+                                       <div class="icon-circle bg-cyan">
+                                           <i class="material-icons">add_shopping_cart</i>
+                                       </div>
+                                       <div class="menu-info">
+                                           <h4>{{ $notification->data['buyer_name'] }} created new order #000{{ $notification->data['order_id'] }}.</h4>
+                                           <p>
+                                               <i class="material-icons">access_time</i>{{ $notification->created_at->diffForHumans() }}  
+                                           </p>
+                                       </div>
+                                   </a>
+                               </li>
+                                @endforeach
                                 @endif
-                                {{-- @php
-                                    $order = $orders->where('payment_status','paid')->latest()->first();
-                                @endphp
-                                @if(isset($order))
+                                @if(auth()->user()->unreadNotifications->count())
+                                @foreach (auth()->user()->unreadNotifications->where('type','App\Notifications\OrderBill') as $notification)
                                 <li>
-                                    <a href="{{ route('order.show',$order->id) }}">
-                                        <div class="icon-circle bg-cyan">
-                                            <i class="material-icons">add_shopping_cart</i>
-                                        </div>
-                                        <div class="menu-info">
-                                            
-                                            <h4>Order id {{ $order->showId }} is {{ $order->payment_status }}.</h4>
-                                            <p>
-                                                <i class="material-icons">access_time</i>@if(isset($order->showId)) {{ $order->updated_at->diffForHumans()}} @else 0 @endif  mins ago
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                @endif --}}
+                                   <a href="{{ route('order.show',$notification->data['order_id']) }}">
+                                       <div class="icon-circle bg-orange">
+                                           <i class="material-icons">paid</i>
+                                       </div>
+                                       <div class="menu-info">
+                                           <h4>{{ number_format($notification->data['payment_amount'],2) }} tk payment against #000{{ $notification->data['order_id'] }}.</h4>
+                                           <p>
+                                               <i class="material-icons">access_time</i>{{ $notification->created_at->diffForHumans() }}  
+                                           </p>
+                                       </div>
+                                   </a>
+                               </li>
+                                @endforeach
+                                @endif
+                                
 
                             </ul>
                         </li>
                         <li class="footer">
-                            <a href="{{ route('markread') }}">Mark all as read</a>
+                            <a href="{{ route('supplier.markread') }}">Mark all as read</a>
                         </li>
                     </ul>
                 </li>

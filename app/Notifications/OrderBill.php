@@ -7,21 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OrderStatus extends Notification
+class OrderBill extends Notification
 {
     use Queueable;
-    public $order_id;
-    public $status;
+    public $order;
+    public $bill;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($order_id,$status)
+    public function __construct($order,$bill)
     {
-        $this->order_id = $order_id;
-        $this->status = $status;
+        $this->order = $order;
+        $this->bill = $bill;
     }
 
     /**
@@ -35,7 +35,8 @@ class OrderStatus extends Notification
         return ['database'];
     }
 
-    
+   
+
     /**
      * Get the array representation of the notification.
      *
@@ -45,8 +46,8 @@ class OrderStatus extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'order_id' => $this->order_id,
-            'status' => $this->status
+            'order_id' => $this->order->id,
+            'payment_amount' => $this->bill->payment_amount
         ];
     }
 }

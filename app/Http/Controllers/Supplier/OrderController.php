@@ -85,7 +85,7 @@ class OrderController extends Controller
         $order->save();
         //send notification
         $user = User::find($order->user->id);
-        Notification::send($user,new OrderStatus($order->showId,$order->status));
+        Notification::send($user,new OrderStatus($order->id,$order->status));
         
         Session::flash('info','Order product price updated!');
         return back();

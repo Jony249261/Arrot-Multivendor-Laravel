@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,10 +96,11 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     //order change price
     Route::put('/order/product/update/{id}','Supplier\OrderController@orderProductUpdate')->name('order.product.update');
 
-    Route::get('/markread',function(){
-        auth()->user()->unreadNotifications->markAsRead();
+    Route::get('/supplier-markread',function(){
+        $user = User::find(auth()->user()->id);
+        $user->notifications()->delete();
         return redirect()->back();
-    })->name('markread');
+    })->name('supplier.markread');
 
 
 });
@@ -134,7 +136,9 @@ Route::prefix('buyer')->middleware('buyer')->group(function(){
 
 
      Route::get('/markread',function(){
-        auth()->user()->unreadNotifications->markAsRead();
+        // auth()->user()->unreadNotifications->markAsRead();
+        $user = User::find(auth()->user()->id);
+        $user->notifications()->delete();
         return redirect()->back();
     })->name('markread');
 

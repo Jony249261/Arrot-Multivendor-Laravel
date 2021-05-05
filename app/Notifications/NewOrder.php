@@ -11,6 +11,7 @@ class NewOrder extends Notification
 {
     use Queueable;
     public $order;
+    // public $order_id;
 
     /**
      * Create a new notification instance.
@@ -20,6 +21,7 @@ class NewOrder extends Notification
     public function __construct($order)
     {
         $this->order = $order;
+        // $this->order = $order_id;
     }
 
     /**
@@ -54,7 +56,8 @@ class NewOrder extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'order' => $this->order
+            'order_id' => $this->order->id,
+            'buyer_name' => $this->order->user->name
         ];
     }
 
