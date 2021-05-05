@@ -4,12 +4,7 @@
 @section('title','Dashboard')
 
 @section('content')
-
-
-
-<div class="container-fluid">
-
-
+ <div class="container-fluid">
     <!-- Widgets -->
     <div class="row clearfix">
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -103,12 +98,11 @@
                          data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
                          data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
                          data-fill-Color="rgba(0, 188, 212, 0)">
+
                         @php
                             $date1=\Carbon\Carbon::today()->subDays(1);
                             $date7=\Carbon\Carbon::today()->subDays(7);
                             $date30=\Carbon\Carbon::today()->subDays(30);
-
-
                             $total_graph1=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->sum('bill_amount');
                             $total_graph2=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->sum('bill_amount');
                             $total_graph3=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->sum('bill_amount');

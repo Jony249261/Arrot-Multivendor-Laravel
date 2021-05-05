@@ -9,7 +9,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red text-center">
+                <div class="header bg-cyan text-center">
 
                     <h2 class="text-center">Your Pending Product</h2>
 
@@ -41,7 +41,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$pproduct->product->product_name}}</td>
                                     <td>{{$pproduct->user->name}}</td>
-                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="100" width="100"></td>
+                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="50" width="50"></td>
                                     <td>{{$pproduct->product->unit->name}}</td>
                                     <td>{{$pproduct->quantity}}</td>
                                     <td>{{$pproduct->price}}</td>
@@ -50,8 +50,8 @@
                                     </td>
                                     <td>
 
-                                        
-                                        
+
+
                                         <a href="{{route('propose.product.accept',$pproduct->id)}}" id="accept" class="btn btn-primary"><i class="material-icons">done_all
                                             </i></a>
                                         <a type="button" class="btn btn-success waves-effect" data-toggle="modal" data-target="#editmodal-{{$pproduct->id}}"> <i class="material-icons">edit</i></a>
@@ -105,7 +105,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$pproduct->product->product_name}}</td>
                                     <td>{{$pproduct->user->name}}</td>
-                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="100" width="100"></td>
+                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="50" width="50"></td>
                                     <td>{{$pproduct->product->unit->name}}</td>
                                     <td>{{$pproduct->quantity}}</td>
                                     <td>{{$pproduct->price}}</td>
@@ -114,7 +114,7 @@
                                     </td>
                                     <td>
 
-                                        
+
                                          <a href="{{route('propose.product.accept',$pproduct->id)}}" id="accept" class="btn btn-primary"><i class="material-icons">done_all
                                             </i></a>
                                         <a type="button" class="btn btn-success waves-effect" data-toggle="modal" data-target="#editmodal-{{$pproduct->id}}"> <i class="material-icons">edit</i></a>
@@ -165,7 +165,7 @@
                                     <td>{{$key+1}}</td>
                                     <td>{{$pproduct->product->product_name}}</td>
                                     <td>{{$pproduct->user->name}}</td>
-                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="100" width="100"></td>
+                                    <td><img src="{{asset('products/'.$pproduct->product->image)}}" alt="" height="50" width="50"></td>
                                     <td>{{$pproduct->product->unit->name}}</td>
                                     <td>{{$pproduct->quantity}}</td>
                                     <td>{{$pproduct->price}}</td>
@@ -202,7 +202,7 @@
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('quantity') is-invalid @enderror" value="{{$pproduct->quantity}}" name="quantity" >
+                                        <input type="number" class="form-control @error('quantity') is-invalid @enderror" value="{{$pproduct->quantity}}" name="quantity" >
                                         <label class="form-label">Update Quantity</label>
                                         @error('quantity')
                                         <span class="invalid-feedback" role="alert">
@@ -213,7 +213,7 @@
                                     <br>
                                     <br>
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('price') is-invalid @enderror" value="{{$pproduct->price}}" name="price" >
+                                        <input type="number" class="form-control @error('price') is-invalid @enderror" value="{{$pproduct->price}}" name="price" >
                                         <label class="form-label">Update Price</label>
                                         @error('price')
                                         <span class="invalid-feedback" role="alert">
@@ -248,7 +248,7 @@
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('quantity') is-invalid @enderror" value="{{$pproduct->quantity}}" name="quantity" >
+                                        <input type="number" class="form-control @error('quantity') is-invalid @enderror" value="{{$pproduct->quantity}}" name="quantity" >
                                         <label class="form-label">Update Quantity</label>
                                         @error('quantity')
                                         <span class="invalid-feedback" role="alert">
@@ -259,7 +259,7 @@
                                     <br>
                                     <br>
                                     <div class="form-line">
-                                        <input type="text" class="form-control @error('price') is-invalid @enderror" value="{{$pproduct->price}}" name="price" >
+                                        <input type="number" class="form-control @error('price') is-invalid @enderror" value="{{$pproduct->price}}" name="price" >
                                         <label class="form-label">Update Price</label>
                                         @error('price')
                                         <span class="invalid-feedback" role="alert">

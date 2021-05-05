@@ -24,7 +24,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text"  class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}" name="name" required>
-                                        <label class="form-label">Enter Name</label>
+                                        <label class="form-label">Enter Seller Name</label>
                                     </div>
                                     @error('name')
                                     <span class="validation-message">{{ $message }}</span>
@@ -111,7 +111,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('sr_name') is-invalid @enderror" value="{{$seller->sr_name}}" name="sr_name" >
-                                        <label class="form-label">Seller Representative name</label>
+                                        <label class="form-label">Enter Seller Representative name</label>
                                     </div>
                                     @error('sr_name')
                                     <span class="validation-message">{{ $message }}</span>
@@ -120,7 +120,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('sr_email') is-invalid @enderror" value="{{$seller->sr_email}}" name="sr_email" >
-                                        <label class="form-label">Seller Representative Email</label>
+                                        <label class="form-label">Enter Seller Representative Email</label>
                                     </div>
                                     @error('sr_email')
                                     <span class="validation-message">{{ $message }}</span>
@@ -129,7 +129,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number" class="form-control @error('sr_phone') is-invalid @enderror" value="{{$seller->sr_phone}}" name="sr_phone">
-                                        <label class="form-label">Seller Representative Phone</label>
+                                        <label class="form-label">Enter Seller Representative Phone</label>
                                     </div>
                                     @error('sr_phone')
                                     <span class="validation-message">{{ $message }}</span>
@@ -139,7 +139,7 @@
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="number"  class=" form-control @error('seller_nid') is-invalid @enderror"  value="{{$seller->seller_nid}}" name="seller_nid" required>
-                                        <label class="form-label">Enter Seller NID Number</label>
+                                        <label class="form-label">Enter Seller Representative NID Number</label>
                                     </div>
                                     @error('seller_nid')
                                     <span class="validation-message">{{ $message }}</span>
@@ -154,7 +154,7 @@
                                     <span class="validation-message">{{ $message }}</span>
                                 @enderror
                                 </div>
-                                <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update Seller </button>
+                                <button class="btn btn-info btn-lg waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update Seller </button>
                             </div>
                         </form>
                     </div>

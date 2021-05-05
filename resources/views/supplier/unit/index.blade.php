@@ -78,7 +78,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success waves-effect">SAVE CHANGES</button>
+                        <button type="submit" class="btn btn-info waves-effect">SAVE CHANGES</button>
                         <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
                     </div>
                     </form>

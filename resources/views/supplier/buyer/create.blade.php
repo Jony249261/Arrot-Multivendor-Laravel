@@ -24,7 +24,7 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             value="{{ old('name') }}" name="name" required>
-                                        <label class="form-label">Enter Name</label>
+                                        <label class="form-label">Enter Buyer Name</label>
                                     </div>
                                     @error('name')
                                         <span class="validation-message">{{ $message }}</span>
@@ -34,7 +34,7 @@
                                     <div class="form-line">
                                         <input type="number" class="form-control @error('phone') is-invalid @enderror"
                                             value="{{ old('phone') }}" name="phone" required>
-                                        <label class="form-label">Enter Phone Number</label>
+                                        <label class="form-label">Enter Buyer Phone Number</label>
                                     </div>
                                     @error('phone')
                                         <span class="validation-message">{{ $message }}</span>
@@ -44,7 +44,7 @@
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             value="{{ old('email') }}" name="email" required>
-                                        <label class="form-label">Enter Email</label>
+                                        <label class="form-label">Enter Buyer Email</label>
                                     </div>
                                     @error('email')
                                         <span class="validation-message">{{ $message }}</span>
@@ -176,7 +176,7 @@
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('br_name') is-invalid @enderror"
                                             value="{{ old('br_name') }}" name="br_name">
-                                        <label class="form-label">Buyer Representative name</label>
+                                        <label class="form-label">Enter Buyer Representative Name</label>
                                     </div>
                                     @error('br_name')
                                         <span class="validation-message">{{ $message }}</span>
@@ -186,7 +186,7 @@
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('br_email') is-invalid @enderror"
                                             value="{{ old('br_email') }}" name="br_email">
-                                        <label class="form-label">Buyer Representative Email</label>
+                                        <label class="form-label">Enter Buyer Representative Email</label>
                                     </div>
                                     @error('br_email')
                                         <span class="validation-message">{{ $message }}</span>
@@ -196,7 +196,7 @@
                                     <div class="form-line">
                                         <input type="number" class="form-control @error('br_phone') is-invalid @enderror"
                                             value="{{ old('br_phone') }}" name="br_phone">
-                                        <label class="form-label">Buyer Representative Phone</label>
+                                        <label class="form-label">Enter Buyer Representative Phone Number</label>
                                     </div>
                                     @error('br_phone')
                                         <span class="validation-message">{{ $message }}</span>
@@ -206,7 +206,7 @@
                                     <div class="form-line">
                                         <input type="number" class=" form-control @error('buyer_nid') is-invalid @enderror"
                                             value="{{ old('buyer_nid') }}" name="buyer_nid" required>
-                                        <label class="form-label">Enter NID Number</label>
+                                        <label class="form-label">Enter Buyer Representative NID Number</label>
                                     </div>
                                     @error('buyer_nid')
                                         <span class="validation-message">{{ $message }}</span>
@@ -224,7 +224,7 @@
 
                                 </div>
                                 <br>
-                                <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Buyer</button>
+                                <button class="btn btn-info  btn-lg waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Buyer</button>
 
                             </div>
                         </form>

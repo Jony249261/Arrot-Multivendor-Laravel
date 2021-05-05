@@ -137,6 +137,9 @@
         toastr.info("{{Session::get('info')}}")
         {{-- expr --}}
         @endif
+        @if(Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}")
+        @endif
     </script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
 
@@ -158,7 +161,7 @@
             } else{
 		swal("Safe Data!");
 	}
-		
+
             });
             });
     $(document).on("click", "#accept", function(e){
@@ -175,7 +178,7 @@
             if (willDelete) {
             window.location.href = link;
             }
-		
+
             });
             });
 
