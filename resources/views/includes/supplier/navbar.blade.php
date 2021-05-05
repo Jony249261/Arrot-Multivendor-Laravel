@@ -69,7 +69,24 @@
                                </li>
                                 @endforeach
                                 @endif
-                                @if(auth()->user()->unreadNotifications->count())
+                                @if(auth()->user()->unreadNotifications->where('type','App\Notifications\SellerProduct')->count())
+                                @foreach (auth()->user()->unreadNotifications->where('type','App\Notifications\SellerProduct') as $notification)
+                                <li>
+                                   <a href="{{ route('propose.product') }}">
+                                       <div class="icon-circle bg-primary">
+                                           <i class="material-icons">category</i>
+                                       </div>
+                                       <div class="menu-info">
+                                           <h4>{{ $notification->data['seller_name'] }} propose product.</h4>
+                                           <p>
+                                               <i class="material-icons">access_time</i>{{ $notification->created_at->diffForHumans() }}  
+                                           </p>
+                                       </div>
+                                   </a>
+                               </li>
+                                @endforeach
+                                @endif
+                                @if(auth()->user()->unreadNotifications->where('type','App\Notifications\OrderBill')->count())
                                 @foreach (auth()->user()->unreadNotifications->where('type','App\Notifications\OrderBill') as $notification)
                                 <li>
                                    <a href="{{ route('order.show',$notification->data['order_id']) }}">
@@ -90,9 +107,11 @@
 
                             </ul>
                         </li>
+                        @if(auth()->user()->unreadNotifications->count())
                         <li class="footer">
                             <a href="{{ route('supplier.markread') }}">Mark all as read</a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 <!-- #END# Notifications -->

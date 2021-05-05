@@ -46,9 +46,9 @@
                                            
                                             <td>@if($order->user->parent->role == 'buyer') {{ $order->user->parent->name }}  @else  {{ $order->user->name }} @endif</td>
                                             <td>@if(isset($order->delivery_date)) {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif</td>
-                                            <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
+                                            <td><span class="label @if($order->status == 'accepted') bg-primary @elseif($order->status == 'processing') bg-indigo @elseif($order->status == 'received') bg-light-green @elseif($order->status == 'rejected') bg-red @elseif($order->status == 'shipping') bg-amber @elseif($order->status == 'completed') bg-green @else bg-light-blue @endif">{{ ucfirst($order->status) }}</span>
                                             <td><span
-                                                    class="badge badge-primary">{{ ucfirst($order->payment_status) }}</span>
+                                                    class="label @if($order->payment_status == 'partials') bg-orange @elseif($order->payment_status == 'paid') bg-green @else bg-indigo @endif">{{ ucfirst($order->payment_status) }}</span>
                                             </td>
                                             <td>
                                             @php
