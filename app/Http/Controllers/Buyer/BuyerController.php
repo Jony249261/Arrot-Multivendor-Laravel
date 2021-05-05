@@ -19,7 +19,6 @@ class BuyerController extends Controller
 
         elseif(auth()->user()->role == 'accounts'){
             $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','received')->Orwhere('status','received')->latest()->get();
-
         }
         else{
 
