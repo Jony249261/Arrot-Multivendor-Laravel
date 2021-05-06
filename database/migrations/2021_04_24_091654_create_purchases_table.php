@@ -15,11 +15,12 @@ class CreatePurchasesTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('order_id');
-            $table->unsignedInteger('seller_id');
+            $table->string('order_id');
             $table->unsignedInteger('user_id');
-            $table->string('purchase_date')->nullable();
-            $table->string('shipment_date')->nullable();
+            $table->string('seller_id');
+            $table->float('amount')->nullable();
+            $table->date('purchase_date')->nullable();
+            $table->date('shipment_date')->nullable();
             $table->timestamps();
         });
     }

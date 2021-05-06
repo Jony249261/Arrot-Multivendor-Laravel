@@ -25,6 +25,31 @@
                     </div>
                     <div class="body">
                         <div class="table-responsive">
+                            <div class="row">
+                                <form action="{{ route('order.index') }}" method="GET">
+                                <div class="col-sm-3">
+                                    <div class="dataTables_length">
+                                        <select name="status" class="form-control">
+                                                <option value="">Select One</option>
+                                                <option value="pending">Pending</option>
+                                                <option value="accepted">Accepted</option>
+                                                <option value="processing">Processing</option>
+                                                <option value="shipping">Shipping</option>
+                                                <option value="received">Delivered</option>
+                                                <option value="rejected">Rejected</option>
+                                                <option value="completed">Completed</option>
+                                        </select>
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="search" name="s" value="{{ isset($status) ? $status : '' }}" class="form-control" placeholder="Search">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-outline-info float-left">Search</button>
+                                </div>
+                            </form>
+                            </div>
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
@@ -43,23 +68,37 @@
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
                                             <td>{{ $order->ShowId }}</td>
-                                           
-                                            <td>@if($order->user->parent->role == 'buyer') {{ $order->user->parent->name }}  @else  {{ $order->user->name }} @endif</td>
-                                            <td>@if(isset($order->delivery_date)) {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif</td>
-                                            <td><span class="label @if($order->status == 'accepted') bg-primary @elseif($order->status == 'processing') bg-indigo @elseif($order->status == 'received') bg-light-green @elseif($order->status == 'rejected') bg-red @elseif($order->status == 'shipping') bg-amber @elseif($order->status == 'completed') bg-green @else bg-light-blue @endif">{{ ucfirst($order->status) }}</span>
-                                            <td><span
-                                                    class="label @if($order->payment_status == 'partials') bg-orange @elseif($order->payment_status == 'paid') bg-green @else bg-indigo @endif">{{ ucfirst($order->payment_status) }}</span>
+
+                                            <td>
+                                                @if ($order->user->parent->role == 'buyer')
+                                                {{ $order->user->parent->name }} @else {{ $order->user->name }}
+                                                @endif
                                             </td>
                                             <td>
-                                            @php
-                                                $grant_total = 0;
-                                            @endphp
-                                            @foreach($order->items as $item)
+                                                @if (isset($order->delivery_date))
+                                                    {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif
+                                            </td>
+                                            <td><span class="label @if ($order->status ==
+                                                'accepted') bg-primary @elseif($order->status ==
+                                                'processing') bg-indigo @elseif($order->status ==
+                                                'received') bg-light-green @elseif($order->status ==
+                                                'rejected') bg-red @elseif($order->status ==
+                                                'shipping') bg-amber @elseif($order->status ==
+                                                'completed') bg-green @else bg-light-blue @endif">@if($order->status == 'received') Delivered @else {{ ucfirst($order->status) }} @endif</span>
+                                            <td><span class="label @if ($order->payment_status ==
+                                                'partials') bg-orange @elseif($order->payment_status ==
+                                                'paid') bg-green @else bg-indigo @endif">{{ ucfirst($order->payment_status) }}</span>
+                                            </td>
+                                            <td>
                                                 @php
-                                                    $grant_total +=$item->unite_price * $item->qty ;
+                                                    $grant_total = 0;
                                                 @endphp
-                                            @endforeach
-                                            {{ number_format($grant_total,2) }}
+                                                @foreach ($order->items as $item)
+                                                    @php
+                                                        $grant_total += $item->unite_price * $item->qty;
+                                                    @endphp
+                                                @endforeach
+                                                {{ number_format($grant_total, 2) }}
                                             </td>
                                             <td>
                                                 <div class="icon-button-demo">
@@ -72,7 +111,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                   @empty
+                                    @empty
                                         <tr>
                                             <td colspan="7" class="text-center">No data found!!</td>
                                         </tr>

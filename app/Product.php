@@ -31,4 +31,9 @@ class Product extends Model
     {
         return blank($this->productPrices->sortByDesc('updated_date')->first()) ? '' : $this->productPrices->sortByDesc('updated_date')->first()->sales_rate;
     }
+
+    public function scopeSearch($query,$s)
+    {
+        return $query->where('product_name','like','%'.$s.'%');
+    }
 }

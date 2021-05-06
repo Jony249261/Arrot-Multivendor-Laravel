@@ -46,10 +46,18 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $products = Product::latest()->paginate(20);
-        return view('buyer.order.create',compact('products'));
+        $query = Product::query();
+        $s = null;
+        if($request->has('s')){
+            $s = $request->s;
+            $products = $query->latest()->search($s)->paginate(20);
+        }else{
+
+            $products = $query->latest()->paginate(20);
+        }
+        return view('buyer.order.create',compact('products','s'));
     }
 
     /**

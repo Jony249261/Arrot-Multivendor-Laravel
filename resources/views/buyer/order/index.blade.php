@@ -31,6 +31,31 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
+                                <div class="row">
+                                    <form action="{{ route('order.index') }}" method="GET">
+                                    <div class="col-sm-3">
+                                        <div class="dataTables_length">
+                                            <select name="status" class="form-control">
+                                                    <option value="">Select One</option>
+                                                    <option value="pending">Pending</option>
+                                                    <option value="accepted">Accepted</option>
+                                                    <option value="processing">Processing</option>
+                                                    <option value="shipping">Shipping</option>
+                                                    <option value="received">Delivered</option>
+                                                    <option value="rejected">Rejected</option>
+                                                    <option value="completed">Completed</option>
+                                            </select>
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="search" name="s" value="{{ isset($status) ? $status : '' }}" class="form-control" placeholder="Search">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-outline-info float-left">Search</button>
+                                    </div>
+                                </form>
+                                </div>
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>

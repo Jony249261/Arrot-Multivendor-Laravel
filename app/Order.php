@@ -35,4 +35,9 @@ class Order extends Model
     {
         return "#".str_repeat(0,4-strlen((String) $this->id)).$this->id;
     }
+
+    public function scopeFilter($query,$status)
+    {
+        return $query->where('status','like','%'.$status.'%')->orWhere('payment_status','like','%'.$status.'%');
+    }
 }

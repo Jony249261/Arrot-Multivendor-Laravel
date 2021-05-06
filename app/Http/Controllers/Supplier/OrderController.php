@@ -18,10 +18,23 @@ use PDF;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::latest()->paginate(15);
-        return view('supplier.order.index',compact('orders'));
+        $query = Order::query();
+        $status = null;
+        if($request->has('status')){
+            $status = $request->status;
+            $orders = $query->latest()->filter($status)->paginate(10);
+        }
+        if($request->has('s')){
+            $status = $request->s;
+            $orders = $query->latest()->filter($status)->paginate(10);
+
+        }else{
+
+            $orders = $query->latest()->paginate(15);
+        }
+        return view('supplier.order.index',compact('orders','status'));
     }
 
     public function show($id)
