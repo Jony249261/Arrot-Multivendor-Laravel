@@ -46,13 +46,13 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->phone }}</td>
                                             <td>
-                                                <span class="badge badge-info">{{ ucfirst($user->role) }}</span>
+                                                <span class="label @if($user->role == 'procurement') bg-amber @elseif ($user->role == 'accounts') bg-blue @else bg-purple @endif ">{{ ucfirst($user->role) }}</span>
                                             </td>
                                             <td>
                                                 @if($user->is_verified == 1)
-                                                <span class="badge badge-primary">Active</span>
+                                                <span class="label bg-green">Active</span>
                                                 @else
-                                                <span class="badge bg-warning">Inactive</span>
+                                                <span class="label bg-deep-orange">Inactive</span>
                                                 @endif
                                             </td>
 
@@ -65,11 +65,11 @@
                                                     </a>
                                                     @if($user->is_verified == 1)
                                                     <a href="{{ route('buyer-users.show',$user->id) }}" class="btn btn-danger waves-effect" title="Inactive" style="float: left">
-                                                        <i class="material-icons">visibility_off</i>
+                                                        <i class="material-icons">toggle_off</i>
                                                     </a>
                                                     @else
                                                     <a href="{{ route('buyer-users.show',$user->id) }}" class="btn btn-success waves-effect" title="Active" style="float: left">
-                                                        <i class="material-icons">visibility</i>
+                                                        <i class="material-icons">toggle_on</i>
                                                     </a>
                                                     @endif
 

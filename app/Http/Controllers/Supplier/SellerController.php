@@ -118,7 +118,7 @@ class SellerController extends Controller
     public  function  update(Request $request,$id){
         $request->validate([
             'name' => 'required|string|max:255',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|digits:11',
             'email' => 'required|email|max:255',
             'role' => 'sometimes|nullable|required|string',
             'status_id' => 'sometimes|nullable',

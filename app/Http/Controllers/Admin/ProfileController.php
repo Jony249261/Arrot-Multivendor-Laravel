@@ -26,7 +26,7 @@ class ProfileController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string',
-            'phone' => 'sometimes|nullable',
+            'phone' => 'sometimes|nullable|digits:11',
             'image' => 'sometimes|nullable|mimes:jpeg,jpg,png|required|max:10000',
             'password' => 'sometimes|nullable|confirmed|min:6',
 

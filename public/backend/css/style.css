@@ -88,11 +88,11 @@
         background-size: 200% auto;
         color: white;
         box-shadow: 0 0 20px #eee;
-        background-color: #5bee06f6;
+        background-color: #74db12e3;
     }
     
     .btn-grad:hover {
-        background-color: #74db12e3;
+        background-color: #00ff00;
         /* change the direction of the change here */
         color: #fff;
         text-decoration: none;
@@ -105,11 +105,11 @@
         background-size: 200% auto;
         color: white;
         box-shadow: 0 0 20px #eee;
-        background-color: #df4314;
+        background-color: #FFC107;
     }
     
     .btn-grad1:hover {
-        background-color: #db1212e3;
+        background-color: #FFEB3B;
         /* change the direction of the change here */
         color: #fff;
         text-decoration: none;
@@ -10988,10 +10988,10 @@
     }
     
     .button:active {
-        background-color: #65b2f1;
+        background-color: #fafafa;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
-        color: rgb(253, 250, 250);
+        color: white;
     }
     
     .button_u {
@@ -11001,19 +11001,19 @@
         cursor: pointer;
         outline: none;
         color: #fff;
-        background-color: #F44336;
+        background-color: #dd2929;
         border: none;
         border-radius: 15px;
         box-shadow: 0 9px rgb(250, 248, 248);
     }
     
     .button_u:hover {
-        background-color: #dd2929;
+        background-color: #F44336;
         color: white;
     }
     
     .button_u:active {
-        background-color: #65b2f1;
+        background-color: #f3f3f3;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
         color: rgb(253, 250, 250);

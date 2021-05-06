@@ -84,7 +84,7 @@
                                         <tr>
                                             <td colspan="7">
 
-                                                <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Order</button>
+                                                <button class="btn button waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create Order</button>
                                             </td>
                                         </tr>
                                     </tfoot>

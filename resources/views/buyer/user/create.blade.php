@@ -112,7 +112,7 @@
                                 </div>
                                 
                             </div>
-                            <button class="btn btn-success waves-effect custom-btn item pull-right" type="submit"><i class="material-icons">library_add</i> Create User</button>
+                            <button class="btn button waves-effect custom-btn item pull-right" type="submit"><i class="material-icons">library_add</i> Create User</button>
                         </div>
 
 

@@ -61,7 +61,7 @@
                                         @endforeach
                                     <tr>
                                         <td colspan="7">
-                                            <button type="submit" class="pull-right btn btn-success">Propose</button>
+                                            <button type="submit" class="pull-right btn button">Propose</button>
                                         </td>
                                     </tr>
                                 </form>

@@ -244,7 +244,7 @@
                                 </div>
 
 
-                                <button class="btn btn-success waves-effect pull-right" type="submit"><i class="material-icons">update</i>Update Buyer</button>
+                                <button class="btn button waves-effect pull-right" type="submit"><i class="material-icons">update</i>Update Buyer</button>
                             </div>
                         </form>
                     </div>

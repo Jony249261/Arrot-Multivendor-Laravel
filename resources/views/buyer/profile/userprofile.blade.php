@@ -20,92 +20,77 @@
 
                         <div class="row clearfix">
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                                name="name" value="{{ $user->name }}" required>
-                                        @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                         <label class="form-label">Enter Name</label>
                                     </div>
+                                    @error('name')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                                name="email" value="{{ $user->email}}" required>
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                         <label class="form-label">Enter Email</label>
                                     </div>
+                                    @error('email')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" class="form-control @error('phone') is-invalid @enderror"
                                                name="phone" value="{{ $user->phone}}" required>
-                                        @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                         <label class="form-label">Enter Phone</label>
                                     </div>
+                                    @error('phone')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
                                                name="image">
-                                        @error('image')
-                                        <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                         <img src="{{asset('users/'.$user->image)}}" height="80px" width="80px" alt="">
                                         {{-- <label class="form-label">Image</label> --}}
                                     </div>
+                                    @error('image')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line @error('password') error @enderror">
                                         <input type="password" class="form-control"
                                                name="password" value="{{ old('password') }}" >
                                         <label class="form-label">Password</label>
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                        @enderror
                                     </div>
+                                    @error('password')
+                                    <span class="validation-message">{{ $message }}</span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group">
+                                <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
                                                name="password_confirmation" value="{{ old('password_confirmation') }}" >
                                         <label class="form-label">Confirm Password</label>
-                                        @error('password_confirmation')
-                                        <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                        @enderror
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-success waves-effect" type="submit">Update @if(Auth::user()->role=='procurement') Procurement @elseif(Auth::user()->role=='warehouse') Warehouse @endif</button>
+                                <button class="btn button waves-effect" type="submit"><i class="material-icons">update</i>Update @if(Auth::user()->role=='procurement') Procurement @elseif(Auth::user()->role=='warehouse') Warehouse @else Accounts @endif</button>
                             </div>
 
                         </div>

@@ -20,8 +20,8 @@
                         </h2>
                         <ul class="header-dropdown m-r--5 m-t--2">
                             <div class="display-flex">
-                                <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-grad"><i class="material-icons">receipt</i>Invoice</a>
-                                <a href="{{ route('order.index') }}" class="btn btn-grad1"><i class="material-icons">visibility</i>View</a>
+                                <a href="{{ route('order.invoice', $order->id) }}" class="btn btn-grad1"><i class="material-icons">receipt</i>Invoice</a>
+                                <a href="{{ route('order.index') }}" class="btn btn-grad"><i class="material-icons">visibility</i>View</a>
                             </div>
                         </ul>
                     </div>

@@ -22,7 +22,7 @@ class SupportController extends Controller
     //   dd($request->all());
       $request->validate([
           'name' => 'required|string',
-          'phone' => 'sometimes|nullable',
+          'phone' => 'sometimes|nullable|digits:11',
           'email' => 'required|email',
           'company' => 'sometimes|nullable',
           'message' => 'required'
