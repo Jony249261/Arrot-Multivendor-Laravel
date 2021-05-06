@@ -8,7 +8,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red">
+                <div class="header bg-cyan">
                     <h2 class="text-center">Update Profile</h2>
                 </div>
                 <div class="body">
@@ -92,7 +92,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">update</i>Update Profile</button>
+                            <button class="btn button waves-effect custom-btn" type="submit"><i class="material-icons">update</i>Update Profile</button>
 
                         </div>
 

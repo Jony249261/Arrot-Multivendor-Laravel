@@ -24,17 +24,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // $max = DB::table('order_products')
-        // ->join('orders','orders.id', '=','order_products.product_id')
-        // ->select('order_products.product_id')
-        // ->groupBy('order_products.product_id')
-        // ->max('order_products.product_id');
-
-        // $most_sold_product=Order::
-        // join('order_products','orders.id', '=','order_products.product_id')
-        // ->where('order_products.product_id','=',$max)
-        // ->get();
-        // dd($most_sold_product);
+        
 
         if(auth()->user()->role == 'warehouse'){
             $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->paginate(15);

@@ -174,6 +174,11 @@ Route::prefix('seller')->middleware('seller')->group(function(){
      Route::get('/support/index','Seller\SupportController@index')->name('support.index');
      Route::post('/support/contact','Seller\SupportController@sendMessage')->name('contact.submit');
 
+     Route::get('/markasread',function(){
+        $user = User::find(auth()->user()->id);
+        $user->notifications()->delete();
+        return redirect()->back();
+     })->name('seller.markasread');
 });
 
 

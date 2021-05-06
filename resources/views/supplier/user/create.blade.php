@@ -11,7 +11,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red">
+                <div class="header bg-cyan">
 
                     <h2 class="text-center">Create User</h2>
 
@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-info btn-lg waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create User</button>
+                            <button class="btn button waves-effect custom-btn" type="submit"><i class="material-icons">library_add</i> Create User</button>
                         </div>
 
 

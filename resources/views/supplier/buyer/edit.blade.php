@@ -8,7 +8,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red">
+                <div class="header bg-cyan">
 
                     <h2 class="text-center">Create Buyer</h2>
 
@@ -215,7 +215,7 @@
 
 
                                 </div>
-                                <button class="btn btn-info btn-lg waves-effect pull-right" type="submit"><i class="material-icons">update</i> Update Buyer</button>
+                                <button class="btn button  waves-effect pull-right" type="submit"><i class="material-icons">update</i> Update Buyer</button>
 
                             </div>
                         </form>

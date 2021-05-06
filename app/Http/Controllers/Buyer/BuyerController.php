@@ -13,17 +13,19 @@ class BuyerController extends Controller
 {
 
     public function index(){
-        if(auth()->user()->role == 'warehouse'){
-            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->get();
-        }
+        // if(auth()->user()->role == 'warehouse'){
+        //     $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->get();
+        // }
 
-        elseif(auth()->user()->role == 'accounts'){
-            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','received')->Orwhere('status','received')->latest()->get();
-        }
-        else{
+        // elseif(auth()->user()->role == 'accounts'){
+        //     $orders = Order::where('buyer_id',auth()->user()->buyer_id)->where('status','received')->Orwhere('status','received')->latest()->get();
 
-            $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->get();
-        }
+        // }
+        // else{
+
+        //     $orders = Order::where('buyer_id',auth()->user()->buyer_id)->latest()->get();
+        // }
+        $orders = Order::where('buyer_id',auth()->user()->buyer_id);
         $user = User::where('parent_id',auth()->user()->id)->count();
         $products=Product::latest()->limit(6)->get();
         return view('buyer.index',compact('user','orders','products'));

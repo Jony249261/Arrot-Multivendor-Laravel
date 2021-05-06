@@ -16,13 +16,13 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-red text-center">
+                    <div class="header bg-cyan text-center">
                         <h2>
                             Order Details - {{ $order->showId }}
 
                         </h2>
-                        <ul class="header-dropdown m-r--5">
-                            <a href="{{ route('orders.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
+                        <ul class="header-dropdown m-r--5 m-t--2">
+                            <a href="{{ route('orders.index') }}" class="btn btn-grad"><i class="material-icons">visibility</i>View</a>
 
                         </ul>
                     </div>

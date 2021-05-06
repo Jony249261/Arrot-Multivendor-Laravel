@@ -251,11 +251,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @php
-                                $orders = App\Order::where('status','!=','received')->paginate(15);
-
-                            @endphp
-                            @foreach($orders as $i => $order)
+                         
+                            @foreach($orders->where('status','!=','received')->take(8) as $i => $order)
                                 <tr>
                                     <td>{{ $i + 1 }}</td>
                                     <td>{{ $order->ShowId }}</td>
@@ -276,9 +273,9 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            {{$orders->links()}}
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
+                    {{-- {{$orders->links()}} --}}
                     </div>
                 </div>
             </div>

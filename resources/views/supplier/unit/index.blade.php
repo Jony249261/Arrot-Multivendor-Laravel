@@ -11,13 +11,13 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-red text-center">
+                    <div class="header bg-cyan text-center">
                         <h2>
                           Unit Name
 
                         </h2>
                         <ul class="header-dropdown m-r--5 m-t--2">
-                            <button type="button" class="btn btn-success waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal"><i class="material-icons">add</i>Add Unit</button>
+                            <button type="button" class="btn btn-grad waves-effect m-r-20" data-toggle="modal" data-target="#defaultModal"><i class="material-icons">add</i>Add Unit</button>
                         </ul>
                     </div>
                     <div class="body">
@@ -78,8 +78,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-info waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
+                        <button type="submit" class="btn button waves-effect">SAVE CHANGES</button>
+                        <button type="button" class="btn button_u waves-effect" data-dismiss="modal">CLOSE</button>
                     </div>
                     </form>
                 </div>
@@ -112,8 +112,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-success waves-effect">SAVE CHANGES</button>
-                            <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">CLOSE</button>
+                            <button type="submit" class="btn button waves-effect">SAVE CHANGES</button>
+                            <button type="button" class="btn button_u waves-effect" data-dismiss="modal">CLOSE</button>
                         </div>
                     </form>
                 </div>

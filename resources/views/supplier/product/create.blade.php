@@ -10,11 +10,11 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red text-center">
+                <div class="header bg-cyan text-center">
 
                     <h2>Create Product</h2>
                     <ul class="header-dropdown m-r--5 m-t--2">
-                        <a href="{{ route('products.index') }}" class="btn btn-success"><i class="material-icons">visibility</i>View</a>
+                        <a href="{{ route('products.index') }}" class="btn btn-grad"><i class="material-icons">visibility</i>View</a>
                     </ul>
 
                 </div>
@@ -96,7 +96,7 @@
                                 </div>
 
                             </div>
-                            <button class="btn btn-info btn-lg waves-effect item pull-right" type="submit"><i class="material-icons">library_add</i> Create Product</button>
+                            <button class="btn button waves-effect item pull-right" type="submit"><i class="material-icons">library_add</i> Create Product</button>
                         </div>
 
 

@@ -8,7 +8,7 @@
         <!-- Widgets -->
         <div class="row clearfix">
             <div class="card">
-                <div class="header bg-red text-center">
+                <div class="header bg-cyan text-center">
 
                     <h2 class="text-center">Your Pending Product</h2>
 

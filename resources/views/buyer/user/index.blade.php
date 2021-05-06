@@ -9,13 +9,13 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
-                    <div class="header bg-red text-center">
+                    <div class="header bg-cyan text-center">
                         <h2>
                             All User
 
                         </h2>
                         <ul class="header-dropdown m-r--5 m-t--2">
-                            <a href="{{ route('buyer-users.create') }}" class="btn btn-success"><i class="material-icons">library_add</i>Create</a>
+                            <a href="{{ route('buyer-users.create') }}" class="btn btn-grad"><i class="material-icons">library_add</i>Create</a>
 
 
                         </ul>

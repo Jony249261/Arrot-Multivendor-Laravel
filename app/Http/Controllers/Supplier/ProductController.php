@@ -12,9 +12,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App\Helpers\Helper;
+use App\Notifications\SellerProduct;
+use App\Notifications\SellerProductStatus;
+use App\User;
 use Image;
 use Illuminate\Support\Str;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Illuminate\Support\Facades\Notification;
 
 class ProductController extends Controller
 {
@@ -215,6 +219,10 @@ class ProductController extends Controller
         $product=SellerPropose::findOrFail($id);
         $product->status='accept';
         $product->update();
+
+        $user = User::where('id',$product->seller_id)->first();
+        Notification::send($user,new SellerProductStatus($product));
+        
         Session::flash('info'.'Product Accepted successfully!!');
         return redirect()->back();
 
@@ -223,6 +231,10 @@ class ProductController extends Controller
         $product=SellerPropose::findOrFail($id);
         $product->status='reject';
         $product->update();
+
+        $user = User::where('id',$product->seller_id)->first();
+        Notification::send($user,new SellerProductStatus($product));
+
         Session::flash('success'.'Product Accepted successfully!!');
         return redirect()->back();
     }
@@ -232,6 +244,10 @@ class ProductController extends Controller
         $product->price=$request->price;
         $product->status='processing';
         $product->update();
+        
+        $user = User::where('id',$product->seller_id)->first();
+        Notification::send($user,new SellerProductStatus($product));
+
         Session::flash('success'.'Product Accepted successfully!!');
         return redirect()->back();
 

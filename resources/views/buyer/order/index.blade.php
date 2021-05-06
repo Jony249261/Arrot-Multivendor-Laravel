@@ -19,13 +19,13 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header bg-red text-center">
+                        <div class="header bg-cyan text-center">
                             <h2>
                                 ALL Order
 
                             </h2>
                             <ul class="header-dropdown m-r--5 m-t--2">
-                                <a href="{{ route('orders.create') }}" class="btn btn-success"><i class="material-icons">library_add</i>Create</a>
+                                <a href="{{ route('orders.create') }}" class="btn btn-grad"><i class="material-icons">library_add</i>Create</a>
 
                             </ul>
                         </div>
@@ -51,9 +51,9 @@
                                                 <td>
                                                     @if(isset($order->delivery_date)) {{ date('d-M-Y', strtotime($order->delivery_date)) }} @endif
                                                 </td>
-                                                <td><span class="badge badge-primary">{{ ucfirst($order->status) }}</span>
+                                                <td><span class="label @if($order->status == 'accepted') bg-primary @elseif($order->status == 'processing') bg-indigo @elseif($order->status == 'received') bg-light-green @elseif($order->status == 'rejected') bg-red @elseif($order->status == 'shipping') bg-amber @elseif($order->status == 'completed') bg-green @else bg-light-blue @endif">{{ ucfirst($order->status) }}</span>
                                                 <td><span
-                                                        class="badge badge-primary">{{ ucfirst($order->payment_status) }}</span>
+                                                        class="label @if($order->payment_status == 'partials') bg-orange @elseif($order->payment_status == 'paid') bg-green @else bg-indigo @endif">{{ ucfirst($order->payment_status) }}</span>
                                                 </td>
                                                 <td>
                                                     @php
