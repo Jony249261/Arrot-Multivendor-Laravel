@@ -94,10 +94,17 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
     Route::get('/order/index/pdf','Supplier\OrderController@generatePdf')->name('order.index.pdf');
 
     //order search
-    Route::get('/order/filter','FilterController@filter')->name('order.filter');
+    // Route::get('/order/filter','FilterController@filter')->name('order.filter');
 
     //order change price
     Route::put('/order/product/update/{id}','Supplier\OrderController@orderProductUpdate')->name('order.product.update');
+
+
+
+    //purchase
+    Route::resource('/purchases','Supplier\PurchaseController');
+
+
 
     Route::get('/supplier-markread',function(){
         $user = User::find(auth()->user()->id);

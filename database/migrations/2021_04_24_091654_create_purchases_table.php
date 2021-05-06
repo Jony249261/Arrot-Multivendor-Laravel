@@ -19,7 +19,6 @@ class CreatePurchasesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('seller_id');
             $table->float('amount')->nullable();
-            $table->date('purchase_date')->nullable();
             $table->date('shipment_date')->nullable();
             $table->timestamps();
         });

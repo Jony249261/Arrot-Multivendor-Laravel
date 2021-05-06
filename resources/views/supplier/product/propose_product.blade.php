@@ -145,7 +145,7 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                             <tr>
-                                <th>Sl</th>
+                                <th>SL</th>
                                 <th>Product Name</th>
                                 <th>Seller Name</th>
                                 <th>Product Image</th>
@@ -158,9 +158,16 @@
                             </tr>
                             </thead>
 
-
+                            <form action="{{ route('purchases.store') }}" method="POST">
+                                @csrf
                             <tbody>
                             @foreach($accept_product as $key=>$pproduct)
+
+                            <input type="hidden" name="product_id[]" value="{{ $pproduct->id }}" id="">
+                            <input type="hidden" name="user_id[]" value="{{ $pproduct->user->id }}" id="">
+                            <input type="hidden" name="seller_id[]" value="{{ $pproduct->user->seller_id }}" id="">
+                            <input type="hidden" name="quantites[]" value="{{ $pproduct->quantity }}" id="">
+                            <input type="hidden" name="prices[]" value="{{ $pproduct->price }}" id="">
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$pproduct->product->product_name}}</td>
@@ -178,7 +185,12 @@
                             @endforeach
 
                             </tbody>
-
+                            <tfoot>
+                                <tr>
+                                    <td colspan="8"><button class="btn btn-info custom-btn">Purchase</button></td>
+                                </tr>
+                            </tfoot>
+                        </form>
                         </table>
                         {{$propose_product->links()}}
                     </div>
