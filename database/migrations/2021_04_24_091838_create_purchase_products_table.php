@@ -18,6 +18,7 @@ class CreatePurchaseProductsTable extends Migration
             $table->unsignedBigInteger('purchase_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('purchase_qty');
+            $table->float('unite_price');
             $table->timestamps();
 
         });
