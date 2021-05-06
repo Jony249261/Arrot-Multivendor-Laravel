@@ -78,8 +78,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn button waves-effect">SAVE CHANGES</button>
-                        <button type="button" class="btn button_u waves-effect" data-dismiss="modal">CLOSE</button>
+                        <button type="submit" class="btn button waves-effect">Create Unit</button>
+                        <button type="button" class="btn button_u waves-effect" data-dismiss="modal">Close</button>
                     </div>
                     </form>
                 </div>
@@ -112,8 +112,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn button waves-effect">SAVE CHANGES</button>
-                            <button type="button" class="btn button_u waves-effect" data-dismiss="modal">CLOSE</button>
+                            <button type="submit" class="btn button waves-effect">Update Unit</button>
+                            <button type="button" class="btn button_u waves-effect" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>

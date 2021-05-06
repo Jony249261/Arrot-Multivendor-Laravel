@@ -74,7 +74,7 @@
                                         </tr>
                                     </tfoot>
                             </table>
-                            <button class="btn btn-success waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update Order</button>
+                            <button class="btn button waves-effect custom-btn" type="submit"><i class="material-icons">update</i> Update Order</button>
                             </form>
 
                             </table>
