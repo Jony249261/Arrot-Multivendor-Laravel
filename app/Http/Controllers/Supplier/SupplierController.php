@@ -8,6 +8,7 @@ use App\Order;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class SupplierController extends Controller
 {
@@ -25,8 +26,19 @@ class SupplierController extends Controller
             $chartData.="['".$list->product_name."', ".$list->orders_count."],";
         }
         $arr['chartData']=rtrim($chartData,",");
+        $chart_options = [
+            'chart_title' => 'Payment Receive',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Billing',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'day',
+            'aggregate_function' => 'sum',
+            'aggregate_field' => 'payment_amount',
+            'chart_type' => 'line',
+        ];
+        $chart1 = new LaravelChart($chart_options);
 
 
-        return view('supplier.index',$arr,compact('orders','users','billings','products'));
+        return view('supplier.index',$arr,compact('orders','users','billings','products','chart1'));
     }
 }

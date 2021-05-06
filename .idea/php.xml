@@ -113,6 +113,7 @@
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/vendor/haruncpi/laravel-id-generator" />
+      <path value="$PROJECT_DIR$/vendor/laraveldaily/laravel-charts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
