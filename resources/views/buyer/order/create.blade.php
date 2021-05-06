@@ -20,6 +20,17 @@
                 </div>
                 <div class="body">
                         <div class="table-responsive">
+                            <div class="row">
+                                <form action="{{ route('orders.create') }}" method="GET">
+                              
+                                <div class="col-sm-3">
+                                    <input type="search" name="s" value="{{ isset($s) ? $s : '' }}" class="form-control" placeholder="Search">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-outline-info float-left">Search</button>
+                                </div>
+                            </form>
+                            </div>
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>

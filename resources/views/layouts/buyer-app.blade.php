@@ -34,6 +34,8 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('backend/css/themes/all-themes.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
 
     @yield('page-styles')
 </head>
@@ -86,6 +88,7 @@
     </section>
 
     <!-- Jquery Core Js -->
+    
     <script src="{{ asset('backend/plugins/jquery/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core Js -->
