@@ -92,7 +92,7 @@
     <!-- #END# CPU Usage -->
     <div class="row clearfix">
         <!-- Visitors -->
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="body bg-pink">
                     <div class="sparkline" data-type="line" data-spot-Radius="4" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"
@@ -147,7 +147,7 @@
         </div>
         <!-- #END# Visitors -->
         <!-- Latest Social Trends -->
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="body bg-cyan">
                     <div class="m-b--35 font-bold">LATEST  TRENDS PRODUCT</div>
@@ -173,51 +173,7 @@
         </div>
         <!-- #END# Latest Social Trends -->
         <!-- Answered Tickets -->
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-
-
-
-
-
-
-            <div class="card">
-                <div class="body bg-teal">
-
-                    <div class="font-bold m-b--35">ANSWERED TICKETS</div>
-                    <ul class="dashboard-stat-list">
-
-                        <li>
-                            <span class="pull-right"> <small></small></span>
-                        </li>
-
-
-                        <li>
-                            YESTERDAY
-                            <span class="pull-right"><b>15</b> <small>TICKETS</small></span>
-                        </li>
-                        <li>
-                            LAST WEEK
-                            <span class="pull-right"><b>90</b> <small>TICKETS</small></span>
-                        </li>
-                        <li>
-                            LAST MONTH
-                            <span class="pull-right"><b>342</b> <small>TICKETS</small></span>
-                        </li>
-                        <li>
-                            LAST YEAR
-                            <span class="pull-right"><b>4 225</b> <small>TICKETS</small></span>
-                        </li>
-                        <li>
-                            ALL
-                            <span class="pull-right"><b>8 752</b> <small>TICKETS</small></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        <!-- #END# Answered Tickets -->
-    </div>
 
     <div class="row clearfix">
         <!-- Task Info -->
@@ -251,7 +207,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                         
+
                             @foreach($orders->where('status','!=','received')->take(8) as $i => $order)
                                 <tr>
                                     <td>{{ $i + 1 }}</td>
