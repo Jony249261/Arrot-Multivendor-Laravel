@@ -60,7 +60,7 @@
                 <div class="header">
                     <div class="row clearfix">
                         <div class="col-xs-12 col-sm-6">
-                            <h2>CPU USAGE (%)</h2>
+                            <h2>PAYMENT RECEIVE</h2>
                         </div>
                         <div class="col-xs-12 col-sm-6 align-right">
                             <div class="switch panel-switch-btn">
@@ -83,7 +83,8 @@
                     </ul>
                 </div>
                 <div class="body">
-                    <div id="real_time_chart" class="dashboard-flot-chart"></div>
+                    {!! $chart1->renderHtml() !!}
+{{--                    <div id="real_time_chart" class="dashboard-flot-chart"></div>--}}
                 </div>
             </div>
         </div>
@@ -173,6 +174,13 @@
         <!-- #END# Latest Social Trends -->
         <!-- Answered Tickets -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+
+
+
+
+
+
             <div class="card">
                 <div class="body bg-teal">
 
@@ -207,7 +215,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
+
         <!-- #END# Answered Tickets -->
     </div>
 
@@ -308,3 +316,8 @@
     </div>
 </div>
 @endsection
+@section('page-scripts')
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
+@endsection
+

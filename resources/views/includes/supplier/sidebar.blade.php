@@ -95,7 +95,9 @@
             <li class="@yield('propose')">
                 <a href="{{route('propose.product')}}">
                     <i class="material-icons">local_activity</i>
-                    <span>Proposse Product</span>
+
+                    <span>Proposed Product</span>
+
                 </a>
             </li>
 
