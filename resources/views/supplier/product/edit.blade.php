@@ -78,7 +78,7 @@
                                    @enderror
                                 </div>
                                 <div class="form-group form-float">
-                                    <div class="form-line error">
+                                    <div class="form-line ">
                                         <label class="form-label">Sales Rate</label>
                                         <input type="number" class="form-control @error('sales_rate') is-invalid @enderror"
                                             name="sales_rate" value="{{ old('sales_rate',$product->sales_rate) }}" required>

@@ -52,7 +52,7 @@
 
 
                                                     @if(auth()->user()->role != 'support')
-                                                    <a href="{{ route('supplier.buyer.delete',$user->id) }}" id="delete" class="btn btn-danger custom-btn1 @yield('buyer-profile')"> <i class="material-icons">delete</i></a>
+                                                    <a href="{{ route('supplier.buyer.delete',$user->id) }}" id="delete" class="btn btn-danger custom-btn1 @yield('buyer-profile')"> <i class="material-icons">delete_forever</i></a>
                                                 </div>
                                                     @endif
 

@@ -36,7 +36,7 @@
                                     <div class="col-sm-3">
                                         <div class="dataTables_length">
                                             <select name="status" class="form-control">
-                                                    <option value="">Select One</option>
+                                                    <option value="">Select1 One</option>
                                                     <option value="pending">Pending</option>
                                                     <option value="accepted">Accepted</option>
                                                     <option value="processing">Processing</option>
@@ -52,7 +52,7 @@
                                         <input type="search" name="s" value="{{ isset($status) ? $status : '' }}" class="form-control" placeholder="Search">
                                     </div>
                                     <div class="col-sm-2">
-                                        <button class="btn btn-outline-info float-left">Search</button>
+                                        <button class="btn btn-grad float-left">Search</button>
                                     </div>
                                 </form>
                                 </div>

@@ -27,7 +27,7 @@
                                     <input type="search" name="s" value="{{ isset($s) ? $s : '' }}" class="form-control" placeholder="Search">
                                 </div>
                                 <div class="col-sm-2">
-                                    <button class="btn btn-outline-info float-left">Search</button>
+                                    <button class="btn btn-grad float-left">Search</button>
                                 </div>
                             </form>
                             </div>

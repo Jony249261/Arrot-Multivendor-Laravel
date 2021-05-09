@@ -90,7 +90,7 @@
 
               <div class="col-md-6 ">
               <div class="card">
-              <div class="header bg-red">
+              <div class="header bg-cyan">
               <h2 class="text-center">Trade Licence</h2>
               </div>
               <br>
@@ -120,7 +120,7 @@
             <div class="col-md-6 ">
               <div class="row gutters-sm">
             <div class="card card-sr">
-              <div class="header bg-red">
+              <div class="header bg-cyan">
               <h2 class="text-center">
                 Buyer Representive
               </h2>

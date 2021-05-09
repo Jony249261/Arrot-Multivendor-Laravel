@@ -46,9 +46,9 @@
                                             <td>{{ $user->phone }}</td>
                                             <td>
                                                 @if($user->is_verified == 1)
-                                                <span class="badge badge-primary">Active</span>
+                                                <span class="badge bg-green">Active</span>
                                                 @else
-                                                <span class="badge bg-warning">Inactive</span>
+                                                <span class="badge bg-deep-orange">Inactive</span>
                                                 @endif
                                             </td>
 
