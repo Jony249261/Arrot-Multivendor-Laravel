@@ -78,7 +78,7 @@
 
           <div class="row gutters-sm">
             <div class="card card-sr">
-              <div class="header bg-red">
+              <div class="header bg-cyan">
               <h2 class="text-center">
                 Seller Representive
               </h2>
