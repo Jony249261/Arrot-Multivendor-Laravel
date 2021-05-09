@@ -41,7 +41,7 @@
                                             <td>{{ $order->user->phone }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
+                                            <td>Email</td>
                                             <td>{{ $order->user->email }}</td>
                                         </tr>
                                     </table>
