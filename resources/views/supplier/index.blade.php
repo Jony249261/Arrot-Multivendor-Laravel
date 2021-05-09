@@ -257,7 +257,7 @@
                         ]);
                         var options = {
 
-                            pieHole: 0.4,
+                            is3D: true,
                         };
 
 
