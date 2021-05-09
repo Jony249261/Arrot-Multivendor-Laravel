@@ -76,6 +76,12 @@
                     <span>Orders</span>
                 </a>
             </li>
+            <li class="@yield('supplier-purchase')">
+                <a href="{{route('purchases.index')}}">
+                    <i class="material-icons">shopping_cart</i>
+                    <span>Purchase</span>
+                </a>
+            </li>
             <li>
                 <li class="@yield('seller')">
                 <a href="javascript:void(0);" class="menu-toggle">

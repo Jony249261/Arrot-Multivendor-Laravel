@@ -141,7 +141,30 @@
 
                 </div>
                 <div class="body">
+                    <div class="row">
+                        <form action="{{ route('propose.product') }}" method="GET">
+                        <div class="col-sm-3">
+                            <div class="dataTables_length">
+                                <select name="seller_id" class="form-control">
+                                        <option value="">Select One</option>
+                                        @foreach ($sellers as $seller)
+                                            
+                                        <option value="{{ $seller->id }}">{{ $seller->name }}</option>
+                                        @endforeach
+                                </select>
+                               
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="search" name="s" value="{{ isset($status) ? $status : '' }}" class="form-control" placeholder="Search">
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-outline-info float-left">Search</button>
+                        </div>
+                    </form>
+                    </div>
                     <div class="table-responsive">
+
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                             <thead>
                             <tr>
@@ -161,11 +184,14 @@
                             <form action="{{ route('purchases.store') }}" method="POST">
                                 @csrf
                             <tbody>
+                                @php
+                                    $total = 0;
+                                @endphp
                             @foreach($accept_product as $key=>$pproduct)
 
-                            <input type="hidden" name="product_id[]" value="{{ $pproduct->id }}" id="">
-                            <input type="hidden" name="user_id[]" value="{{ $pproduct->user->id }}" id="">
-                            <input type="hidden" name="seller_id[]" value="{{ $pproduct->user->seller_id }}" id="">
+                            <input type="hidden" name="product_id[]" value="{{ $pproduct->product_id }}" id="">
+                            <input type="hidden" name="user_id" value="{{ $pproduct->user->id }}" id="">
+                            <input type="hidden" name="seller_id" value="{{ $pproduct->user->seller_id }}" id="">
                             <input type="hidden" name="quantites[]" value="{{ $pproduct->quantity }}" id="">
                             <input type="hidden" name="prices[]" value="{{ $pproduct->price }}" id="">
                                 <tr>
@@ -182,8 +208,11 @@
                                     </td>
 
                                 </tr>
+                                @php
+                                    $total += $pproduct->quantity * $pproduct->price;
+                                @endphp
                             @endforeach
-
+                                <input type="hidden" name="total_amount" value="{{ $total }}" id="">
                             </tbody>
                             <tfoot>
                                 <tr>

@@ -209,11 +209,28 @@ class ProductController extends Controller
         Session::flash('warning'.'Product deleted successfully!!');
         return redirect()->back();
     }
-    public  function  propose_product(){
+    public  function  propose_product(Request $request){
+        $sellers = User::where('role','seller')->get();
+        // $seller = User::findOrFail($request->seller_id);
+        // if($request->has('seller_id')){
+        //     $seller = $request->seller_id;
+        //     $sellers = $query->filter($seller)->get();
+        // }else{
+
+        //     $sellers = $query->get();
+        // }
+
+
         $propose_product=SellerPropose::Where('status','pending')->paginate(15);
         $process_product=SellerPropose::Where('status','processing')->paginate(15);
-        $accept_product=SellerPropose::Where('status','accept')->paginate(15);
-        return view('supplier.product.propose_product',compact('propose_product','accept_product','process_product'));
+        if($request->has('seller_id')){
+
+            $accept_product=SellerPropose::Where('status','accept')->where('seller_id',$request->seller_id)->paginate(15);
+        }else{
+
+            $accept_product=SellerPropose::Where('status','accept')->paginate(15);
+        }
+        return view('supplier.product.propose_product',compact('propose_product','accept_product','process_product','sellers'));
     }
     public  function  propose_accept($id){
         $product=SellerPropose::findOrFail($id);

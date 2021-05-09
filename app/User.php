@@ -49,5 +49,9 @@ class User extends Authenticatable
     public  function  parent(){
         return $this->hasOne(User::class,'id','parent_id');
     }
+    public function scopeFilter($query,$seller)
+    {
+        return $query->where('id','like','%'.$seller.'%');
+    }
 
 }

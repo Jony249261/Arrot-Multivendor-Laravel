@@ -103,6 +103,7 @@ Route::prefix('supplier')->middleware('supplier')->group(function(){
 
     //purchase
     Route::resource('/purchases','Supplier\PurchaseController');
+    Route::get('/purchase/invoice/{id}','Supplier\PurchaseController@invoice')->name('purchase.invoice');
 
 
 

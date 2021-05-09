@@ -19,7 +19,7 @@ class CreateSellerProposesTable extends Migration
             $table->string('seller_id');
             $table->float('price');
             $table->integer('quantity');
-            $table->enum('status',['pending','accepted','rejected','processing'])->default('pending');
+            $table->enum('status',['pending','accepted','rejected','processing','sell'])->default('pending');
             $table->float('total')->nullable();
             $table->timestamps();
         });
