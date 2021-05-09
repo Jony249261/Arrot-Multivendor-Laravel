@@ -234,14 +234,16 @@ class ProductController extends Controller
     }
     public  function  propose_accept($id){
         $product=SellerPropose::findOrFail($id);
-        $product->status='accept';
-        $product->update();
-
-        $user = User::where('id',$product->seller_id)->first();
-        Notification::send($user,new SellerProductStatus($product));
-        
-        Session::flash('info'.'Product Accepted successfully!!');
-        return redirect()->back();
+        dd($product);
+//
+//        $product->status='accept';
+//        $product->update();
+//
+//        $user = User::where('id',$product->seller_id)->first();
+//        Notification::send($user,new SellerProductStatus($product));
+//
+//        Session::flash('info'.'Product Accepted successfully!!');
+//        return redirect()->back();
 
     }
     public function  propose_reject($id){
@@ -261,7 +263,7 @@ class ProductController extends Controller
         $product->price=$request->price;
         $product->status='processing';
         $product->update();
-        
+
         $user = User::where('id',$product->seller_id)->first();
         Notification::send($user,new SellerProductStatus($product));
 

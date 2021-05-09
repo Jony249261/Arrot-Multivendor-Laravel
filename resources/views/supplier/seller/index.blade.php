@@ -48,7 +48,7 @@
                                                 <a href="{{ route('supplier.seller.edit',$user->id) }}" class="btn btn-success"> <i class="material-icons">edit</i></a>
                                                 <a href="{{ route('supplier.seller.profile',$user->id) }}" class="btn btn-primary @yield('buyer-profile')"> <i class="material-icons">visibility</i></a>
                                                 @if(auth()->user()->role != 'support')
-                                                <a href="{{ route('supplier.seller.delete',$user->id) }}" id="delete" class="btn btn-danger @yield('buyer-profile')"> <i class="material-icons">delete</i></a>
+                                                <a href="{{ route('supplier.seller.delete',$user->id) }}" id="delete" class="btn btn-danger @yield('buyer-profile')"> <i class="material-icons">delete_forever</i></a>
                                                  @endif
                                                  
                                                   

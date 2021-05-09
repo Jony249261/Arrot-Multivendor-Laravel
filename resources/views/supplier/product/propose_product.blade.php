@@ -216,7 +216,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colspan="8"><button class="btn btn-info custom-btn">Purchase</button></td>
+                                    <td colspan="8"><button class="btn button custom-btn">Purchase</button></td>
                                 </tr>
                             </tfoot>
                         </form>

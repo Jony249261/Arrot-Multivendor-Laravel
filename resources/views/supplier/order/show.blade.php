@@ -41,7 +41,7 @@
                                             <td>{{ $order->user->phone }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Phone</td>
+                                            <td>Email</td>
                                             <td>{{ $order->user->email }}</td>
                                         </tr>
                                     </table>
@@ -302,7 +302,7 @@
             </div>
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
+                    <div class="card card-card">
                         
                             
                                     <div class="header bg-green text-center">
