@@ -8,6 +8,7 @@
 
         <!-- Widgets -->
         <div class="row clearfix">
+            @if(!blank($propose_product))
             <div class="card">
                 <div class="header bg-cyan text-center">
 
@@ -71,7 +72,8 @@
                 </div>
 
             </div>
-
+            @endif
+            @if(!blank($process_product ))
             <div class="card">
                 <div class="header bg-orange text-center">
 
@@ -134,6 +136,8 @@
                 </div>
 
             </div>
+            @endif
+            @if(!blank($accept_product))
             <div class="card">
                 <div class="header bg-green text-center">
 
@@ -214,11 +218,13 @@
                             @endforeach
                                 <input type="hidden" name="total_amount" value="{{ $total }}" id="">
                             </tbody>
+                            @if($seller_id)
                             <tfoot>
                                 <tr>
                                     <td colspan="8"><button class="btn button custom-btn">Purchase</button></td>
                                 </tr>
                             </tfoot>
+                            @endif
                         </form>
                         </table>
                         {{$propose_product->links()}}
@@ -227,7 +233,7 @@
                 </div>
 
             </div>
-
+            @endif
         </div>
   @foreach($propose_product as $key=>$pproduct)
         <!-- Default Size -->

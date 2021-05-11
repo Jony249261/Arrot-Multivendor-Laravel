@@ -184,6 +184,10 @@ Route::prefix('seller')->middleware('seller')->group(function(){
     //support route
      Route::get('/support/index','Seller\SupportController@index')->name('support.index');
      Route::post('/support/contact','Seller\SupportController@sendMessage')->name('contact.submit');
+    //seller purchase
+    Route::get('/sales','Seller\PurchaseController@index')->name('seller-purchase.index');
+    Route::get('/sales/show/{id}','Seller\PurchaseController@show')->name('seller.purchase.show');
+
 
      Route::get('/markasread',function(){
         $user = User::find(auth()->user()->id);

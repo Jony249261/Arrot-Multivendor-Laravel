@@ -49,6 +49,24 @@
                                 </li>
                                 @endforeach
                               @endif
+                              @if(auth()->user()->unreadNotifications->where('type','App\Notifications\PurchaseNotification'))
+                              @foreach (auth()->user()->unreadNotifications->where('type','App\Notifications\PurchaseNotification') as $notification)
+                                  
+                              <li>
+                                  <a href="{{ route('seller.purchase.show',$notification->data['purchase_id']) }}">
+                                      <div class="icon-circle bg-cyan">
+                                          <i class="material-icons">category</i>
+                                      </div>
+                                      <div class="menu-info">
+                                          <h4>Sales id #000{{ $notification->data['purchase_id'] }} and amount {{ number_format($notification->data['amount'],2) }}</h4>
+                                          <p>
+                                              <i class="material-icons">access_time</i>{{ $notification->created_at->diffForHumans() }}  
+                                          </p>
+                                      </div>
+                                  </a>
+                              </li>
+                              @endforeach
+                            @endif
                             </ul>
                         </li>
                         @if(auth()->user()->unreadNotifications->count())

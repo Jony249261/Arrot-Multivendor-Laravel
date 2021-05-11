@@ -51,7 +51,12 @@
                     <span>Proposed Product</span>
                 </a>
             </li>
-
+            <li class="@yield('seller-purchase')">
+                <a href="{{route('seller-purchase.index')}}">
+                    <i class="material-icons">shopping_cart</i>
+                    <span>Sales</span>
+                </a>
+            </li>
             <li class="@yield('support')">
                 <a href="{{route('support.index')}}">
                     <i class="material-icons">support</i>

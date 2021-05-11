@@ -15,6 +15,10 @@
         .invoice-title {
             margin-top: 0;
         }
+        .custom{
+            background: red;
+            color:#fff;
+        }
 
         /*
      * Misc: print
@@ -120,7 +124,7 @@
         <div class="row">
             <div class="col-xs-12 table-responsive">
                 <table class="table table-striped">
-                    <thead>
+                    <thead >
                         <tr>
                             <th>Product</th>
                             <th>Description</th>

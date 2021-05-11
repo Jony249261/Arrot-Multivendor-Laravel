@@ -223,27 +223,27 @@ class ProductController extends Controller
 
         $propose_product=SellerPropose::Where('status','pending')->paginate(15);
         $process_product=SellerPropose::Where('status','processing')->paginate(15);
+        $seller_id = null;
         if($request->has('seller_id')){
-
-            $accept_product=SellerPropose::Where('status','accept')->where('seller_id',$request->seller_id)->paginate(15);
+            $seller_id = $request->seller_id;
+            $accept_product=SellerPropose::Where('status','accept')->where('seller_id',$seller_id)->paginate(15);
         }else{
 
             $accept_product=SellerPropose::Where('status','accept')->paginate(15);
         }
-        return view('supplier.product.propose_product',compact('propose_product','accept_product','process_product','sellers'));
+        return view('supplier.product.propose_product',compact('propose_product','accept_product','process_product','sellers','seller_id'));
     }
     public  function  propose_accept($id){
         $product=SellerPropose::findOrFail($id);
-        dd($product);
-//
-//        $product->status='accept';
-//        $product->update();
-//
-//        $user = User::where('id',$product->seller_id)->first();
-//        Notification::send($user,new SellerProductStatus($product));
-//
-//        Session::flash('info'.'Product Accepted successfully!!');
-//        return redirect()->back();
+        // dd($product);
+       $product->status='accept';
+       $product->update();
+
+       $user = User::where('id',$product->seller_id)->first();
+       Notification::send($user,new SellerProductStatus($product));
+
+       Session::flash('info'.'Product Accepted successfully!!');
+       return redirect()->back();
 
     }
     public function  propose_reject($id){

@@ -15,6 +15,13 @@
         .invoice-title {
             margin-top: 0;
         }
+        .custom{
+            background: red;
+            color: #fff;
+        }
+        .custom-text{
+            color:red;
+        }
 
         /*
      * Misc: print
@@ -29,6 +36,13 @@
             .content-header {
                 display: none !important;
             }
+            .custom{
+            background: red;
+            color: #fff;
+        }
+        .custom-text{
+            color:red;
+        }
 
             .content-wrapper,
             .right-side,
@@ -78,6 +92,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">
+                    <img src="{{ asset('arrot.png') }}" width="80" alt=""><br>
                     <i class="fa fa-globe"></i> Attor-Krishi-Ponno.
                     <small class="pull-right">Date: {{ date('d/m/Y') }}</small>
                 </h2>
@@ -87,7 +102,7 @@
         <!-- info row -->
         <div class="row invoice-info">
             <div class="col-sm-4 invoice-col">
-                From
+               <span class="custom-text">From</span>
                 <address>
                     <strong>Arrot.</strong><br>
                     1259 (4th Floor), Road 10, Mirpur DOHS<br>
@@ -98,7 +113,7 @@
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
-                To
+                <span class="custom-text">To</span>
                 <address>
                     <strong>{{ $order->user->name }}</strong><br>
                     {{ $order->user->address }}
@@ -111,8 +126,8 @@
             <div class="col-sm-4 invoice-col">
                 {{-- <b>Invoice #007612</b><br> --}}
                 <br>
-                <b>Order ID:</b> {{ $order->showId }}<br>
-                <b>Delivery Date:</b> {{ $order->delivery_date }}<br>
+                <b class="custom-text">Order ID:</b> {{ $order->showId }}<br>
+                <b class="custom-text">Delivery Date:</b> {{ $order->delivery_date }}<br>
                 {{-- <b>Account:</b> 968-34567 --}}
             </div>
             <!-- /.col -->
@@ -123,7 +138,7 @@
         <div class="row">
             <div class="col-xs-12 table-responsive">
                 <table class="table table-striped">
-                    <thead>
+                    <thead class="custom">
                         <tr>
                             <th>Product</th>
                             <th>Description</th>

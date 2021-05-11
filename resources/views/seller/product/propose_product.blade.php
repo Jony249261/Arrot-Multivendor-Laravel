@@ -7,6 +7,7 @@
 
         <!-- Widgets -->
         <div class="row clearfix">
+            @if(!blank($propose_product))
             <div class="card">
                 <div class="header bg-cyan text-center">
 
@@ -65,7 +66,8 @@
                 </div>
 
             </div>
-
+            @endif
+            @if(!blank($process_product))
             <div class="card">
                 <div class="header bg-orange text-center">
 
@@ -129,6 +131,8 @@
                 </div>
 
             </div>
+            @endif
+            @if(!blank($accept_product))
             <div class="card">
                 <div class="header bg-green text-center">
 
@@ -181,7 +185,8 @@
                 </div>
 
             </div>
-
+            @endif
+            @if(!blank($reject_product))
             <div class="card">
                 <div class="header bg-black text-center">
 
@@ -234,6 +239,7 @@
                 </div>
 
             </div>
+            @endif
         </div>
     @foreach($propose_product as $key=>$pproduct)
         <!-- Default Size -->

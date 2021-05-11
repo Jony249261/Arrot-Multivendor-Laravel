@@ -6,7 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Purchase;
 use App\PurchaseProduct;
 use App\SellerPropose;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Session;
+use App\Notifications\PurchaseNotification;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class PurchaseController extends Controller
 {
@@ -49,6 +54,7 @@ class PurchaseController extends Controller
         
         //purchase
         $purchase = new Purchase();
+        $purchase->purchase_id = IdGenerator::generate(['table' => 'purchases','field'=>'purchase_id', 'length' => 3, 'prefix' =>'000-']);
         $purchase->user_id = $user_id;
         $purchase->seller_id = $seller_id;
         $purchase->amount = $total_amount;
@@ -63,11 +69,16 @@ class PurchaseController extends Controller
             $purchase_product->unite_price = $prices[$id];
             $purchase_product->save();
             //update seller propose product
-            $propose_product = SellerPropose::findOrFail($product);
-            $propose_product->status = 'sell';
-            $propose_product->save();
+            $propose_product = SellerPropose::where('seller_id',$user_id)->where('product_id',$product)->where('status','accept')->first();
+            // $propose_product->status = 'sell';
+            $propose_product->update(['status'=>'purchase']);
         }
-        return back();
+        //send notification
+        $user = User::find($user_id);
+        Notification::send($user,new PurchaseNotification($purchase));
+        
+        Session::flash('success','Purchase has been successfully!');
+        return redirect()->route('purchases.index');
 
     }
 
