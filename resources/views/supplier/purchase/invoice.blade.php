@@ -82,8 +82,19 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="page-header">
-                    <i class="fa fa-globe"></i> Attor-Krishi-Ponno.
-                    <small class="pull-right">Date: {{ date('d/m/Y') }}</small>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <img src="{{ asset('arrot.png') }}" width="80" alt=""><br>
+                            <i class="fa fa-globe"></i> Attor-Krishi-Ponno.
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="pull-right">
+                                <img src="{{asset("image_buyer/user/".$purchase->user->image)}}" class="pull-right" alt="Image" width="120">
+                                <br>
+                                Date: {{ date('d/m/Y') }}
+                            </div>
+                        </div>
+                    </div>
                 </h2>
             </div>
             <!-- /.col -->
