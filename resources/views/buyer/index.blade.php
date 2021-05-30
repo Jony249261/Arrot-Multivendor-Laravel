@@ -107,22 +107,22 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card">
                 <div class="body bg-pink">
-{{--                    <div class="sparkline" data-type="line" data-spot-Radius="4" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"--}}
-{{--                         data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"--}}
-{{--                         data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"--}}
-{{--                         data-fill-Color="rgba(0, 188, 212, 0)">--}}
-{{--                        @php--}}
-{{--                            $date1=\Carbon\Carbon::today()->subDays(1);--}}
-{{--                            $date7=\Carbon\Carbon::today()->subDays(7);--}}
-{{--                            $date30=\Carbon\Carbon::today()->subDays(30);--}}
+                    <div class="sparkline" data-type="line" data-spot-Radius="4" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#fff"
+                         data-min-Spot-Color="rgb(255,255,255)" data-max-Spot-Color="rgb(255,255,255)" data-spot-Color="rgb(255,255,255)"
+                         data-offset="90" data-width="100%" data-height="92px" data-line-Width="2" data-line-Color="rgba(255,255,255,0.7)"
+                         data-fill-Color="rgba(0, 188, 212, 0)">
+                        @php
+                            $date1=\Carbon\Carbon::today()->subDays(1);
+                            $date7=\Carbon\Carbon::today()->subDays(7);
+                            $date30=\Carbon\Carbon::today()->subDays(30);
 
 
-{{--                            $total_graph1=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');--}}
-{{--                            $total_graph2=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');--}}
-{{--                            $total_graph3=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');--}}
-{{--                        @endphp--}}
-{{--                        {{$total_graph1}},{{$total_graph2}},{{$total_graph3}}--}}
-{{--                    </div>--}}
+                            $total_graph1=App\Billing::distinct('bill_amount')->where('created_at','>=',$date1)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            $total_graph2=App\Billing::distinct('bill_amount')->where('created_at','>=',$date7)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                            $total_graph3=App\Billing::distinct('bill_amount')->where('created_at','>=',$date30)->where('order_id','!=','order_id')->where('buyer_id',Auth::user()->buyer_id)->sum('bill_amount');
+                        @endphp
+                        {{$total_graph1}},{{$total_graph2}},{{$total_graph3}}
+                    </div>
                     <ul class="dashboard-stat-list">
                         <li>
                             TODAY
