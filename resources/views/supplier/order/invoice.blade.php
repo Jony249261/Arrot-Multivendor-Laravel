@@ -3,25 +3,40 @@
 @section('supplier-order', 'active')
 
 @section('page-styles')
+{{--    <!-- Bootstrap CSS -->--}}
+{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">--}}
+
+
     <style>
-        .invoice {
-            position: relative;
-            background: #fff;
-            border: 1px solid #f4f4f4;
-            padding: 20px;
-            margin: 10px 25px;
+        .card{
+            padding: 30px !important;
+
+        }
+        .color{
+
+            color:red;
+            font-weight: 500;
         }
 
-        .invoice-title {
-            margin-top: 0;
+        hr{
+            background-color: red;
+            height: 2px;
         }
-        .custom{
-            background: red;
-            color: #fff;
+        .thead-darks{
+            background-color: red !important;
+            color: white;
         }
-        .custom-text{
-            color:red;
+        .address1{
+            font-weight: 600;
         }
+        .details{
+            font-weight: 600;
+        }
+
+        table, th, td {
+            border: 1.5px solid gray;
+        }
+
 
         /*
      * Misc: print
@@ -87,154 +102,174 @@
 @endsection
 
 @section('content')
-    <section class="invoice">
-        <!-- title row -->
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="page-header">
-                    <img src="{{ asset('arrot.png') }}" width="80" alt=""><br>
-                    <i class="fa fa-globe"></i> Attor-Krishi-Ponno.
-                    <small class="pull-right">Date: {{ date('d/m/Y') }}</small>
-                </h2>
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- info row -->
-        <div class="row invoice-info">
-            <div class="col-sm-4 invoice-col">
-               <span class="custom-text">From</span>
-                <address>
-                    <strong>Arrot.</strong><br>
-                    1259 (4th Floor), Road 10, Mirpur DOHS<br>
-                    Dhaka 1216<br>
-                    Phone: +880-1947179930<br>
-                    Email: support@selevenit.com
-                </address>
-            </div>
-            <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-                <span class="custom-text">To</span>
-                <address>
-                    <strong>{{ $order->user->name }}</strong><br>
-                    {{ $order->user->address }}
-                    {{-- San Francisco, CA 94107<br> --}}
-                    Phone: {{ $order->user->phone }}<br>
-                    Email: {{ $order->user->email }}
-                </address>
-            </div>
-            <!-- /.col -->
-            <div class="col-sm-4 invoice-col">
-                {{-- <b>Invoice #007612</b><br> --}}
-                <br>
-                <b class="custom-text">Order ID:</b> {{ $order->showId }}<br>
-                <b class="custom-text">Delivery Date:</b> {{ $order->delivery_date }}<br>
-                {{-- <b>Account:</b> 968-34567 --}}
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
 
-        <!-- Table row -->
-        <div class="row">
-            <div class="col-xs-12 table-responsive">
-                <table class="table table-striped">
-                    <thead class="custom">
-                        <tr>
-                            <th>Product</th>
-                            <th>Description</th>
-                            <th>Qty</th>
-                            <th>Delivered Qty</th>
-                            <th>Unit Price</th>
-                            <th>Subtotal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $sub_total = 0;
-                        @endphp
-                        @forelse ($order->items as $i => $item)
-                            <tr>
-                                <td>{{ $item->product->product_name }}</td>
-                                <td>{{ \Illuminate\Support\Str::limit($item->product->product_description, 50, $end = '...') }}
-                                </td>
-                                <td>{{ $item->qty }}</td>
-                                <td>{{ $item->delivered_qty }}</td>
-                                <td>{{ number_format($item->unite_price, 2) }}</td>
-                                <td>{{ number_format($item->delivered_qty * $item->unite_price, 2) }}</td>
-                                @php
-                                    $sub_total += $item->delivered_qty * $item->unite_price;
-                                @endphp
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center">No product found</td>
-                            </tr>
-                        @endforelse
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="row">
+                            <div class="" style="margin-bottom: 30px">
+                                <section>
+                                    <div class="pull-left">
+                                        <img style="margin-bottom: 10px" src="{{asset('arrot.png')}}" alt="Admin"  width="120">
+
+                                        <address>
+                                            <strong>Attor-Krishi-Ponno.</strong><br>
+                                            1259 (4th Floor), Road 10, Mirpur DOHS<br>
+                                            Dhaka 1216<br>
+                                            Phone: +880-1947179930<br>
+                                            Email: support@selevenit.com
+                                        </address>
+                                    </div>
+                                    <div class="pull-right">
+                                        <p>
+                                            <img  src="{{asset('image_buyer/user/'.$order->user->image)}}" alt="Admin"  width="100" height="100px !important">
+                                        </p>
+                                        <address>
+                                            <strong>{{ $order->user->name }}</strong><br>
+                                            {{$order->user->buyer->buyer_address}}<br>
+                                            Phone: {{$order->user->phone}}<br>
+                                            Email: {{$order->user->email}}
+                                        </address>
+                                    </div>
+
+                                </section>
 
 
-                    </tbody>
-                </table>
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
+                            </div>
 
-        <div class="row">
-            <!-- accepted payments column -->
-            <div class="col-xs-6">
-                {{-- <p class="lead">Payment Methods:</p>
-        <img src="{{ asset('backend/dist/img/credit/visa.png') }}" alt="Visa">
-        <img src="{{ asset('backend/dist/img/credit/mastercard.png') }}" alt="Mastercard">
-        <img src="{{ asset('backend/dist/img/credit/american-express.png') }}" alt="American Express">
-        <img src="{{ asset('backend/dist/img/credit/paypal2.png') }}" alt="Paypal">
+                            <div class="clearfix">
 
-        <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro harum sunt quo unde? Voluptatum repellendus illum dicta porro non natus cumque blanditiis laborum corrupti sunt fugit, rerum animi obcaecati odio?.
-        </p> --}}
-            </div>
-            <!-- /.col -->
-            <div class="col-xs-6">
-                {{-- <p class="lead">Amount Due {{ date('d/m/Y') }}</p> --}}
+                            </div>
+                            <hr class="jony">
+                            <div class="details">
+                                <section>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p class="color">Bill To</p>
+                                            <address>
+                                                {{ $order->user->name }}<br>
+                                                {{$order->user->buyer->buyer_address}}
+                                            </address>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p class="color">Ship To</p>
+                                            <address>
+                                                {{ $order->user->name }}<br>
+                                                {{$order->user->buyer->buyer_address}}
+                                            </address>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p class="color">Invoice Date <span style="color:black; margin-left: 40px">{{ date('d/m/Y') }}</span></p>
+                                            <p style="color:red">P.O.# <span style="margin-left: 85px;color: black">{{ $order->delivery_date }}</span></p>
+                                            <p style="color:red; margin-top:-10px">Order Number : <span style=" margin-left:45px;color: black">{{ $order->showId }}</span></p>
+                                        </div>
+                                    </div>
 
-                <div class="table-responsive">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <th style="width:50%">Subtotal:</th>
-                                <td>{{ number_format($sub_total, 2) }}</td>
-                            </tr>
-                            <tr>
-                                <th>Tax (0%)</th>
-                                <td>0.00</td>
-                            </tr>
-                            <tr>
-                                <th>Shipping:</th>
-                                <td>0.00</td>
-                            </tr>
-                            <tr>
-                                <th>Total:</th>
-                                <td>{{ number_format($sub_total, 2) }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </section>
+                            </div>
+                            <br>
+                            <div class="">
+                                <section>
+                                    <table class="table">
+                                        <thead class="thead-darks">
+                                        <tr class="text-center">
+                                            <th scope="col">Qty</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Unit Price</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Amount</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @php
+                                            $sub_total = 0;
+                                        @endphp
+                                        @forelse ($order->items as $i => $item)
+                                        <tr>
+                                            <th scope="row">{{$i+1}}</th>
+                                            <td>{{ $item->product->product_name }}</td>
+
+                                            <td>{{ number_format($item->unite_price, 2) }}</td>
+                                            <td>{{ $item->qty }}</td>
+                                            <td>{{ number_format($item->delivered_qty * $item->unite_price, 2) }}</td>
+                                        @php
+                                            $sub_total += $item->delivered_qty * $item->unite_price;
+                                        @endphp
+                                        </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="text-center">No product found</td>
+                                            </tr>
+                                        @endforelse
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </div>
+
+                            <div class="" style="color: black; font-weight: 600">
+                                <section>
+                                    <div></div>
+                                    <div class="pull-right">
+                                        <p>SubTotal <span style="margin-left: 100px">{{ number_format($sub_total, 2) }}</span></p>
+                                        <p>Sales Tax 5% <span style="margin-left: 80px">0.00 Tk</span></p>
+                                        <p> <strong>Total</strong><samp style="margin-left: 125px"><strong>{{ number_format($sub_total, 2) }}</strong></samp></p>
+                                    </div>
+                                </section>
+                            </div>
+                            <div class="clearfix"></div>
+                            <br>
+                            <br>
+
+                            <div class="row">
+                                <div class="pull-right">
+                                    <a href="" target="_blank" onclick="myPrint()" class="btn button no-print pull-right"><i class="material-icons">local_printshop</i> Print</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <address class="address1">
+                                            <span style="color:red; font-size: 18px ; margin-bottom: 10px !important">Terms and Conditions</span>  <br><br>
+
+                                            Payment is due within 15 days<br>
+
+                                            Name of Bank<br>
+
+                                            Account Number<br>
+
+                                            Routing
+                                        </address>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <address class="address1"> <span style="color: red; font-size: 18px ;">Pepared By </span> <br><br>
+                                            Md. Jony Islam <br>
+                                            Date: 5-12-2021</address>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <address class="address1"> <span style="color: red; font-size: 18px ;">Authorized By </span> <br><br>
+                                            Attor-Krishi-Ponno. <br>
+                                            Date: 5-12-2021<br>
+                                            Signature:
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
+        <!-- #END# Exportable Table -->
+    </div>
 
-        <!-- this row will not appear when printing -->
-        <div class="row no-print">
-            <div class="col-xs-12">
-                <a href="" target="_blank" onclick="myPrint()" class="btn button no-print pull-right"><i class="material-icons">local_printshop</i> Print</a>
-                {{-- <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
-        </button>
-        <button type="button" class="btn btn-grad1 pull-right" style="margin-right: 5px;">
-          <i class="fa fa-download"></i> Generate PDF
-        </button> --}}
-            </div>
-        </div>
-    </section>
+
     <script>
         function myPrint() {
             window.print();
@@ -244,4 +279,7 @@
 @endsection
 
 @section('page-scripts')
+
+
+
 @endsection
